@@ -5,9 +5,26 @@ import '../../Getx/ControllerDatabase.dart';
 import '../../SendOrder.dart';
 import '../../WidgetUi/Appbar.dart';
 
-class Adddevice2 extends StatelessWidget {
+class Adddevice2 extends StatefulWidget {
   const Adddevice2({super.key});
 
+  @override
+  State<Adddevice2> createState() => _Adddevice2State();
+}
+
+class _Adddevice2State extends State<Adddevice2> {
+  @override
+  void initState() {
+    CheckPermisionSms();
+    // TODO: implement initState
+    super.initState();
+  }
+  CheckPermisionSms() async {
+    var status = await Permission.sms.status;
+    if (status.isDenied) {
+      await Permission.sms.request();
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
