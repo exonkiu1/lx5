@@ -31,7 +31,7 @@ class _Adddevice2State extends State<Adddevice2> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      //appBar: appBar(title: 'افزودن دستگاه'),
+      appBar: appBar(title: 'افزودن دستگاه'),
       body: Container(
           width: Get.width,
           height: Get.height,
@@ -109,11 +109,15 @@ class _Adddevice2State extends State<Adddevice2> {
                 )),
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 2),
-                  width: Get.width * 0.3,
+                  width: Get.width * 0.5,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
                       color: Color.fromARGB(54, 255, 255, 255)),
-                  child: Center(child: Text('انتخاب سیمکارت دستگاه')),
+                  child: Center(
+                      child: Text(
+                    'انتخاب سیمکارت دستگاه',
+                    style: TextStyle(fontSize: 13),
+                  )),
                 ),
               ),
             ],

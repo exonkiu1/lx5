@@ -10,9 +10,12 @@ class boxselectedsim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      width: Get.width * 0.9,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      decoration: decoration(),
+      width: Get.width,
+      //  margin: EdgeInsets.symmetric(vertical: 10),
+      decoration: decoration(
+          color: true,
+          colorBG: const Color.fromARGB(255, 65, 57, 57),
+          border: false),
       child: Column(
         children: [
           Text('انتخاب سیمکارت برای ارسال دستورات'),
