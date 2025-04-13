@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:permission_handler/permission_handler.dart';
-
+import 'widget.dart' as adddevice;
 import '../../Getx/ControllerDatabase.dart';
 import '../../SendOrder.dart';
 import '../../WidgetUi/Appbar.dart';
@@ -20,16 +20,18 @@ class _Adddevice2State extends State<Adddevice2> {
     // TODO: implement initState
     super.initState();
   }
+
   CheckPermisionSms() async {
     var status = await Permission.sms.status;
     if (status.isDenied) {
       await Permission.sms.request();
     }
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: 'افزودن دستگاه'),
+      //appBar: appBar(title: 'افزودن دستگاه'),
       body: Container(
           width: Get.width,
           height: Get.height,
@@ -37,66 +39,85 @@ class _Adddevice2State extends State<Adddevice2> {
               image: DecorationImage(
                   image: AssetImage('assets/image/adddevice/bg.png'),
                   fit: BoxFit.cover)),
-          child: Center(
-              child: Container(
-            width: Get.width,
-            height: Get.height * 0.3,
-            decoration: BoxDecoration(
-                image: DecorationImage(
-                    image: AssetImage('assets/image/adddevice/box.png'))),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: Get.width * 0.5,
-                  //  color: const Color.fromARGB(61, 255, 255, 0),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.end,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(),
+              Center(
+                  child: Container(
+                width: Get.width,
+                height: Get.height * 0.3,
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: AssetImage('assets/image/adddevice/box.png'))),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
+                      width: Get.width * 0.5,
+                      //  color: const Color.fromARGB(61, 255, 255, 0),
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          WidgetTextField(
-                            hint: 'نام دستگاه',
-                            tf: Get.find<Controllerdatabase>().tfName,
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children: [
+                              WidgetTextField(
+                                hint: 'نام دستگاه',
+                                tf: Get.find<Controllerdatabase>().tfName,
+                              ),
+                              SizedBox(
+                                height: 10,
+                              ),
+                              WidgetTextField(
+                                tf: Get.find<Controllerdatabase>().tfPhone,
+                                hint: 'شماره تلفن دستگاه',
+                                phone: true,
+                              ),
+                            ],
                           ),
-                          SizedBox(
-                            height: 10,
-                          ),
-                          WidgetTextField(
-                            tf: Get.find<Controllerdatabase>().tfPhone,
-                            hint: 'شماره تلفن دستگاه',
-                            phone: true,
-                          ),
+                          Center(
+                            child: InkWell(
+                              onTap: () => DialogOrder(context,
+                                  () => Get.find<Controllerdatabase>().AddLx(),
+                                  description: 'از ساخت دستگاه مطمعن هستید؟'),
+                              child: Container(
+                                padding: EdgeInsets.symmetric(vertical: 2),
+                                width: Get.width * 0.3,
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color.fromARGB(54, 255, 255, 255)),
+                                child: Center(child: Text('ثبت دستگاه')),
+                              ),
+                            ),
+                          )
                         ],
                       ),
-                      Center(
-                        child: InkWell(
-                          onTap: () => DialogOrder(context,
-                              () => Get.find<Controllerdatabase>().AddLx(),
-                              description: 'از ساخت دستگاه مطمعن هستید؟'),
-                          child: Container(
-                            padding: EdgeInsets.symmetric(vertical: 2),
-                            width: Get.width * 0.3,
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: Color.fromARGB(54, 255, 255, 255)),
-                            child: Center(child: Text('ثبت دستگاه')),
-                          ),
-                        ),
-                      )
-                    ],
-                  ),
+                    ),
+                    Container(
+                      width: Get.width * 0.3,
+                      height: Get.height,
+                      // color: Colors.pink,
+                    ),
+                  ],
                 ),
-                Container(
+              )),
+              InkWell(
+                onTap: () => Get.bottomSheet(Container(
+                  child: adddevice.boxselectedsim(),
+                )),
+                child: Container(
+                  padding: EdgeInsets.symmetric(vertical: 2),
                   width: Get.width * 0.3,
-                  height: Get.height,
-                  // color: Colors.pink,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Color.fromARGB(54, 255, 255, 255)),
+                  child: Center(child: Text('انتخاب سیمکارت دستگاه')),
                 ),
-              ],
-            ),
-          ))),
+              ),
+            ],
+          )),
     );
   }
 }

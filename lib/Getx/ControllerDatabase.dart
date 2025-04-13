@@ -58,7 +58,7 @@ class Controllerdatabase extends GetxController {
   ///
   TextEditingController tfName = TextEditingController(),
       tfPhone = TextEditingController();
-
+  RxInt sim = 0.obs;
   ///
   AddLx() async {
     var rand = Random();
@@ -67,7 +67,9 @@ class Controllerdatabase extends GetxController {
         id: '$id',
         Phone: tfPhone.text,
         Name: tfName.text,
-        Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text));
+        Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
+        Simcard: sim.value.toString()
+        );
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
     await Get.find<Controllerrelay>().AddRelay('$id');
