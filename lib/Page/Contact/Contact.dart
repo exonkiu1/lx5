@@ -278,9 +278,10 @@ class WidgetContact extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: List.generate(
-                                    7,
+                                    8,
                                     (j) => InkWell(
                                           onTap: () {
+                                            
                                             Get.find<Controllercontact>()
                                                 .Part[i]
                                                 .value = '${j + 1}';

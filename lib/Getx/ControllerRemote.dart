@@ -11,8 +11,7 @@ class Controllerremote extends GetxController {
   RxBool showpart = false.obs;
   AddRemote(String id) async {
     var prefs = SharedPreferencesAsync();
-    List<String> value =
-        List.generate(30, (i) => 'ریموت ${i }${CodeSplite}1');
+    List<String> value = List.generate(30, (i) => 'ریموت ${i}${CodeSplite}1');
     await prefs.setStringList('${id}remote', value);
   }
 
@@ -40,7 +39,11 @@ class Controllerremote extends GetxController {
   Future<String> ChangePart() async {
     String val = '';
     for (var i = 0; i < 30; i++) {
-      val = val + Part[i].value;
+      if (Part[i].value != '8') {
+        val = val + Part[i].value;
+      } else {
+        val = val + '0';
+      }
     }
     UpdateRemote();
     showpart.value = false;

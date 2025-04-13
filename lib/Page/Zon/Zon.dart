@@ -367,7 +367,7 @@ class WidgetZon extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: List.generate(
-                            7,
+                            8,
                             (c) => InkWell(
                                   onTap: () {
                                     Get.find<Controllerzon>().Part[i].value =

@@ -114,7 +114,7 @@ class WidgetRemote extends StatelessWidget {
                           iconEnabledColor: Colors.white,
                           underline: Container(),
                           isDense: true,
-                          items: List.generate(7, (i) => '${i + 1}')
+                          items: List.generate(8, (i) => '${i + 1}')
                               .map<DropdownMenuItem<String>>((String value) {
                             return DropdownMenuItem(
                               child: Text(

@@ -59,7 +59,11 @@ class Controllerzon extends GetxController {
   Future<String> ChangePart() async {
     String val = '';
     for (var i = 0; i < 18; i++) {
-      val = val + Part[i].value;
+      if (Part[i].value != '8') {
+        val = val + Part[i].value;
+      } else {
+        val = val + '0';
+      }
     }
     showpart.value = false;
     UpdateZon();
