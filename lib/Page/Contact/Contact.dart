@@ -266,7 +266,7 @@ class WidgetLevel extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)),
           child: Center(
             child: Text(
-              Name,
+              Value,
               style: const TextStyle(fontSize: 12),
             ),
           ),
