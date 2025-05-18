@@ -23,8 +23,6 @@ class Controllercontact extends GetxController {
 
   ///
   Future<String> RegisterContact({int i = 0, String value = 'A'}) async {
-    //Level[i].value = value;
-
     UpdateContact();
     String code = '';
     for (var i = 0; i < 26; i++) {
@@ -33,7 +31,7 @@ class Controllercontact extends GetxController {
       }
     }
     ShowPart.value = '';
-    return '31*${code}';
+    return '31*${code}#';
   }
 
   Future<String> AddOneContact(int i) async {
@@ -47,7 +45,7 @@ class Controllercontact extends GetxController {
     }
 
     ShowPart.value = '';
-    return '31${code}';
+    return '31${code}#';
   }
 
   Future<String> ChangePart() async {
