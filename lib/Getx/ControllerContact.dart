@@ -45,7 +45,7 @@ class Controllercontact extends GetxController {
     }
 
     ShowPart.value = '';
-    return '31${code}#';
+    return '31${code}';
   }
 
   Future<String> ChangePart() async {
