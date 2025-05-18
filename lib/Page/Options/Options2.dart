@@ -87,6 +87,6 @@ Map<String, Map<String, dynamic>> PageOptions2 = {
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
-  'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
+  // 'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': Help()},
 };
