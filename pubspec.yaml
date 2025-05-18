@@ -111,7 +111,7 @@ flutter:
   fonts:
     - family: A
       fonts:
-        - asset: assets/IranSans.ttf
+        - asset: assets/IRANSans.ttf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
