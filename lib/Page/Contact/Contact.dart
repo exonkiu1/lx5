@@ -96,7 +96,7 @@ class Contacts extends StatelessWidget {
             ),
             Obx(() {
               return Column(
-                  children: List.generate(10, (i) => WidgetContact(i: i)));
+                  children: List.generate(0, (i) => WidgetContact(i: i)));
             }),
           ],
         ),

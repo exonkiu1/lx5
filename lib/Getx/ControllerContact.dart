@@ -136,7 +136,7 @@ class Controllercontact extends GetxController {
   AddContact(String id) async {
     List<String> ValueContact = [];
     for (var i = 0; i < lenghtContact; i++) {
-      ValueContact.add('$CodeSplite${CodeSplite}LLLL${CodeSplite}1');
+      ValueContact.add('$CodeSplite${CodeSplite}${CodeSplite}1');
     }
 
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
