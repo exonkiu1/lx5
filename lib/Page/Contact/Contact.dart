@@ -18,46 +18,7 @@ class Contacts extends StatelessWidget {
       appBar: appBar(
         title: 'مخاطبین',
       ),
-      bottomNavigationBar: Obx(() {
-        return Visibility(
-          visible: Get.find<Controllercontact>().ShowPart.value == 'part',
-          child: InkWell(
-            onTap: () => SendOrder(
-                context, () => Get.find<Controllercontact>().ChangePart()),
-            child: Container(
-              width: Get.width * 0.3,
-              margin: EdgeInsets.symmetric(
-                  horizontal: Get.width * 0.1, vertical: 20),
-              height: Get.height * 0.05,
-              decoration: decoration(color: true),
-              child: const Center(
-                child: Text('ثبت پارتیشن مخاطبین'),
-              ),
-            ),
-          ),
-          replacement: Obx(() {
-            return Visibility(
-              visible:
-                  Get.find<Controllercontact>().ShowPart.value == 'contact',
-              child: InkWell(
-                onTap: () => SendOrder(context,
-                    () => Get.find<Controllercontact>().RegisterContact()),
-                child: Container(
-                  width: Get.width * 0.3,
-                  margin: EdgeInsets.symmetric(
-                      horizontal: Get.width * 0.1, vertical: 20),
-                  height: Get.height * 0.05,
-                  decoration: decoration(color: true),
-                  child: const Center(
-                    child: Text('ثبت  مخاطبین'),
-                  ),
-                ),
-              ),
-            );
-          }),
-        );
-      }),
-      extendBody: true,
+      
       body: Backgroundview(
           child: SingleChildScrollView(
         child: Column(
@@ -94,10 +55,9 @@ class Contacts extends StatelessWidget {
                 ],
               ),
             ),
-            Obx(() {
-              return Column(
-                  children: List.generate(0, (i) => WidgetContact(i: i)));
-            }),
+             Column(
+                  children: List.generate(10, (i) => WidgetContact(i: i)))
+            
           ],
         ),
       )),
