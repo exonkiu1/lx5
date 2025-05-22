@@ -23,6 +23,8 @@ class Controllercontact extends GetxController {
 
   ///
   Future<String> RegisterContact({int i = 0, String value = 'A'}) async {
+    //Level[i].value = value;
+
     UpdateContact();
     String code = '';
     for (var i = 0; i < 26; i++) {
@@ -31,7 +33,7 @@ class Controllercontact extends GetxController {
       }
     }
     ShowPart.value = '';
-    return '31*${code}#';
+    return '31*${code}';
   }
 
   Future<String> AddOneContact(int i) async {
@@ -136,7 +138,7 @@ class Controllercontact extends GetxController {
   AddContact(String id) async {
     List<String> ValueContact = [];
     for (var i = 0; i < lenghtContact; i++) {
-      ValueContact.add('$CodeSplite${CodeSplite}${CodeSplite}1');
+      ValueContact.add('$CodeSplite${CodeSplite}LLLL${CodeSplite}1');
     }
 
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
@@ -146,13 +148,13 @@ class Controllercontact extends GetxController {
   }
 
   SelectContact(int i) async {
-    final FlutterContactPicker _contactPicker = new FlutterContactPicker();
+   /*  final FlutterContactPicker _contactPicker = new FlutterContactPicker();
     Contact? contact1 = await _contactPicker.selectContact();
     if (contact1 != null) {
       TfName[i].text = contact1.fullName.toString();
       TfPhone[i].text =
           contact1.phoneNumbers![0].replaceAll(' ', '').replaceAll('+98', '0');
-    }
+    } */
   }
 
   UpdateContact() async {

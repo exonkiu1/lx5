@@ -109,6 +109,7 @@ class _Adddevice2State extends State<Adddevice2> {
                 )),
                 child: Container(
                   padding: EdgeInsets.symmetric(vertical: 2),
+                  margin: EdgeInsets.only(bottom: 20),
                   width: Get.width * 0.5,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),

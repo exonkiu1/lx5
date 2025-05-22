@@ -14,6 +14,7 @@ class Controllerhomepage extends GetxController {
   }
 
   RxString StateDev = ''.obs;
+  RxString Remote = 'false'.obs;
   GetHomepage(DevLX model) {
     StateDev.value = model.StateDev;
     print(StateDev.value);
@@ -102,6 +103,7 @@ class Controllerhomepage extends GetxController {
   RxDouble DySpaceship2 = 0.0.obs;
   RxBool animationflying = false.obs;
   flySpaceship(BuildContext context, void Function() function) async {
+    winking();
     if (Get.find<Controllerother>().DelyOrder.value == 0) {
       if (!animationflying.value && !animationbackflying.value) {
         animationflying.value = true;
@@ -140,6 +142,19 @@ class Controllerhomepage extends GetxController {
       }
       animationbackflying.value = false;
       print('end');
+    }
+  }
+
+  winking() async {
+    for (var i = 0; i < 2; i++) {
+      await Future.delayed(
+        Duration(milliseconds: 170),
+        () =>Remote.value = 'true',
+      );
+      await Future.delayed(
+        Duration(milliseconds: 170),
+        () => Remote.value = 'false',
+      );
     }
   }
 }

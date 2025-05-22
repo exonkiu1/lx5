@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/ControllerRelay.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -24,16 +25,18 @@ class Controllerzon extends GetxController {
 
   Future<String> ChangeName(int i) async {
     Name[i].value = Get.find<Controllerother>().tf.text;
-    UpdateZon();
+    await UpdateZon();
+    Get.find<Controllerrelay>().GetRelay(Get.find<Controllerinfo>().id.value);
     return '';
   }
 
   AddZon(String id) async {
     var prefs = SharedPreferencesAsync();
     List<String> value = List.generate(
-        19,
-        (i) =>
-            'زون ${i + 1}${CodeSplite}${ListModesZon.keys.elementAt(0)}${CodeSplite}true${CodeSplite}1');
+      19,
+      (i) =>
+          'زون ${i + 1}${CodeSplite}${ListModesZon.keys.elementAt(0)}${CodeSplite}true${CodeSplite}1',
+    );
     prefs.setStringList('${id}zon', value);
   }
 
@@ -42,17 +45,20 @@ class Controllerzon extends GetxController {
     List<String> value = await prefs.getStringList('${id}zon') ?? [];
     Name.value = List.generate(19, (i) => value[i].split(CodeSplite)[0].obs);
     Mode.value = List.generate(19, (i) => value[i].split(CodeSplite)[1].obs);
-    State.value = List.generate(19,
-        (i) => value[i].split(CodeSplite)[2] == 'true' ? true.obs : false.obs);
+    State.value = List.generate(
+      19,
+      (i) => value[i].split(CodeSplite)[2] == 'true' ? true.obs : false.obs,
+    );
     Part.value = List.generate(19, (i) => value[i].split(CodeSplite)[3].obs);
   }
 
   UpdateZon() async {
     var prefs = SharedPreferencesAsync();
     List<String> value = List.generate(
-        19,
-        (i) =>
-            '${Name[i].value}${CodeSplite}${Mode[i].value}${CodeSplite}${State[i].value}${CodeSplite}${Part[i].value}');
+      19,
+      (i) =>
+          '${Name[i].value}${CodeSplite}${Mode[i].value}${CodeSplite}${State[i].value}${CodeSplite}${Part[i].value}',
+    );
     prefs.setStringList('${Get.find<Controllerinfo>().id.value}zon', value);
   }
 
@@ -71,8 +77,10 @@ class Controllerzon extends GetxController {
   }
 
   InquiryMode() async {
-    String message =
-        Get.find<Controllerother>().TextInuiry.value.substring(1, 19);
+    String message = Get.find<Controllerother>().TextInuiry.value.substring(
+      1,
+      19,
+    );
     for (var i = 0; i < message.length; i++) {
       for (var i = 0; i < ListModesZon.length; i++) {
         if (ListModesZon.values.elementAt(i) == message[i]) {
@@ -83,8 +91,10 @@ class Controllerzon extends GetxController {
   }
 
   InquiryPart() {
-    String message =
-        Get.find<Controllerother>().TextInuiry.value.substring(0, 18);
+    String message = Get.find<Controllerother>().TextInuiry.value.substring(
+      0,
+      18,
+    );
     for (var i = 0; i < 18; i++) {
       print(message[i]);
       Part[i].value = message[i];
@@ -103,8 +113,10 @@ class Controllerzon extends GetxController {
   }
 
   InquiryState() async {
-    String message =
-        Get.find<Controllerother>().TextInuiry.value.substring(0, 18);
+    String message = Get.find<Controllerother>().TextInuiry.value.substring(
+      0,
+      18,
+    );
   }
 
   DeleteAllZonWirles() async {

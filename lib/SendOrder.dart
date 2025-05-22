@@ -74,6 +74,7 @@ void SendOrder(BuildContext context, Future<String> Function() function,
                                   SendSmsPass(context, code);
                                 }
                                 if (StateDev) {
+                                  Get.find<Controllerhomepage>().winking();
                                   Get.find<Controllerhomepage>()
                                       .backflyflySpaceship();
                                 }

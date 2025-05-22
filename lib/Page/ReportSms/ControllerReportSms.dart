@@ -43,8 +43,8 @@ class Controllerreportsms extends GetxController {
           int.tryParse(timenow.toPersianDate().split('/')[0].toEnglishDigit())!;
       int m =
           int.tryParse(timenow.toPersianDate().split('/')[1].toEnglishDigit())!;
-      var picked = await showPersianDateRangePicker(
-        context: context,
+      var picked = await PersianDateRangePickerDialog(
+        
         initialDateRange: JalaliRange(
           start: Jalali(y, m, 1),
           end: Jalali(y, m, 7),
@@ -53,8 +53,8 @@ class Controllerreportsms extends GetxController {
         lastDate: Jalali(1450, 9),
       );
       if (picked != null) {
-        FilterDate.value = true;
-        DateTime TimeS = picked.start.toDateTime(),
+      /*   FilterDate.value = true;
+        DateTime TimeS = picked..toDateTime(),
             TimeE = picked.end.toDateTime();
         print('TimeS: ${TimeS} TimeE:${TimeE}');
         for (var i = 0; i < 20; i++) {
@@ -70,7 +70,7 @@ class Controllerreportsms extends GetxController {
           }
         }
         Lenght.value = Message.length;
-        print('Lenght: ${Lenght.value}');
+        print('Lenght: ${Lenght.value}'); */
       }
     }
   }

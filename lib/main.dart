@@ -18,17 +18,11 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home:
-          // Homepage(),
-          const Scaffold(
+      // Homepage(),
+      const Scaffold(
         body: Backgroundview(
-            child: Center(
-          child: Text(
-            'LUX',
-            style: TextStyle(
-              fontSize: 40,
-            ),
-          ),
-        )),
+          child: Center(child: Text('LUX', style: TextStyle(fontSize: 40))),
+        ),
       ),
       initialBinding: mybinding(),
       theme: ThemeData(
@@ -52,3 +46,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
+
+
+

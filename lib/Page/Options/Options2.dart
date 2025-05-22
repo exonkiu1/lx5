@@ -83,10 +83,10 @@ Map<String, Map<String, dynamic>> PageOptions2 = {
   'افزودن دستگاه': {'image': 'add', 'page': Adddevice2()},
   'مخاطبین': {'image': 'contact', 'page': Contacts()},
   'زون ها': {'image': 'eye', 'page': Zon()},
-//  'ریموت ها': {'image': 'remote', 'page': Remote()},
+  'ریموت ها': {'image': 'remote', 'page': Remote()},
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
-  // 'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
+  'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': Help()},
 };

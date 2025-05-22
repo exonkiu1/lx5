@@ -18,7 +18,46 @@ class Contacts extends StatelessWidget {
       appBar: appBar(
         title: 'مخاطبین',
       ),
-      
+      bottomNavigationBar: Obx(() {
+        return Visibility(
+          visible: Get.find<Controllercontact>().ShowPart.value == 'part',
+          child: InkWell(
+            onTap: () => SendOrder(
+                context, () => Get.find<Controllercontact>().ChangePart()),
+            child: Container(
+              width: Get.width * 0.3,
+              margin: EdgeInsets.symmetric(
+                  horizontal: Get.width * 0.1, vertical: 20),
+              height: Get.height * 0.05,
+              decoration: decoration(color: true),
+              child: const Center(
+                child: Text('ثبت پارتیشن مخاطبین'),
+              ),
+            ),
+          ),
+          replacement: Obx(() {
+            return Visibility(
+              visible:
+                  Get.find<Controllercontact>().ShowPart.value == 'contact',
+              child: InkWell(
+                onTap: () => SendOrder(context,
+                    () => Get.find<Controllercontact>().RegisterContact()),
+                child: Container(
+                  width: Get.width * 0.3,
+                  margin: EdgeInsets.symmetric(
+                      horizontal: Get.width * 0.1, vertical: 20),
+                  height: Get.height * 0.05,
+                  decoration: decoration(color: true),
+                  child: const Center(
+                    child: Text('ثبت  مخاطبین'),
+                  ),
+                ),
+              ),
+            );
+          }),
+        );
+      }),
+      extendBody: true,
       body: Backgroundview(
           child: SingleChildScrollView(
         child: Column(
@@ -52,12 +91,38 @@ class Contacts extends StatelessWidget {
                       ),
                     );
                   }),
+                  Obx(() {
+                    return Visibility(
+                      visible: Get.find<Controllerother>().TypeInquiry.value !=
+                          'ContactPart',
+                      replacement: const CircularProgressIndicator(),
+                      child: InkWell(
+                        onTap: () => SendInquiry(context,
+                            () => Get.find<Controllercontact>().InquiryPart(),
+                            code: 'LUXSWE',
+                            type: 'ContactPart',
+                            controller: ';'),
+                        child: Container(
+                          width: Get.width * 0.3,
+                          decoration: decoration(),
+                          padding: const EdgeInsets.all(8),
+                          child: const Center(
+                            child: Text('استعلام پارتیشن'),
+                          ),
+                        ),
+                      ),
+                    );
+                  })
                 ],
               ),
             ),
-             Column(
-                  children: List.generate(10, (i) => WidgetContact(i: i)))
-            
+            Obx(() {
+              return Column(
+                  children: Get.find<Controllercontact>()
+                      .List_Contact
+                      .map((int value) => WidgetContact(i: value))
+                      .toList());
+            }),
           ],
         ),
       )),
@@ -198,7 +263,65 @@ class WidgetContact extends StatelessWidget {
                       ),
                     ],
                   ),
-                 
+                  Obx(() {
+                    return Visibility(
+                      visible: Get.find<Controllercontact>().MainContact.value,
+                      child: Padding(
+                        padding:
+                            EdgeInsets.symmetric(horizontal: Get.width * 0.07),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              width: Get.width * 0.7,
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: List.generate(
+                                    8,
+                                    (j) => InkWell(
+                                          onTap: () {
+                                            
+                                            Get.find<Controllercontact>()
+                                                .Part[i]
+                                                .value = '${j + 1}';
+                                            Get.find<Controllercontact>()
+                                                .ShowPart
+                                                .value = 'part';
+                                          },
+                                          child: Obx(() {
+                                            return Container(
+                                              width: 25,
+                                              height: 25,
+                                              decoration: BoxDecoration(
+                                                  borderRadius:
+                                                      BorderRadius.circular(50),
+                                                  color: '${j + 1}' !=
+                                                          Get.find<
+                                                                  Controllercontact>()
+                                                              .Part[i]
+                                                              .value
+                                                      ? const Color.fromARGB(
+                                                          255, 221, 176, 75)
+                                                      : Colors.red),
+                                              child: Center(
+                                                child: Text(
+                                                  '${j + 1}',
+                                                  style: const TextStyle(
+                                                      color: Colors.black),
+                                                ),
+                                              ),
+                                            );
+                                          }),
+                                        )),
+                              ),
+                            ),
+                            const Text('واحد'),
+                          ],
+                        ),
+                      ),
+                    );
+                  }),
                   Align(
                     child: Column(
                       children: [
@@ -251,7 +374,19 @@ class WidgetLevel extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.find<Controllercontact>().Level[i].value = Value;
+        if (Get.find<Controllercontact>().Level[i].value.contains(Value)) {
+          Get.find<Controllercontact>().Level[i].value =
+              Get.find<Controllercontact>()
+                  .Level[i]
+                  .value
+                  .replaceRange(count, count + 1, 'L');
+        } else {
+          Get.find<Controllercontact>().Level[i].value =
+              Get.find<Controllercontact>()
+                  .Level[i]
+                  .value
+                  .replaceRange(count, count + 1, Value);
+        }
         //  Get.find<Controllercontact>().ShowPart.value = 'contact';
       },
       child: Obx(() {
@@ -266,7 +401,7 @@ class WidgetLevel extends StatelessWidget {
               borderRadius: BorderRadius.circular(20)),
           child: Center(
             child: Text(
-              Value,
+              Name,
               style: const TextStyle(fontSize: 12),
             ),
           ),
