@@ -43,8 +43,8 @@ class Controllerreportsms extends GetxController {
           int.tryParse(timenow.toPersianDate().split('/')[0].toEnglishDigit())!;
       int m =
           int.tryParse(timenow.toPersianDate().split('/')[1].toEnglishDigit())!;
-      var picked = await PersianDateRangePickerDialog(
-        
+      var picked = await showPersianDateRangePicker(
+        context: context,
         initialDateRange: JalaliRange(
           start: Jalali(y, m, 1),
           end: Jalali(y, m, 7),
