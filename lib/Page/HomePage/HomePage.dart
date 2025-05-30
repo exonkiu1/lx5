@@ -74,26 +74,15 @@ class Homepage extends StatelessWidget {
                       InkWell(
                         onTap: () => SendOrder(
                           context,
-                          () => Get.find<Controllerrelay>().Triger(1),
+                          () => Get.find<Controllerrelay>().Triger(0),
                         ),
                         child: Column(
                           children: [
-                            Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Align(
-                                  child: Image.asset(
-                                    'assets/image/homepage/triger.png',
-                                    height: Get.width * 0.1,
-                                  ),
-                                ),
-                                Align(
-                                  child: Text(
-                                    '2',
-                                    style: TextStyle(color: color2),
-                                  ),
-                                ),
-                              ],
+                            Align(
+                              child: Image.asset(
+                                'assets/image/homepage/triger.png',
+                                height: Get.width * 0.1,
+                              ),
                             ),
                             Image.asset(
                               'assets/image/homepage/t triger.png',
