@@ -24,6 +24,7 @@ class Aboutme extends StatelessWidget {
                 des: "اطلاعات خواسته شده رو از سایت برداریدFaradezhco.ir",
               ),
             ),
+            SizedBox(height: 20,),
             widgethelp(
               title: 'برنامه نویس',
               des: 'مهندس مرتضی ناجی \n 09053071908',
