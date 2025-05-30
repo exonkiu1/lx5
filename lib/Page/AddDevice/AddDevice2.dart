@@ -34,8 +34,8 @@ class _Adddevice2State extends State<Adddevice2> {
 
   play_welcome() async {
     AudioPlayer welcome = AudioPlayer();
-    welcome.setAsset('');
-    welcome.play();
+   await welcome.setAsset('assets/music/welcome.mp3');
+   await welcome.play();
   }
 
   @override
