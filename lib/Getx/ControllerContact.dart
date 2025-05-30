@@ -27,11 +27,11 @@ class Controllercontact extends GetxController {
     String code = '';
     for (var i = 0; i < 26; i++) {
       if (TfPhone[i].text.length == 11) {
-        code = code + '*${i + 1}*${TfPhone[i].text}${Level[i].value}';
+        code = code + '${i + 1}*${TfPhone[i].text}${Level[i].value}';
       }
     }
     ShowPart.value = '';
-    return '31*${code}#';
+    return '31*${code}';
   }
 
   Future<String> AddOneContact(int i) async {
@@ -39,13 +39,13 @@ class Controllercontact extends GetxController {
     String code = '';
 
     if (TfPhone[i].text.length == 11) {
-      code = code + '*${i + 1}*${TfPhone[i].text}${Level[i].value}';
+      code = code + '${i + 1}*${TfPhone[i].text}${Level[i].value}';
     } else {
       Get.snackbar('خطا', 'طول شماره تلفن دستگاه باید 11 رقم باشد');
     }
 
     ShowPart.value = '';
-    return '31${code}';
+    return '31*${code}';
   }
 
   Future<String> ChangePart() async {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerContact.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Page/Contact/help.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
@@ -25,8 +26,18 @@ class Contacts extends StatelessWidget {
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                    InkWell(
+                      onTap: () =>HelpContact(context) ,
+                      child: Container(
+                        margin: EdgeInsets.symmetric(horizontal: 20),
+                        decoration: decoration(color: true),
+                        child: Center(
+                          child: Icon(Icons.question_mark_sharp, color: color2),
+                        ),
+                      ),
+                    ),
                   Obx(() {
                     return Visibility(
                       visible: Get.find<Controllerother>().TypeInquiry.value !=

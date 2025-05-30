@@ -307,7 +307,7 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
  
   } else {
     String uri =
-        'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
+        'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#';
     final Uri smsuri = Uri(
       scheme: 'sms',
       path: Get.find<Controllerinfo>().Phone.value,
