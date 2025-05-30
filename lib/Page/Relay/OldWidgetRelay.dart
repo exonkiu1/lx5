@@ -69,8 +69,9 @@ class WidgetRelayOld extends StatelessWidget {
                                }),
                ),
               Column(
-               spacing: 10,
+               
                 children: [
+                  SizedBox(height: 10,),
                   InkWell(
                     onTap: () => SendOrder(
                         context,
@@ -87,6 +88,7 @@ class WidgetRelayOld extends StatelessWidget {
                       );
                     }),
                   ),
+                  SizedBox(height: 10,),
                   InkWell(
                     onTap: () => SendOrder(
                         context,
@@ -99,6 +101,7 @@ class WidgetRelayOld extends StatelessWidget {
                       child: const Center(child: Text('تریگر')),
                     ),
                   ),
+                  SizedBox(height: 10,),
                   InkWell(
                     onTap: () => SendOrder(
                         context,

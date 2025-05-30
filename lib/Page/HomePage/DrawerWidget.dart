@@ -22,27 +22,33 @@ class DrawerWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-          spacing: 30,
+          
           children: [
+            SizedBox(height: 10,),
             Image.asset('assets/image/logo.png',height: 60,),
+            SizedBox(height: 30,),
             SelectedDevLx(),
+            SizedBox(height: 10,),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              spacing: 20,
+             
               children: List.generate(
                 PageOptions2.length,
-                (i) => InkWell(
-                  onTap: () => Get.to(PageOptions2.values.elementAt(i)['page']),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Image.asset(
-                       'assets/image/options3/'+ PageOptions2.values.elementAt(i)['image'] + '.png',
-                        height: 30,
-                      ),
-                                          Text(PageOptions2.keys.elementAt(i)),
-                  
-                    ],
+                (i) => Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: InkWell(
+                    onTap: () => Get.to(PageOptions2.values.elementAt(i)['page']),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset(
+                         'assets/image/options3/'+ PageOptions2.values.elementAt(i)['image'] + '.png',
+                          height: 30,
+                        ),
+                                            Text(PageOptions2.keys.elementAt(i)),
+                    
+                      ],
+                    ),
                   ),
                 ),
               ),
