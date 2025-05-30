@@ -18,7 +18,6 @@ class Contacts extends StatelessWidget {
       appBar: appBar(
         title: 'مخاطبین',
       ),
-      
       body: Backgroundview(
           child: SingleChildScrollView(
         child: Column(
@@ -55,9 +54,7 @@ class Contacts extends StatelessWidget {
                 ],
               ),
             ),
-             Column(
-                  children: List.generate(10, (i) => WidgetContact(i: i)))
-            
+            Column(children: List.generate(10, (i) => WidgetContact(i: i)))
           ],
         ),
       )),
@@ -71,12 +68,10 @@ class WidgetContact extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: Get.width*0.8,
-        
+        width: Get.width * 0.8,
         padding: EdgeInsets.symmetric(vertical: 10),
-        decoration:decoration(),
+        decoration: decoration(),
         margin: const EdgeInsets.symmetric(vertical: 5),
-        
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.end,
@@ -92,9 +87,9 @@ class WidgetContact extends StatelessWidget {
                         height: 10,
                       ),
                       InkWell(
-                        onTap: () => Get.find<Controllercontact>()
-                            .SelectContact(i),
-                        child:  Icon(
+                        onTap: () =>
+                            Get.find<Controllercontact>().SelectContact(i),
+                        child: Icon(
                           Icons.account_circle,
                           color: color1,
                           size: 30,
@@ -106,9 +101,9 @@ class WidgetContact extends StatelessWidget {
                       InkWell(
                         onTap: () => SendOrder(
                             context,
-                            () => Get.find<Controllercontact>()
-                                .DeleteContact(i)),
-                        child:  Icon(
+                            () =>
+                                Get.find<Controllercontact>().DeleteContact(i)),
+                        child: Icon(
                           Icons.delete,
                           color: color1,
                         ),
@@ -121,8 +116,7 @@ class WidgetContact extends StatelessWidget {
                       SizedBox(
                         width: Get.width * 0.5,
                         child: TextField(
-                          controller:
-                              Get.find<Controllercontact>().TfName[i],
+                          controller: Get.find<Controllercontact>().TfName[i],
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
                             hintText: 'نام مخاطب',
@@ -135,8 +129,7 @@ class WidgetContact extends StatelessWidget {
                       SizedBox(
                         width: Get.width * 0.5,
                         child: TextField(
-                          controller:
-                              Get.find<Controllercontact>().TfPhone[i],
+                          controller: Get.find<Controllercontact>().TfPhone[i],
                           keyboardType: TextInputType.phone,
                           textAlign: TextAlign.center,
                           decoration: const InputDecoration(
@@ -177,24 +170,26 @@ class WidgetContact extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    WidgetLevel(
-                      Name: 'گزارش گیری',
-                      Value: 'C',
-                      count: 2,
-                      i: i,
-                    ),
-                    WidgetLevel(
-                      Name: 'تماس',
-                      Value: 'A',
-                      count: 0,
-                      i: i,
-                    ),
+                    WidgetLevel(Name: 'گزارش گیری', Value: 'C', count: 2, i: i),
+                    WidgetLevel(Name: 'تماس', Value: 'A', count: 0, i: i),
                   ],
+                ),
+                SizedBox(height: 10),
+                InkWell(
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllercontact>().RegisterContact(i: i),
+                  ),
+                  child: Container(
+                    width: Get.width * 0.3,
+                    decoration: decoration(color: true),
+                    child: Center(
+                      child: Text('ثبت', style: TextStyle(color: color2)),
+                    ),
+                  ),
                 ),
               ],
             ),
-           
-           
           ],
         ));
   }
