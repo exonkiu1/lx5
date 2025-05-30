@@ -39,9 +39,10 @@ class Controllerdatabase extends GetxController {
     Index.value = i;
     if (Devs.length != 0) {
       if (splahscreen) {
-       
+        DateTime timenow = DateTime.now();
+        if (khordad_15.isBefore(timenow)) {
           Get.off(() => const Splashscreen());
-        
+        }
       }
       DevLX model = Devs[i];
       String id = model.id;

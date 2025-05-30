@@ -22,7 +22,7 @@ class _SplashscreenState extends State<Splashscreen> {
 
   GoToHomepage() async {
     await Future.delayed(
-        Duration(milliseconds: 500), () => Get.off(() => Homepage()));
+        Duration(milliseconds: 777), () => Get.off(() => Homepage()));
   }
 
   @override
