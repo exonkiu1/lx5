@@ -15,14 +15,14 @@ class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
     GoToHomepage();
-    // biumetric();
+     biumetric();
     // TODO: implement initState
     super.initState();
   }
 
   GoToHomepage() async {
     await Future.delayed(
-        Duration(milliseconds: 300), () => Get.off(() => Homepage()));
+        Duration(milliseconds: 500), () => Get.off(() => Homepage()));
   }
 
   @override
