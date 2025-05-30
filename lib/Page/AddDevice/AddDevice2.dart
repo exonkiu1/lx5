@@ -33,9 +33,11 @@ class _Adddevice2State extends State<Adddevice2> {
   }
 
   play_welcome() async {
-    AudioPlayer welcome = AudioPlayer();
-   await welcome.setAsset('assets/music/welcome.mp3');
-   await welcome.play();
+    if (Get.find<Controllerdatabase>().Lenght.value == 0) {
+      AudioPlayer welcome = AudioPlayer();
+      await welcome.setAsset('assets/music/welcome.mp3');
+      await welcome.play();
+    }
   }
 
   @override
@@ -60,7 +62,7 @@ class _Adddevice2State extends State<Adddevice2> {
                   Text('افزودن دستگاه', style: TextStyle(fontSize: 20)),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10),
-                    decoration: decoration(),
+                    decoration: decoration(color_border: color2),
                     child: TextField(
                       controller: Get.find<Controllerdatabase>().tfName,
                       textAlign: TextAlign.center,
@@ -72,15 +74,15 @@ class _Adddevice2State extends State<Adddevice2> {
                   ),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10),
-                    decoration: decoration(),
+                    decoration: decoration(color_border: color2),
                     child: TextField(
                       controller: Get.find<Controllerdatabase>().tfPhone,
                       keyboardType: TextInputType.phone,
                       textAlign: TextAlign.center,
                       onChanged: (value) {
                         if (value.length > 11) {
-                          Get.find<Controllerdatabase>().tfPhone.text = value
-                              .substring(0, 11);
+                          Get.find<Controllerdatabase>().tfPhone.text =
+                              value.substring(0, 11);
                         }
                       },
                       decoration: inputDecoration(
@@ -90,12 +92,11 @@ class _Adddevice2State extends State<Adddevice2> {
                     ),
                   ),
                   InkWell(
-                    onTap:
-                        () => DialogOrder(
-                          context,
-                          () => Get.find<Controllerdatabase>().AddLx(),
-                          description: 'از ساخت دستگاه مطمعن هستید؟',
-                        ),
+                    onTap: () => DialogOrder(
+                      context,
+                      () => Get.find<Controllerdatabase>().AddLx(),
+                      description: 'از ساخت دستگاه مطمئن هستید؟',
+                    ),
                     child: Container(
                       width: Get.width * 0.4,
                       decoration: decoration(color: true, colorBG: color1),

@@ -43,7 +43,7 @@ class WidgetRelayOld extends StatelessWidget {
                             'تغییر نام رله',
                           ),
                         ),
-                         const PopupMenuItem(
+                        const PopupMenuItem(
                           value: 'ChangeTriger',
                           child: Text(
                             'تغییر زمان تریگر',
@@ -59,19 +59,20 @@ class WidgetRelayOld extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-               ClipRRect(
+              ClipRRect(
                 borderRadius: BorderRadius.circular(30),
-                 child: Obx(() {
+                child: Obx(() {
                   return Image.asset(
                     'assets/image/relay/${Get.find<Controllerrelay>().State[i].value}.png',
                     height: Get.height * 0.15,
                   );
-                               }),
-               ),
+                }),
+              ),
               Column(
-               
                 children: [
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   InkWell(
                     onTap: () => SendOrder(
                         context,
@@ -88,7 +89,9 @@ class WidgetRelayOld extends StatelessWidget {
                       );
                     }),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   InkWell(
                     onTap: () => SendOrder(
                         context,
@@ -98,10 +101,12 @@ class WidgetRelayOld extends StatelessWidget {
                     child: Container(
                       width: Get.width * 0.3,
                       decoration: decoration(),
-                      child: const Center(child: Text('تریگر')),
+                      child: const Center(child: Text('درب بازکن')),
                     ),
                   ),
-                  SizedBox(height: 10,),
+                  SizedBox(
+                    height: 10,
+                  ),
                   InkWell(
                     onTap: () => SendOrder(
                         context,

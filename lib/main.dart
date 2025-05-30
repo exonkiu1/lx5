@@ -1,10 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/binding.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 
 void main() {
+    WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, // فقط حالت عمودی (Portrait)
+  ]);
   runApp(const MyApp());
 }
 
@@ -19,7 +24,7 @@ class MyApp extends StatelessWidget {
         body: Backgroundview(
             child: Center(
           child: Text(
-            'RANGER',
+            'RANGER+',
             style: TextStyle(
               fontSize: 40,
             ),

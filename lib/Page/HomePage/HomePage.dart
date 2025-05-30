@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/ControllerRelay.dart';
+import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/decoration.dart';
@@ -16,10 +17,8 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       key: _globalKey,
       endDrawer: DrawerWidget(),
-
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
         children: [
           Column(
             children: [
@@ -36,7 +35,7 @@ class Homepage extends StatelessWidget {
               ),
               SizedBox(height: 40),
               Text(
-                'RANGER',
+                'RANGER+',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
@@ -73,11 +72,10 @@ class Homepage extends StatelessWidget {
                       ),
                       SizedBox(height: 20),
                       InkWell(
-                        onTap:
-                            () => SendOrder(
-                              context,
-                              () => Get.find<Controllerrelay>().Triger(1),
-                            ),
+                        onTap: () => SendOrder(
+                          context,
+                          () => Get.find<Controllerrelay>().Triger(1),
+                        ),
                         child: Column(
                           children: [
                             Stack(
@@ -106,7 +104,6 @@ class Homepage extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   Transform.translate(
                     offset: Offset(0, -20),
                     child: Stack(
@@ -122,14 +119,11 @@ class Homepage extends StatelessWidget {
                               SizedBox(
                                 height: Get.width * 0.1,
                                 width: Get.width * 0.3,
-
                                 child: Row(
                                   children: [
                                     Flexible(
                                       flex: 1,
-
                                       child: Container(
-                                       
                                         child: InkWell(
                                           onTap: () {
                                             SendOrder(
@@ -145,7 +139,6 @@ class Homepage extends StatelessWidget {
                                     Flexible(
                                       flex: 1,
                                       child: Container(
-                                       
                                         child: InkWell(
                                           onTap: () {
                                             SendOrder(
@@ -162,16 +155,15 @@ class Homepage extends StatelessWidget {
                                 ),
                               ),
                               InkWell(
-                                onTap: () =>  SendOrder(
-                                              context,
-                                              () =>
-                                                  Get.find<Controllerhomepage>()
-                                                      .ChangeStateDev('on'),
-                                            ),
+                                onTap: () => SendOrder(
+                                  context,
+                                  () => Get.find<Controllerhomepage>()
+                                      .ChangeStateDev('on'),
+                                ),
                                 child: Container(
                                   width: Get.width * 0.2,
                                   height: Get.width * 0.2,
-                                 // color: const Color.fromARGB(78, 33, 149, 243),
+                                  // color: const Color.fromARGB(78, 33, 149, 243),
                                 ),
                               ),
                             ],
@@ -184,11 +176,10 @@ class Homepage extends StatelessWidget {
                     children: [
                       InkWell(
                         onTap: () => SendOrder(
-                                              context,
-                                              () =>
-                                                  Get.find<Controllerhomepage>()
-                                                      .ChangeStateDev('halfon'),
-                                            ),
+                          context,
+                          () => Get.find<Controllerhomepage>()
+                              .ChangeStateDev('halfon'),
+                        ),
                         child: Column(
                           children: [
                             Image.asset(
@@ -204,32 +195,15 @@ class Homepage extends StatelessWidget {
                       ),
                       SizedBox(height: 20),
                       InkWell(
-                        onTap:
-                            () => SendOrder(
-                              context,
-                              () => Get.find<Controllerrelay>().Triger(0),
-                            ),
+                        onTap: () => Get.to(Help()),
                         child: Column(
                           children: [
-                            Stack(
-                              alignment: Alignment.center,
-                              children: [
-                                Align(
-                                  child: Image.asset(
-                                    'assets/image/homepage/triger.png',
-                                    height: Get.width * 0.1,
-                                  ),
-                                ),
-                                Align(
-                                  child: Text(
-                                    '1',
-                                    style: TextStyle(color: color2),
-                                  ),
-                                ),
-                              ],
+                            Image.asset(
+                              'assets/image/homepage/help.png',
+                              height: Get.width * 0.1,
                             ),
                             Image.asset(
-                              'assets/image/homepage/t triger.png',
+                              'assets/image/homepage/t help.png',
                               height: Get.width * 0.1,
                             ),
                           ],
