@@ -152,7 +152,7 @@ class Homepage extends StatelessWidget {
                                               context,
                                               () =>
                                                   Get.find<Controllerhomepage>()
-                                                      .ChangeStateDev('on'),
+                                                      .ChangeStateDev('off'),
                                             );
                                           },
                                         ),
@@ -166,7 +166,7 @@ class Homepage extends StatelessWidget {
                                               context,
                                               () =>
                                                   Get.find<Controllerhomepage>()
-                                                      .ChangeStateDev('off'),
+                                                      .ChangeStateDev('on'),
                                             ),
                                 child: Container(
                                   width: Get.width * 0.2,

@@ -21,7 +21,7 @@ class Controllerrelay extends GetxController {
   }
 
   Future<String> Triger(int index) async {
-    return '2${index + 1}*t000002';
+    return '2${index + 1}*${TimeTriger[index].value}';
   }
 
   StartTriger(int index) async {
@@ -35,6 +35,7 @@ class Controllerrelay extends GetxController {
       print('state${index + 1}: ${State[index].value}');
     }
     State[index].value = beforstate;
+    
   }
 
    ChangeTriger(int index, BuildContext context) async {
