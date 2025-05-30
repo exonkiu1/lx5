@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:flutter_sms_inbox/flutter_sms_inbox.dart';
-import 'package:get/get_rx/get_rx.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-
 import '../../Getx/ControllerInfo.dart';
 
 class Controllerreportsms extends GetxController {
@@ -53,8 +51,8 @@ class Controllerreportsms extends GetxController {
         lastDate: Jalali(1450, 9),
       );
       if (picked != null) {
-      /*   FilterDate.value = true;
-        DateTime TimeS = picked..toDateTime(),
+        FilterDate.value = true;
+        DateTime TimeS = picked.start.toDateTime(),
             TimeE = picked.end.toDateTime();
         print('TimeS: ${TimeS} TimeE:${TimeE}');
         for (var i = 0; i < 20; i++) {
@@ -70,7 +68,7 @@ class Controllerreportsms extends GetxController {
           }
         }
         Lenght.value = Message.length;
-        print('Lenght: ${Lenght.value}'); */
+        print('Lenght: ${Lenght.value}');
       }
     }
   }

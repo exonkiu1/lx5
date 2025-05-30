@@ -33,7 +33,7 @@ class mybinding implements Bindings {
     Get.put(Controllerdatabase(), permanent: true);
     Get.put(Controllerremote(), permanent: true);
     Get.put(Controllerinquiry(), permanent: true);
-    Get.put(Controllerreportsms(), permanent: true);
+    //Get.put(Controllerreportsms(), permanent: true);
     Get.put(Controlleroptions(), permanent: true);
     Get.put(Controllerstt(), permanent: true);
     Get.put(Controllerstthomepage(), permanent: true);

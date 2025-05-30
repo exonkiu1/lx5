@@ -31,8 +31,8 @@ class WidgetRelayOld extends StatelessWidget {
                             () => Get.find<Controllerrelay>().ChangeName(i),
                             description: 'نام رله');
                         break;
-                      /* case 'ChangeTriger':
-                        Get.find<Controllerrelay>().ChangeTriger(i, context); */
+                      case 'ChangeTriger':
+                        Get.find<Controllerrelay>().ChangeTriger(i, context);
                       default:
                     }
                   },
@@ -43,12 +43,12 @@ class WidgetRelayOld extends StatelessWidget {
                             'تغییر نام رله',
                           ),
                         ),
-                        /*  const PopupMenuItem(
+                         const PopupMenuItem(
                           value: 'ChangeTriger',
                           child: Text(
                             'تغییر زمان تریگر',
                           ),
-                        ), */
+                        ),
                       ]),
               Obx(() {
                 return Text(
@@ -59,49 +59,63 @@ class WidgetRelayOld extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              InkWell(
-                onTap: () => SendOrder(
-                    context,
-                    () => Get.find<Controllerrelay>().ChangeState(
-                          false,
-                          i,
-                        )),
-                child: Obx(() {
-                  return Container(
-                    width: Get.width * 0.25,
-                    decoration: decoration(
-                        color: !Get.find<Controllerrelay>().State[i].value),
-                    child: const Center(child: Text('غیرفعال')),
+               ClipRRect(
+                borderRadius: BorderRadius.circular(30),
+                 child: Obx(() {
+                  return Image.asset(
+                    'assets/image/relay/${Get.find<Controllerrelay>().State[i].value}.png',
+                    height: Get.height * 0.15,
                   );
-                }),
-              ),
-              InkWell(
-                onTap: () => SendOrder(
-                    context,
-                    () => Get.find<Controllerrelay>().Triger(
-                          i,
-                        )),
-                child: Container(
-                  width: Get.width * 0.3,
-                  decoration: decoration(),
-                  child: const Center(child: Text('تریگر')),
-                ),
-              ),
-              InkWell(
-                onTap: () => SendOrder(
-                    context,
-                    () => Get.find<Controllerrelay>().ChangeState(
-                          true,
-                          i,
-                        )),
-                child: Obx(() {
-                  return Container(
-                    width: Get.width * 0.25,
-                    decoration: decoration(
-                        color: Get.find<Controllerrelay>().State[i].value),
-                    child: const Center(child: Text('فعال')),
-                  );
-                }),
+                               }),
+               ),
+              Column(
+               spacing: 10,
+                children: [
+                  InkWell(
+                    onTap: () => SendOrder(
+                        context,
+                        () => Get.find<Controllerrelay>().ChangeState(
+                              false,
+                              i,
+                            )),
+                    child: Obx(() {
+                      return Container(
+                        width: Get.width * 0.3,
+                        decoration: decoration(
+                            color: !Get.find<Controllerrelay>().State[i].value),
+                        child: const Center(child: Text('غیرفعال')),
+                      );
+                    }),
+                  ),
+                  InkWell(
+                    onTap: () => SendOrder(
+                        context,
+                        () => Get.find<Controllerrelay>().Triger(
+                              i,
+                            )),
+                    child: Container(
+                      width: Get.width * 0.3,
+                      decoration: decoration(),
+                      child: const Center(child: Text('تریگر')),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: () => SendOrder(
+                        context,
+                        () => Get.find<Controllerrelay>().ChangeState(
+                              true,
+                              i,
+                            )),
+                    child: Obx(() {
+                      return Container(
+                        width: Get.width * 0.3,
+                        decoration: decoration(
+                            color: Get.find<Controllerrelay>().State[i].value),
+                        child: const Center(child: Text('فعال')),
+                      );
+                    }),
+                  ),
+                ],
               ),
             ],
           )

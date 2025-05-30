@@ -17,7 +17,7 @@ class SelectedDevLx extends StatelessWidget {
         Get.bottomSheet(Container(
           width: Get.width,
           padding: EdgeInsets.symmetric(vertical: 10),
-          decoration: decoration(color: true, colorBG: Colors.black),
+          decoration: decoration(color: true, colorBG: color2),
           child: Obx(() {
             return Column(
               mainAxisSize: MainAxisSize.min,
@@ -63,7 +63,8 @@ class SelectedDevLx extends StatelessWidget {
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Image.asset('assets/image/options2/profile-circle-2.png'),
+              Icon(Icons.developer_board),
+              //Image.asset('assets/image/options2/profile-circle-2.png'),
               Obx(() {
                 return Text('${Get.find<Controllerinfo>().Name.value}');
               }),

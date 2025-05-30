@@ -124,7 +124,7 @@ class Inquiry extends StatelessWidget {
               }),
               Column(
                 children: List.generate(
-                    6,
+                    2,
                     (i) => WidgetRelayItemInquiry(
                           i: i,
                         )),

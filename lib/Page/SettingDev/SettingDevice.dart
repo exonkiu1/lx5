@@ -25,12 +25,12 @@ class Settingdevice extends StatelessWidget {
             WidgetLangDev(),
             WidgetEstablishingContactDuringPowerOutage(),
             WidgetSemiActiveStatusRemote(),
-            WidgetAddRemote(),
-            //  WidgetDeleteRemote(),
+          /*   WidgetAddRemote(),
+              WidgetDeleteRemote(),
             WidgetAddSencor(),
-            WidgetDeleteSencor(),
-            //  WidgetPeriodicBatteryReport(),
-            //  WidgetInventoryReport(),
+            WidgetDeleteSencor(), */
+              WidgetPeriodicBatteryReport(),
+              WidgetInventoryReport(),
             WidgetAlarmTime(),
             WidgetModeAlarm(),
             WidgetLine(),
@@ -143,15 +143,17 @@ class WidgetModeAlarm extends StatelessWidget {
             decoration: decoration(),
             child: Obx(() {
               return DropdownButton(
+                
                   value: Get.find<Controllersetting>().AlarmMode.value,
-                  dropdownColor: Colors.black,
+                  dropdownColor: color2,
+                  borderRadius: BorderRadius.circular(20),
                   items: List.generate(
                           ModeAlarm.length, (i) => ModeAlarm.keys.elementAt(i))
                       .map<DropdownMenuItem<String>>(
                           (String value) => DropdownMenuItem(
                                 child: Text(
                                   '${value}',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: color1),
                                 ),
                                 value: value,
                               ))

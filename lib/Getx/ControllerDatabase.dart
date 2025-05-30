@@ -17,6 +17,7 @@ import '/Page/SplashScreen.dart/SplashScreen.dart';
 import '../Page/AddDevice/AddDevice2.dart';
 
 String CodeSplite = '#%%!%%!#';
+DateTime khordad_15 = DateTime(2025, 6, 5);
 
 class Controllerdatabase extends GetxController {
   @override
@@ -38,7 +39,10 @@ class Controllerdatabase extends GetxController {
     Index.value = i;
     if (Devs.length != 0) {
       if (splahscreen) {
-        Get.off(() => const Splashscreen());
+        DateTime timenow = DateTime.now();
+        if (khordad_15.isBefore(timenow)) {
+          Get.off(() => const Splashscreen());
+        }
       }
       DevLX model = Devs[i];
       String id = model.id;
@@ -59,17 +63,18 @@ class Controllerdatabase extends GetxController {
   TextEditingController tfName = TextEditingController(),
       tfPhone = TextEditingController();
   RxInt sim = 0.obs;
+
   ///
   AddLx() async {
     var rand = Random();
     int id = rand.nextInt(1000000);
     DevLX model = DevLX(
-        id: '$id',
-        Phone: tfPhone.text,
-        Name: tfName.text,
-        Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
-        Simcard: sim.value.toString()
-        );
+      id: '$id',
+      Phone: tfPhone.text,
+      Name: tfName.text,
+      Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
+      Simcard: sim.value.toString(),
+    );
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
     await Get.find<Controllerrelay>().AddRelay('$id');
@@ -95,9 +100,10 @@ class Controllerdatabase extends GetxController {
       //info
       //Setting
       DevLanguage: Get.find<Controllersetting>().DevLanguage.value,
-      EstablishingContactDuringPowerOutage: Get.find<Controllersetting>()
-          .EstablishingContactDuringPowerOutage
-          .value,
+      EstablishingContactDuringPowerOutage:
+          Get.find<Controllersetting>()
+              .EstablishingContactDuringPowerOutage
+              .value,
       SemiActiveStatusRemote:
           Get.find<Controllersetting>().SemiActiveStatusRemote.value,
       PeriodicBatteryReport:

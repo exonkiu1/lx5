@@ -9,9 +9,9 @@ class Backgroundview extends StatelessWidget {
     return Container(
       width: Get.width,
       height: Get.height,
-      decoration: BoxDecoration(
+    /*   decoration: BoxDecoration(
           image: DecorationImage(
-              image: AssetImage('assets/image/bg.png'), fit: BoxFit.cover)),
+              image: AssetImage('assets/image/bg.png'), fit: BoxFit.cover)), */
       child: child,
     );
   }

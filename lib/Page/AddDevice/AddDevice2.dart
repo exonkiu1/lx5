@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:lx/WidgetUi/decoration.dart';
+import 'package:lx/WidgetUi/decoration_textfield.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'widget.dart' as adddevice;
 import '../../Getx/ControllerDatabase.dart';
@@ -16,6 +19,7 @@ class Adddevice2 extends StatefulWidget {
 class _Adddevice2State extends State<Adddevice2> {
   @override
   void initState() {
+    play_welcome();
     CheckPermisionSms();
     // TODO: implement initState
     super.initState();
@@ -28,108 +32,93 @@ class _Adddevice2State extends State<Adddevice2> {
     }
   }
 
+  play_welcome() async {
+    AudioPlayer welcome = AudioPlayer();
+    welcome.setAsset('');
+    welcome.play();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: 'افزودن دستگاه'),
-      body: Container(
-          width: Get.width,
-          height: Get.height,
-          decoration: const BoxDecoration(
-              image: DecorationImage(
-                  image: AssetImage('assets/image/adddevice/bg.png'),
-                  fit: BoxFit.cover)),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(),
-              Center(
-                  child: Container(
-                width: Get.width,
-                height: Get.height * 0.3,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage('assets/image/adddevice/box.png'))),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Container(
-                      width: Get.width * 0.5,
-                      //  color: const Color.fromARGB(61, 255, 255, 0),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children: [
-                              WidgetTextField(
-                                hint: 'نام دستگاه',
-                                tf: Get.find<Controllerdatabase>().tfName,
-                              ),
-                              SizedBox(
-                                height: 10,
-                              ),
-                              WidgetTextField(
-                                tf: Get.find<Controllerdatabase>().tfPhone,
-                                hint: 'شماره تلفن دستگاه',
-                                phone: true,
-                              ),
-                            ],
-                          ),
-                          Center(
-                            child: InkWell(
-                              onTap: () => DialogOrder(context,
-                                  () => Get.find<Controllerdatabase>().AddLx(),
-                                  description: 'از ساخت دستگاه مطمعن هستید؟'),
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 2),
-                                width: Get.width * 0.3,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color.fromARGB(54, 255, 255, 255)),
-                                child: Center(child: Text('ثبت دستگاه')),
-                              ),
-                            ),
-                          )
-                        ],
+      //appBar: appBar(title: 'افزودن دستگاه'),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: Get.width * 0.8,
+              height: Get.width * 0.9,
+              decoration: decoration(border: true, color: true),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Image.asset(
+                    'assets/image/homepage/castel.png',
+                    height: Get.width * 0.4,
+                  ),
+                  Text('افزودن دستگاه', style: TextStyle(fontSize: 20)),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: decoration(),
+                    child: TextField(
+                      controller: Get.find<Controllerdatabase>().tfName,
+                      textAlign: TextAlign.center,
+                      decoration: inputDecoration(
+                        hint: 'نام دستگاه',
+                        isDense: true,
                       ),
                     ),
-                    Container(
-                      width: Get.width * 0.3,
-                      height: Get.height,
-                      // color: Colors.pink,
+                  ),
+                  Container(
+                    margin: EdgeInsets.symmetric(horizontal: 10),
+                    decoration: decoration(),
+                    child: TextField(
+                      controller: Get.find<Controllerdatabase>().tfPhone,
+                      keyboardType: TextInputType.phone,
+                      textAlign: TextAlign.center,
+                      onChanged: (value) {
+                        if (value.length > 11) {
+                          Get.find<Controllerdatabase>().tfPhone.text = value
+                              .substring(0, 11);
+                        }
+                      },
+                      decoration: inputDecoration(
+                        hint: 'شماره تلفن دستگاه',
+                        isDense: true,
+                      ),
                     ),
-                  ],
-                ),
-              )),
-              InkWell(
-                onTap: () => Get.bottomSheet(Container(
-                  child: adddevice.boxselectedsim(),
-                )),
-                child: Container(
-                  padding: EdgeInsets.symmetric(vertical: 2),
-                  margin: EdgeInsets.only(bottom: 20),
-                  width: Get.width * 0.5,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color.fromARGB(54, 255, 255, 255)),
-                  child: Center(
-                      child: Text(
-                    'انتخاب سیمکارت دستگاه',
-                    style: TextStyle(fontSize: 13),
-                  )),
-                ),
+                  ),
+                  InkWell(
+                    onTap:
+                        () => DialogOrder(
+                          context,
+                          () => Get.find<Controllerdatabase>().AddLx(),
+                          description: 'از ساخت دستگاه مطمعن هستید؟',
+                        ),
+                    child: Container(
+                      width: Get.width * 0.4,
+                      decoration: decoration(color: true, colorBG: color1),
+                      child: Center(child: Text('ثبت')),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          )),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
 
 class WidgetTextField extends StatelessWidget {
-  const WidgetTextField(
-      {super.key, required this.hint, required this.tf, this.phone = false});
+  const WidgetTextField({
+    super.key,
+    required this.hint,
+    required this.tf,
+    this.phone = false,
+  });
   final String hint;
   final TextEditingController tf;
   final bool phone;
@@ -138,17 +127,20 @@ class WidgetTextField extends StatelessWidget {
     return Container(
       width: Get.width * 0.44,
       decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20), color: Colors.black),
+        borderRadius: BorderRadius.circular(20),
+        color: Colors.black,
+      ),
       child: TextField(
         controller: tf,
         textAlign: TextAlign.center,
         keyboardType: phone ? TextInputType.phone : null,
         style: TextStyle(color: Colors.white),
         decoration: InputDecoration(
-            hintStyle: TextStyle(fontSize: 12),
-            hintText: hint,
-            isDense: true,
-            border: InputBorder.none),
+          hintStyle: TextStyle(fontSize: 12),
+          hintText: hint,
+          isDense: true,
+          border: InputBorder.none,
+        ),
       ),
     );
   }

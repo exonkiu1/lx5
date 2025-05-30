@@ -23,8 +23,6 @@ class Controllercontact extends GetxController {
 
   ///
   Future<String> RegisterContact({int i = 0, String value = 'A'}) async {
-    //Level[i].value = value;
-
     UpdateContact();
     String code = '';
     for (var i = 0; i < 26; i++) {
@@ -33,7 +31,7 @@ class Controllercontact extends GetxController {
       }
     }
     ShowPart.value = '';
-    return '31*${code}';
+    return '31*${code}#';
   }
 
   Future<String> AddOneContact(int i) async {
@@ -73,28 +71,14 @@ class Controllercontact extends GetxController {
   }
 
   InquiryContact() {
-    List<String> ListContact = Get.find<Controllerother>()
-        .TextInuiry
-        .value
+    List<String> ListContact = Get.find<Controllerother>().TextInuiry.value
         .substring(1)
         .replaceAll('#', '')
         .split('*');
     print(ListContact.length);
     List_Contact.value = [];
     for (var i = 0; i < ListContact.length; i++) {
-      int j = 0;
-      if (int.tryParse(ListContact[i][ListContact[i].length - 2]) != null) {
-        j = int.parse(ListContact[i].substring(ListContact[i].length - 2));
-      } else {
-        j = int.parse(ListContact[i][ListContact[i].length - 1]);
-      }
-      j -= 1;
-      if (!ListContact[i].contains('Q')) {
-        TfPhone[j].text = ListContact[i].substring(0, 11);
-        Level[j].value = ListContact[i].substring(11, 15);
-        print('phone: ${TfPhone[j].text} level: ${Level[j].value}');
-      }
-      List_Contact.add(j);
+      TfPhone[i].text = ListContact[i].substring(0, 11);
     }
     UpdateContact();
   }
@@ -115,30 +99,42 @@ class Controllercontact extends GetxController {
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
     List<String> copy_contact = await prefs.getStringList('${id}contact') ?? [];
 
-    TfName.value = List.generate(
-        lenghtContact,
-        (i) => TextEditingController(
-            text: copy_contact[i].split(CodeSplite)[0])).obs;
-    TfPhone.value = List.generate(
-        lenghtContact,
-        (i) => TextEditingController(
-            text: copy_contact[i].split(CodeSplite)[1])).obs;
-    Level.value = List.generate(
-        lenghtContact, (i) => copy_contact[i].split(CodeSplite)[2].obs).obs;
+    TfName.value =
+        List.generate(
+          lenghtContact,
+          (i) =>
+              TextEditingController(text: copy_contact[i].split(CodeSplite)[0]),
+        ).obs;
+    TfPhone.value =
+        List.generate(
+          lenghtContact,
+          (i) =>
+              TextEditingController(text: copy_contact[i].split(CodeSplite)[1]),
+        ).obs;
+    Level.value =
+        List.generate(
+          lenghtContact,
+          (i) => copy_contact[i].split(CodeSplite)[2].obs,
+        ).obs;
 
-    Part.value = List.generate(
-        lenghtContact, (i) => copy_contact[i].split(CodeSplite)[3].obs).obs;
+    Part.value =
+        List.generate(
+          lenghtContact,
+          (i) => copy_contact[i].split(CodeSplite)[3].obs,
+        ).obs;
     MainContact.value = await prefs.getBool('MainContact') ?? false;
     List<String> copylistcontact =
         await prefs.getStringList('${id}ListContact') ?? [];
     List_Contact.value = List.generate(
-        copylistcontact.length, (i) => int.parse(copylistcontact[i]));
+      copylistcontact.length,
+      (i) => int.parse(copylistcontact[i]),
+    );
   }
 
   AddContact(String id) async {
     List<String> ValueContact = [];
     for (var i = 0; i < lenghtContact; i++) {
-      ValueContact.add('$CodeSplite${CodeSplite}LLLL${CodeSplite}1');
+      ValueContact.add('$CodeSplite${CodeSplite}${CodeSplite}1');
     }
 
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
@@ -148,27 +144,31 @@ class Controllercontact extends GetxController {
   }
 
   SelectContact(int i) async {
-   /*  final FlutterContactPicker _contactPicker = new FlutterContactPicker();
+      final FlutterContactPicker _contactPicker = new FlutterContactPicker();
     Contact? contact1 = await _contactPicker.selectContact();
     if (contact1 != null) {
       TfName[i].text = contact1.fullName.toString();
       TfPhone[i].text =
           contact1.phoneNumbers![0].replaceAll(' ', '').replaceAll('+98', '0');
-    } */
+    }
   }
 
   UpdateContact() async {
     List<String> valueContact = [];
     for (var i = 0; i < lenghtContact; i++) {
       valueContact.add(
-          '${TfName[i].text}${CodeSplite}${TfPhone[i].text}${CodeSplite}${Level[i].value}${CodeSplite}${Part[i].value}');
+        '${TfName[i].text}${CodeSplite}${TfPhone[i].text}${CodeSplite}${Level[i].value}${CodeSplite}${Part[i].value}',
+      );
     }
 
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
     await prefs.setStringList(
-        '${Get.find<Controllerinfo>().id.value}ListContact',
-        List.generate(List_Contact.length, (i) => '${List_Contact[i]}'));
+      '${Get.find<Controllerinfo>().id.value}ListContact',
+      List.generate(List_Contact.length, (i) => '${List_Contact[i]}'),
+    );
     await prefs.setStringList(
-        '${Get.find<Controllerinfo>().id.value}contact', valueContact);
+      '${Get.find<Controllerinfo>().id.value}contact',
+      valueContact,
+    );
   }
 }

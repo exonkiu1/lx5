@@ -11,9 +11,9 @@ AppBar appBar({
         child: Text(
           title,
           style:
-              TextStyle(color: Color.fromARGB(255, 90, 1, 1), fontFamily: 'A'),
+              TextStyle(color: Color.fromARGB(255, 70, 88, 86), fontFamily: 'A'),
         ),
       ),
-      backgroundColor: Color.fromARGB(255, 36, 33, 33),
+      backgroundColor: Color.fromARGB(255, 209, 227, 231),
       actions: actions,
     );

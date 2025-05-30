@@ -33,10 +33,12 @@ class Controllerinquiry extends GetxController {
   }
 
   inquiry() {
-    List<String> message =
-        Get.find<Controllerother>().TextInuiry.value.split(',');
-    Get.find<Controllerhomepage>().StateDev.value =
-        MapStateDev[message[0]]!.keys.elementAt(0);
+    List<String> message = Get.find<Controllerother>().TextInuiry.value.split(
+      ',',
+    );
+    Get.find<Controllerhomepage>().StateDev.value = MapStateDev[message[0]]!
+        .keys
+        .elementAt(0);
     UrbanElectricity.value = message[1] == '1' ? 'روشن' : 'خاموش';
     zon1.value = message[2][0] == '1' ? 'بسته' : 'باز';
     zon2.value = message[2][1] == '1' ? 'بسته' : 'باز';
@@ -47,14 +49,15 @@ class Controllerinquiry extends GetxController {
     AntennaStrength.value = '${(int.parse(message[5]) / 31) * 100}';
 
     print('Anten:${(int.parse(message[5]) / 31) * 100}');
-    AntennaStrength.value = AntennaStrength.value != '100.0'
-        ? AntennaStrength.value.substring(0, 2)
-        : '100';
+    AntennaStrength.value =
+        AntennaStrength.value != '100.0'
+            ? AntennaStrength.value.substring(0, 2)
+            : '100';
     BatterPower.value = message[8];
     Get.find<Controllerrelay>().State[0].value == '1' ? true : false;
     CountContact.value = message[6];
     CommunicationsStatus.value = message[7] == '1' ? 'روشن' : 'خاموش';
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 2; i++) {
       Get.find<Controllerrelay>().State[i].value =
           message[9][i] == '1' ? true : false;
     }
@@ -72,5 +75,5 @@ Map<String, String> MapstateDev2 = {
   'on': 'فعال',
   'off': 'غیرفعال',
   'silent': 'سایلنت',
-  'halfon': 'نیمه فعال'
+  'halfon': 'نیمه فعال',
 };

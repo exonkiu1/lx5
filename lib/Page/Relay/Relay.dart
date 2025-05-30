@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerRelay.dart';
 import 'package:lx/Page/Relay/DialogRelay.dart';
+import 'package:lx/Page/Relay/OldWidgetRelay.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
@@ -20,8 +21,8 @@ class Relay extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-              6,
-              (i) => WidgetRelay(
+              2,
+              (i) => WidgetRelayOld(
                     i: i,
                   )),
         ),
@@ -48,15 +49,12 @@ class WidgetRelay extends StatelessWidget {
                 decoration: decoration(color: true),
                 child: Center(child: Text('${i + 1}')),
               ),
-              InkWell(
-                onTap: () => DialogRelay(context, i: i),
-                child: Obx(() {
-                  return Image.asset(
-                    'assets/image/relay/${Get.find<Controllerrelay>().State[i].value}.png',
-                    height: Get.height * 0.15,
-                  );
-                }),
-              ),
+              Obx(() {
+                return Image.asset(
+                  'assets/image/relay/${Get.find<Controllerrelay>().State[i].value}.png',
+                  height: Get.height * 0.15,
+                );
+              }),
             ],
           ),
           Row(
