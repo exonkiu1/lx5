@@ -40,7 +40,7 @@ class Controllerdatabase extends GetxController {
     if (Devs.length != 0) {
       if (splahscreen) {
         DateTime timenow = DateTime.now();
-        if (khordad_15.isBefore(timenow)) {
+        if (khordad_15.isAfter(timenow)) {
           Get.off(() => const Splashscreen());
         }
       }
