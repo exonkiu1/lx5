@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           child: Text(
             'RANGER+',
             style: TextStyle(
-              fontSize: 100,
+              fontSize: 77,
             ),
           ),
         )),
