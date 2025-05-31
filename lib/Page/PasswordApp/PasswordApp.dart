@@ -31,9 +31,8 @@ class Passwordapp extends StatelessWidget {
                       Text('ورود با امنیت'),
                       Checkbox(
                         value: Get.find<Controllerpassapp>().lock.value,
-                        onChanged:
-                            (value) => Get.find<Controllerpassapp>()
-                                .ChangeStateLock(value!),
+                        onChanged: (value) => Get.find<Controllerpassapp>()
+                            .ChangeStateLock(value!),
                       ),
                     ],
                   ),
@@ -52,26 +51,24 @@ class Passwordapp extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SizedBox(
-                          width: Get.width * 0.4,
+                          width: Get.width * 0.66,
                           child: TextField(
                             controller: tf_pass_new,
                             textAlign: TextAlign.center,
-                    
                             onChanged: (value) {
                               if (value.length > 4) {
                                 tf_pass_new.text = value.substring(0, 4);
                               }
                             },
                             keyboardType: TextInputType.phone,
-                    
                             decoration: inputDecoration(
-                              hint: 'پسورد جدید را وارد نمایید',
-                              isDense: true,
-                            ),
+                                hint: 'پسورد جدید را وارد نمایید',
+                                isDense: true,
+                                border: true),
                           ),
                         ),
                         SizedBox(
-                          width: Get.width * 0.4,
+                          width: Get.width * 0.66,
                           child: TextField(
                             controller: tf_pass_new_repeat,
                             textAlign: TextAlign.center,
@@ -82,9 +79,9 @@ class Passwordapp extends StatelessWidget {
                             },
                             keyboardType: TextInputType.phone,
                             decoration: inputDecoration(
-                              hint: 'پسورد جدید را تکرار نمایید',
-                              isDense: true,
-                            ),
+                                hint: 'پسورد جدید را تکرار نمایید',
+                                isDense: true,
+                                border: true),
                           ),
                         ),
                       ],
@@ -96,7 +93,11 @@ class Passwordapp extends StatelessWidget {
                     child: Container(
                       width: Get.width * 0.3,
                       decoration: decoration(color: true),
-                      child: Center(child: Text('ثبت')),
+                      child: Center(
+                          child: Text(
+                        'ثبت',
+                        style: TextStyle(color: color2),
+                      )),
                     ),
                   ),
                 ],

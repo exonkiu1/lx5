@@ -55,7 +55,6 @@ class Passworddevice extends StatelessWidget {
               decoration: decoration(),
               child: TextField(
                 maxLength: 4,
-
                 keyboardType: TextInputType.number,
                 controller: Get.find<Controllerpassword>().tf3,
                 textAlign: TextAlign.center,
@@ -87,7 +86,11 @@ class Passworddevice extends StatelessWidget {
               child: Container(
                 width: Get.width * 0.25,
                 decoration: decoration(color: true),
-                child: Center(child: Text('اعمال')),
+                child: Center(
+                    child: Text(
+                  'اعمال',
+                  style: TextStyle(color: color2),
+                )),
               ),
             ),
           ],
