@@ -47,48 +47,50 @@ class Passwordapp extends StatelessWidget {
               padding: EdgeInsets.all(8),
               child: Column(
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        width: Get.width * 0.4,
-                        child: TextField(
-                          controller: tf_pass_new,
-                          textAlign: TextAlign.center,
-
-                          onChanged: (value) {
-                            if (value.length > 4) {
-                              tf_pass_new.text = value.substring(0, 4);
-                            }
-                          },
-                          keyboardType: TextInputType.phone,
-
-                          decoration: inputDecoration(
-                            hint: 'پسورد جدید را وارد نمایید',
-                            isDense: true,
+                  Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SizedBox(
+                          width: Get.width * 0.4,
+                          child: TextField(
+                            controller: tf_pass_new,
+                            textAlign: TextAlign.center,
+                    
+                            onChanged: (value) {
+                              if (value.length > 4) {
+                                tf_pass_new.text = value.substring(0, 4);
+                              }
+                            },
+                            keyboardType: TextInputType.phone,
+                    
+                            decoration: inputDecoration(
+                              hint: 'پسورد جدید را وارد نمایید',
+                              isDense: true,
+                            ),
                           ),
                         ),
-                      ),
-                      SizedBox(
-                        width: Get.width * 0.4,
-                        child: TextField(
-                          controller: tf_pass_new_repeat,
-                          textAlign: TextAlign.center,
-                          onChanged: (value) {
-                            if (value.length > 4) {
-                              tf_pass_new_repeat.text = value.substring(0, 4);
-                            }
-                          },
-                          keyboardType: TextInputType.phone,
-                          decoration: inputDecoration(
-                            hint: 'پسورد جدید را تکرار نمایید',
-                            isDense: true,
+                        SizedBox(
+                          width: Get.width * 0.4,
+                          child: TextField(
+                            controller: tf_pass_new_repeat,
+                            textAlign: TextAlign.center,
+                            onChanged: (value) {
+                              if (value.length > 4) {
+                                tf_pass_new_repeat.text = value.substring(0, 4);
+                              }
+                            },
+                            keyboardType: TextInputType.phone,
+                            decoration: inputDecoration(
+                              hint: 'پسورد جدید را تکرار نمایید',
+                              isDense: true,
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
-                  SizedBox(height: 10),
+                  SizedBox(height: 20),
                   InkWell(
                     onTap: () => Get.find<Controllerpassapp>().ChangePassword(),
                     child: Container(
