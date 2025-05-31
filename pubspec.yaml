@@ -56,10 +56,12 @@ dependencies:
   persian_datetime_picker: ^2.7.0
   jalali_date_time: ^1.3.0
   duration_picker: ^1.2.0
+  flutter_screen_lock: ^9.2.1+1
   telephony:
     git:
       url: https://github.com/AliAzizi/fl-telephony.git
       ref: develop
+  
     
 dev_dependencies:
   flutter_test:

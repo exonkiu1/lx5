@@ -86,7 +86,7 @@ class Passworddevice extends StatelessWidget {
               },
               child: Container(
                 width: Get.width * 0.25,
-                decoration: decoration(),
+                decoration: decoration(color: true),
                 child: Center(child: Text('اعمال')),
               ),
             ),

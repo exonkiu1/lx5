@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Page/HomePage/HomePage.dart';
+import 'package:lx/Page/PasswordApp/function.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});
@@ -14,8 +15,7 @@ class Splashscreen extends StatefulWidget {
 class _SplashscreenState extends State<Splashscreen> {
   @override
   void initState() {
-    GoToHomepage();
-     biumetric();
+    PagePassApp(context);
     // TODO: implement initState
     super.initState();
   }

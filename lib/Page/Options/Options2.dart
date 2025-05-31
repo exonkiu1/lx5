@@ -4,6 +4,7 @@ import 'package:lx/Page/AddDevice/AddDevice2.dart';
 import 'package:lx/Page/Help/aboutme.dart';
 import 'package:lx/Page/Options/ControllerOptions.dart';
 import 'package:lx/Page/Options/Options.dart';
+import 'package:lx/Page/PasswordApp/PasswordApp.dart';
 import 'package:lx/Page/Relay/Relay.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
@@ -90,6 +91,8 @@ Map<String, Map<String, dynamic>> PageOptions2 = {
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
+  'امنیت ورود به دستگاه': {'image': 'password_app', 'page': Passwordapp()},
+
   'گزارش گیری': {'image': 'history', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': Help()},
   'درباره ما': {'image': 'about_me', 'page': Aboutme()},
