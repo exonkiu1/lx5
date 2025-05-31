@@ -6,7 +6,7 @@ import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 
 void main() {
-    WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp, // فقط حالت عمودی (Portrait)
   ]);
@@ -26,7 +26,7 @@ class MyApp extends StatelessWidget {
           child: Text(
             'RANGER+',
             style: TextStyle(
-              fontSize: 40,
+              fontSize: 100,
             ),
           ),
         )),
@@ -42,12 +42,16 @@ class MyApp extends StatelessWidget {
         dialogBackgroundColor: colorW, */
         hintColor: Colors.black,
         primaryTextTheme: const TextTheme(
-          bodyLarge: TextStyle(color: Colors.black, fontFamily: 'A'),
+          bodyLarge:
+              TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
         ),
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.black, fontFamily: 'A'),
-          bodySmall: TextStyle(color: Colors.black, fontFamily: 'A'),
-          bodyLarge: TextStyle(color: Colors.black, fontFamily: 'A'),
+          bodyMedium:
+              TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
+          bodySmall:
+              TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
+          bodyLarge:
+              TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
         ),
       ),
     );

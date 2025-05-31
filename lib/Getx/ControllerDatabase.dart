@@ -55,7 +55,8 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllerrelay>().GetRelay(id);
       Get.find<Controllersetting>().GetSetting(model);
     } else {
-      Get.off(() => const Adddevice2());
+      await Future.delayed(
+          Duration(milliseconds: 777), () => Get.off(() => const Adddevice2()));
     }
   }
 
@@ -100,10 +101,9 @@ class Controllerdatabase extends GetxController {
       //info
       //Setting
       DevLanguage: Get.find<Controllersetting>().DevLanguage.value,
-      EstablishingContactDuringPowerOutage:
-          Get.find<Controllersetting>()
-              .EstablishingContactDuringPowerOutage
-              .value,
+      EstablishingContactDuringPowerOutage: Get.find<Controllersetting>()
+          .EstablishingContactDuringPowerOutage
+          .value,
       SemiActiveStatusRemote:
           Get.find<Controllersetting>().SemiActiveStatusRemote.value,
       PeriodicBatteryReport:
