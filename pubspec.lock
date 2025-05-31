@@ -225,11 +225,10 @@ packages:
   flutter_screen_lock:
     dependency: "direct main"
     description:
-      name: flutter_screen_lock
-      sha256: "525c198c9ecd0f2db88903bf061903fe88de3e9e04bcce5d6478727ff41408d0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "9.2.1+1"
+      path: "plugin/flutter_screen_lock-master"
+      relative: true
+    source: path
+    version: "9.2.1"
   flutter_sms_inbox:
     dependency: "direct main"
     description:
