@@ -6,7 +6,7 @@ InputDecoration inputDecoration({
   bool border = false
 }) =>
     InputDecoration(
-     border:border? InputBorder.none:null,
+     border:!border? InputBorder.none:null,
       hintText: hint,
       hintStyle: TextStyle(color: Colors.black),
       isDense: isDense
