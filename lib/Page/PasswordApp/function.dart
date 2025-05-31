@@ -7,9 +7,8 @@ import 'package:lx/Page/PasswordApp/ControllerPassApp.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 
 PagePassApp(BuildContext context) async {
-  Get.find<Controllerpassapp>().CheckLock();
+  await Get.find<Controllerpassapp>().CheckLock();
   if (Get.find<Controllerpassapp>().lock.value) {
-    await Future.delayed(Duration(milliseconds: 300));
     screenLock(
         context: context,
         correctString: Get.find<Controllerpassapp>().password.value,
@@ -25,8 +24,8 @@ PagePassApp(BuildContext context) async {
           style: TextStyle(color: color1, fontFamily: 'A'),
         ));
   } else {
-    await Future.delayed(Duration(milliseconds: 500));
-    Get.off(Homepage());
+    await Future.delayed(
+        Duration(milliseconds: 500), () => Get.off(Homepage()));
   }
 }
 
