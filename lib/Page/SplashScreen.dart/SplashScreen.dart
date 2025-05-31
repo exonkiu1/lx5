@@ -20,10 +20,7 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
   }
 
-  GoToHomepage() async {
-    await Future.delayed(
-        Duration(milliseconds: 777), () => Get.off(() => Homepage()));
-  }
+ 
 
   @override
   Widget build(BuildContext context) {

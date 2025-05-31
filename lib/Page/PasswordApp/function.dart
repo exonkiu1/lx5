@@ -8,6 +8,7 @@ import 'package:lx/WidgetUi/decoration.dart';
 
 PagePassApp(BuildContext context) async {
   await Get.find<Controllerpassapp>().CheckLock();
+  await Future.delayed(Duration(milliseconds: 100));
   if (Get.find<Controllerpassapp>().lock.value) {
     screenLock(
         context: context,
