@@ -104,7 +104,10 @@ class Zon extends StatelessWidget {
                                 decoration: decoration(),
                                 padding: EdgeInsets.all(8),
                                 child: Center(
-                                  child: Text('استعلام نیم فعالسازی'),
+                                  child: Text(
+                                    'استعلام نیم فعالسازی',
+                                    style: TextStyle(color: color2),
+                                  ),
                                 ),
                               ),
                             ),

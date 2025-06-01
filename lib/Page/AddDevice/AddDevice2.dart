@@ -100,7 +100,7 @@ class _Adddevice2State extends State<Adddevice2> {
                     child: Container(
                       width: Get.width * 0.4,
                       decoration: decoration(color: true, colorBG: color1),
-                      child: Center(child: Text('ثبت')),
+                      child: Center(child: Text('ثبت',style: TextStyle(color: color2),)),
                     ),
                   ),
                 ],

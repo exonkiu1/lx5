@@ -15,7 +15,7 @@ Decoration decoration(
               color: color1.withOpacity(0.3))
         ],
         border: border
-            ? Border.all(color: color_border.withOpacity(0.5), width: 2)
+            ? Border.all(color: color_border.withOpacity(0.5), width: 1.5)
             : null,
         borderRadius: BorderRadius.circular(20));
 
