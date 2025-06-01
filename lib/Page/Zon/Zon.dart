@@ -40,7 +40,7 @@ class Zon extends StatelessWidget {
       }),
       body: Backgroundview(
 
-        
+
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -49,7 +49,7 @@ class Zon extends StatelessWidget {
                 child: Column(
                   children: [
                     Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Obx(() {
                           return Visibility(
@@ -76,6 +76,7 @@ class Zon extends StatelessWidget {
                             ),
                           );
                         }),
+                        SizedBox(width: 10,),
                         InkWell(
                           onTap: () => HelpModeZon(context),
                           child: Container(
@@ -87,7 +88,7 @@ class Zon extends StatelessWidget {
                             ),
                           ),
                         ),
-                        Obx(() {
+                       /*  Obx(() {
                           return Visibility(
                             visible:
                                 Get.find<Controllerother>().TypeInquiry.value !=
@@ -114,7 +115,7 @@ class Zon extends StatelessWidget {
                               ),
                             ),
                           );
-                        }),
+                        }), */
                       ],
                     ),
                   ],

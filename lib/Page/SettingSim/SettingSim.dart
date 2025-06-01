@@ -101,7 +101,9 @@ class WidgetPhoneDev extends StatelessWidget {
           InkWell(
             onTap: () => DialogTextFieldSms(
                 context, () => Get.find<Controllerinfo>().ChangePhone(),
-                maxlenght: 11, description: 'شماره تلفن دستگاه'),
+                maxlenght: 11,
+                description: 'شماره تلفن دستگاه',
+                KeyboardInt: true),
             child: Container(
               width: Get.width * 0.25,
               margin: EdgeInsets.symmetric(vertical: 10),
