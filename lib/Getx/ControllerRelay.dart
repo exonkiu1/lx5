@@ -14,9 +14,9 @@ class Controllerrelay extends GetxController {
   Future<String> ChangeState(bool state, int index) async {
     State[index].value = state;
     await UpdateRelay();
-    final music = AudioPlayer();
+    /* final music = AudioPlayer();
     music.setAsset('assets/music/relay/${State[index].value}.mp3');
-    music.play();
+    music.play(); */
     return '2${index + 1}*${state ? 'ON' : 'OFF'}';
   }
 
@@ -35,10 +35,9 @@ class Controllerrelay extends GetxController {
       print('state${index + 1}: ${State[index].value}');
     }
     State[index].value = beforstate;
-    
   }
 
-   ChangeTriger(int index, BuildContext context) async {
+  ChangeTriger(int index, BuildContext context) async {
     var resultingDuration = await showDurationPicker(
       context: context,
       initialTime: const Duration(seconds: 2),

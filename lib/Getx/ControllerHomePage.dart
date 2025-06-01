@@ -4,6 +4,7 @@ import 'package:lx/DateBase/Model.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:flutter/material.dart';
+import 'package:vibration/vibration.dart';
 
 class Controllerhomepage extends GetxController {
   @override
@@ -22,13 +23,20 @@ class Controllerhomepage extends GetxController {
   Future<String> ChangeStateDev(String State) async {
     StateDev.value = State;
     await Get.find<Controllerdatabase>().UpdateLx();
-    if (State == 'on' || State == 'off') {
-      final music = AudioPlayer();
-      await music.setAsset('assets/music/homepage/${State}.mp3');
-      await music.play();
-    }
-
+    final music = AudioPlayer();
+    await music.setAsset('assets/music/homepage/${State}.mp3');
+    await music.play();
+    Vibrate();
     return '${MapStateDevCode[State]}';
+  }
+
+  Vibrate() async {
+    bool hasVibrator = await Vibration.hasVibrator();
+    if (hasVibrator) {
+      Vibration.vibrate(duration: 100);
+      await Future.delayed(Duration(seconds: 1));
+      Vibration.vibrate(duration: 100);
+    }
   }
 
   RxDouble Degree = 100.0.obs;
