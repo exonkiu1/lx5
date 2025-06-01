@@ -6,16 +6,16 @@ Decoration decoration(
         Color colorBG = const Color.fromARGB(255, 70, 88, 86),
         Color color_border = const Color.fromARGB(255, 45, 64, 66)}) =>
     BoxDecoration(
-        color: color ? colorBG : null,
+        color: color ? colorBG : color2,
         boxShadow: [
           BoxShadow(
-              offset: Offset(-1, -1),
+              offset: Offset(1, 1),
               blurRadius: 1,
               spreadRadius: 1,
               color: color1.withOpacity(0.3))
         ],
         border: border
-            ? Border.all(color: color_border.withOpacity(0.5), width: 4)
+            ? Border.all(color: color_border.withOpacity(0.5), width: 2)
             : null,
         borderRadius: BorderRadius.circular(20));
 
