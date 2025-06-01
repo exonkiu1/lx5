@@ -19,14 +19,14 @@ PagePassApp(BuildContext context) async {
           size: 50,
         ),
         customizedButtonTap: () => biumetric(),
-        onUnlocked: () => Get.off(Homepage()),
+        onUnlocked: () => Get.offAll(Homepage()),
         title: Text(
           'رمز ورود را وارد کنید',
           style: TextStyle(color: color1, fontFamily: 'A'),
         ));
   } else {
     await Future.delayed(
-        Duration(milliseconds: 500), () => Get.off(Homepage()));
+        Duration(milliseconds: 500), () => Get.offAll(Homepage()));
   }
 }
 

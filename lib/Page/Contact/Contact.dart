@@ -7,8 +7,6 @@ import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
-import 'package:lx/WidgetUi/decoration_textfield.dart';
-import 'package:persian_number_utility/persian_number_utility.dart';
 
 class Contacts extends StatelessWidget {
   const Contacts({super.key});
@@ -28,16 +26,16 @@ class Contacts extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                    InkWell(
-                      onTap: () =>HelpContact(context) ,
-                      child: Container(
-                        margin: EdgeInsets.symmetric(horizontal: 20),
-                        decoration: decoration(color: true),
-                        child: Center(
-                          child: Icon(Icons.question_mark_sharp, color: color2),
-                        ),
+                  InkWell(
+                    onTap: () => HelpContact(context),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      decoration: decoration(color: true),
+                      child: Center(
+                        child: Icon(Icons.question_mark_sharp, color: color2),
                       ),
                     ),
+                  ),
                   Obx(() {
                     return Visibility(
                       visible: Get.find<Controllerother>().TypeInquiry.value !=
@@ -235,7 +233,14 @@ class WidgetLevel extends StatelessWidget {
           child: Center(
             child: Text(
               Value,
-              style: const TextStyle(fontSize: 12),
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Get.find<Controllercontact>()
+                          .Level[i]
+                          .value
+                          .contains(Value)
+                      ? color2
+                      : color1),
             ),
           ),
         );
