@@ -71,15 +71,15 @@ class Controllerzon extends GetxController {
   }
 
   InquiryMode() async {
-    String message =
-        Get.find<Controllerother>().TextInuiry.value.substring(1, 19);
+    List<String> message = Get.find<Controllerother>()
+        .TextInuiry
+        .value
+        .replaceAll('#', '')
+        .split('*Z');
     for (var i = 0; i < message.length; i++) {
-      for (var i = 0; i < ListModesZon.length; i++) {
-        if (ListModesZon.values.elementAt(i) == message[i]) {
-          Mode[i].value = ListModesZon.keys.elementAt(i);
-        }
-      }
+      Mode[i].value = ListModesZon[message[i][1]] ?? 'نرمال کلوز';
     }
+    UpdateZon();
   }
 
   InquiryPart() {
@@ -121,4 +121,23 @@ Map<String, String> ListModesZon = {
   'جاسوسی': '6',
   'ابی': '7',
   '24th جاسوسی': '8',
+};
+Map<String, String> ListModesZonInquiry = {
+  'N': 'نرمال کلوز',
+  'í': 'نرمال کلوز',
+  'ÿ': 'نرمال کلوز',
+  'O': 'نرمال اوپن',
+  'D': 'دینگ دانگ',
+  'H': '24th',
+  'G': 'گارد',
+  'j': 'جاسوسی',
+  'W': 'جاسوسی 24 ساعت ',
+  'B': 'زون خطر nc',
+  'b': 'زون خطر no',
+  'i': 'تماس با پلیس no سایلنت',
+  'I': 'تماس با پلیس nc سایلنت',
+  'M': 'تماس با پلیس nc',
+  'm': 'تماس با پلیس no',
+  'F': 'اعلان حریق nc',
+  'f': 'اعلان حریق no',
 };
