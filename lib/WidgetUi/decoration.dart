@@ -12,10 +12,15 @@ Decoration decoration(
               offset: Offset(0.7, 0.7),
               blurRadius: 0.7,
               spreadRadius: 0.7,
+              color: color1.withOpacity(0.1)),
+          BoxShadow(
+              offset: Offset(-0.7, -0.7),
+              blurRadius: 0.7,
+              spreadRadius: 0.7,
               color: color1.withOpacity(0.1))
         ],
         border: border
-            ? Border.all(color: color_border.withOpacity(0.5), width: 1.5)
+            ? Border.all(color: color_border.withOpacity(0.3), width: 0.8)
             : null,
         borderRadius: BorderRadius.circular(20));
 
