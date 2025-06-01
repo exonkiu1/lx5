@@ -187,7 +187,7 @@ class WidgetContact extends StatelessWidget {
                 InkWell(
                   onTap: () => SendOrder(
                     context,
-                    () => Get.find<Controllercontact>().RegisterContact(i: i),
+                    () => Get.find<Controllercontact>().AddOneContact(i),
                   ),
                   child: Container(
                     width: Get.width * 0.3,

@@ -9,10 +9,10 @@ Decoration decoration(
         color: color ? colorBG : color2,
         boxShadow: [
           BoxShadow(
-              offset: Offset(1, 1),
-              blurRadius: 1,
-              spreadRadius: 1,
-              color: color1.withOpacity(0.3))
+              offset: Offset(0.7, 0.7),
+              blurRadius: 0.7,
+              spreadRadius: 0.7,
+              color: color1.withOpacity(0.1))
         ],
         border: border
             ? Border.all(color: color_border.withOpacity(0.5), width: 1.5)

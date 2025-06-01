@@ -5,8 +5,6 @@ import 'package:lx/Getx/ControllerRelay.dart';
 import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/decoration.dart';
-
 import 'DrawerWidget.dart';
 
 class Homepage extends StatelessWidget {
