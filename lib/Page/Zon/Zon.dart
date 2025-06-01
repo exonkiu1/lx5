@@ -33,7 +33,7 @@ class Zon extends StatelessWidget {
               ),
               height: Get.height * 0.05,
               decoration: decoration(color: true),
-              child: Center(child: Text('ثبت نیم فعالسازی ')),
+              child: Center(child: Text('ثبت نیم فعالسازی ',style: TextStyle(color: color2),)),
             ),
           ),
         );
@@ -106,7 +106,7 @@ class Zon extends StatelessWidget {
                                 child: Center(
                                   child: Text(
                                     'استعلام نیم فعالسازی',
-                                    style: TextStyle(color: color2),
+                                   
                                   ),
                                 ),
                               ),
