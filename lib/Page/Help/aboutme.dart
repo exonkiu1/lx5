@@ -16,7 +16,7 @@ class Aboutme extends StatelessWidget {
           children: [
             InkWell(
               onTap: () async {
-                final Uri _url = Uri.parse('https://Faradezhco.ir');
+                final Uri _url = Uri.parse('https://optex-alarm.ir');
                 await launchUrl(_url);
               },
               child: widgethelp(
