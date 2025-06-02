@@ -4,6 +4,7 @@ import 'package:lx/DateBase/Model.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:vibration/vibration.dart';
 
 class Controllerhomepage extends GetxController {
@@ -19,7 +20,22 @@ class Controllerhomepage extends GetxController {
     StateDev.value = model.StateDev;
     print(StateDev.value);
   }
+    RxString theme = 'light'.obs;
 
+ ChangeTheme() {
+    if (theme.value == 'light') {
+      theme.value = 'dark';
+    } else {
+      theme.value = 'light';
+    }
+    var prefs = SharedPreferencesAsync();
+    prefs.setString('theme', theme.value);
+  }
+
+  GetTheme() async {
+    var prefs = SharedPreferencesAsync();
+   theme.value=await prefs.getString('theme')??'light';
+  }
   Future<String> ChangeStateDev(String State) async {
     StateDev.value = State;
     await Get.find<Controllerdatabase>().UpdateLx();

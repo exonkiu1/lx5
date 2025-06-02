@@ -28,9 +28,31 @@ class DrawerWidget extends StatelessWidget {
             SizedBox(
               height: 10,
             ),
-            Image.asset(
-              'assets/image/logo.png',
-              height: 60,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                InkWell(
+                  onTap:
+                      () =>
+                          Get.put(
+                            Controllerhomepage(),
+                            permanent: true,
+                          ).ChangeTheme(),
+                  child: Obx(() {
+                    return Icon(
+                      Get.put(
+                                Controllerhomepage(),
+                                permanent: true,
+                              ).theme.value ==
+                              'dark'
+                          ? Icons.light
+                          : Icons.dark_mode,
+                    );
+                  }),
+                ),
+                Image.asset('assets/image/logo.png', height: 60),
+                Container(width: 20),
+              ],
             ),
             SizedBox(
               height: 30,
