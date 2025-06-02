@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Page/Options/Options2.dart';
 import 'package:lx/SendOrder.dart';
+import 'package:lx/WidgetUi/decoration.dart';
 
 import '../Options/SelectedDev.dart';
 
@@ -14,13 +15,7 @@ class DrawerWidget extends StatelessWidget {
     return Container(
       height: 793,
       width: 300,
-      decoration: BoxDecoration(
-        color: Color.fromARGB(255, 255, 250, 242),
-        borderRadius: BorderRadius.only(
-          topLeft: Radius.circular(10),
-          bottomLeft: Radius.circular(10),
-        ),
-      ),
+      decoration: decoration(),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
@@ -32,12 +27,10 @@ class DrawerWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 InkWell(
-                  onTap:
-                      () =>
-                          Get.put(
-                            Controllerhomepage(),
-                            permanent: true,
-                          ).ChangeTheme(),
+                  onTap: () => Get.put(
+                    Controllerhomepage(),
+                    permanent: true,
+                  ).ChangeTheme(),
                   child: Obx(() {
                     return Icon(
                       Get.put(
