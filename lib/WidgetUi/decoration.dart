@@ -20,7 +20,7 @@ Decoration decoration(
               color: color1.withOpacity(0.1))
         ],
         border: border
-            ? Border.all(color: color_border.withOpacity(0.3), width: 0.8)
+            ? Border.all(color: color_border.withOpacity(0.3), width: 0.7)
             : null,
         borderRadius: BorderRadius.circular(20));
 

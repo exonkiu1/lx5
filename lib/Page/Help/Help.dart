@@ -34,7 +34,8 @@ class widgethelp extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: decoration(),
-      width: Get.width * 0.8,
+      width: Get.width * 0.9,
+      padding: EdgeInsets.symmetric(vertical: 20,horizontal: 5),
       child: Column(
         children: [
           Text(

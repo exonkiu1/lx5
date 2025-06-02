@@ -38,7 +38,9 @@ class Controllerhomepage extends GetxController {
       Vibration.vibrate(duration: 100);
     }
   }
-
+  Future<String>Hearing()async{
+    return '62';
+  }
   RxDouble Degree = 100.0.obs;
   RxString StateErth = 'right'.obs;
   RxString beforStateErth = 'right'.obs;

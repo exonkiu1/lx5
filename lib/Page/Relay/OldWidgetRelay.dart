@@ -85,7 +85,16 @@ class WidgetRelayOld extends StatelessWidget {
                         width: Get.width * 0.3,
                         decoration: decoration(
                             color: !Get.find<Controllerrelay>().State[i].value),
-                        child: const Center(child: Text('غیرفعال')),
+                        child: Center(child: Obx(() {
+                          return Text(
+                            'غیرفعال',
+                            style: TextStyle(
+                                color:
+                                    !Get.find<Controllerrelay>().State[i].value
+                                        ? color2
+                                        : null),
+                          );
+                        })),
                       );
                     }),
                   ),
@@ -119,7 +128,16 @@ class WidgetRelayOld extends StatelessWidget {
                         width: Get.width * 0.3,
                         decoration: decoration(
                             color: Get.find<Controllerrelay>().State[i].value),
-                        child: const Center(child: Text('فعال')),
+                        child: Center(child: Obx(() {
+                          return Text(
+                            'فعال',
+                            style: TextStyle(
+                                color:
+                                    Get.find<Controllerrelay>().State[i].value
+                                        ? color2
+                                        : null),
+                          );
+                        })),
                       );
                     }),
                   ),

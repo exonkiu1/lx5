@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Page/Options/Options2.dart';
+import 'package:lx/SendOrder.dart';
 
 import '../Options/SelectedDev.dart';
 
@@ -22,36 +24,63 @@ class DrawerWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
-          
           children: [
-            SizedBox(height: 10,),
-            Image.asset('assets/image/logo.png',height: 60,),
-            SizedBox(height: 30,),
+            SizedBox(
+              height: 10,
+            ),
+            Image.asset(
+              'assets/image/logo.png',
+              height: 60,
+            ),
+            SizedBox(
+              height: 30,
+            ),
             SelectedDevLx(),
-            SizedBox(height: 10,),
+            SizedBox(
+              height: 10,
+            ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-             
               children: List.generate(
                 PageOptions2.length,
                 (i) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 10),
                   child: InkWell(
-                    onTap: () => Get.to(PageOptions2.values.elementAt(i)['page']),
+                    onTap: () =>
+                        Get.to(PageOptions2.values.elementAt(i)['page']),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Image.asset(
-                         'assets/image/options3/'+ PageOptions2.values.elementAt(i)['image'] + '.png',
+                          'assets/image/options3/' +
+                              PageOptions2.values.elementAt(i)['image'] +
+                              '.png',
                           height: 30,
                         ),
-                                            Text(PageOptions2.keys.elementAt(i)),
-                    
+                        Text(PageOptions2.keys.elementAt(i)),
                       ],
                     ),
                   ),
                 ),
-              ),
+              )..add(Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  child: InkWell(
+                    onTap: () => SendOrder(
+                        context, () => Get.find<Controllerhomepage>().Hearing(),
+                        description:
+                            'با فرستاد دستور شنود دستگاه با شما تماس خواهد گرفت'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Image.asset(
+                          'assets/image/options3/hearing.png',
+                          height: 30,
+                        ),
+                        Text('شنود محیط'),
+                      ],
+                    ),
+                  ),
+                )),
             ),
           ],
         ),

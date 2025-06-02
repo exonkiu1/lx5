@@ -77,7 +77,7 @@ class Controllerzon extends GetxController {
         .replaceAll('#', '')
         .split('*Z');
     for (var i = 1; i < message.length; i++) {
-      Mode[i].value = ListModesZonInquiry[message[i][1]] ?? 'نرمال کلوز';
+      Mode[i-1].value = ListModesZonInquiry[message[i][1]] ?? 'نرمال کلوز';
     }
     UpdateZon();
   }

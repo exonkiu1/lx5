@@ -24,13 +24,13 @@ class Settingdevice extends StatelessWidget {
             ),
             WidgetLangDev(),
             WidgetEstablishingContactDuringPowerOutage(),
-            WidgetSemiActiveStatusRemote(),
-          /*   WidgetAddRemote(),
+            //WidgetSemiActiveStatusRemote(),
+            /*   WidgetAddRemote(),
               WidgetDeleteRemote(),
             WidgetAddSencor(),
             WidgetDeleteSencor(), */
-              WidgetPeriodicBatteryReport(),
-              WidgetInventoryReport(),
+            WidgetPeriodicBatteryReport(),
+            WidgetInventoryReport(),
             WidgetAlarmTime(),
             WidgetModeAlarm(),
             WidgetLine(),
@@ -143,8 +143,8 @@ class WidgetModeAlarm extends StatelessWidget {
             decoration: decoration(),
             child: Obx(() {
               return DropdownButton(
-                
                   value: Get.find<Controllersetting>().AlarmMode.value,
+                  underline: Container(),
                   dropdownColor: color2,
                   borderRadius: BorderRadius.circular(20),
                   items: List.generate(
@@ -530,7 +530,18 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
                                   .value ==
                               'on'),
                       child: Center(
-                        child: Text('فعال'),
+                        child: Obx(() {
+                          return Text(
+                            'فعال',
+                            style: TextStyle(
+                                color: Get.find<Controllersetting>()
+                                            .EstablishingContactDuringPowerOutage
+                                            .value ==
+                                        'on'
+                                    ? color2
+                                    : null),
+                          );
+                        }),
                       ),
                     );
                   }),
@@ -549,7 +560,14 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
                                   .value ==
                               'false'),
                       child: Center(
-                        child: Text('غیرفعال'),
+                        child: Obx(
+                         () {
+                            return Text('غیرفعال',style: TextStyle(color:Get.find<Controllersetting>()
+                                      .EstablishingContactDuringPowerOutage
+                                      .value ==
+                                  'false'?color2:null ),);
+                          }
+                        ),
                       ),
                     );
                   }),
@@ -593,7 +611,18 @@ class WidgetLangDev extends StatelessWidget {
                               Get.find<Controllersetting>().DevLanguage.value ==
                                   'per'),
                       child: Center(
-                        child: Text('فارسی'),
+                        child: Obx(() {
+                          return Text(
+                            'فارسی',
+                            style: TextStyle(
+                                color: Get.find<Controllersetting>()
+                                            .DevLanguage
+                                            .value ==
+                                        'per'
+                                    ? color2
+                                    : null),
+                          );
+                        }),
                       ),
                     );
                   }),
@@ -609,7 +638,18 @@ class WidgetLangDev extends StatelessWidget {
                               Get.find<Controllersetting>().DevLanguage.value ==
                                   'eng'),
                       child: Center(
-                        child: Text('انگلیسی'),
+                        child: Obx(() {
+                          return Text(
+                            'انگلیسی',
+                            style: TextStyle(
+                                color: Get.find<Controllersetting>()
+                                            .DevLanguage
+                                            .value ==
+                                        'eng'
+                                    ? color2
+                                    : null),
+                          );
+                        }),
                       ),
                     );
                   }),

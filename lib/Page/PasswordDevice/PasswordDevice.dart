@@ -26,6 +26,7 @@ class Passworddevice extends StatelessWidget {
               child: TextField(
                 maxLength: 4,
                 controller: Get.find<Controllerpassword>().tf1,
+                
                 textAlign: TextAlign.center,
                 keyboardType: TextInputType.number,
                 decoration: inputDecoration(

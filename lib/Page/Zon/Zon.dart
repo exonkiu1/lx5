@@ -33,14 +33,16 @@ class Zon extends StatelessWidget {
               ),
               height: Get.height * 0.05,
               decoration: decoration(color: true),
-              child: Center(child: Text('ثبت نیم فعالسازی ',style: TextStyle(color: color2),)),
+              child: Center(
+                  child: Text(
+                'ثبت نیم فعالسازی ',
+                style: TextStyle(color: color2),
+              )),
             ),
           ),
         );
       }),
       body: Backgroundview(
-
-
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -76,7 +78,9 @@ class Zon extends StatelessWidget {
                             ),
                           );
                         }),
-                        SizedBox(width: 10,),
+                        SizedBox(
+                          width: 10,
+                        ),
                         InkWell(
                           onTap: () => HelpModeZon(context),
                           child: Container(
@@ -88,7 +92,7 @@ class Zon extends StatelessWidget {
                             ),
                           ),
                         ),
-                       /*  Obx(() {
+                        /*  Obx(() {
                           return Visibility(
                             visible:
                                 Get.find<Controllerother>().TypeInquiry.value !=
@@ -235,6 +239,7 @@ class WidgetZon extends StatelessWidget {
                           iconEnabledColor: Colors.white,
                           borderRadius: BorderRadius.circular(20),
                           dropdownColor: Colors.white,
+                          alignment: Alignment.center,
                           underline: Container(),
                           items: List.generate(
                             ListModesZon.length,
