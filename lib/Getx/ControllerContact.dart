@@ -79,16 +79,18 @@ class Controllercontact extends GetxController {
         .split('*');
     print(ListContact.length);
     List_Contact.value = [];
-    for (var i = 0; i < ListContact.length; i++) {
+    for (var i = 0; i < 10; i++) {
       TfPhone[i].text = '';
+      Level[i].value = '';
     }
     for (var i = 0; i < ListContact.length; i++) {
       TfPhone[i].text = ListContact[i].substring(0, 11);
       Level[i].value = ListContact[i][11];
     }
-    for (var i = 0; i < ListContact.length; i++) {
+    for (var i = 0; i < 10; i++) {
       if (TfPhone[i].text.length != 11) {
         TfName[i].text = '';
+        Level[i].value = '';
       }
     }
     UpdateContact();
