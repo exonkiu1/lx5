@@ -16,37 +16,34 @@ class Settingdevice extends StatelessWidget {
     return Scaffold(
       appBar: appBar(title: 'تنظیمات دستگاه'),
       body: const Backgroundview(
-          child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 30,
-            ),
-            WidgetLangDev(),
-            WidgetEstablishingContactDuringPowerOutage(),
-            //WidgetSemiActiveStatusRemote(),
-            /*   WidgetAddRemote(),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+              WidgetLangDev(),
+              WidgetEstablishingContactDuringPowerOutage(),
+              WidgetSemiActiveStatusRemote(),
+              /*   WidgetAddRemote(),
               WidgetDeleteRemote(),
             WidgetAddSencor(),
             WidgetDeleteSencor(), */
-            WidgetPeriodicBatteryReport(),
-            WidgetInventoryReport(),
-            WidgetAlarmTime(),
-            WidgetModeAlarm(),
-            WidgetLine(),
-            WidgetDeleteDev(),
-            WidgetReset()
-          ],
+              WidgetPeriodicBatteryReport(),
+              WidgetInventoryReport(),
+              WidgetAlarmTime(),
+              WidgetModeAlarm(),
+              WidgetLine(),
+              WidgetDeleteDev(),
+              WidgetReset(),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
 
 class WidgetReset extends StatelessWidget {
-  const WidgetReset({
-    super.key,
-  });
+  const WidgetReset({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +54,16 @@ class WidgetReset extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogOrder(
-                context, () => Get.find<Controllerdatabase>().ResetDevLx(),
-                description: 'از بازگرداندن تنظیمات نرم افزار مطمعن هستید؟'),
+            onTap:
+                () => DialogOrder(
+                  context,
+                  () => Get.find<Controllerdatabase>().ResetDevLx(),
+                  description: 'از بازگرداندن تنظیمات نرم افزار مطمعن هستید؟',
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
           Text('بازگردانی تنظیمات و ویرایشات نرم افزار'),
@@ -76,16 +74,17 @@ class WidgetReset extends StatelessWidget {
 }
 
 class WidgetDeleteDev extends StatelessWidget {
-  const WidgetDeleteDev({
-    super.key,
-  });
+  const WidgetDeleteDev({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => DialogOrder(
-          context, () => Get.find<Controllerdatabase>().DeleteDevLx(),
-          description: 'از حذف دستگاه مطمعن هستید؟'),
+      onTap:
+          () => DialogOrder(
+            context,
+            () => Get.find<Controllerdatabase>().DeleteDevLx(),
+            description: 'از حذف دستگاه مطمعن هستید؟',
+          ),
       child: Container(
         width: Get.width * 0.9,
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -95,9 +94,7 @@ class WidgetDeleteDev extends StatelessWidget {
             Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
             Text('حذف دستگاه'),
           ],
@@ -108,9 +105,7 @@ class WidgetDeleteDev extends StatelessWidget {
 }
 
 class WidgetLine extends StatelessWidget {
-  const WidgetLine({
-    super.key,
-  });
+  const WidgetLine({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,17 +113,13 @@ class WidgetLine extends StatelessWidget {
       width: Get.width * 0.9,
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 5,
-      decoration: BoxDecoration(
-        color: color1,
-      ),
+      decoration: BoxDecoration(color: color1),
     );
   }
 }
 
 class WidgetModeAlarm extends StatelessWidget {
-  const WidgetModeAlarm({
-    super.key,
-  });
+  const WidgetModeAlarm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -143,28 +134,35 @@ class WidgetModeAlarm extends StatelessWidget {
             decoration: decoration(),
             child: Obx(() {
               return DropdownButton(
-                  value: Get.find<Controllersetting>().AlarmMode.value,
-                  underline: Container(),
-                  dropdownColor: color2,
-                  borderRadius: BorderRadius.circular(20),
-                  items: List.generate(
-                          ModeAlarm.length, (i) => ModeAlarm.keys.elementAt(i))
-                      .map<DropdownMenuItem<String>>(
+                value: Get.find<Controllersetting>().AlarmMode.value,
+                underline: Container(),
+                dropdownColor: color2,
+                borderRadius: BorderRadius.circular(20),
+                items:
+                    List.generate(
+                          ModeAlarm.length,
+                          (i) => ModeAlarm.keys.elementAt(i),
+                        )
+                        .map<DropdownMenuItem<String>>(
                           (String value) => DropdownMenuItem(
-                                child: Text(
-                                  '${value}',
-                                  style: TextStyle(color: color1),
-                                ),
-                                value: value,
-                              ))
-                      .toList(),
-                  onChanged: (value) => SendOrder(
+                            child: Text(
+                              '${value}',
+                              style: TextStyle(color: color1),
+                            ),
+                            value: value,
+                          ),
+                        )
+                        .toList(),
+                onChanged:
+                    (value) => SendOrder(
                       context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeModeAlarm(value!)));
+                      () =>
+                          Get.find<Controllersetting>().ChangeModeAlarm(value!),
+                    ),
+              );
             }),
           ),
-          Text('مود آلارم')
+          Text('مود آلارم'),
         ],
       ),
     );
@@ -172,9 +170,7 @@ class WidgetModeAlarm extends StatelessWidget {
 }
 
 class WidgetAlarmTime extends StatelessWidget {
-  const WidgetAlarmTime({
-    super.key,
-  });
+  const WidgetAlarmTime({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -185,12 +181,15 @@ class WidgetAlarmTime extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogTextFieldSms(
-                context, () => Get.find<Controllersetting>().ChangeAlarmTime(),
-                sms: true,
-                description: 'زمان آژیر',
-                maxlenght: 2,
-                KeyboardInt: true),
+            onTap:
+                () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeAlarmTime(),
+                  sms: true,
+                  description: 'زمان آژیر',
+                  maxlenght: 2,
+                  KeyboardInt: true,
+                ),
             child: Container(
               width: Get.width * 0.5,
               decoration: decoration(),
@@ -200,15 +199,16 @@ class WidgetAlarmTime extends StatelessWidget {
                     Text('ویرایش'),
                     Obx(() {
                       return Text(
-                          'مقدار فعلی :${Get.find<Controllersetting>().AlarmTime.value}دقیقه'
-                              .toPersianDigit());
-                    })
+                        'مقدار فعلی :${Get.find<Controllersetting>().AlarmTime.value}دقیقه'
+                            .toPersianDigit(),
+                      );
+                    }),
                   ],
                 ),
               ),
             ),
           ),
-          Text('زمان آژیر')
+          Text('زمان آژیر'),
         ],
       ),
     );
@@ -216,9 +216,7 @@ class WidgetAlarmTime extends StatelessWidget {
 }
 
 class WidgetInventoryReport extends StatelessWidget {
-  const WidgetInventoryReport({
-    super.key,
-  });
+  const WidgetInventoryReport({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -229,12 +227,15 @@ class WidgetInventoryReport extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogTextFieldSms(context,
-                () => Get.find<Controllersetting>().ChangeInventoryReport(),
-                sms: true,
-                description: 'گزارش دوره ای موجودی',
-                maxlenght: 2,
-                KeyboardInt: true),
+            onTap:
+                () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeInventoryReport(),
+                  sms: true,
+                  description: 'گزارش دوره ای موجودی',
+                  maxlenght: 2,
+                  KeyboardInt: true,
+                ),
             child: Container(
               width: Get.width * 0.5,
               decoration: decoration(),
@@ -244,15 +245,16 @@ class WidgetInventoryReport extends StatelessWidget {
                     Text('ویرایش'),
                     Obx(() {
                       return Text(
-                          'مقدار فعلی : ${Get.find<Controllersetting>().InventoryReport.value}پیامک'
-                              .toPersianDigit());
-                    })
+                        'مقدار فعلی : ${Get.find<Controllersetting>().InventoryReport.value}پیامک'
+                            .toPersianDigit(),
+                      );
+                    }),
                   ],
                 ),
               ),
             ),
           ),
-          Text('گزارش دوره ای موجودی')
+          Text('گزارش دوره ای موجودی'),
         ],
       ),
     );
@@ -260,9 +262,7 @@ class WidgetInventoryReport extends StatelessWidget {
 }
 
 class WidgetPeriodicBatteryReport extends StatelessWidget {
-  const WidgetPeriodicBatteryReport({
-    super.key,
-  });
+  const WidgetPeriodicBatteryReport({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -273,14 +273,17 @@ class WidgetPeriodicBatteryReport extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogTextFieldSms(
-                context,
-                () =>
-                    Get.find<Controllersetting>().ChangePeriodicBatteryReport(),
-                sms: true,
-                description: 'گزارش دوره ای باتری',
-                maxlenght: 2,
-                KeyboardInt: true),
+            onTap:
+                () => DialogTextFieldSms(
+                  context,
+                  () =>
+                      Get.find<Controllersetting>()
+                          .ChangePeriodicBatteryReport(),
+                  sms: true,
+                  description: 'گزارش دوره ای باتری',
+                  maxlenght: 2,
+                  KeyboardInt: true,
+                ),
             child: Container(
               width: Get.width * 0.5,
               decoration: decoration(),
@@ -290,15 +293,16 @@ class WidgetPeriodicBatteryReport extends StatelessWidget {
                     Text('ویرایش'),
                     Obx(() {
                       return Text(
-                          'مقدار فعلی:${Get.find<Controllersetting>().PeriodicBatteryReport.value}پیامک'
-                              .toPersianDigit());
-                    })
+                        'مقدار فعلی:${Get.find<Controllersetting>().PeriodicBatteryReport.value}پیامک'
+                            .toPersianDigit(),
+                      );
+                    }),
                   ],
                 ),
               ),
             ),
           ),
-          Text('گزارش دوره ای باتری')
+          Text('گزارش دوره ای باتری'),
         ],
       ),
     );
@@ -306,9 +310,7 @@ class WidgetPeriodicBatteryReport extends StatelessWidget {
 }
 
 class WidgetDeleteSencor extends StatelessWidget {
-  const WidgetDeleteSencor({
-    super.key,
-  });
+  const WidgetDeleteSencor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -319,19 +321,18 @@ class WidgetDeleteSencor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => SendOrder(
-              context,
-              () => Get.find<Controllersetting>().ChangeDeleteSencor(),
-            ),
+            onTap:
+                () => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeDeleteSencor(),
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('حذف سنسور بی سیم از راه دور')
+          Text('حذف سنسور بی سیم از راه دور'),
         ],
       ),
     );
@@ -339,9 +340,7 @@ class WidgetDeleteSencor extends StatelessWidget {
 }
 
 class WidgetAddSencor extends StatelessWidget {
-  const WidgetAddSencor({
-    super.key,
-  });
+  const WidgetAddSencor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -352,17 +351,18 @@ class WidgetAddSencor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => SendOrder(
-                context, () => Get.find<Controllersetting>().ChangeAddSencor()),
+            onTap:
+                () => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeAddSencor(),
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('اضافه کردن سنسور بیسیم از راه دور')
+          Text('اضافه کردن سنسور بیسیم از راه دور'),
         ],
       ),
     );
@@ -370,9 +370,7 @@ class WidgetAddSencor extends StatelessWidget {
 }
 
 class WidgetDeleteRemote extends StatelessWidget {
-  const WidgetDeleteRemote({
-    super.key,
-  });
+  const WidgetDeleteRemote({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -383,18 +381,19 @@ class WidgetDeleteRemote extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogTextFieldSms(context,
-                () => Get.find<Controllersetting>().ChangeDeleteRemote(),
-                sms: true),
+            onTap:
+                () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeDeleteRemote(),
+                  sms: true,
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('حذف ریموت از راه دور')
+          Text('حذف ریموت از راه دور'),
         ],
       ),
     );
@@ -402,9 +401,7 @@ class WidgetDeleteRemote extends StatelessWidget {
 }
 
 class WidgetAddRemote extends StatelessWidget {
-  const WidgetAddRemote({
-    super.key,
-  });
+  const WidgetAddRemote({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -414,18 +411,19 @@ class WidgetAddRemote extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => SendOrder(
-                context, () => Get.find<Controllersetting>().ChangeAddRemote()),
+            onTap:
+                () => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeAddRemote(),
+                ),
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('اضافه کردن ریموت از راه دور')
+          Text('اضافه کردن ریموت از راه دور'),
         ],
       ),
     );
@@ -433,9 +431,7 @@ class WidgetAddRemote extends StatelessWidget {
 }
 
 class WidgetSemiActiveStatusRemote extends StatelessWidget {
-  const WidgetSemiActiveStatusRemote({
-    super.key,
-  });
+  const WidgetSemiActiveStatusRemote({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -451,39 +447,73 @@ class WidgetSemiActiveStatusRemote extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeSemiActiveStatusRemote('true')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeSemiActiveStatusRemote('true'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .SemiActiveStatusRemote
-                                  .value ==
-                              'true'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .SemiActiveStatusRemote
+                                .value ==
+                            'true',
+                      ),
                       child: Center(
-                        child: Text('فعال'),
+                        child: Obx(() {
+                          return Text(
+                            'فعال',
+                            style: TextStyle(
+                              color:
+                                  Get.find<Controllersetting>()
+                                              .SemiActiveStatusRemote
+                                              .value ==
+                                          'true'
+                                      ? color2
+                                      : null,
+                            ),
+                          );
+                        }),
                       ),
                     );
                   }),
                 ),
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeSemiActiveStatusRemote('false')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeSemiActiveStatusRemote('false'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .SemiActiveStatusRemote
-                                  .value ==
-                              'false'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .SemiActiveStatusRemote
+                                .value ==
+                            'false',
+                      ),
                       child: Center(
-                        child: Text('غیرفعال'),
+                        child: Obx(() {
+                          return Text(
+                            'غیرفعال',
+                            style: TextStyle(
+                              color:
+                                  Get.find<Controllersetting>()
+                                              .SemiActiveStatusRemote
+                                              .value !=
+                                          'true'
+                                      ? color2
+                                      : null,
+                            ),
+                          );
+                        }),
                       ),
                     );
                   }),
@@ -499,9 +529,7 @@ class WidgetSemiActiveStatusRemote extends StatelessWidget {
 }
 
 class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
-  const WidgetEstablishingContactDuringPowerOutage({
-    super.key,
-  });
+  const WidgetEstablishingContactDuringPowerOutage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -517,29 +545,35 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeEstablishingContactDuringPowerOutage('true')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeEstablishingContactDuringPowerOutage('true'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .EstablishingContactDuringPowerOutage
-                                  .value ==
-                              'on'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .EstablishingContactDuringPowerOutage
+                                .value ==
+                            'on',
+                      ),
                       child: Center(
                         child: Obx(() {
                           return Text(
                             'فعال',
                             style: TextStyle(
-                                color: Get.find<Controllersetting>()
-                                            .EstablishingContactDuringPowerOutage
-                                            .value ==
-                                        'on'
-                                    ? color2
-                                    : null),
+                              color:
+                                  Get.find<Controllersetting>()
+                                              .EstablishingContactDuringPowerOutage
+                                              .value ==
+                                          'on'
+                                      ? color2
+                                      : null,
+                            ),
                           );
                         }),
                       ),
@@ -547,27 +581,39 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
                   }),
                 ),
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeEstablishingContactDuringPowerOutage('false')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeEstablishingContactDuringPowerOutage(
+                              'false',
+                            ),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .EstablishingContactDuringPowerOutage
-                                  .value ==
-                              'false'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .EstablishingContactDuringPowerOutage
+                                .value ==
+                            'false',
+                      ),
                       child: Center(
-                        child: Obx(
-                         () {
-                            return Text('غیرفعال',style: TextStyle(color:Get.find<Controllersetting>()
-                                      .EstablishingContactDuringPowerOutage
-                                      .value ==
-                                  'false'?color2:null ),);
-                          }
-                        ),
+                        child: Obx(() {
+                          return Text(
+                            'غیرفعال',
+                            style: TextStyle(
+                              color:
+                                  Get.find<Controllersetting>()
+                                              .EstablishingContactDuringPowerOutage
+                                              .value ==
+                                          'false'
+                                      ? color2
+                                      : null,
+                            ),
+                          );
+                        }),
                       ),
                     );
                   }),
@@ -583,9 +629,7 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
 }
 
 class WidgetLangDev extends StatelessWidget {
-  const WidgetLangDev({
-    super.key,
-  });
+  const WidgetLangDev({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -601,26 +645,33 @@ class WidgetLangDev extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () => SendOrder(context,
-                      () => Get.find<Controllersetting>().ChangeLangDev('per')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () =>
+                            Get.find<Controllersetting>().ChangeLangDev('per'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color:
-                              Get.find<Controllersetting>().DevLanguage.value ==
-                                  'per'),
+                        color:
+                            Get.find<Controllersetting>().DevLanguage.value ==
+                            'per',
+                      ),
                       child: Center(
                         child: Obx(() {
                           return Text(
                             'فارسی',
                             style: TextStyle(
-                                color: Get.find<Controllersetting>()
-                                            .DevLanguage
-                                            .value ==
-                                        'per'
-                                    ? color2
-                                    : null),
+                              color:
+                                  Get.find<Controllersetting>()
+                                              .DevLanguage
+                                              .value ==
+                                          'per'
+                                      ? color2
+                                      : null,
+                            ),
                           );
                         }),
                       ),
@@ -628,26 +679,33 @@ class WidgetLangDev extends StatelessWidget {
                   }),
                 ),
                 InkWell(
-                  onTap: () => SendOrder(context,
-                      () => Get.find<Controllersetting>().ChangeLangDev('per')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () =>
+                            Get.find<Controllersetting>().ChangeLangDev('per'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color:
-                              Get.find<Controllersetting>().DevLanguage.value ==
-                                  'eng'),
+                        color:
+                            Get.find<Controllersetting>().DevLanguage.value ==
+                            'eng',
+                      ),
                       child: Center(
                         child: Obx(() {
                           return Text(
                             'انگلیسی',
                             style: TextStyle(
-                                color: Get.find<Controllersetting>()
-                                            .DevLanguage
-                                            .value ==
-                                        'eng'
-                                    ? color2
-                                    : null),
+                              color:
+                                  Get.find<Controllersetting>()
+                                              .DevLanguage
+                                              .value ==
+                                          'eng'
+                                      ? color2
+                                      : null,
+                            ),
                           );
                         }),
                       ),

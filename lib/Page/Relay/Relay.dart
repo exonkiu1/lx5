@@ -21,7 +21,7 @@ class Relay extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-              2,
+              6,
               (i) => WidgetRelayOld(
                     i: i,
                   )),

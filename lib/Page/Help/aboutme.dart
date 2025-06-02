@@ -21,7 +21,7 @@ class Aboutme extends StatelessWidget {
               },
               child: widgethelp(
                 title: 'ارتباط با ما',
-                des: "اطلاعات خواسته شده رو از سایت برداریدFaradezhco.ir",
+                des: "optex-alarm.ir",
               ),
             ),
             SizedBox(height: 20,),

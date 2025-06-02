@@ -31,5 +31,5 @@ Decoration decoration(
             : null,
         borderRadius: BorderRadius.circular(20));
 
-Color color1 = Color.fromARGB(255, 45, 64, 66);
+Color color1 = Color.fromARGB(255, 45, 54, 66);
 Color color2 = Color.fromARGB(255, 255, 250, 242);
