@@ -17,11 +17,11 @@ class Controllerrelay extends GetxController {
     /* final music = AudioPlayer();
     music.setAsset('assets/music/relay/${State[index].value}.mp3');
     music.play(); */
-    return '2${index + 1}*${state ? 'ON' : 'OFF'}';
+    return '20*${index+1}*${state ? 'ON' : 'OFF'}';
   }
 
   Future<String> Triger(int index) async {
-    return '2${index + 1}*${TimeTriger[index].value}';
+    return '20*${index+1}*T${TimeTriger[index].value}';
   }
 
   StartTriger(int index) async {
