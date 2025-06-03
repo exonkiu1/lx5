@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           body: Backgroundview(
               child: Center(
             child: Text(
-              'OPTEX',
+              'RANGER+',
               style: TextStyle(
                 fontSize: 77,
               ),

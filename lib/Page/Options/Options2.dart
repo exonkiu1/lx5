@@ -87,13 +87,13 @@ Map<String, Map<String, dynamic>> PageOptions2 = {
   'مخاطبین': {'image': 'contact', 'page': Contacts()},
   'زون ها': {'image': 'zon', 'page': Zon()},
   'رله ها': {'image': 'relay', 'page': Relay()},
-  'ریموت ها': {'image': 'rimote', 'page': Remote()},
+//  'ریموت ها': {'image': 'remote', 'page': Remote()},
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
   'امنیت ورود به دستگاه': {'image': 'password_app', 'page': Passwordapp()},
 
   'گزارش گیری': {'image': 'history', 'page': Reportsms()},
- // 'راهنمایی': {'image': 'help', 'page': Help()},
+  'راهنمایی': {'image': 'help', 'page': Help()},
   'درباره ما': {'image': 'about_me', 'page': Aboutme()},
 };

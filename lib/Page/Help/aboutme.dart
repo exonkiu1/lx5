@@ -16,12 +16,12 @@ class Aboutme extends StatelessWidget {
           children: [
             InkWell(
               onTap: () async {
-                final Uri _url = Uri.parse('https://optex-alarm.ir');
+                final Uri _url = Uri.parse('https://Faradezhco.ir');
                 await launchUrl(_url);
               },
               child: widgethelp(
                 title: 'ارتباط با ما',
-                des: "optex-alarm.ir",
+                des: "اطلاعات خواسته شده رو از سایت برداریدFaradezhco.ir",
               ),
             ),
             SizedBox(height: 20,),

@@ -30,7 +30,7 @@ class _SplashscreenState extends State<Splashscreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'OPTEX',
+              'RANGER',
               style: TextStyle(fontSize: 40),
             ),
           ],

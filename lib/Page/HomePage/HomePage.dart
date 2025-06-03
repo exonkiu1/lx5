@@ -2,11 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/ControllerRelay.dart';
+import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/decoration.dart';
-import 'package:widget_mask/widget_mask.dart';
-
 import 'DrawerWidget.dart';
 
 class Homepage extends StatelessWidget {
@@ -17,10 +15,8 @@ class Homepage extends StatelessWidget {
     return Scaffold(
       key: _globalKey,
       endDrawer: DrawerWidget(),
-
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
         children: [
           Column(
             children: [
@@ -37,7 +33,7 @@ class Homepage extends StatelessWidget {
               ),
               SizedBox(height: 40),
               Text(
-                'OPTEX',
+                'RANGER+',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
@@ -48,117 +44,158 @@ class Homepage extends StatelessWidget {
           ),
           Column(
             children: [
-              Stack(
-                alignment: Alignment.center,
-                children: [
-                  WidgetMask(
-                    blendMode: BlendMode.srcATop,
-                    childSaveLayer: true,
-                    mask: Center(
-                      child: Container(decoration: decoration(color: true)),
-                    ),
-                    child: Icon(Icons.shield, size: Get.width * 0.8),
-                    /*  Image.asset(
-                      'assets/image/homepage/mask2.png',
-                      width: 400,
-                    ), */
-                  ),
-                  WidgetMask(
-                    blendMode: BlendMode.srcATop,
-                    childSaveLayer: true,
-                    mask: Center(
-                      child: Image.asset(
-                        'assets/image/homepage/home.jpg',
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                    child: Icon(Icons.shield, size: 350),
-                    /* Image.asset(
-                      'assets/image/homepage/mask2.png',
-                      width: 350,
-                    ), */
-                  ),
-                ],
+              Image.asset(
+                'assets/image/homepage/castel.png',
+                height: Get.width * 0.7,
               ),
-              Stack(
-                alignment: Alignment.topCenter,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(
-                    'assets/image/homepage/remote3.png',
-                    height: Get.width * 0.5,
+                  Column(
+                    children: [
+                      InkWell(
+                        onTap: () => Get.to(Inquiry()),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/image/homepage/inquiry.png',
+                              height: Get.width * 0.1,
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t inquiry.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      InkWell(
+                        onTap: () => SendOrder(
+                          context,
+                          () => Get.find<Controllerrelay>().Triger(0),
+                        ),
+                        child: Column(
+                          children: [
+                            Align(
+                              child: Image.asset(
+                                'assets/image/homepage/triger.png',
+                                height: Get.width * 0.1,
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t triger.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Transform.translate(
+                    offset: Offset(0, -20),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          'assets/image/homepage/rimot.png',
+                          height: Get.width * 0.5,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: Get.width * 0.1,
+                                width: Get.width * 0.3,
+                                child: Row(
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        child: InkWell(
+                                          onTap: () {
+                                            SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('silent'),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        child: InkWell(
+                                          onTap: () {
+                                            SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('off'),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () => SendOrder(
+                                  context,
+                                  () => Get.find<Controllerhomepage>()
+                                      .ChangeStateDev('on'),
+                                ),
+                                child: Container(
+                                  width: Get.width * 0.2,
+                                  height: Get.width * 0.2,
+                                  // color: const Color.fromARGB(78, 33, 149, 243),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                   Column(
                     children: [
-                      SizedBox(height: 20),
                       InkWell(
-                        onTap: () {
-                          SendOrder(
-                            context,
-                            () => Get.find<Controllerhomepage>().ChangeStateDev(
-                              'halfon',
+                        onTap: () => SendOrder(
+                          context,
+                          () => Get.find<Controllerhomepage>()
+                              .ChangeStateDev('halfon'),
+                        ),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/image/homepage/halfon.png',
+                              height: Get.width * 0.1,
                             ),
-                            description: 'دستگاه نیمه فعال شود؟',
-                          );
-                        },
-                        child: Container(width: 20, height: 20),
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap:
-                                () => SendOrder(
-                                  context,
-                                  () => Get.find<Controllerhomepage>()
-                                      .ChangeStateDev('off'),
-                                  description: 'دستگاه غیرفعال شود؟',
-                                ),
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              // color: const Color.fromARGB(78, 33, 149, 243),
+                            Image.asset(
+                              'assets/image/homepage/t halfon.png',
+                              height: Get.width * 0.1,
                             ),
-                          ),
-                          SizedBox(width: 30),
-                          InkWell(
-                            onTap: () {
-                              SendOrder(
-                                context,
-                                () => Get.find<Controllerhomepage>()
-                                    .ChangeStateDev('on'),
-                                description: 'دستگاه فعال شود؟',
-                              );
-                            },
-                            child: Container(
-                              width: 30,
-                              height: 30,
-                              // color: const Color.fromARGB(78, 33, 149, 243),
-                            ),
-                          ),
-                        ],
-                      ),
-                      InkWell(
-                        onTap: () {
-                          SendOrder(
-                            context,
-                            () => Get.find<Controllerhomepage>().ChangeStateDev(
-                              'silent',
-                            ),
-                            description: 'دستگاه سایلنت شود؟',
-                          );
-                        },
-                        child: Container(
-                          width: 30,
-                          height: 30,
-                          // color: const Color.fromARGB(78, 33, 149, 243),
+                          ],
                         ),
                       ),
-                      /*  Flexible(
-                              flex: 1,
-                              child: Container(
-                                child: 
-                              ),
-                            ), */
+                      SizedBox(height: 20),
+                      InkWell(
+                        onTap: () => Get.to(Help()),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/image/homepage/help.png',
+                              height: Get.width * 0.1,
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t help.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ],

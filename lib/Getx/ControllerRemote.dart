@@ -2,7 +2,6 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerZon.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerremote extends GetxController {
@@ -34,8 +33,7 @@ class Controllerremote extends GetxController {
   Future<String> ChangeNameRemote(int i) async {
     Name[i].value = Get.find<Controllerother>().tf.text;
     UpdateRemote();
-     bool lan = isEnglish(Name[i].value);
-    return '83*${lan?'E':'F'}*${Name[i].value}';
+    return '';
   }
 
   Future<String> ChangePart() async {

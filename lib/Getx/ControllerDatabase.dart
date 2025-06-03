@@ -62,8 +62,7 @@ class Controllerdatabase extends GetxController {
 
   ///
   TextEditingController tfName = TextEditingController(),
-      tfPhone = TextEditingController(),pass= TextEditingController();
-
+      tfPhone = TextEditingController();
   RxInt sim = 0.obs;
 
   ///
@@ -76,7 +75,6 @@ class Controllerdatabase extends GetxController {
       Name: tfName.text,
       Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
       Simcard: sim.value.toString(),
-      Pass: pass.text
     );
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
