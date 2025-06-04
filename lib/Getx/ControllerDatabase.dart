@@ -77,7 +77,7 @@ class Controllerdatabase extends GetxController {
       Name: tfName.text,
       Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
       Simcard: sim.value.toString(),
-      Pass: pass.text
+      
     );
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
