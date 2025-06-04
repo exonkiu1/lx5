@@ -23,7 +23,7 @@ void SendOrder(
        
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: color2,
+            backgroundColor: color1,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -32,7 +32,7 @@ void SendOrder(
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: color1,
+                    color: color2,
                   ),
                 ),
                 Image.asset('assets/image/options3/sms.gif', height: 25),
@@ -147,7 +147,7 @@ SendInquiry(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        backgroundColor: color2,
+        backgroundColor: color1,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -156,7 +156,7 @@ SendInquiry(
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: color1,
+                color: color2,
               ),
             ),
             Image.asset('assets/image/options3/sms.gif', height: 25),

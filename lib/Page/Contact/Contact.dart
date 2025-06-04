@@ -223,66 +223,7 @@ class WidgetContact extends StatelessWidget {
                       ),
                     ],
                   ),
-                  Obx(() {
-                    return Visibility(
-                      visible: Get.find<Controllercontact>().MainContact.value
-                          ? true
-                          : true,
-                      child: Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: Get.width * 0.09),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            SizedBox(
-                              width: Get.width * 0.7,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceEvenly,
-                                children: List.generate(
-                                    6,
-                                    (j) => InkWell(
-                                          onTap: () {
-                                            Get.find<Controllercontact>()
-                                                .Part[i]
-                                                .value = '${j + 1}';
-                                            Get.find<Controllercontact>()
-                                                .ShowPart
-                                                .value = 'part';
-                                          },
-                                          child: Obx(() {
-                                            return Container(
-                                              width: 25,
-                                              height: 25,
-                                              decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(50),
-                                                  color: '${j + 1}' !=
-                                                          Get.find<
-                                                                  Controllercontact>()
-                                                              .Part[i]
-                                                              .value
-                                                      ? const Color.fromARGB(
-                                                          255, 221, 176, 75)
-                                                      : Colors.red),
-                                              child: Center(
-                                                child: Text(
-                                                  '${j + 1}',
-                                                  style: const TextStyle(
-                                                      color: Colors.black),
-                                                ),
-                                              ),
-                                            );
-                                          }),
-                                        )),
-                              ),
-                            ),
-                            const Text('زون'),
-                          ],
-                        ),
-                      ),
-                    );
-                  }),
+                 
                   Align(
                     child: Column(
                       children: [
@@ -335,7 +276,7 @@ class WidgetLevel extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.find<Controllercontact>().Level[i].value = Value;
+        Get.find<Controllercontact>().Level[i].value = Name;
         //  Get.find<Controllercontact>().ShowPart.value = 'contact';
       },
       child: Obx(() {
@@ -345,7 +286,7 @@ class WidgetLevel extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 3),
           decoration: BoxDecoration(
               color:
-                  Get.find<Controllercontact>().Level[i].value.contains(Value)
+                  Get.find<Controllercontact>().Level[i].value.contains(Name)
                       ? Color.fromARGB(235, 113, 8, 0)
                       : Color.fromARGB(178, 99, 71, 68),
               borderRadius: BorderRadius.circular(20)),
