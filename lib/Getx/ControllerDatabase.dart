@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lx/Page/AddDevice/AddDevice.dart';
 import '/DateBase/DataBase.dart';
 import '/DateBase/Model.dart';
 import '/Getx/ControllerContact.dart';
@@ -56,7 +57,7 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllersetting>().GetSetting(model);
     } else {
       await Future.delayed(
-          Duration(milliseconds: 777), () => Get.off(() => const Adddevice2()));
+          Duration(milliseconds: 777), () => Get.off(() => const Adddevice()));
     }
   }
 
