@@ -151,13 +151,13 @@ class Controllercontact extends GetxController {
   }
 
   SelectContact(int i) async {
-    final FlutterContactPicker _contactPicker = new FlutterContactPicker();
+   /*  final FlutterContactPicker _contactPicker = new FlutterContactPicker();
     Contact? contact1 = await _contactPicker.selectContact();
     if (contact1 != null) {
       TfName[i].text = contact1.fullName.toString();
       TfPhone[i].text =
           contact1.phoneNumbers![0].replaceAll(' ', '').replaceAll('+98', '0');
-    }
+    } */
   }
 
   UpdateContact() async {

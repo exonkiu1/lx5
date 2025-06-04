@@ -5,15 +5,12 @@ import 'package:lx/Getx/ControllerHomePage.dart';
 Decoration decoration(
         {bool color = false,
         bool border = true,
-        Color colorBG = const Color.fromARGB(255, 70, 88, 86),
+        Color colorBG = const Color.fromARGB(255, 215, 200, 200),
         Color color_border = const Color.fromARGB(255, 45, 64, 66)}) =>
     BoxDecoration(
         color: color
-            ? colorBG
-            : Get.put(Controllerhomepage(), permanent: true).theme.value ==
-                    'dark'
-                ? Color.fromARGB(196, 36, 38, 44)
-                : color2,
+            ? colorBG:
+            null,
         boxShadow: [
           BoxShadow(
               offset: Offset(0.6, 0.6),
@@ -31,5 +28,5 @@ Decoration decoration(
             : null,
         borderRadius: BorderRadius.circular(20));
 
-Color color1 = Color.fromARGB(255, 45, 64, 66);
-Color color2 = Color.fromARGB(255, 255, 250, 242);
+Color color1 = Color.fromARGB(255, 255, 255, 255);
+Color color2 = Color.fromARGB(167, 40, 42, 46);
