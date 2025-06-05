@@ -13,9 +13,9 @@ class Controllerstthomepage extends GetxController {
     print('hi homepage');
     String val = Get.find<Controllerstt>().text.value;
     Get.find<Controllerstt>().text.value = '';
-    for (var i = 0; i < PageOptions.length; i++) {
-      if (PageOptions.keys.elementAt(i).contains(val)) {
-        Get.to(PageOptions.values.elementAt(i)['page']);
+    for (var i = 0; i < PageOptions2.length; i++) {
+      if (PageOptions2.keys.elementAt(i).contains(val)) {
+        Get.to(PageOptions2.values.elementAt(i)['page']);
       }
     }
     if (val.contains('رله')) {

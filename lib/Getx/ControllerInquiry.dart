@@ -45,7 +45,7 @@ class Controllerinquiry extends GetxController {
     zon3.value = message[2][2] == '1' ? 'بسته' : 'باز';
     zon4.value = message[2][3] == '1' ? 'بسته' : 'باز';
     Speaker.value = message[3] == '1' ? 'روشن' : 'خاموش';
-
+    CountRemote.value = message[4];
     AntennaStrength.value = '${(int.parse(message[5]) / 31) * 100}';
 
     print('Anten:${(int.parse(message[5]) / 31) * 100}');

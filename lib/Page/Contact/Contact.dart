@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import '/Getx/ControllerContact.dart';
-import '/Getx/ControllerOther.dart';
-import '/SendOrder.dart';
-import '/WidgetUi/Appbar.dart';
-import '/WidgetUi/BackGroundView.dart';
-import '/WidgetUi/decoration.dart';
-import '/WidgetUi/decoration_textfield.dart';
-import 'package:persian_number_utility/persian_number_utility.dart';
+import 'package:lx/Getx/ControllerContact.dart';
+import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Page/Contact/help.dart';
+import 'package:lx/SendOrder.dart';
+import 'package:lx/WidgetUi/Appbar.dart';
+import 'package:lx/WidgetUi/BackGroundView.dart';
+import 'package:lx/WidgetUi/decoration.dart';
 
 class Contacts extends StatelessWidget {
   const Contacts({super.key});
@@ -18,19 +17,25 @@ class Contacts extends StatelessWidget {
       appBar: appBar(
         title: 'مخاطبین',
       ),
-      
-        
-      extendBody: true,
       body: Backgroundview(
-        image: 'bg.jpg',
           child: SingleChildScrollView(
         child: Column(
           children: [
             Container(
               margin: const EdgeInsets.symmetric(vertical: 10),
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
+                  InkWell(
+                    onTap: () => HelpContact(context),
+                    child: Container(
+                      margin: EdgeInsets.symmetric(horizontal: 20),
+                      decoration: decoration(color: true),
+                      child: Center(
+                        child: Icon(Icons.question_mark_sharp, color: color2),
+                      ),
+                    ),
+                  ),
                   Obx(() {
                     return Visibility(
                       visible: Get.find<Controllerother>().TypeInquiry.value !=
@@ -71,195 +76,131 @@ class WidgetContact extends StatelessWidget {
   final int i;
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: [
-        Align(
-          child: Container(
-              width: Get.width,
-              height: Get.width * 0.65,
-              padding: EdgeInsets.only(top: Get.width * 0.063),
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage('assets/image/box/box.png'),
-                      fit: BoxFit.fitHeight)),
-              margin: const EdgeInsets.symmetric(vertical: 5),
-              child: Column(
+    return Container(
+        width: Get.width * 0.8,
+        padding: EdgeInsets.symmetric(vertical: 10),
+        decoration: decoration(),
+        margin: const EdgeInsets.symmetric(vertical: 5),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          crossAxisAlignment: CrossAxisAlignment.end,
+          children: [
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: Get.width * 0.07),
+              child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: Get.width * 0.1),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Column(
-                          children: [
-                            SizedBox(
-                              height: 10,
-                            ),
-                            InkWell(
-                              onTap: () => Get.find<Controllercontact>()
-                                  .SelectContact(i),
-                              child: const Icon(
-                                Icons.account_circle,
-                                color: Color.fromARGB(255, 221, 85, 75),
-                                size: 30,
-                              ),
-                            ),
-                            const SizedBox(
-                              height: 5,
-                            ),
-                            InkWell(
-                              onTap: () => SendOrder(
-                                  context,
-                                  () => Get.find<Controllercontact>()
-                                      .DeleteContact(i)),
-                              child: const Icon(
-                                Icons.delete,
-                                color: Colors.white,
-                              ),
-                            ),
-                          ],
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children: [
-                            InkWell(
-                              onTap: () => SendOrder(context, ()=>Get.find<Controllercontact>().AddOneContact(i)),
-                              child: Container(
-                                width: 100,
-                                height: 30,
-                                margin: EdgeInsets.only(right: 20),
-                                decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 225, 19, 19),
-                                    borderRadius: BorderRadius.circular(30)),
-                                child: Center(
-                                  child: Text('ثبت مخاطب'),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 50),
-                              child: SizedBox(
-                                width: Get.width * 0.5,
-                                child: TextField(
-                                  controller:
-                                      Get.find<Controllercontact>().TfName[i],
-                                  textAlign: TextAlign.center,
-                                  decoration: const InputDecoration(
-                                    hintText: 'نام مخاطب',
-                                    hintStyle: TextStyle(color: Colors.red),
-                                    icon: Icon(
-                                      Icons.contact_emergency,
-                                      color: Colors.red,
-                                    ),
-                                    hintTextDirection: TextDirection.rtl,
-                                    isDense: true,
-                                  ),
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Padding(
-                              padding: const EdgeInsets.only(right: 50),
-                              child: SizedBox(
-                                width: Get.width * 0.5,
-                                child: TextField(
-                                  controller:
-                                      Get.find<Controllercontact>().TfPhone[i],
-                                  keyboardType: TextInputType.phone,
-                                  textAlign: TextAlign.center,
-                                  decoration: const InputDecoration(
-                                    icon: Icon(
-                                      Icons.phone,
-                                      color: Colors.red,
-                                    ),
-                                    hintText: 'شماره تلفن مخاطب',
-                                    hintStyle: TextStyle(color: Colors.red),
-                                    hintTextDirection: TextDirection.rtl,
-                                    isDense: true,
-                                  ),
-                                  style: const TextStyle(fontSize: 12),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                  ),
                   Column(
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          WidgetLevel(
-                            Name: 'A',
-                            count: 1,
-                            Value: 'B',
-                            i: i,
-                          ),
-                          WidgetLevel(
-                            Name: 'B',
-                            count: 3,
-                            Value: 'D',
-                            i: i,
-                          ),
-                          WidgetLevel(
-                            Name: 'C',
-                            Value: 'C',
-                            count: 2,
-                            i: i,
-                          ),
-                          WidgetLevel(
-                            Name: 'D',
-                            Value: 'A',
-                            count: 0,
-                            i: i,
-                          ),
-                        ],
+                      SizedBox(
+                        height: 10,
+                      ),
+                      InkWell(
+                        onTap: () =>
+                            Get.find<Controllercontact>().SelectContact(i),
+                        child: Icon(
+                          Icons.account_circle,
+                          color: color1,
+                          size: 30,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      InkWell(
+                        onTap: () => SendOrder(
+                            context,
+                            () =>
+                                Get.find<Controllercontact>().DeleteContact(i)),
+                        child: Icon(
+                          Icons.delete,
+                          color: color1,
+                        ),
                       ),
                     ],
                   ),
-                 
-                  Align(
-                    child: Column(
-                      children: [
-                        InkWell(
-                            onTap: () => SendOrder(
-                                context,
-                                () => Get.find<Controllercontact>()
-                                    .AddOneContact(i)),
-                            child: Container(
-                              width: Get.width * 0.4,
-                              height: Get.width * 0.05,
-                              //  color: Colors.red.withOpacity(0.2),
-                            )),
-                        Container(
-                          width: Get.width * 0.4,
-                          height: Get.width * 0.05,
-                          // color: Colors.red.withOpacity(0.2),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      SizedBox(
+                        width: Get.width * 0.5,
+                        child: TextField(
+                          controller: Get.find<Controllercontact>().TfName[i],
+                          textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            hintText: 'نام مخاطب',
+                            hintTextDirection: TextDirection.rtl,
+                            isDense: true,
+                          ),
+                          style: const TextStyle(fontSize: 12),
                         ),
-                      ],
-                    ),
-                  )
+                      ),
+                      SizedBox(
+                        width: Get.width * 0.5,
+                        child: TextField(
+                          controller: Get.find<Controllercontact>().TfPhone[i],
+                          keyboardType: TextInputType.phone,
+                          textAlign: TextAlign.center,
+                          decoration: const InputDecoration(
+                            hintText: 'شماره تلفن مخاطب',
+                            hintTextDirection: TextDirection.rtl,
+                            isDense: true,
+                          ),
+                          style: const TextStyle(fontSize: 12),
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
-              )),
-        ),
-        Align(
-          child: Transform.translate(
-            offset: Offset(10, 10),
-            child: Container(
-              height: 20,
-              width: 20,
-              child: Center(child: Text('${i + 1}'.toPersianDigit())),
+              ),
             ),
-          ),
-        ),
-      ],
-    );
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    WidgetLevel(
+                      Name: 'پیامک',
+                      count: 1,
+                      Value: 'B',
+                      i: i,
+                    ),
+                    WidgetLevel(
+                      Name: 'تماس برق',
+                      count: 3,
+                      Value: 'D',
+                      i: i,
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    WidgetLevel(Name: 'گزارش گیری', Value: 'C', count: 2, i: i),
+                    WidgetLevel(Name: 'تماس', Value: 'A', count: 0, i: i),
+                  ],
+                ),
+                SizedBox(height: 10),
+                InkWell(
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllercontact>().AddOneContact(i),
+                  ),
+                  child: Container(
+                    width: Get.width * 0.3,
+                    decoration: decoration(color: true),
+                    child: Center(
+                      child: Text('ثبت', style: TextStyle(color: color2)),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ],
+        ));
   }
 }
 
@@ -276,24 +217,30 @@ class WidgetLevel extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.find<Controllercontact>().Level[i].value = Name;
+        Get.find<Controllercontact>().Level[i].value = Value;
         //  Get.find<Controllercontact>().ShowPart.value = 'contact';
       },
       child: Obx(() {
         return Container(
-          width: 30,
-          height: 30,
+          width: Get.width * 0.3,
           padding: const EdgeInsets.symmetric(vertical: 3),
           decoration: BoxDecoration(
               color:
-                  Get.find<Controllercontact>().Level[i].value.contains(Name)
-                      ? Color.fromARGB(235, 113, 8, 0)
-                      : Color.fromARGB(178, 99, 71, 68),
+                  Get.find<Controllercontact>().Level[i].value.contains(Value)
+                      ? color1
+                      : Color.fromARGB(107, 209, 235, 233),
               borderRadius: BorderRadius.circular(20)),
           child: Center(
             child: Text(
-              Name,
-              style: const TextStyle(fontSize: 12),
+              Value,
+              style: TextStyle(
+                  fontSize: 12,
+                  color: Get.find<Controllercontact>()
+                          .Level[i]
+                          .value
+                          .contains(Value)
+                      ? color2
+                      : color1),
             ),
           ),
         );

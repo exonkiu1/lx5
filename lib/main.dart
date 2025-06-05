@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           body: Backgroundview(
               child: Center(
             child: Text(
-              'OPTEX',
+              'RANGER+',
               style: TextStyle(
                 fontSize: 77,
               ),
@@ -54,7 +54,7 @@ class _MyAppState extends State<MyApp> {
               Get.put(Controllerhomepage(), permanent: true).theme.value ==
                       'dark'
                   ? Color.fromARGB(196, 36, 38, 44)
-                  : Color.fromARGB(255, 255, 255, 255),
+                  : Color.fromARGB(255, 255, 250, 242),
           dialogTheme: DialogTheme(
             titleTextStyle: TextStyle(color: color2, fontSize: 25),
             contentTextStyle: TextStyle(color: Colors.black, fontSize: 18),
@@ -64,15 +64,15 @@ class _MyAppState extends State<MyApp> {
           hintColor: Colors.black,
           primaryTextTheme: const TextTheme(
             bodyLarge:
-                TextStyle(color: Colors.white, fontFamily: 'A', fontSize: 13),
+                TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
           ),
           textTheme: const TextTheme(
             bodyMedium:
-                TextStyle(color: Colors.white, fontFamily: 'A', fontSize: 13),
+                TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
             bodySmall:
-                TextStyle(color: Colors.white, fontFamily: 'A', fontSize: 13),
+                TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
             bodyLarge:
-                TextStyle(color: Colors.white, fontFamily: 'A', fontSize: 13),
+                TextStyle(color: Colors.black, fontFamily: 'A', fontSize: 13),
           ),
         ),
       );

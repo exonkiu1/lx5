@@ -19,7 +19,6 @@ class Inquiry extends StatelessWidget {
     return Scaffold(
       appBar: appBar(title: 'استعلام دستگاه'),
       body: Backgroundview(
-        image: 'bg.jpg',
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -162,7 +161,7 @@ class WidgetItemInquiry extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(
-            width: Get.width * 0.5,
+            width: Get.width * 0.7,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -172,7 +171,7 @@ class WidgetItemInquiry extends StatelessWidget {
             ),
           ),
           Container(
-            width: Get.width * 0.5,
+            width: Get.width * 0.68,
             height: 1,
             color: color1.withOpacity(0.5),
           )

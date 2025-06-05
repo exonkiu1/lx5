@@ -1,121 +1,99 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Page/Inquiry/Inquiry.dart';
+import 'package:lx/Page/AddDevice/AddDevice2.dart';
+import 'package:lx/Page/Help/aboutme.dart';
+import 'package:lx/Page/Options/ControllerOptions.dart';
+import 'package:lx/Page/Options/Options.dart';
+import 'package:lx/Page/PasswordApp/PasswordApp.dart';
 import 'package:lx/Page/Relay/Relay.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
-import 'package:lx/SendOrder.dart';
-import '/Getx/ControllerInfo.dart';
-import '/Page/AddDevice/AddDevice.dart';
-import '/Page/Contact/Contact.dart';
-import '/Page/Help/Help.dart';
-import '/Page/PasswordDevice/PasswordDevice.dart';
-import '/Page/Remote/Remote.dart';
-import '/Page/SettingDev/SettingDevice.dart';
-import '/Page/SettingSim/SettingSim.dart';
-import '/Page/Zon/Zon.dart';
-import '/WidgetUi/BackGroundView.dart';
+import 'package:lx/WidgetUi/BackGroundView.dart';
+import 'package:lx/Page/AddDevice/AddDevice.dart';
+import 'package:lx/Page/Contact/Contact.dart';
+import 'package:lx/Page/Help/Help.dart';
+import 'package:lx/Page/PasswordDevice/PasswordDevice.dart';
+import 'package:lx/Page/Remote/Remote.dart';
+import 'package:lx/Page/SettingDev/SettingDevice.dart';
+import 'package:lx/Page/SettingSim/SettingSim.dart';
+import 'package:lx/Page/Zon/Zon.dart';
 
 import 'SelectedDev.dart';
 
-class Options extends StatefulWidget {
-  const Options({super.key});
+class Options2 extends StatefulWidget {
+  const Options2({super.key});
 
   @override
-  State<Options> createState() => _OptionsState();
+  State<Options2> createState() => _Options2State();
 }
 
-class _OptionsState extends State<Options> {
+class _Options2State extends State<Options2> {
+  @override
+  void initState() {
+    Get.find<Controlleroptions>().StartShowing();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    Get.find<Controlleroptions>().DisposeOpacity();
+    // TODO: implement dispose
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: SelectedDevLx(),
       extendBody: true,
       body: Backgroundview(
-        child: Center(
-          child: Wrap(
-            children: List.generate(
-              PageOptions.length,
-              (i) => WidpgetPageOption(i: i),
-            )..add(
-              InkWell(
-                onTap: () => SendOrder(
-                        context, () => Get.find<Controllerhomepage>().Hearing(),
-                        description:
-                            'با فرستاد دستور شنود دستگاه با شما تماس خواهد گرفت'),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: Get.width * 0.3,
-                      height: Get.width * 0.3,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage('assets/image/box/red.png'),
+          child: Center(
+        child: Wrap(
+          children: List.generate(
+              PageOptions2.length,
+              (i) => InkWell(
+                  onTap: () => Get.to(PageOptions2.values.elementAt(i)['page']),
+                  child: Obx(() {
+                    return Opacity(
+                      opacity:
+                          Get.find<Controlleroptions>().OpacityOption[i].value,
+                      child: Container(
+                        width: Get.width * 0.3,
+                        margin: EdgeInsets.symmetric(vertical: 15),
+                        child: Center(
+                          child: Column(
+                            children: [
+                              Image.asset(
+                                'assets/image/options2/${PageOptions2.values.elementAt(i)['image']}.png',
+                                width: Get.width * 0.2,
+                              ),
+                              Text(
+                                '${PageOptions2.keys.elementAt(i)}',
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      child: Center(
-                        child: Image.asset(
-                          'assets/image/options/listen.png',
-                          height: Get.width * 0.1,
-                        ),
-                      ),
-                    ),
-                    Text('شنود'),
-                  ],
-                ),
-              ),
-            ),
-          ),
+                    );
+                  }))),
         ),
-      ),
+      )),
     );
   }
 }
 
-class WidpgetPageOption extends StatelessWidget {
-  const WidpgetPageOption({super.key, required this.i});
-  final int i;
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () => Get.to(PageOptions.values.elementAt(i)['page']),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Container(
-            width: Get.width * 0.3,
-            height: Get.width * 0.3,
-            decoration: BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('assets/image/box/red.png'),
-              ),
-            ),
-            child: Center(
-              child: Image.asset(
-                'assets/image/options/${PageOptions.values.elementAt(i)['image']}.png',
-                height: Get.width * 0.1,
-              ),
-            ),
-          ),
-          Text('${PageOptions.keys.elementAt(i)}'),
-        ],
-      ),
-    );
-  }
-}
-
-Map<String, Map<String, dynamic>> PageOptions = {
-  'افزودن دستگاه': {'image': 'add', 'page': Adddevice()},
+Map<String, Map<String, dynamic>> PageOptions2 = {
+  'افزودن دستگاه': {'image': 'add', 'page': Adddevice2()},
   'مخاطبین': {'image': 'contact', 'page': Contacts()},
   'زون ها': {'image': 'zon', 'page': Zon()},
   'رله ها': {'image': 'relay', 'page': Relay()},
-  'استعلام دستگاه': {'image': 'inquiry', 'page': Inquiry()},
-  'ریموت': {'image': 'remote', 'page': Remote()},
+//  'ریموت ها': {'image': 'remote', 'page': Remote()},
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
+  'امنیت ورود به دستگاه': {'image': 'password_app', 'page': Passwordapp()},
+
   'گزارش گیری': {'image': 'history', 'page': Reportsms()},
-  'گارانتی': {'image': 'warranty', 'page': Help()},
-  // 'راهنمایی': {'image': 'help', 'page': Help()},
+  'راهنمایی': {'image': 'help', 'page': Help()},
+  'درباره ما': {'image': 'about_me', 'page': Aboutme()},
 };

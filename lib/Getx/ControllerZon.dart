@@ -25,17 +25,15 @@ class Controllerzon extends GetxController {
   Future<String> ChangeName(int i) async {
     Name[i].value = Get.find<Controllerother>().tf.text;
     UpdateZon();
-    bool lan = isEnglish(Name[i].value);
-    return '82*${lan?'E':'F'}*${Name[i].value}';
+    return '';
   }
 
   AddZon(String id) async {
     var prefs = SharedPreferencesAsync();
     List<String> value = List.generate(
-      19,
-      (i) =>
-          'زون ${i + 1}${CodeSplite}${ListModesZon.keys.elementAt(0)}${CodeSplite}true${CodeSplite}1',
-    );
+        19,
+        (i) =>
+            'زون ${i + 1}${CodeSplite}${ListModesZon.keys.elementAt(0)}${CodeSplite}true${CodeSplite}1');
     prefs.setStringList('${id}zon', value);
   }
 
@@ -44,44 +42,49 @@ class Controllerzon extends GetxController {
     List<String> value = await prefs.getStringList('${id}zon') ?? [];
     Name.value = List.generate(19, (i) => value[i].split(CodeSplite)[0].obs);
     Mode.value = List.generate(19, (i) => value[i].split(CodeSplite)[1].obs);
-    State.value = List.generate(
-      19,
-      (i) => value[i].split(CodeSplite)[2] == 'true' ? true.obs : false.obs,
-    );
+    State.value = List.generate(19,
+        (i) => value[i].split(CodeSplite)[2] == 'true' ? true.obs : false.obs);
     Part.value = List.generate(19, (i) => value[i].split(CodeSplite)[3].obs);
   }
 
   UpdateZon() async {
     var prefs = SharedPreferencesAsync();
     List<String> value = List.generate(
-      19,
-      (i) =>
-          '${Name[i].value}${CodeSplite}${Mode[i].value}${CodeSplite}${State[i].value}${CodeSplite}${Part[i].value}',
-    );
+        19,
+        (i) =>
+            '${Name[i].value}${CodeSplite}${Mode[i].value}${CodeSplite}${State[i].value}${CodeSplite}${Part[i].value}');
     prefs.setStringList('${Get.find<Controllerinfo>().id.value}zon', value);
   }
 
-  Future<String> ChangePart({int index=0,int part = 0}) async {
-    Part[index].value = '${part+1}';
+  Future<String> ChangePart() async {
+    String val = '';
+    for (var i = 0; i < 18; i++) {
+      if (Part[i].value != '8') {
+        val = val + Part[i].value;
+      } else {
+        val = val + '0';
+      }
+    }
+    showpart.value = false;
     UpdateZon();
-    return '46*${index + 1}*${Part[index].value}';
+    return 'LUXSSS$val';
   }
 
   InquiryMode() async {
-    List<String> message = Get.find<Controllerother>().TextInuiry.value
+    List<String> message = Get.find<Controllerother>()
+        .TextInuiry
+        .value
         .replaceAll('#', '')
         .split('*Z');
     for (var i = 1; i < message.length; i++) {
-      Mode[i - 1].value = ListModesZonInquiry[message[i][1]] ?? 'نرمال کلوز';
+      Mode[i-1].value = ListModesZonInquiry[message[i][1]] ?? 'نرمال کلوز';
     }
     UpdateZon();
   }
 
   InquiryPart() {
-    String message = Get.find<Controllerother>().TextInuiry.value.substring(
-      0,
-      18,
-    );
+    String message =
+        Get.find<Controllerother>().TextInuiry.value.substring(0, 18);
     for (var i = 0; i < 18; i++) {
       print(message[i]);
       Part[i].value = message[i];
@@ -100,10 +103,8 @@ class Controllerzon extends GetxController {
   }
 
   InquiryState() async {
-    String message = Get.find<Controllerother>().TextInuiry.value.substring(
-      0,
-      18,
-    );
+    String message =
+        Get.find<Controllerother>().TextInuiry.value.substring(0, 18);
   }
 
   DeleteAllZonWirles() async {
@@ -140,11 +141,3 @@ Map<String, String> ListModesZonInquiry = {
   'F': 'اعلان حریق nc',
   'f': 'اعلان حریق no',
 };
-bool isEnglish(String text) {
-  for (final rune in text.runes) {
-    if (rune > 127) {
-      return false;
-    }
-  }
-  return true;
-}

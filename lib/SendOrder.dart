@@ -23,7 +23,7 @@ void SendOrder(
        
         builder: (BuildContext context) {
           return AlertDialog(
-            backgroundColor: color1,
+            backgroundColor: color2,
             title: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -32,7 +32,7 @@ void SendOrder(
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
-                    color: color2,
+                    color: color1,
                   ),
                 ),
                 Image.asset('assets/image/options3/sms.gif', height: 25),
@@ -147,7 +147,7 @@ SendInquiry(
     context: context,
     builder: (BuildContext context) {
       return AlertDialog(
-        backgroundColor: color1,
+        backgroundColor: color2,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -156,7 +156,7 @@ SendInquiry(
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: color2,
+                color: color1,
               ),
             ),
             Image.asset('assets/image/options3/sms.gif', height: 25),
@@ -277,18 +277,18 @@ void DialogOrder(
         title: Text(title),
         content: Text(description),
         actions: <Widget>[
-          TextButton(
+          ElevatedButton(
             onPressed: () async {
               Navigator.of(context).pop();
             },
             child: Text('لغو'),
           ),
-          TextButton(
+          ElevatedButton(
             onPressed: () async {
               Navigator.of(context).pop();
               await function();
             },
-            child: Text('تایید'),
+            child: Text('بله'),
           ),
         ],
       );

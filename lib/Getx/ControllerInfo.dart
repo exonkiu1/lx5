@@ -5,6 +5,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:lx/DateBase/Model.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Controllerinfo extends GetxController {
   @override
@@ -64,6 +65,17 @@ class Controllerinfo extends GetxController {
       oprator = 'ir';
     }
     return oprator;
+  }
+
+  Hearing() async {
+    final Uri smsuri = Uri(
+      scheme: 'tell',
+      path: Get.find<Controllerinfo>().Phone.value,
+    );
+    if (await canLaunch(smsuri.toString())) {
+      await launch(smsuri.toString());
+      var context = Get.context;
+    }
   }
 }
 

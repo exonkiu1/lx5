@@ -17,12 +17,11 @@ class Relay extends StatelessWidget {
     return Scaffold(
       appBar: appBar(title: 'رله ها'),
       body: Backgroundview(
-        image: 'bg.jpg',
           child: SingleChildScrollView(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-              6,
+              2,
               (i) => WidgetRelayOld(
                     i: i,
                   )),

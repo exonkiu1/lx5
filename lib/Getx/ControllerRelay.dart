@@ -17,11 +17,24 @@ class Controllerrelay extends GetxController {
     /* final music = AudioPlayer();
     music.setAsset('assets/music/relay/${State[index].value}.mp3');
     music.play(); */
-    return '20*${index+1}*${state ? 'ON' : 'OFF'}';
+    return '20*${index + 1}*${state ? 'ON' : 'OFF'}';
   }
 
   Future<String> Triger(int index) async {
-    return '20*${index+1}*T${TimeTriger[index].value}';
+    final music = AudioPlayer();
+    await music.setAsset('assets/music/relay/triger.mp3');
+    ONOF(index);
+    music.play();
+    return '20*${index + 1}*T${TimeTriger[index].value}';
+  }
+
+  ONOF(int index) async {
+    bool value = State[index].value;
+    for (var i = 0; i < 4; i++) {
+      State[index].value = !State[index].value;
+      await Future.delayed(Duration(milliseconds: 200));
+    }
+    State[index].value = value;
   }
 
   StartTriger(int index) async {

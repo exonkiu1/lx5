@@ -4,7 +4,6 @@ import 'package:just_audio/just_audio.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:lx/WidgetUi/decoration_textfield.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'package:widget_mask/widget_mask.dart';
 import 'widget.dart' as adddevice;
 import '../../Getx/ControllerDatabase.dart';
 import '../../SendOrder.dart';
@@ -20,7 +19,7 @@ class Adddevice2 extends StatefulWidget {
 class _Adddevice2State extends State<Adddevice2> {
   @override
   void initState() {
-    // play_welcome();
+    play_welcome();
     CheckPermisionSms();
     // TODO: implement initState
     super.initState();
@@ -56,37 +55,9 @@ class _Adddevice2State extends State<Adddevice2> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Stack(
-                    alignment: Alignment.center,
-                    children: [
-                      WidgetMask(
-                        blendMode: BlendMode.srcATop,
-                        childSaveLayer: true,
-                        mask: Center(
-                          child: Container(decoration: decoration(color: true)),
-                        ),
-                        child: Icon(Icons.shield, size: 150),
-                        /*  Image.asset(
-                      'assets/image/homepage/mask2.png',
-                      width: 400,
-                    ), */
-                      ),
-                      WidgetMask(
-                        blendMode: BlendMode.srcATop,
-                        childSaveLayer: true,
-                        mask: Center(
-                          child: Image.asset(
-                            'assets/image/homepage/home.jpg',
-                            fit: BoxFit.cover,
-                          ),
-                        ),
-                        child: Icon(Icons.shield, size: 100),
-                        /* Image.asset(
-                      'assets/image/homepage/mask2.png',
-                      width: 350,
-                    ), */
-                      ),
-                    ],
+                  Image.asset(
+                    'assets/image/homepage/castel.png',
+                    height: Get.width * 0.4,
                   ),
                   Text('افزودن دستگاه', style: TextStyle(fontSize: 20)),
                   Container(
@@ -110,8 +81,8 @@ class _Adddevice2State extends State<Adddevice2> {
                       textAlign: TextAlign.center,
                       onChanged: (value) {
                         if (value.length > 11) {
-                          Get.find<Controllerdatabase>().tfPhone.text = value
-                              .substring(0, 11);
+                          Get.find<Controllerdatabase>().tfPhone.text =
+                              value.substring(0, 11);
                         }
                       },
                       decoration: inputDecoration(
@@ -120,48 +91,16 @@ class _Adddevice2State extends State<Adddevice2> {
                       ),
                     ),
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      InkWell(
-                        onTap: () => showDialog(context: context,builder: (context) => AlertDialog(content: Text('پارتیشن یک 0000 پارتیشن دو 2222 پارتیشن سوم 3333 و....',textDirection: TextDirection.rtl,),),),
-                        child: Icon(Icons.help, color: color2)),
-                      Container(
-                        // margin: EdgeInsets.symmetric(horizontal: 10),
-                        width: Get.width * 0.6,
-                        decoration: decoration(color_border: color2),
-                        child: TextField(
-                          controller: Get.find<Controllerdatabase>().pass,
-                          keyboardType: TextInputType.phone,
-                          textAlign: TextAlign.center,
-                          onChanged: (value) {
-                            if (value.length > 4) {
-                              Get.find<Controllerdatabase>()
-                                  .pass
-                                  .text = value.substring(0, 4);
-                            }
-                          },
-                          decoration: inputDecoration(
-                            hint: 'پسورد دستگاه',
-                            isDense: true,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
                   InkWell(
-                    onTap:
-                        () => DialogOrder(
-                          context,
-                          () => Get.find<Controllerdatabase>().AddLx(),
-                          description: 'از ساخت دستگاه مطمئن هستید؟',
-                        ),
+                    onTap: () => DialogOrder(
+                      context,
+                      () => Get.find<Controllerdatabase>().AddLx(),
+                      description: 'از ساخت دستگاه مطمئن هستید؟',
+                    ),
                     child: Container(
                       width: Get.width * 0.4,
                       decoration: decoration(color: true, colorBG: color1),
-                      child: Center(
-                        child: Text('ثبت', style: TextStyle(color: color2)),
-                      ),
+                      child: Center(child: Text('ثبت',style: TextStyle(color: color2),)),
                     ),
                   ),
                 ],

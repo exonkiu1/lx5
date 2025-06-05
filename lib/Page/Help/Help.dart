@@ -6,8 +6,26 @@ import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class Help extends StatelessWidget {
+class Help extends StatefulWidget {
   const Help({super.key});
+
+  @override
+  State<Help> createState() => _HelpState();
+}
+
+class _HelpState extends State<Help> {
+  @override
+  void initState() {
+    GetPDf();
+    // TODO: implement initState
+    super.initState();
+  }
+
+  GetPDf() async {
+    final Uri _url = Uri.parse(
+        'https://faradezhco.ir/wp-content/uploads/2025/05/rahnama.pdf');
+    await launchUrl(_url);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +35,7 @@ class Help extends StatelessWidget {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              
-            ],
+            children: [],
           ),
         ),
       ),
@@ -35,7 +51,7 @@ class widgethelp extends StatelessWidget {
     return Container(
       decoration: decoration(),
       width: Get.width * 0.9,
-      padding: EdgeInsets.symmetric(vertical: 20,horizontal: 5),
+      padding: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
       child: Column(
         children: [
           Text(

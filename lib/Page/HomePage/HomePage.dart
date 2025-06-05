@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/ControllerRelay.dart';
+import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
-import 'package:lx/Page/Options/Options2.dart';
 import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/decoration.dart';
-import 'package:widget_mask/widget_mask.dart';
-
 import 'DrawerWidget.dart';
 
 class Homepage extends StatelessWidget {
@@ -17,91 +14,190 @@ class Homepage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       key: _globalKey,
-      //endDrawer: DrawerWidget(),
-
+      endDrawer: DrawerWidget(),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          Column(
             children: [
-              SizedBox(width: 30),
-
+              Align(
+                alignment: Alignment.bottomRight,
+                child: ElevatedButton(
+                  onPressed: () {
+                    print('object');
+                    _globalKey.currentState!.openEndDrawer();
+                  },
+                  child: Icon(Icons.menu),
+                  style: ButtonStyle(),
+                ),
+              ),
+              SizedBox(height: 40),
               Text(
-                'OPTEX',
+                'RANGER+',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
-                  color: Color.fromARGB(255, 120, 70, 70),
+                  color: Color.fromARGB(255, 45, 64, 66),
                 ),
               ),
-              ElevatedButton(
-                onPressed: () {
-                  print('object');
-                  Get.to(() => Options());
-                },
-                child: Icon(Icons.menu),
-                style: ButtonStyle(),
-              ),
             ],
-          ),
-          Image.asset(
-            'assets/image/homepage/vila 2.jpg',
-            height: Get.height * 0.5,
           ),
           Column(
             children: [
-              WidgetStateDev(Name: 'فعال', state: 'on'),
-              SizedBox(
-                width: Get.width * 0.66,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    WidgetStateDev(Name: 'سایلنت', state: 'silent'),
-                    WidgetStateDev(Name: 'نیمه فعال', state: 'halfon'),
-                  ],
-                ),
-              ),
-              WidgetStateDev(Name: 'غیرفعال', state: 'off'),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class WidgetStateDev extends StatelessWidget {
-  const WidgetStateDev({super.key, required this.Name, required this.state});
-  final String state, Name;
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap:
-          () => SendOrder(
-            context,
-            () => Get.find<Controllerhomepage>().ChangeStateDev(state),
-          ),
-      child: Column(
-        children: [
-          Stack(
-            alignment: Alignment.center,
-            children: [
               Image.asset(
-                'assets/image/homepage/box.png',
-                height: Get.height * 0.1,
+                'assets/image/homepage/castel.png',
+                height: Get.width * 0.7,
               ),
-              Column(
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Obx(() {
-                    return Image.asset(
-                      'assets/image/homepage/${state}${Get.find<Controllerhomepage>().StateDev.value == state ? 'True' : ''}.png',
-                      height: Get.height * 0.05,
-                    );
-                  }),
-                  Text('${Name}'),
+                  Column(
+                    children: [
+                      InkWell(
+                        onTap: () => Get.to(Inquiry()),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/image/homepage/inquiry.png',
+                              height: Get.width * 0.1,
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t inquiry.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      InkWell(
+                        onTap: () => SendOrder(
+                          context,
+                          () => Get.find<Controllerrelay>().Triger(0),
+                        ),
+                        child: Column(
+                          children: [
+                            Align(
+                              child: Image.asset(
+                                'assets/image/homepage/triger.png',
+                                height: Get.width * 0.1,
+                              ),
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t triger.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  Transform.translate(
+                    offset: Offset(0, -20),
+                    child: Stack(
+                      children: [
+                        Image.asset(
+                          'assets/image/homepage/rimot.png',
+                          height: Get.width * 0.5,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Column(
+                            children: [
+                              SizedBox(
+                                height: Get.width * 0.1,
+                                width: Get.width * 0.3,
+                                child: Row(
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        child: InkWell(
+                                          onTap: () {
+                                            SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('silent'),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        child: InkWell(
+                                          onTap: () {
+                                            SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('off'),
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () => SendOrder(
+                                  context,
+                                  () => Get.find<Controllerhomepage>()
+                                      .ChangeStateDev('on'),
+                                ),
+                                child: Container(
+                                  width: Get.width * 0.2,
+                                  height: Get.width * 0.2,
+                                  // color: const Color.fromARGB(78, 33, 149, 243),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      InkWell(
+                        onTap: () => SendOrder(
+                          context,
+                          () => Get.find<Controllerhomepage>()
+                              .ChangeStateDev('halfon'),
+                        ),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/image/homepage/halfon.png',
+                              height: Get.width * 0.1,
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t halfon.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 20),
+                      InkWell(
+                        onTap: () => Get.to(Help()),
+                        child: Column(
+                          children: [
+                            Image.asset(
+                              'assets/image/homepage/help.png',
+                              height: Get.width * 0.1,
+                            ),
+                            Image.asset(
+                              'assets/image/homepage/t help.png',
+                              height: Get.width * 0.1,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ],

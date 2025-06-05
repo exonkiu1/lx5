@@ -21,11 +21,10 @@ class Zon extends StatelessWidget {
         return Visibility(
           visible: Get.find<Controllerzon>().showhalfon.value,
           child: InkWell(
-            onTap:
-                () => SendOrder(
-                  context,
-                  () => Get.find<Controllerzon>().ChangeState(),
-                ),
+            onTap: () => SendOrder(
+              context,
+              () => Get.find<Controllerzon>().ChangeState(),
+            ),
             child: Container(
               width: Get.width * 0.3,
               margin: EdgeInsets.symmetric(
@@ -35,17 +34,15 @@ class Zon extends StatelessWidget {
               height: Get.height * 0.05,
               decoration: decoration(color: true),
               child: Center(
-                child: Text(
-                  'ثبت نیم فعالسازی ',
-                  style: TextStyle(color: color2),
-                ),
-              ),
+                  child: Text(
+                'ثبت نیم فعالسازی ',
+                style: TextStyle(color: color2),
+              )),
             ),
           ),
         );
       }),
       body: Backgroundview(
-        image: 'bg.jpg',
         child: SingleChildScrollView(
           child: Column(
             children: [
@@ -60,20 +57,18 @@ class Zon extends StatelessWidget {
                           return Visibility(
                             visible:
                                 Get.find<Controllerother>().TypeInquiry.value !=
-                                'ModeZon',
+                                    'ModeZon',
                             replacement: SizedBox(
                               child: CircularProgressIndicator(),
                             ),
                             child: InkWell(
-                              onTap:
-                                  () => SendInquiry(
-                                    context,
-                                    () =>
-                                        Get.find<Controllerzon>().InquiryMode(),
-                                    code: '92',
-                                    controller: '',
-                                    type: 'ModeZon',
-                                  ),
+                              onTap: () => SendInquiry(
+                                context,
+                                () => Get.find<Controllerzon>().InquiryMode(),
+                                code: '92',
+                                controller: '',
+                                type: 'ModeZon',
+                              ),
                               child: Container(
                                 width: Get.width * 0.4,
                                 decoration: decoration(),
@@ -83,17 +78,17 @@ class Zon extends StatelessWidget {
                             ),
                           );
                         }),
-                        SizedBox(width: 10),
+                        SizedBox(
+                          width: 10,
+                        ),
                         InkWell(
                           onTap: () => HelpModeZon(context),
                           child: Container(
                             margin: EdgeInsets.symmetric(horizontal: 20),
                             decoration: decoration(color: true),
                             child: Center(
-                              child: Icon(
-                                Icons.question_mark_sharp,
-                                color: color2,
-                              ),
+                              child: Icon(Icons.question_mark_sharp,
+                                  color: color2),
                             ),
                           ),
                         ),
@@ -131,9 +126,10 @@ class Zon extends StatelessWidget {
                 ),
               ),
               Column(
-                children: List.generate(16, (i) => WidgetZon(i: i))
-                  ..add(SizedBox(height: 100)),
-              ),
+                  children: List.generate(16, (i) => WidgetZon(i: i))
+                    ..add(SizedBox(
+                      height: 100,
+                    ))),
               /* Align(
                 child: InkWell(
                   onTap: () => SendOrder(
@@ -173,19 +169,13 @@ class WidgetZon extends StatelessWidget {
         child: Align(
           alignment: Alignment.topCenter,
           child: Container(
-            width: Get.width,
-            height: Get.width*0.65,
+            width: Get.width * 0.8,
             // height: Get.height * 0.,
-            decoration: BoxDecoration(image: DecorationImage(image: AssetImage('assets/image/zon/red_futuristic_background_01.jpg'),fit: BoxFit.fitHeight)),
+            decoration: decoration(),
             // padding: const EdgeInsets.all(5),
-           // margin: const EdgeInsets.symmetric(vertical: 5),
+            margin: const EdgeInsets.symmetric(vertical: 5),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Image.asset(
-                        'assets/image/zon/zon ${i < 6 ? 'w' : 'wl'}1.png',
-                        height: 50,
-                      ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   child: Row(
@@ -197,7 +187,49 @@ class WidgetZon extends StatelessWidget {
                         decoration: decoration(),
                         child: Center(child: Text('${i + 1}')),
                       ),
-                       Container(
+                      Container(
+                        width: Get.width * 0.4,
+                        padding: EdgeInsets.only(right: 10),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                              onTap: () => DialogTextFieldSms(
+                                context,
+                                () => Get.find<Controllerzon>().ChangeName(i),
+                                description: 'نام زون',
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.only(left: 10),
+                                child: Icon(Icons.edit, color: color1),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.centerRight,
+                              child: Obx(() {
+                                return Text(
+                                  Get.find<Controllerzon>()
+                                      .Name[i]
+                                      .value
+                                      .toPersianDigit(),
+                                  style: TextStyle(color: Colors.black),
+                                );
+                              }),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Image.asset(
+                        'assets/image/zon/zon ${i < 6 ? 'w' : 'wl'}1.png',
+                        height: 50,
+                      ),
+                    ],
+                  ),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Container(
                       width: Get.width * 0.4,
                       decoration: decoration(),
                       child: Obx(() {
@@ -209,122 +241,38 @@ class WidgetZon extends StatelessWidget {
                           dropdownColor: Colors.white,
                           alignment: Alignment.center,
                           underline: Container(),
-                          items:
-                              List.generate(
-                                    ListModesZon.length,
-                                    (i) => ListModesZon.keys.elementAt(i),
-                                  )
-                                  .map<DropdownMenuItem<String>>(
-                                    (String value) => DropdownMenuItem(
-                                      value: value,
-                                      child: Align(
-                                        child: Text(
-                                          value,
-                                          style: TextStyle(color: const Color.fromARGB(255, 176, 15, 3)),
-                                          textAlign: TextAlign.center,
-                                          textDirection: TextDirection.rtl,
-                                        ),
-                                      ),
+                          items: List.generate(
+                            ListModesZon.length,
+                            (i) => ListModesZon.keys.elementAt(i),
+                          )
+                              .map<DropdownMenuItem<String>>(
+                                (String value) => DropdownMenuItem(
+                                  value: value,
+                                  child: Align(
+                                    child: Text(
+                                      value,
+                                      textAlign: TextAlign.center,
+                                      textDirection: TextDirection.rtl,
                                     ),
-                                  )
-                                  .toList(),
-                          onChanged:
-                              (value) => SendOrder(
-                                context,
-                                () => Get.find<Controllerzon>().ChangeModeZon(
-                                  value!,
-                                  i,
+                                  ),
                                 ),
-                              ),
+                              )
+                              .toList(),
+                          onChanged: (value) => SendOrder(
+                            context,
+                            () => Get.find<Controllerzon>().ChangeModeZon(
+                              value!,
+                              i,
+                            ),
+                          ),
                         );
                       }),
                     ),
-                      Container(
-                        width: Get.width * 0.4,
-                        padding: EdgeInsets.only(right: 10),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            InkWell(
-                              onTap:
-                                  () => DialogTextFieldSms(
-                                    context,
-                                    () =>
-                                        Get.find<Controllerzon>().ChangeName(i),
-                                    description: 'نام زون',
-                                  ),
-                              child: Padding(
-                                padding: EdgeInsets.only(left: 10),
-                                child: Icon(Icons.edit, color: color1),
-                              ),
-                            ),
-                            
-                            Align(
-                              alignment: Alignment.centerRight,
-                              child: Obx(() {
-                                return Text(
-                                  Get.find<Controllerzon>().Name[i].value
-                                      .toPersianDigit(),
-                                  style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
-                                );
-                              }),
-                            ),
-                          ],
-                        ),
-                      ),
-                      
-                    ],
-                  ),
-                ),
-                
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 5),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(
-                      8,
-                      (j) => InkWell(
-                        onTap:
-                            () => SendOrder(
-                              context,
-                              () => Get.find<Controllerzon>().ChangePart(
-                                index: i,
-                                part: j,
-                              ),
-                            ),
-                        child: Obx(() {
-                          return Container(
-                            width: 30,
-                            height: 30,
-                            decoration: decoration(
-                              color:
-                                  Get.find<Controllerzon>().Part[i].value ==
-                                  '${j + 1}',
-                            ),
-                            child: Center(
-                              child: Text(
-                                '${j + 1}'.toPersianDigit(),
-                                style: TextStyle(
-                                  color:
-                                      Get.find<Controllerzon>().Part[i].value ==
-                                              '${j + 1}'
-                                          ? color2
-                                          : color1,
-                                ),
-                              ),
-                            ),
-                          );
-                        }),
-                      ),
-                    ),
-                  ),
-                ),
-                Center(
+                    Center(
                       child: Obx(() {
                         return Checkbox(
                           shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
+                              borderRadius: BorderRadius.circular(20)),
                           side: BorderSide(color: color1),
                           checkColor: color2,
                           value: Get.find<Controllerzon>().State[i].value,
@@ -335,6 +283,8 @@ class WidgetZon extends StatelessWidget {
                         );
                       }),
                     ),
+                  ],
+                ),
               ],
             ),
           ),

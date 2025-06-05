@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:lx/Page/AddDevice/AddDevice.dart';
 import '/DateBase/DataBase.dart';
 import '/DateBase/Model.dart';
 import '/Getx/ControllerContact.dart';
@@ -57,14 +56,13 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllersetting>().GetSetting(model);
     } else {
       await Future.delayed(
-          Duration(milliseconds: 777), () => Get.off(() => const Adddevice()));
+          Duration(milliseconds: 777), () => Get.off(() => const Adddevice2()));
     }
   }
 
   ///
   TextEditingController tfName = TextEditingController(),
-      tfPhone = TextEditingController(),pass= TextEditingController();
-
+      tfPhone = TextEditingController();
   RxInt sim = 0.obs;
 
   ///
@@ -77,7 +75,6 @@ class Controllerdatabase extends GetxController {
       Name: tfName.text,
       Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
       Simcard: sim.value.toString(),
-      
     );
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');

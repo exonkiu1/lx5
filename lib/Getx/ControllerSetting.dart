@@ -38,7 +38,7 @@ class Controllersetting extends GetxController {
   Future<String> ChangeSemiActiveStatusRemote(String value) async {
     SemiActiveStatusRemote.value = value;
     Get.find<Controllerdatabase>().UpdateLx();
-    return '52*${value == 'true' ? '1' : '0'}';
+    return '51*${value == 'true' ? '1' : '0'}';
   }
 
   Future<String> ChangeModeAlarm(String value) async {

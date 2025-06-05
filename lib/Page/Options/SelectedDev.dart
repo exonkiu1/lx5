@@ -59,11 +59,11 @@ class SelectedDevLx extends StatelessWidget {
           height: Get.height * 0.05,
           margin: EdgeInsets.all(8),
           padding: EdgeInsets.only(right: 10),
-          decoration: decoration(color: true,colorBG: color2),
+          decoration: decoration(),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              
+              Icon(Icons.developer_board),
               //Image.asset('assets/image/options2/profile-circle-2.png'),
               Obx(() {
                 return Text('${Get.find<Controllerinfo>().Name.value}');

@@ -16,13 +16,12 @@ class Passworddevice extends StatelessWidget {
     return Scaffold(
       appBar: appBar(title: 'پسورد دستگاه'),
       body: Backgroundview(
-        image: 'bg.jpg',
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
-              width: Get.width * 0.6,
+              width: Get.width * 0.9,
               decoration: decoration(),
               child: TextField(
                 maxLength: 4,
@@ -38,7 +37,7 @@ class Passworddevice extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
-              width: Get.width * 0.6,
+              width: Get.width * 0.9,
               decoration: decoration(),
               child: TextField(
                 maxLength: 4,
@@ -53,7 +52,7 @@ class Passworddevice extends StatelessWidget {
             ),
             Container(
               margin: EdgeInsets.symmetric(vertical: 10),
-              width: Get.width * 0.6,
+              width: Get.width * 0.9,
               decoration: decoration(),
               child: TextField(
                 maxLength: 4,
