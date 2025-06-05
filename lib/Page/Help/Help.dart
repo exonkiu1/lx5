@@ -35,7 +35,15 @@ class _HelpState extends State<Help> {
         child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: [],
+            children: [
+              InkWell(
+                onTap: () => GetPDf(),
+                child: widgethelp(
+                  title: 'دفترچه راهنمایی',
+                  des: "برای دریافت دفترچه راهنمایی کلیک نمایید",
+                ),
+              ),
+            ],
           ),
         ),
       ),

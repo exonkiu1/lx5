@@ -17,7 +17,7 @@ import '/Page/SplashScreen.dart/SplashScreen.dart';
 import '../Page/AddDevice/AddDevice2.dart';
 
 String CodeSplite = '#%%!%%!#';
-DateTime khordad_15 = DateTime(2025, 6, 8);
+DateTime khordad_15 = DateTime(2025, 6, 13);
 
 class Controllerdatabase extends GetxController {
   @override
@@ -55,8 +55,11 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllerrelay>().GetRelay(id);
       Get.find<Controllersetting>().GetSetting(model);
     } else {
-      await Future.delayed(
-          Duration(milliseconds: 777), () => Get.off(() => const Adddevice2()));
+      DateTime timenow = DateTime.now();
+      if (khordad_15.isAfter(timenow)) {
+        await Future.delayed(Duration(milliseconds: 777),
+            () => Get.off(() => const Adddevice2()));
+      }
     }
   }
 

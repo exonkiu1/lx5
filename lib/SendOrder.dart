@@ -18,63 +18,62 @@ void SendOrder(
 }) {
   Get.find<Controllerother>().DelyOrder.value == 0
       ? showDialog(
-        context: context,
-      //  barrierDismissible: false,
-       
-        builder: (BuildContext context) {
-          return AlertDialog(
-            backgroundColor: color2,
-            title: Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  title,
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                    color: color1,
-                  ),
-                ),
-                Image.asset('assets/image/options3/sms.gif', height: 25),
-              ],
-            ),
-            content: Text(description),
-            actions: <Widget>[
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                      if (StateDev) {
-                        Get.find<Controllerhomepage>().backflyflySpaceship();
-                      }
-                    },
-                    child: Text('خیر'),
-                  ),
+          context: context,
+          //  barrierDismissible: false,
 
-                  ElevatedButton(
-                    onPressed: () async {
-                      Navigator.of(context).pop();
-                      String code = await function();
-                      if (!pass) {
-                        SendSms(context, code);
-                      } else {
-                        SendSmsPass(context, code);
-                      }
-                      if (StateDev) {
-                        Get.find<Controllerhomepage>().backflyflySpaceship();
-                      }
-                      print('code : $code');
-                    },
-                    child: Text('بله'),
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: color2,
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    title,
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      color: color1,
+                    ),
                   ),
+                  Image.asset('assets/image/options3/sms.gif', height: 25),
                 ],
               ),
-            ],
-          );
-        },
-      )
+              content: Text(description),
+              actions: <Widget>[
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                        if (StateDev) {
+                          Get.find<Controllerhomepage>().backflyflySpaceship();
+                        }
+                      },
+                      child: Text('خیر'),
+                    ),
+                    ElevatedButton(
+                      onPressed: () async {
+                        Navigator.of(context).pop();
+                        String code = await function();
+                        if (!pass) {
+                          SendSms(context, code);
+                        } else {
+                          SendSmsPass(context, code);
+                        }
+                        if (StateDev) {
+                          Get.find<Controllerhomepage>().backflyflySpaceship();
+                        }
+                        print('code : $code');
+                      },
+                      child: Text('بله'),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        )
       : Get.find<Controllerother>().SnackBarDelay(context);
   ;
 }
@@ -164,36 +163,28 @@ SendInquiry(
         ),
         content: Text(description),
         actions: <Widget>[
-           Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    onPressed: () {
-                                           Navigator.of(context).pop();
-
-                    },
-                    child: Text('خیر'),
-                  ),
-
-                  ElevatedButton(
-                    onPressed: () async {
-                        Navigator.of(context).pop();
-                      Get.find<Controllerother>().TypeInquiry.value = type;
-                      SendSms(context, code);
-                      InquirySms(function, controller: controller);
-                      print('code : $code');
-                    },
-                    child: Text('بله'),
-                  ),
-                ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                },
+                child: Text('خیر'),
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                  Get.find<Controllerother>().TypeInquiry.value = type;
+                  SendSms(context, code);
+                  InquirySms(function, controller: controller);
+                  print('code : $code');
+                },
+                child: Text('بله'),
+              ),
+            ],
+          ),
 
-
-
-
-
-
-        
           /*   TextButton(
               onPressed: () async {
                 Navigator.of(context).pop();
@@ -222,13 +213,14 @@ SendInquiry(
 ///
 Future<void> SendSms(BuildContext context, String code) async {
   if (Get.find<Controllerinfo>().Simcard.value != -2) {
-     final Telephony telephony = Telephony.instance;
+    final Telephony telephony = Telephony.instance;
     telephony.sendSms(
         to: '${Get.find<Controllerinfo>().Phone.value}',
         message:
             '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
-        subscriptionId: Get.find<Controllerinfo>().Simcard.value);
- 
+        subscriptionId: Get.find<Controllerinfo>().Simcard.value == -1
+            ? null
+            : Get.find<Controllerinfo>().Simcard.value);
   } else {
     String uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
@@ -249,7 +241,7 @@ Future<void> SendSms(BuildContext context, String code) async {
 }
 
 void InquirySms(Function() function, {String controller = ''}) {
-   final telephony = Telephony.instance;
+  final telephony = Telephony.instance;
   telephony.listenIncomingSms(
     onNewMessage: (SmsMessage message) {
       if (message.body!.contains(controller) == true) {
@@ -277,19 +269,24 @@ void DialogOrder(
         title: Text(title),
         content: Text(description),
         actions: <Widget>[
-          ElevatedButton(
-            onPressed: () async {
-              Navigator.of(context).pop();
-            },
-            child: Text('لغو'),
-          ),
-          ElevatedButton(
-            onPressed: () async {
-              Navigator.of(context).pop();
-              await function();
-            },
-            child: Text('بله'),
-          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                },
+                child: Text('لغو'),
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  Navigator.of(context).pop();
+                  await function();
+                },
+                child: Text('بله'),
+              ),
+            ],
+          )
         ],
       );
     },
@@ -298,13 +295,12 @@ void DialogOrder(
 
 Future<void> SendSmsPass(BuildContext context, String code) async {
   if (Get.find<Controllerinfo>().Simcard.value != -2) {
-       final Telephony telephony = Telephony.instance;
+    final Telephony telephony = Telephony.instance;
     telephony.sendSms(
         to: '${Get.find<Controllerinfo>().Phone}',
         message:
             '*${Get.find<Controllerpassword>().tf1.text}*40*${Get.find<Controllerpassword>().tf3.text}#',
         subscriptionId: Get.find<Controllerinfo>().Simcard.value);
- 
   } else {
     String uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#';
