@@ -5,6 +5,7 @@ import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Page/Options/Options2.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/decoration.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../Options/SelectedDev.dart';
@@ -85,7 +86,8 @@ class DrawerWidget extends StatelessWidget {
                     onTap: () => DialogOrder(
                         context, () => Get.find<Controllerinfo>().Hearing(),
                         description:
-                            'فقط مدیر میتواند به محیط شنود داشته باشد آیا مایلید برای شنود به دستگاه تماس بگیرید؟'),
+                            'فقط مدیر سطح A میتواند به محیط شنود داشته باشد آیا مایلید برای شنود به دستگاه تماس بگیرید؟'
+                                .toPersianDigit()),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
