@@ -17,7 +17,7 @@ import '/Page/SplashScreen.dart/SplashScreen.dart';
 import '../Page/AddDevice/AddDevice2.dart';
 
 String CodeSplite = '#%%!%%!#';
-DateTime khordad_15 = DateTime(2025, 6, 5);
+DateTime khordad_15 = DateTime(2025, 6, 8);
 
 class Controllerdatabase extends GetxController {
   @override
