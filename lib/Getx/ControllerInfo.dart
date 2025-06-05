@@ -69,7 +69,7 @@ class Controllerinfo extends GetxController {
 
   Hearing() async {
     final Uri smsuri = Uri(
-      scheme: 'tell',
+      scheme: 'tel',
       path: Get.find<Controllerinfo>().Phone.value,
     );
     if (await canLaunch(smsuri.toString())) {
