@@ -267,7 +267,10 @@ void DialogOrder(
     builder: (BuildContext context) {
       return AlertDialog(
         title: Text(title),
-        content: Text(description),
+        content: Text(
+          description,
+          textDirection: TextDirection.rtl,
+        ),
         actions: <Widget>[
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,

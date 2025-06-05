@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
+import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -24,6 +25,7 @@ class Controllerrelay extends GetxController {
     final music = AudioPlayer();
     await music.setAsset('assets/music/relay/triger.mp3');
     ONOF(index);
+    Get.find<Controllerhomepage>().Vibrate();
     music.play();
     return '20*${index + 1}*T${TimeTriger[index].value}';
   }
