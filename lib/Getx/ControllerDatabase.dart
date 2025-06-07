@@ -15,7 +15,6 @@ import '/Getx/ControllerSetting.dart';
 import '/Getx/ControllerZon.dart';
 import '/Page/HomePage/HomePage.dart';
 import '/Page/SplashScreen.dart/SplashScreen.dart';
-import '../Page/AddDevice/AddDevice2.dart';
 
 String CodeSplite = '#%%!%%!#';
 DateTime khordad_15 = DateTime(2025, 6, 5);
@@ -41,9 +40,9 @@ class Controllerdatabase extends GetxController {
     if (Devs.length != 0) {
       if (splahscreen) {
         DateTime timenow = DateTime.now();
-        if (khordad_15.isAfter(timenow)) {
+       
           Get.off(() => const Splashscreen());
-        }
+        
       }
       DevLX model = Devs[i];
       String id = model.id;
