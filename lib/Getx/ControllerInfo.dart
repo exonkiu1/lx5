@@ -19,11 +19,14 @@ class Controllerinfo extends GetxController {
   RxString Oprator = ''.obs;
   RxString id = ''.obs;
   RxInt Simcard = 0.obs;
+  RxString Model = 'LX PRO'.obs;
   GetInfo(DevLX model) {
     id.value = model.id;
     Name.value = model.Name;
     Phone.value = model.Phone;
     Oprator.value = model.Oprator;
+    Model.value  = model.Model;
+    print('model: ${Model.value}');
     Charge.value = int.parse(model.Charge);
     Simcard.value = int.parse(model.Simcard);
   }

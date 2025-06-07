@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Page/AddDevice/AddDevice.dart';
 import 'package:lx/Page/Contact/Contact.dart';
-import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/PasswordDevice/PasswordDevice.dart';
 import 'package:lx/Page/Remote/Remote.dart';
 import 'package:lx/Page/SettingDev/SettingDevice.dart';
@@ -74,5 +73,4 @@ Map<String, Map<String, dynamic>> PageOptions = {
   'تنظیمات دستگاه': {'image': 'setting-2-2', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'lock', 'page': Passworddevice()},
-  'راهنمایی': {'image': 'info-circle', 'page': Help()},
 };

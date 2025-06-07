@@ -1,6 +1,9 @@
 import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
+import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Stt/ControllerSttAddDevice.dart';
+import 'package:lx/Stt/MainStt.dart';
 import '/DateBase/DataBase.dart';
 import '/DateBase/Model.dart';
 import '/Getx/ControllerContact.dart';
@@ -61,6 +64,7 @@ class Controllerdatabase extends GetxController {
   RxInt sim = 0.obs;
   ///
   AddLx() async {
+    Get.find<Controllersttadddevice>().PlayMusic('greeting');
     var rand = Random();
     int id = rand.nextInt(1000000);
     DevLX model = DevLX(
@@ -68,7 +72,8 @@ class Controllerdatabase extends GetxController {
         Phone: tfPhone.text,
         Name: tfName.text,
         Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
-        Simcard: sim.value.toString()
+        Simcard: sim.value.toString(),
+        Model: Get.find<Controllerother>().Model.value==''?'LX PRO':Get.find<Controllerother>().Model.value
         );
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
@@ -92,6 +97,7 @@ class Controllerdatabase extends GetxController {
       Charge: Get.find<Controllerinfo>().Charge.value.toString(),
       Pass: Get.find<Controllerpassword>().PasswordDev.value,
       Simcard: Get.find<Controllerinfo>().Simcard.value.toString(),
+      Model: Get.find<Controllerinfo>().Model.value,
       //info
       //Setting
       DevLanguage: Get.find<Controllersetting>().DevLanguage.value,

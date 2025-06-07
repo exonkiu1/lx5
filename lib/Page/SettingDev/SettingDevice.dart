@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
+import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerSetting.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
@@ -16,37 +17,34 @@ class Settingdevice extends StatelessWidget {
     return Scaffold(
       appBar: appBar(title: 'تنظیمات دستگاه'),
       body: const Backgroundview(
-          child: SingleChildScrollView(
-        child: Column(
-          children: [
-            SizedBox(
-              height: 30,
-            ),
-            WidgetLangDev(),
-            WidgetEstablishingContactDuringPowerOutage(),
-            WidgetSemiActiveStatusRemote(),
-            WidgetAddRemote(),
-            //  WidgetDeleteRemote(),
-            WidgetAddSencor(),
-            WidgetDeleteSencor(),
-            //  WidgetPeriodicBatteryReport(),
-            //  WidgetInventoryReport(),
-            WidgetAlarmTime(),
-            WidgetModeAlarm(),
-            WidgetLine(),
-            WidgetDeleteDev(),
-            WidgetReset()
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              SizedBox(height: 30),
+              WidgetLangDev(),
+              WidgetEstablishingContactDuringPowerOutage(),
+              WidgetSemiActiveStatusRemote(),
+              WidgetAddRemote(),
+              WidgetDeleteRemote(),
+              WidgetAddSencor(),
+              WidgetDeleteSencor(),
+              WidgetPeriodicBatteryReport(),
+               WidgetInventoryReport(),
+              WidgetAlarmTime(),
+              WidgetModeAlarm(),
+              WidgetLine(),
+              WidgetDeleteDev(),
+              WidgetReset(),
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 }
 
 class WidgetReset extends StatelessWidget {
-  const WidgetReset({
-    super.key,
-  });
+  const WidgetReset({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -57,15 +55,16 @@ class WidgetReset extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogOrder(
-                context, () => Get.find<Controllerdatabase>().ResetDevLx(),
-                description: 'از بازگرداندن تنظیمات نرم افزار مطمعن هستید؟'),
+            onTap:
+                () => DialogOrder(
+                  context,
+                  () => Get.find<Controllerdatabase>().ResetDevLx(),
+                  description: 'از بازگرداندن تنظیمات نرم افزار مطمعن هستید؟',
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
           Text('بازگردانی تنظیمات و ویرایشات نرم افزار'),
@@ -76,16 +75,17 @@ class WidgetReset extends StatelessWidget {
 }
 
 class WidgetDeleteDev extends StatelessWidget {
-  const WidgetDeleteDev({
-    super.key,
-  });
+  const WidgetDeleteDev({super.key});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => DialogOrder(
-          context, () => Get.find<Controllerdatabase>().DeleteDevLx(),
-          description: 'از حذف دستگاه مطمعن هستید؟'),
+      onTap:
+          () => DialogOrder(
+            context,
+            () => Get.find<Controllerdatabase>().DeleteDevLx(),
+            description: 'از حذف دستگاه مطمعن هستید؟',
+          ),
       child: Container(
         width: Get.width * 0.9,
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -95,9 +95,7 @@ class WidgetDeleteDev extends StatelessWidget {
             Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
             Text('حذف دستگاه'),
           ],
@@ -108,9 +106,7 @@ class WidgetDeleteDev extends StatelessWidget {
 }
 
 class WidgetLine extends StatelessWidget {
-  const WidgetLine({
-    super.key,
-  });
+  const WidgetLine({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -118,17 +114,13 @@ class WidgetLine extends StatelessWidget {
       width: Get.width * 0.9,
       margin: EdgeInsets.symmetric(vertical: 10),
       height: 5,
-      decoration: BoxDecoration(
-        color: color1,
-      ),
+      decoration: BoxDecoration(color: color1),
     );
   }
 }
 
 class WidgetModeAlarm extends StatelessWidget {
-  const WidgetModeAlarm({
-    super.key,
-  });
+  const WidgetModeAlarm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -143,26 +135,33 @@ class WidgetModeAlarm extends StatelessWidget {
             decoration: decoration(),
             child: Obx(() {
               return DropdownButton(
-                  value: Get.find<Controllersetting>().AlarmMode.value,
-                  dropdownColor: Colors.black,
-                  items: List.generate(
-                          ModeAlarm.length, (i) => ModeAlarm.keys.elementAt(i))
-                      .map<DropdownMenuItem<String>>(
+                value: Get.find<Controllersetting>().AlarmMode.value,
+                dropdownColor: Colors.black,
+                items:
+                    List.generate(
+                          ModeAlarm.length,
+                          (i) => ModeAlarm.keys.elementAt(i),
+                        )
+                        .map<DropdownMenuItem<String>>(
                           (String value) => DropdownMenuItem(
-                                child: Text(
-                                  '${value}',
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                value: value,
-                              ))
-                      .toList(),
-                  onChanged: (value) => SendOrder(
+                            child: Text(
+                              '${value}',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            value: value,
+                          ),
+                        )
+                        .toList(),
+                onChanged:
+                    (value) => SendOrder(
                       context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeModeAlarm(value!)));
+                      () =>
+                          Get.find<Controllersetting>().ChangeModeAlarm(value!),
+                    ),
+              );
             }),
           ),
-          Text('مود آلارم')
+          Text('مود آلارم'),
         ],
       ),
     );
@@ -170,9 +169,7 @@ class WidgetModeAlarm extends StatelessWidget {
 }
 
 class WidgetAlarmTime extends StatelessWidget {
-  const WidgetAlarmTime({
-    super.key,
-  });
+  const WidgetAlarmTime({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -183,12 +180,15 @@ class WidgetAlarmTime extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => DialogTextFieldSms(
-                context, () => Get.find<Controllersetting>().ChangeAlarmTime(),
-                sms: true,
-                description: 'زمان آژیر',
-                maxlenght: 2,
-                KeyboardInt: true),
+            onTap:
+                () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeAlarmTime(),
+                  sms: true,
+                  description: 'زمان آژیر',
+                  maxlenght: 2,
+                  KeyboardInt: true,
+                ),
             child: Container(
               width: Get.width * 0.5,
               decoration: decoration(),
@@ -198,15 +198,16 @@ class WidgetAlarmTime extends StatelessWidget {
                     Text('ویرایش'),
                     Obx(() {
                       return Text(
-                          'مقدار فعلی :${Get.find<Controllersetting>().AlarmTime.value}دقیقه'
-                              .toPersianDigit());
-                    })
+                        'مقدار فعلی :${Get.find<Controllersetting>().AlarmTime.value}دقیقه'
+                            .toPersianDigit(),
+                      );
+                    }),
                   ],
                 ),
               ),
             ),
           ),
-          Text('زمان آژیر')
+          Text('زمان آژیر'),
         ],
       ),
     );
@@ -214,99 +215,115 @@ class WidgetAlarmTime extends StatelessWidget {
 }
 
 class WidgetInventoryReport extends StatelessWidget {
-  const WidgetInventoryReport({
-    super.key,
-  });
+  const WidgetInventoryReport({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width * 0.9,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: () => DialogTextFieldSms(context,
-                () => Get.find<Controllersetting>().ChangeInventoryReport(),
-                sms: true,
-                description: 'گزارش دوره ای موجودی',
-                maxlenght: 2,
-                KeyboardInt: true),
-            child: Container(
-              width: Get.width * 0.5,
-              decoration: decoration(),
-              child: Center(
-                child: Column(
-                  children: [
-                    Text('ویرایش'),
-                    Obx(() {
-                      return Text(
-                          'مقدار فعلی : ${Get.find<Controllersetting>().InventoryReport.value}پیامک'
-                              .toPersianDigit());
-                    })
-                  ],
+    return Obx(
+      () {
+        return Visibility(
+                  visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+        
+          child: Container(
+            width: Get.width * 0.9,
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                InkWell(
+                  onTap:
+                      () => DialogTextFieldSms(
+                        context,
+                        () => Get.find<Controllersetting>().ChangeInventoryReport(),
+                        sms: true,
+                        description: 'گزارش دوره ای موجودی',
+                        maxlenght: 2,
+                        KeyboardInt: true,
+                      ),
+                  child: Container(
+                    width: Get.width * 0.5,
+                    decoration: decoration(),
+                    child: Center(
+                      child: Column(
+                        children: [
+                          Text('ویرایش'),
+                          Obx(() {
+                            return Text(
+                              'مقدار فعلی : ${Get.find<Controllersetting>().InventoryReport.value}پیامک'
+                                  .toPersianDigit(),
+                            );
+                          }),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
-              ),
+                Text('گزارش دوره ای موجودی'),
+              ],
             ),
           ),
-          Text('گزارش دوره ای موجودی')
-        ],
-      ),
+        );
+      }
     );
   }
 }
 
 class WidgetPeriodicBatteryReport extends StatelessWidget {
-  const WidgetPeriodicBatteryReport({
-    super.key,
-  });
+  const WidgetPeriodicBatteryReport({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width * 0.9,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: () => DialogTextFieldSms(
-                context,
-                () =>
-                    Get.find<Controllersetting>().ChangePeriodicBatteryReport(),
-                sms: true,
-                description: 'گزارش دوره ای باتری',
-                maxlenght: 2,
-                KeyboardInt: true),
-            child: Container(
-              width: Get.width * 0.5,
-              decoration: decoration(),
-              child: Center(
-                child: Column(
-                  children: [
-                    Text('ویرایش'),
-                    Obx(() {
-                      return Text(
-                          'مقدار فعلی:${Get.find<Controllersetting>().PeriodicBatteryReport.value}پیامک'
-                              .toPersianDigit());
-                    })
-                  ],
+    return Obx(() {
+      return Visibility(
+        visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+
+        child: Container(
+          width: Get.width * 0.9,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap:
+                    () => DialogTextFieldSms(
+                      context,
+                      () =>
+                          Get.find<Controllersetting>()
+                              .ChangePeriodicBatteryReport(),
+                      sms: true,
+                      description: 'گزارش دوره ای باتری',
+                      maxlenght: 2,
+                      KeyboardInt: true,
+                    ),
+                child: Container(
+                  width: Get.width * 0.5,
+                  decoration: decoration(),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text('ویرایش'),
+                        Obx(() {
+                          return Text(
+                            'مقدار فعلی:${Get.find<Controllersetting>().PeriodicBatteryReport.value}پیامک'
+                                .toPersianDigit(),
+                          );
+                        }),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-            ),
+              Text('گزارش دوره ای باتری'),
+            ],
           ),
-          Text('گزارش دوره ای باتری')
-        ],
-      ),
-    );
+        ),
+      );
+    });
   }
 }
 
 class WidgetDeleteSencor extends StatelessWidget {
-  const WidgetDeleteSencor({
-    super.key,
-  });
+  const WidgetDeleteSencor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -317,19 +334,18 @@ class WidgetDeleteSencor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => SendOrder(
-              context,
-              () => Get.find<Controllersetting>().ChangeDeleteSencor(),
-            ),
+            onTap:
+                () => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeDeleteSencor(),
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('حذف سنسور بی سیم از راه دور')
+          Text('حذف سنسور بی سیم از راه دور'),
         ],
       ),
     );
@@ -337,9 +353,7 @@ class WidgetDeleteSencor extends StatelessWidget {
 }
 
 class WidgetAddSencor extends StatelessWidget {
-  const WidgetAddSencor({
-    super.key,
-  });
+  const WidgetAddSencor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -350,17 +364,18 @@ class WidgetAddSencor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => SendOrder(
-                context, () => Get.find<Controllersetting>().ChangeAddSencor()),
+            onTap:
+                () => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeAddSencor(),
+                ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('اضافه کردن سنسور بیسیم از راه دور')
+          Text('اضافه کردن سنسور بیسیم از راه دور'),
         ],
       ),
     );
@@ -368,41 +383,43 @@ class WidgetAddSencor extends StatelessWidget {
 }
 
 class WidgetDeleteRemote extends StatelessWidget {
-  const WidgetDeleteRemote({
-    super.key,
-  });
+  const WidgetDeleteRemote({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      width: Get.width * 0.9,
-      margin: EdgeInsets.symmetric(vertical: 10),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: () => DialogTextFieldSms(context,
-                () => Get.find<Controllersetting>().ChangeDeleteRemote(),
-                sms: true),
-            child: Container(
-              width: Get.width * 0.25,
-              decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
+    return Obx(() {
+      return Visibility(
+        visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+        child: Container(
+          width: Get.width * 0.9,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap:
+                    () => DialogTextFieldSms(
+                      context,
+                      () => Get.find<Controllersetting>().ChangeDeleteRemote(),
+                      sms: true,
+                    ),
+                child: Container(
+                  width: Get.width * 0.25,
+                  decoration: decoration(),
+                  child: Center(child: Text('اعمال')),
+                ),
               ),
-            ),
+              Text('حذف ریموت از راه دور'),
+            ],
           ),
-          Text('حذف ریموت از راه دور')
-        ],
-      ),
-    );
+        ),
+      );
+    });
   }
 }
 
 class WidgetAddRemote extends StatelessWidget {
-  const WidgetAddRemote({
-    super.key,
-  });
+  const WidgetAddRemote({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -412,18 +429,19 @@ class WidgetAddRemote extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap: () => SendOrder(
-                context, () => Get.find<Controllersetting>().ChangeAddRemote()),
+            onTap:
+                () => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeAddRemote(),
+                ),
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               width: Get.width * 0.25,
               decoration: decoration(),
-              child: Center(
-                child: Text('اعمال'),
-              ),
+              child: Center(child: Text('اعمال')),
             ),
           ),
-          Text('اضافه کردن ریموت از راه دور')
+          Text('اضافه کردن ریموت از راه دور'),
         ],
       ),
     );
@@ -431,9 +449,7 @@ class WidgetAddRemote extends StatelessWidget {
 }
 
 class WidgetSemiActiveStatusRemote extends StatelessWidget {
-  const WidgetSemiActiveStatusRemote({
-    super.key,
-  });
+  const WidgetSemiActiveStatusRemote({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -449,40 +465,44 @@ class WidgetSemiActiveStatusRemote extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeSemiActiveStatusRemote('true')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeSemiActiveStatusRemote('true'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .SemiActiveStatusRemote
-                                  .value ==
-                              'true'),
-                      child: Center(
-                        child: Text('فعال'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .SemiActiveStatusRemote
+                                .value ==
+                            'true',
                       ),
+                      child: Center(child: Text('فعال')),
                     );
                   }),
                 ),
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeSemiActiveStatusRemote('false')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeSemiActiveStatusRemote('false'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .SemiActiveStatusRemote
-                                  .value ==
-                              'false'),
-                      child: Center(
-                        child: Text('غیرفعال'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .SemiActiveStatusRemote
+                                .value ==
+                            'false',
                       ),
+                      child: Center(child: Text('غیرفعال')),
                     );
                   }),
                 ),
@@ -497,9 +517,7 @@ class WidgetSemiActiveStatusRemote extends StatelessWidget {
 }
 
 class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
-  const WidgetEstablishingContactDuringPowerOutage({
-    super.key,
-  });
+  const WidgetEstablishingContactDuringPowerOutage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -515,40 +533,46 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeEstablishingContactDuringPowerOutage('true')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeEstablishingContactDuringPowerOutage('true'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .EstablishingContactDuringPowerOutage
-                                  .value ==
-                              'on'),
-                      child: Center(
-                        child: Text('فعال'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .EstablishingContactDuringPowerOutage
+                                .value ==
+                            'on',
                       ),
+                      child: Center(child: Text('فعال')),
                     );
                   }),
                 ),
                 InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllersetting>()
-                          .ChangeEstablishingContactDuringPowerOutage('false')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeEstablishingContactDuringPowerOutage(
+                              'false',
+                            ),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color: Get.find<Controllersetting>()
-                                  .EstablishingContactDuringPowerOutage
-                                  .value ==
-                              'false'),
-                      child: Center(
-                        child: Text('غیرفعال'),
+                        color:
+                            Get.find<Controllersetting>()
+                                .EstablishingContactDuringPowerOutage
+                                .value ==
+                            'false',
                       ),
+                      child: Center(child: Text('غیرفعال')),
                     );
                   }),
                 ),
@@ -563,9 +587,7 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
 }
 
 class WidgetLangDev extends StatelessWidget {
-  const WidgetLangDev({
-    super.key,
-  });
+  const WidgetLangDev({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -581,34 +603,40 @@ class WidgetLangDev extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap: () => SendOrder(context,
-                      () => Get.find<Controllersetting>().ChangeLangDev('per')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () =>
+                            Get.find<Controllersetting>().ChangeLangDev('per'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color:
-                              Get.find<Controllersetting>().DevLanguage.value ==
-                                  'per'),
-                      child: Center(
-                        child: Text('فارسی'),
+                        color:
+                            Get.find<Controllersetting>().DevLanguage.value ==
+                            'per',
                       ),
+                      child: Center(child: Text('فارسی')),
                     );
                   }),
                 ),
                 InkWell(
-                  onTap: () => SendOrder(context,
-                      () => Get.find<Controllersetting>().ChangeLangDev('per')),
+                  onTap:
+                      () => SendOrder(
+                        context,
+                        () =>
+                            Get.find<Controllersetting>().ChangeLangDev('per'),
+                      ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                          color:
-                              Get.find<Controllersetting>().DevLanguage.value ==
-                                  'eng'),
-                      child: Center(
-                        child: Text('انگلیسی'),
+                        color:
+                            Get.find<Controllersetting>().DevLanguage.value ==
+                            'eng',
                       ),
+                      child: Center(child: Text('انگلیسی')),
                     );
                   }),
                 ),

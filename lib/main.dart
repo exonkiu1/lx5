@@ -43,6 +43,7 @@ class MyApp extends StatelessWidget {
         primaryTextTheme: const TextTheme(
           bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A'),
         ),
+      
         textTheme: const TextTheme(
           bodyMedium: TextStyle(color: Colors.white, fontFamily: 'A'),
           bodySmall: TextStyle(color: Colors.white, fontFamily: 'A'),

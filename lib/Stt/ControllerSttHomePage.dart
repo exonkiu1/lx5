@@ -1,6 +1,7 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
+import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/Page/Relay/Relay.dart';
 import 'package:lx/SendOrder.dart';
@@ -13,9 +14,9 @@ class Controllerstthomepage extends GetxController {
     print('hi homepage');
     String val = Get.find<Controllerstt>().text.value;
     Get.find<Controllerstt>().text.value = '';
-    for (var i = 0; i < PageOptions2.length; i++) {
-      if (PageOptions2.keys.elementAt(i).contains(val)) {
-        Get.to(PageOptions2.values.elementAt(i)['page']);
+    for (var i = 0; i < PageModel[Get.find<Controllerinfo>().Model.value]!.length; i++) {
+      if (PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i).contains(val)) {
+        Get.to(PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['page']);
       }
     }
     if (val.contains('رله')) {

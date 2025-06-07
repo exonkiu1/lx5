@@ -14,6 +14,7 @@ class Controllerother extends GetxController {
   RxString TypeInquiry = ''.obs, TextInuiry = ''.obs;
   RxInt DelyOrder = 0.obs;
   RxBool onceSnackbar = false.obs;
+  RxString Model = ''.obs;
   StartDelyOrder() async {
     DelyOrder.value = 10;
     for (var i = 0; i < 10; i++) {

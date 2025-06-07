@@ -3,6 +3,7 @@ import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ControllerDatabase.dart';
 
@@ -73,13 +74,27 @@ class Controllercontact extends GetxController {
   }
 
   InquiryContact() {
-    List<String> ListContact = Get.find<Controllerother>()
-        .TextInuiry
-        .value
+    List<String> ListContact = Get.find<Controllerother>().TextInuiry.value
         .substring(1)
         .replaceAll('#', '')
         .split('*');
     print(ListContact.length);
+    if (Get.find<Controllerinfo>().Model.value == 'LX PRO') {
+      inquiuryContactLXPRO(ListContact);
+    } else {
+      InquiryContactLX1000(ListContact);
+    }
+    UpdateContact();
+  }
+
+  InquiryContactLX1000(List<String> ListContact) {
+    for (var i = 0; i < ListContact.length; i++) {
+      TfPhone[i].text = ListContact[i].substring(0, 11);
+      Level[i].value = ListContact[i][11];
+    }
+  }
+
+  inquiuryContactLXPRO(List<String> ListContact) {
     List_Contact.value = [];
     for (var i = 0; i < ListContact.length; i++) {
       int j = 0;
@@ -96,7 +111,6 @@ class Controllercontact extends GetxController {
       }
       List_Contact.add(j);
     }
-    UpdateContact();
   }
 
   InquiryPart() {
@@ -115,24 +129,36 @@ class Controllercontact extends GetxController {
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
     List<String> copy_contact = await prefs.getStringList('${id}contact') ?? [];
 
-    TfName.value = List.generate(
-        lenghtContact,
-        (i) => TextEditingController(
-            text: copy_contact[i].split(CodeSplite)[0])).obs;
-    TfPhone.value = List.generate(
-        lenghtContact,
-        (i) => TextEditingController(
-            text: copy_contact[i].split(CodeSplite)[1])).obs;
-    Level.value = List.generate(
-        lenghtContact, (i) => copy_contact[i].split(CodeSplite)[2].obs).obs;
+    TfName.value =
+        List.generate(
+          lenghtContact,
+          (i) =>
+              TextEditingController(text: copy_contact[i].split(CodeSplite)[0]),
+        ).obs;
+    TfPhone.value =
+        List.generate(
+          lenghtContact,
+          (i) =>
+              TextEditingController(text: copy_contact[i].split(CodeSplite)[1]),
+        ).obs;
+    Level.value =
+        List.generate(
+          lenghtContact,
+          (i) => copy_contact[i].split(CodeSplite)[2].obs,
+        ).obs;
 
-    Part.value = List.generate(
-        lenghtContact, (i) => copy_contact[i].split(CodeSplite)[3].obs).obs;
+    Part.value =
+        List.generate(
+          lenghtContact,
+          (i) => copy_contact[i].split(CodeSplite)[3].obs,
+        ).obs;
     MainContact.value = await prefs.getBool('MainContact') ?? false;
     List<String> copylistcontact =
         await prefs.getStringList('${id}ListContact') ?? [];
     List_Contact.value = List.generate(
-        copylistcontact.length, (i) => int.parse(copylistcontact[i]));
+      copylistcontact.length,
+      (i) => int.parse(copylistcontact[i]),
+    );
   }
 
   AddContact(String id) async {
@@ -161,14 +187,18 @@ class Controllercontact extends GetxController {
     List<String> valueContact = [];
     for (var i = 0; i < lenghtContact; i++) {
       valueContact.add(
-          '${TfName[i].text}${CodeSplite}${TfPhone[i].text}${CodeSplite}${Level[i].value}${CodeSplite}${Part[i].value}');
+        '${TfName[i].text}${CodeSplite}${TfPhone[i].text}${CodeSplite}${Level[i].value}${CodeSplite}${Part[i].value}',
+      );
     }
 
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
     await prefs.setStringList(
-        '${Get.find<Controllerinfo>().id.value}ListContact',
-        List.generate(List_Contact.length, (i) => '${List_Contact[i]}'));
+      '${Get.find<Controllerinfo>().id.value}ListContact',
+      List.generate(List_Contact.length, (i) => '${List_Contact[i]}'),
+    );
     await prefs.setStringList(
-        '${Get.find<Controllerinfo>().id.value}contact', valueContact);
+      '${Get.find<Controllerinfo>().id.value}contact',
+      valueContact,
+    );
   }
 }

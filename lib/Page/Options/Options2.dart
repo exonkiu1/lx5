@@ -1,13 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Page/AddDevice/AddDevice2.dart';
+import 'package:lx/Page/Contact/ContactLx1000.dart';
+import 'package:lx/Page/Help/HelpLX1000.dart';
+import 'package:lx/Page/Help/HelpLXPRO.dart';
 import 'package:lx/Page/Options/ControllerOptions.dart';
 import 'package:lx/Page/Options/Options.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/Page/AddDevice/AddDevice.dart';
 import 'package:lx/Page/Contact/Contact.dart';
-import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/PasswordDevice/PasswordDevice.dart';
 import 'package:lx/Page/Remote/Remote.dart';
 import 'package:lx/Page/SettingDev/SettingDevice.dart';
@@ -44,12 +47,18 @@ class _Options2State extends State<Options2> {
       bottomNavigationBar: SelectedDevLx(),
       extendBody: true,
       body: Backgroundview(
-          child: Center(
-        child: Wrap(
-          children: List.generate(
-              PageOptions2.length,
-              (i) => InkWell(
-                  onTap: () => Get.to(PageOptions2.values.elementAt(i)['page']),
+        child: Center(
+          child: Obx(() {
+            return Wrap(
+              children: List.generate(
+                PageModel[Get.find<Controllerinfo>().Model.value]!.length,
+                (i) => InkWell(
+                  onTap:
+                      () => Get.to(
+                        PageModel[Get.find<Controllerinfo>().Model.value]!
+                            .values
+                            .elementAt(i)['page'],
+                      ),
                   child: Obx(() {
                     return Opacity(
                       opacity:
@@ -60,26 +69,34 @@ class _Options2State extends State<Options2> {
                         child: Center(
                           child: Column(
                             children: [
-                              Image.asset(
-                                'assets/image/options2/${PageOptions2.values.elementAt(i)['image']}.png',
-                                width: Get.width * 0.2,
-                              ),
-                              Text(
-                                '${PageOptions2.keys.elementAt(i)}',
-                              ),
+                              Obx(() {
+                                return Image.asset(
+                                  'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
+                                  width: Get.width * 0.2,
+                                );
+                              }),
+                              Obx(() {
+                                return Text(
+                                  '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
+                                );
+                              }),
                             ],
                           ),
                         ),
                       ),
                     );
-                  }))),
+                  }),
+                ),
+              ),
+            );
+          }),
         ),
-      )),
+      ),
     );
   }
 }
 
-Map<String, Map<String, dynamic>> PageOptions2 = {
+Map<String, Map<String, dynamic>> PageOptionsLxPro = {
   'افزودن دستگاه': {'image': 'add', 'page': Adddevice2()},
   'مخاطبین': {'image': 'contact', 'page': Contacts()},
   'زون ها': {'image': 'eye', 'page': Zon()},
@@ -88,5 +105,20 @@ Map<String, Map<String, dynamic>> PageOptions2 = {
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
   'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
-  'راهنمایی': {'image': 'help', 'page': Help()},
+  'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
+};
+Map<String, Map<String, dynamic>> PageOptionsLx1000 = {
+  'افزودن دستگاه': {'image': 'add', 'page': Adddevice2()},
+  'مخاطبین': {'image': 'contact', 'page': ContactsLX1000()},
+  'زون ها': {'image': 'eye', 'page': Zon()},
+  'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
+  'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
+  'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
+  'راهنمایی': {'image': 'help', 'page': HelpLX1000()},
+};
+
+Map<String, Map<String, Map<String, dynamic>>> PageModel = {
+  'LX PRO': PageOptionsLxPro,
+  'LX 1000': PageOptionsLx1000,
+  'UX 80': PageOptionsLx1000,
 };

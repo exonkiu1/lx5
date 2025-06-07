@@ -35,7 +35,7 @@ class DevLX {
       required this.Phone,
       required this.Name,
       required this.Oprator,
-      this.Model = '1000',
+      this.Model = 'pro',
       this.StateDev = 'on',
       this.Pass = '0000',
       this.Charge = '0',
