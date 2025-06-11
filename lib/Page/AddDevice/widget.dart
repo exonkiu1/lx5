@@ -51,16 +51,15 @@ class WidgetSim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {
-        Get.find<Controllerdatabase>().sim.value = sim;
-      },
+      onTap: () => Get.find<Controllerdatabase>().sim.value = sim.toString(),
       child: Obx(() {
         return Container(
           width: sim >= 0 ? Get.width * 0.3 : Get.width * 0.5,
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(vertical: 5),
           decoration: decoration(
-              color: Get.find<Controllerdatabase>().sim.value == sim),
+              color:
+                  Get.find<Controllerdatabase>().sim.value == sim.toString()),
           child: Center(child: Text(sim >= 0 ? 'sim ${sim + 1}' : name)),
         );
       }),

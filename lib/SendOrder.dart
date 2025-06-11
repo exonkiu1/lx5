@@ -249,9 +249,9 @@ Future<void> SendSms(BuildContext context, String code) async {
         to: '${Get.find<Controllerinfo>().Phone.value}',
         message:
             '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
-        subscriptionId: Get.find<Controllerinfo>().Simcard.value == -1
+        subscriptionId: Get.find<Controllerinfo>().Simcard.value == '-1'
             ? null
-            : Get.find<Controllerinfo>().Simcard.value);
+            : int.parse(Get.find<Controllerinfo>().Simcard.value));
   } else {
     String uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
@@ -328,7 +328,9 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
         to: '${Get.find<Controllerinfo>().Phone}',
         message:
             '*${Get.find<Controllerpassword>().tf1.text}*40*${Get.find<Controllerpassword>().tf3.text}#',
-        subscriptionId: Get.find<Controllerinfo>().Simcard.value);
+        subscriptionId: Get.find<Controllerinfo>().Simcard.value == '-1'
+            ? null
+            : int.parse(Get.find<Controllerinfo>().Simcard.value));
   } else {
     String uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';

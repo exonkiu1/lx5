@@ -61,7 +61,7 @@ class Controllerdatabase extends GetxController {
   ///
   TextEditingController tfName = TextEditingController(),
       tfPhone = TextEditingController();
-  RxInt sim = 0.obs;
+  RxString sim = '-1.0'.obs;
   ///
   AddLx() async {
     Get.find<Controllersttadddevice>().PlayMusic('greeting');
@@ -72,7 +72,7 @@ class Controllerdatabase extends GetxController {
         Phone: tfPhone.text,
         Name: tfName.text,
         Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
-        Simcard: sim.value.toString(),
+        Simcard: sim.value,
         Model: Get.find<Controllerother>().Model.value==''?'LX PRO':Get.find<Controllerother>().Model.value
         );
     await DatabaseLX.instance.AddDev(model);
@@ -143,6 +143,7 @@ class Controllerdatabase extends GetxController {
       Name: Get.find<Controllerinfo>().Name.value,
       StateDev: Get.find<Controllerhomepage>().StateDev.value,
       Oprator: Get.find<Controllerinfo>().Oprator.value,
+      Model: Get.find<Controllerinfo>().Model.value.toString()
     );
     DatabaseLX.instance.UpdateDev(model);
     Get.find<Controllercontact>().AddContact(id);
