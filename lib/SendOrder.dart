@@ -249,7 +249,9 @@ Future<void> SendSms(BuildContext context, String code) async {
         to: '${Get.find<Controllerinfo>().Phone.value}',
         message:
             '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
-        subscriptionId: Get.find<Controllerinfo>().Simcard.value);
+        subscriptionId: Get.find<Controllerinfo>().Simcard.value == -1
+            ? null
+            : Get.find<Controllerinfo>().Simcard.value);
   } else {
     String uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
