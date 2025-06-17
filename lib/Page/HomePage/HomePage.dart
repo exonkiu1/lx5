@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
-import 'package:just_audio/just_audio.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/Page/Options/Options2.dart';
-
 import 'package:lx/Page/Relay/Relay.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/Stt/MainStt.dart';
@@ -25,9 +23,11 @@ class _HomepageState extends State<Homepage> {
         width: Get.width,
         height: Get.height,
         decoration: const BoxDecoration(
-            image: DecorationImage(
-                image: AssetImage('assets/image/homepage/bg.png'),
-                fit: BoxFit.cover)),
+          image: DecorationImage(
+            image: AssetImage('assets/image/homepage/bg.png'),
+            fit: BoxFit.cover,
+          ),
+        ),
         child: SafeArea(
           child: Stack(
             children: [
@@ -68,17 +68,21 @@ class _HomepageState extends State<Homepage> {
                                 Get.find<Controllerhomepage>().StartSpead();
                               },
                               child: SizedBox(
-                                  height: Get.height * 0.37,
-                                  child: Obx(() {
-                                    return Transform.rotate(
-                                        angle: Get.find<Controllerhomepage>()
-                                                .Degree
-                                                .value *
-                                            math.pi /
-                                            180,
-                                        child: Image.asset(
-                                            'assets/image/homepage/earth.png'));
-                                  })),
+                                height: Get.height * 0.37,
+                                child: Obx(() {
+                                  return Transform.rotate(
+                                    angle:
+                                        Get.find<Controllerhomepage>()
+                                            .Degree
+                                            .value *
+                                        math.pi /
+                                        180,
+                                    child: Image.asset(
+                                      'assets/image/homepage/earth.png',
+                                    ),
+                                  );
+                                }),
+                              ),
                             ),
                           ),
                         ),
@@ -96,7 +100,7 @@ class _HomepageState extends State<Homepage> {
                             ),
                           ],
                         ),
-                        WidgetSpaceShip()
+                        WidgetSpaceShip(),
                       ],
                     ),
                   ),
@@ -104,26 +108,30 @@ class _HomepageState extends State<Homepage> {
                     width: Get.width * 0.8,
                     padding: EdgeInsets.symmetric(horizontal: 3, vertical: 5),
                     decoration: BoxDecoration(
-                        color: Colors.grey,
-                        border: Border.all(color: Colors.grey, width: 5),
-                        borderRadius: BorderRadius.circular(10)),
+                      color: Colors.grey,
+                      border: Border.all(color: Colors.grey, width: 5),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
                     child: Container(
                       decoration: BoxDecoration(
-                          color: Colors.grey,
-                          boxShadow: [
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                offset: Offset(3, -5),
-                                blurRadius: 3,
-                                spreadRadius: 3),
-                            BoxShadow(
-                                color: Colors.black.withOpacity(0.5),
-                                offset: Offset(-3, 5),
-                                blurRadius: 3,
-                                spreadRadius: 3)
-                          ],
-                          border: Border.all(color: Colors.grey, width: 5),
-                          borderRadius: BorderRadius.circular(10)),
+                        color: Colors.grey,
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(3, -5),
+                            blurRadius: 3,
+                            spreadRadius: 3,
+                          ),
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            offset: Offset(-3, 5),
+                            blurRadius: 3,
+                            spreadRadius: 3,
+                          ),
+                        ],
+                        border: Border.all(color: Colors.grey, width: 5),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
@@ -133,156 +141,160 @@ class _HomepageState extends State<Homepage> {
                               Stt(context);
                             },
                             child: Container(
-                                padding: EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.red)),
-                                child: Icon(
-                                  Icons.mic,
-                                  size: 30,
-                                )),
+                              padding: EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.red),
+                              ),
+                              child: Icon(Icons.mic, size: 30),
+                            ),
                           ),
                           InkWell(
                             onTap: () => Get.to(() => Inquiry()),
                             child: Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.red)),
-                                child: const Icon(
-                                  Icons.laptop,
-                                  size: 30,
-                                )),
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.red),
+                              ),
+                              child: const Icon(Icons.laptop, size: 30),
+                            ),
                           ),
                           InkWell(
                             onTap: () => Get.to(() => const Relay()),
                             child: Container(
-                                padding: const EdgeInsets.all(4),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(10),
-                                    border: Border.all(color: Colors.red)),
-                                child: const Icon(
-                                  Icons.light,
-                                  size: 30,
-                                )),
+                              padding: const EdgeInsets.all(4),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.red),
+                              ),
+                              child: const Icon(Icons.light, size: 30),
+                            ),
                           ),
                         ],
                       ),
                     ),
                   ),
-                  Container(
+                  Obx(() {
+                    return Container(
                       height: Get.height * 0.4,
                       width: Get.width * 0.58,
-                      decoration: const BoxDecoration(
-                          // color: Colors.red,
-                          image: DecorationImage(
-                        image: AssetImage('assets/image/homepage/remote.png'),
-                      )),
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(
+                            'assets/image/homepage/remote ${Get.find<Controllerhomepage>().Remote.value}.png',
+                          ),
+                        ),
+                      ),
                       child: Column(
                         children: [
-                          SizedBox(
-                            height: Get.height * 0.03,
-                          ),
-                          Container(
-                            width: Get.width * 0.4,
-                            height: Get.height * 0.05,
-                            //  color: Colors.red.withOpacity(0.3),
-                            child: Row(
-                              children: [
-                                Flexible(
-                                    flex: 1,
-                                    child: InkWell(
-                                      onTap: () => Get.find<
-                                              Controllerhomepage>()
-                                          .flySpaceship(
-                                              context,
-                                              () => SendOrder(
-                                                  context,
-                                                  () => Get.find<
-                                                          Controllerhomepage>()
-                                                      .ChangeStateDev('on'),
-                                                  StateDev: true)),
-                                      child: Container(
-                                          //  color: Colors.green.withOpacity(0.3),
-                                          ),
-                                    )),
-                                Flexible(
-                                    flex: 1,
-                                    child: InkWell(
-                                      onTap: () => Get.find<
-                                              Controllerhomepage>()
-                                          .flySpaceship(
-                                              context,
-                                              () => SendOrder(
-                                                  context,
-                                                  () => Get.find<
-                                                          Controllerhomepage>()
-                                                      .ChangeStateDev('silent'),
-                                                  StateDev: true)),
-                                      child: Container(
-                                          //  color: Colors.blue.withOpacity(0.3),
-                                          ),
-                                    )),
-                                Flexible(
-                                    flex: 1,
-                                    child: InkWell(
-                                      onTap: () =>
-                                          Get.find<Controllerhomepage>()
-                                              .flySpaceship(
-                                        context,
-                                        () => SendOrder(
-                                            context,
-                                            () => Get.find<Controllerhomepage>()
-                                                .ChangeStateDev('off'),
-                                            StateDev: true),
-                                      ),
-                                      child: Container(
-                                          //  color: Colors.black.withOpacity(0.3),
-                                          ),
-                                    ))
-                              ],
-                            ),
-                          ),
-                          SizedBox(
-                            height: 20,
-                          ),
+                          SizedBox(height: Get.height * 0.09),
                           Container(
                             width: Get.width * 0.4,
                             height: Get.height * 0.05,
                             child: Row(
                               children: [
                                 Flexible(
-                                    flex: 1,
-                                    child: Container(
-                                        //  color: Colors.green.withOpacity(0.3),
-                                        )),
-                                Flexible(
-                                    flex: 1,
-                                    child: InkWell(
-                                      onTap: () => Get.find<
-                                              Controllerhomepage>()
-                                          .flySpaceship(
+                                  flex: 1,
+                                  child: InkWell(
+                                    onTap:
+                                        () => Get.find<Controllerhomepage>()
+                                            .flySpaceship(
                                               context,
                                               () => SendOrder(
-                                                  context,
-                                                  () => Get.find<
-                                                          Controllerhomepage>()
-                                                      .ChangeStateDev('halfon'),
-                                                  StateDev: true)),
-                                      child: Container(
-                                          //  color: Colors.green.withOpacity(0.3),
-                                          ),
-                                    )),
-                                Flexible(
-                                    flex: 1,
+                                                context,
+                                                () => Get.find<
+                                                      Controllerhomepage
+                                                    >()
+                                                    .ChangeStateDev('on'),
+                                                StateDev: true,
+                                              ),
+                                            ),
                                     child: Container(
-                                        //  color: Colors.green.withOpacity(0.3),
-                                        )),
+                                      //   color: Colors.green.withOpacity(0.3),
+                                    ),
+                                  ),
+                                ),
+
+                                Flexible(
+                                  flex: 1,
+                                  child: InkWell(
+                                    onTap:
+                                        () => Get.find<Controllerhomepage>()
+                                            .flySpaceship(
+                                              context,
+                                              () => SendOrder(
+                                                context,
+                                                () => Get.find<
+                                                      Controllerhomepage
+                                                    >()
+                                                    .ChangeStateDev('off'),
+                                                StateDev: true,
+                                              ),
+                                            ),
+                                    child: Container(
+                                      //   color: Colors.black.withOpacity(0.3),
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
-                          )
+                          ),
+                          SizedBox(height: 20),
+                          Container(
+                            width: Get.width * 0.4,
+                            height: Get.height * 0.05,
+                            child: Row(
+                              children: [
+                                Flexible(
+                                  flex: 1,
+                                  child: InkWell(
+                                    onTap:
+                                        () => Get.find<Controllerhomepage>()
+                                            .flySpaceship(
+                                              context,
+                                              () => SendOrder(
+                                                context,
+                                                () => Get.find<
+                                                      Controllerhomepage
+                                                    >()
+                                                    .ChangeStateDev('halfon'),
+                                                StateDev: true,
+                                              ),
+                                            ),
+                                    child: Container(
+                                      //  color: Colors.green.withOpacity(0.3),
+                                    ),
+                                  ),
+                                ),
+                                Flexible(
+                                  flex: 1,
+                                  child: InkWell(
+                                    onTap:
+                                        () => Get.find<Controllerhomepage>()
+                                            .flySpaceship(
+                                              context,
+                                              () => SendOrder(
+                                                context,
+                                                () => Get.find<
+                                                      Controllerhomepage
+                                                    >()
+                                                    .ChangeStateDev('silent'),
+                                                StateDev: true,
+                                              ),
+                                            ),
+                                    child: Container(
+                                      //  color: const Color.fromARGB(255, 175, 76, 76).withOpacity(0.3),
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
-                      )),
+                      ),
+                    );
+                  }),
                 ],
               ),
             ],
@@ -294,9 +306,7 @@ class _HomepageState extends State<Homepage> {
 }
 
 class WidgetSpaceship2 extends StatelessWidget {
-  const WidgetSpaceship2({
-    super.key,
-  });
+  const WidgetSpaceship2({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -319,9 +329,7 @@ class WidgetSpaceship2 extends StatelessWidget {
 }
 
 class WidgetSpaceShip extends StatefulWidget {
-  const WidgetSpaceShip({
-    super.key,
-  });
+  const WidgetSpaceShip({super.key});
 
   @override
   State<WidgetSpaceShip> createState() => _WidgetSpaceShipState();
@@ -335,19 +343,19 @@ class _WidgetSpaceShipState extends State<WidgetSpaceShip>
   @override
   void initState() {
     _animationController = AnimationController(
-        vsync: this, duration: Duration(milliseconds: 1500));
+      vsync: this,
+      duration: Duration(milliseconds: 1500),
+    );
     StandingDy = Tween(begin: 0.0, end: 10.0).animate(_animationController);
     _animationController.forward();
-    _animationController.addListener(
-      () {
-        if (_animationController.isCompleted) {
-          _animationController.reverse();
-        }
-        if (_animationController.isDismissed) {
-          _animationController.forward();
-        }
-      },
-    );
+    _animationController.addListener(() {
+      if (_animationController.isCompleted) {
+        _animationController.reverse();
+      }
+      if (_animationController.isDismissed) {
+        _animationController.forward();
+      }
+    });
     // TODO: implement initState
     super.initState();
   }
@@ -362,23 +370,26 @@ class _WidgetSpaceShipState extends State<WidgetSpaceShip>
   @override
   Widget build(BuildContext context) {
     return AnimatedBuilder(
-        animation: _animationController,
-        builder: (context, child) {
-          return Align(
-            child: Obx(() {
-              return Transform.translate(
-                offset:
-                    Offset(0, Get.find<Controllerhomepage>().DySpaceship.value),
-                child: Transform.translate(
-                  offset: Offset(0, StandingDy.value),
-                  child: Image.asset(
-                    'assets/image/homepage/Spaceship.png',
-                    height: Get.height * 0.07,
-                  ),
+      animation: _animationController,
+      builder: (context, child) {
+        return Align(
+          child: Obx(() {
+            return Transform.translate(
+              offset: Offset(
+                0,
+                Get.find<Controllerhomepage>().DySpaceship.value,
+              ),
+              child: Transform.translate(
+                offset: Offset(0, StandingDy.value),
+                child: Image.asset(
+                  'assets/image/homepage/Spaceship.png',
+                  height: Get.height * 0.07,
                 ),
-              );
-            }),
-          );
-        });
+              ),
+            );
+          }),
+        );
+      },
+    );
   }
 }

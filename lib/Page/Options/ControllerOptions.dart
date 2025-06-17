@@ -4,7 +4,7 @@ import 'package:lx/Page/Options/Options2.dart';
 
 class Controlleroptions extends GetxController {
   RxList<RxDouble> OpacityOption =
-      List.generate(PageModel[Get.find<Controllerinfo>().Model.value]!.length, (i) => 0.0.obs).obs;
+      List.generate(30, (i) => 0.0.obs).obs;
   StartShowing() async {
     await Future.delayed(Duration(milliseconds: 200));
     for (var i = 0; i < PageModel[Get.find<Controllerinfo>().Model.value]!.length; i++) {
@@ -17,6 +17,6 @@ class Controlleroptions extends GetxController {
   }
 
   DisposeOpacity() {
-    OpacityOption = List.generate(PageModel[Get.find<Controllerinfo>().Model.value]!.length, (i) => 0.0.obs).obs;
+    OpacityOption = List.generate(30, (i) => 0.0.obs).obs;
   }
 }

@@ -368,13 +368,20 @@ class WidgetZon extends StatelessWidget {
                               child: Center(child: Text('${i + 1}')),
                             ),
                           ),
-                          Image.asset(
-                            'assets/image/zon/zon ${i == 8
-                                ? 'd'
-                                : i < 9
-                                ? 'w'
-                                : 'wl'}.png',
-                            height: 50,
+                          Obx(
+                           () {
+                              return Visibility(
+                                  visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
+                                child: Image.asset(
+                                  'assets/image/zon/zon ${i == 8
+                                      ? 'd'
+                                      : i < 9
+                                      ? 'w'
+                                      : 'wl'}.png',
+                                  height: 50,
+                                ),
+                              );
+                            }
                           ),
                           Container(
                             width: Get.width * 0.4,

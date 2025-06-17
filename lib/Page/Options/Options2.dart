@@ -53,16 +53,21 @@ class _Options2State extends State<Options2> {
               children: List.generate(
                 PageModel[Get.find<Controllerinfo>().Model.value]!.length,
                 (i) => InkWell(
-                  onTap:
-                      () => Get.to(
-                        PageModel[Get.find<Controllerinfo>().Model.value]!
-                            .values
-                            .elementAt(i)['page'],
-                      ),
+                  onTap: () => Get.to(
+                    PageModel[Get.find<Controllerinfo>().Model.value]!
+                        .values
+                        .elementAt(i)['page'],
+                  ),
                   child: Obx(() {
                     return Opacity(
-                      opacity:
-                          Get.find<Controlleroptions>().OpacityOption[i].value,
+                      opacity: Get.find<Controlleroptions>()
+                                  .OpacityOption[i]
+                                  .value >=
+                              1
+                          ? 1
+                          : Get.find<Controlleroptions>()
+                              .OpacityOption[i]
+                              .value,
                       child: Container(
                         width: Get.width * 0.3,
                         margin: EdgeInsets.symmetric(vertical: 15),

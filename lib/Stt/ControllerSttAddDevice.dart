@@ -7,7 +7,8 @@ import 'package:lx/Getx/ControllerOther.dart';
 class Controllersttadddevice extends GetxController {
   RxBool Playing = false.obs;
   ProcessText(BuildContext context) {}
-  Agent() {
+ bool Agent() {
+    bool val = false;
     if (!CheckEmptyTf(Get.find<Controllerdatabase>().tfName, 'name_dev')) {
       if (!CheckEmptyTf(
         Get.find<Controllerdatabase>().tfPhone,
@@ -15,10 +16,11 @@ class Controllersttadddevice extends GetxController {
         lenght: 11,
       )) {
         if (CheckMicro()) {
-          PlayMusic('confirm');
+        val = true;
         }
       }
     }
+    return val;
   }
 
   PlayMusic(String name) async {

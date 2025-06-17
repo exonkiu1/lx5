@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
@@ -71,7 +72,7 @@ class _Adddevice2State extends State<Adddevice2> {
                   children: [
                     Container(
                       width: Get.width * 0.5,
-                      //  color: const Color.fromARGB(61, 255, 255, 0),
+                      margin: EdgeInsets.symmetric(vertical: 15),
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         crossAxisAlignment: CrossAxisAlignment.center,
@@ -92,17 +93,56 @@ class _Adddevice2State extends State<Adddevice2> {
                               ),
                               SizedBox(height: 10),
                               WidgetSelectedDev(),
+                              SizedBox(height: 10),
+                              InkWell(
+                                onTap: () async {
+                                  final FlutterContactPicker _contactPicker =
+                                      new FlutterContactPicker();
+                                  Contact? contact1 =
+                                      await _contactPicker.selectContact();
+                                  if (contact1 != null) {
+                                    Get.find<Controllerdatabase>().tfName.text =
+                                        contact1.fullName.toString();
+                                    Get.find<Controllerdatabase>()
+                                            .tfPhone
+                                            .text =
+                                        contact1.phoneNumbers![0]
+                                            .replaceAll(' ', '')
+                                            .replaceAll('+98', '0');
+                                  }
+                                },
+                                child: Container(
+                                  width: Get.width * 0.44,
+                                  padding: EdgeInsets.symmetric(vertical: 5),
+                                  decoration: decoration(
+                                    color: true,
+                                    colorBG: Color.fromARGB(54, 255, 255, 255),
+                                    border: false,
+                                  ),
+                                  child: Center(
+                                    child: Text(
+                                      'انتخاب از مخاطبین',
+                                      style: TextStyle(fontSize: 10),
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ],
                           ),
                           Center(
                             child: InkWell(
-                              onTap:
-                                  () => DialogOrder(
+                              onTap: () async {
+                                bool val =
+                                    Get.find<Controllersttadddevice>().Agent();
+                                if (val) {
+                                  DialogOrder(
                                     context,
                                     () =>
                                         Get.find<Controllerdatabase>().AddLx(),
                                     description: 'از ساخت دستگاه مطمعن هستید؟',
-                                  ),
+                                  );
+                                }
+                              },
                               child: Container(
                                 padding: EdgeInsets.symmetric(vertical: 2),
                                 width: Get.width * 0.3,
@@ -167,8 +207,8 @@ class WidgetSelectedDev extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:
-          () => Get.bottomSheet(Container(child: adddevice.boxselectedsim())),
+      onTap: () =>
+          Get.bottomSheet(Container(child: adddevice.boxselectedsim())),
       child: Container(
         padding: EdgeInsets.symmetric(vertical: 5),
         width: Get.width * 0.44,

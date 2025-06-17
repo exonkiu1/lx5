@@ -6,7 +6,6 @@ import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-import '../../Getx/ControllerInfo.dart';
 import '../../SendOrder.dart';
 
 class Relay extends StatelessWidget {
@@ -17,18 +16,16 @@ class Relay extends StatelessWidget {
     return Scaffold(
       appBar: appBar(title: 'رله ها'),
       body: Backgroundview(
-        child: SingleChildScrollView(
-          child: Obx(() {
-            return Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: List.generate(
-                Get.find<Controllerinfo>().Model.value != 'LX PRO' ? 2 : 6,
-                (i) => WidgetRelay(i: i),
-              ),
-            );
-          }),
+          child: SingleChildScrollView(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: List.generate(
+              6,
+              (i) => WidgetRelay(
+                    i: i,
+                  )),
         ),
-      ),
+      )),
     );
   }
 }
@@ -66,20 +63,19 @@ class WidgetRelay extends StatelessWidget {
             children: [
               Obx(() {
                 return Text(
-                  Get.find<Controllerrelay>().Name[i].value.toPersianDigit(),
-                );
+                    Get.find<Controllerrelay>().Name[i].value.toPersianDigit());
               }),
               InkWell(
-                onTap:
-                    () => DialogTextFieldSms(
-                      context,
-                      () => Get.find<Controllerrelay>().ChangeName(i),
-                      description: 'نام رله',
-                    ),
-                child: Icon(Icons.edit, color: Colors.white),
+                onTap: () => DialogTextFieldSms(
+                    context, () => Get.find<Controllerrelay>().ChangeName(i),
+                    description: 'نام رله'),
+                child: Icon(
+                  Icons.edit,
+                  color: Colors.white,
+                ),
               ),
             ],
-          ),
+          )
         ],
       ),
     );
