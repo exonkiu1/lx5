@@ -95,6 +95,7 @@ class _Adddevice2State extends State<Adddevice2> {
                               WidgetSelectedDev(),
                               SizedBox(height: 10),
                               InkWell(
+                                //
                                 onTap: () async {
                                   final FlutterContactPicker _contactPicker =
                                       new FlutterContactPicker();
