@@ -23,19 +23,19 @@ class boxselectedsim extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               WidgetSim(
-                sim: 0,
+                sim: '0',
               ),
               WidgetSim(
-                sim: 1,
+                sim: '1',
               ),
             ],
           ),
           WidgetSim(
-            sim: -1,
+            sim: '-1',
             name: 'سیم پیش فرض موبایل',
           ),
           WidgetSim(
-            sim: -2,
+            sim: '-2',
             name: 'ارسال از طریق پیامرسان',
           ),
         ],
@@ -46,7 +46,7 @@ class boxselectedsim extends StatelessWidget {
 
 class WidgetSim extends StatelessWidget {
   const WidgetSim({super.key, required this.sim, this.name = ''});
-  final int sim;
+  final String sim;
   final String name;
   @override
   Widget build(BuildContext context) {
@@ -54,13 +54,13 @@ class WidgetSim extends StatelessWidget {
       onTap: () => Get.find<Controllerdatabase>().sim.value = sim.toString(),
       child: Obx(() {
         return Container(
-          width: sim >= 0 ? Get.width * 0.3 : Get.width * 0.5,
+          width: int.parse(sim) >= 0 ? Get.width * 0.3 : Get.width * 0.5,
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(vertical: 5),
           decoration: decoration(
               color:
                   Get.find<Controllerdatabase>().sim.value == sim.toString()),
-          child: Center(child: Text(sim >= 0 ? 'sim ${sim + 1}' : name)),
+          child: Center(child: Text(int.parse(sim) >= 0 ? 'sim ${int.parse(sim) + 1}' : name)),
         );
       }),
     );
