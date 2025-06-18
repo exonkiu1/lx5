@@ -53,6 +53,7 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllerzon>().GetZon(id);
       Get.find<Controllerrelay>().GetRelay(id);
       Get.find<Controllersetting>().GetSetting(model);
+      Get.find<Controllerinquiry>().GetInquiry(model);
     } else {
       Get.off(() => const Adddevice2());
     }

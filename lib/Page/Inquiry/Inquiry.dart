@@ -10,6 +10,7 @@ import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
+import '../../Getx/ControllerInfo.dart';
 
 class Inquiry extends StatelessWidget {
   const Inquiry({super.key});
@@ -124,7 +125,8 @@ class Inquiry extends StatelessWidget {
               }),
               Column(
                 children: List.generate(
-                    6,
+                    Get.find<Controllerinfo>().Model.value ==
+                                    'LX PRO'?6:2,
                     (i) => WidgetRelayItemInquiry(
                           i: i,
                         )),

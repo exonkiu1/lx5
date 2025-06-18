@@ -16,7 +16,7 @@ class boxselectedsim extends StatelessWidget {
           color: true,
           colorBG: const Color.fromARGB(255, 65, 57, 57),
           border: false),
-      child: Column(
+      child: const Column(
         children: [
           Text('انتخاب سیمکارت برای ارسال دستورات'),
           Row(
