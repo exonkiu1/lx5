@@ -6,6 +6,8 @@ import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../../Getx/ControllerInfo.dart';
+
 DialogRelay(BuildContext context, {int i = 0}) => showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -74,53 +76,61 @@ DialogRelay(BuildContext context, {int i = 0}) => showDialog(
               SizedBox(
                 height: 20,
               ),
-              Row(
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        border: Border.all(),
-                        borderRadius: BorderRadius.circular(20)),
-                    padding: EdgeInsets.symmetric(horizontal: 20),
-                    child: Obx(() {
-                      return DropdownButton(
-                        value: Get.find<Controllerrelay>().Zon[i].value == -1
-                            ? null
-                            : Get.find<Controllerrelay>().Zon[i].value,
-                        items: List.generate(
-                          Get.find<Controllerrelay>().listzon.length,
-                          (i) => i,
-                        )
-                            .map<DropdownMenuItem<int>>(
-                              (int value) => DropdownMenuItem(
-                                alignment: Alignment.centerRight,
-                                child: Directionality(
-                                  textDirection: TextDirection.rtl,
-                                  child: Text(
-                                    '${Get.find<Controllerrelay>().listzon[value]['label']}'
-                                        .toPersianDigit(),
-                                    textAlign: TextAlign.left,
-                                    textDirection: TextDirection.rtl,
-                                  ),
+              Obx(
+                () {
+                  return Visibility(
+                    visible: Get.find<Controllerinfo>().Model.value ==
+                                        'LX PRO',
+                    child: Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              border: Border.all(),
+                              borderRadius: BorderRadius.circular(20)),
+                          padding: EdgeInsets.symmetric(horizontal: 20),
+                          child: Obx(() {
+                            return DropdownButton(
+                              value: Get.find<Controllerrelay>().Zon[i].value == -1
+                                  ? null
+                                  : Get.find<Controllerrelay>().Zon[i].value,
+                              items: List.generate(
+                                Get.find<Controllerrelay>().listzon.length,
+                                (i) => i,
+                              )
+                                  .map<DropdownMenuItem<int>>(
+                                    (int value) => DropdownMenuItem(
+                                      alignment: Alignment.centerRight,
+                                      child: Directionality(
+                                        textDirection: TextDirection.rtl,
+                                        child: Text(
+                                          '${Get.find<Controllerrelay>().listzon[value]['label']}'
+                                              .toPersianDigit(),
+                                          textAlign: TextAlign.left,
+                                          textDirection: TextDirection.rtl,
+                                        ),
+                                      ),
+                                      value: value,
+                                    ),
+                                  )
+                                  .toList(),
+                              onChanged: (value) => SendOrder(
+                                context,
+                                () => Get.find<Controllerrelay>().ChangeZon(
+                                  i,
+                                  int.parse('${value}'),
                                 ),
-                                value: value,
                               ),
-                            )
-                            .toList(),
-                        onChanged: (value) => SendOrder(
-                          context,
-                          () => Get.find<Controllerrelay>().ChangeZon(
-                            i,
-                            int.parse('${value}'),
-                          ),
+                            );
+                          }),
                         ),
-                      );
-                    }),
-                  ),
-                  Text(
-                    'سناریو:',
-                    textDirection: TextDirection.rtl,
-                  )
-                ],
+                        Text(
+                          'سناریو:',
+                          textDirection: TextDirection.rtl,
+                        )
+                      ],
+                    ),
+                  );
+                }
               ),
             ],
           ),

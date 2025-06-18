@@ -6,6 +6,7 @@ import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
+import '../../Getx/ControllerInfo.dart';
 import '../../SendOrder.dart';
 
 class Relay extends StatelessWidget {
@@ -15,16 +16,17 @@ class Relay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(title: 'رله ها'),
-      body: Backgroundview(
-          child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(
-              6,
-              (i) => WidgetRelay(
-                    i: i,
-                  )),
-        ),
+      body: Backgroundview(child: SingleChildScrollView(
+        child: Obx(() {
+          return Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: List.generate(
+                Get.find<Controllerinfo>().Model.value == 'LX PRO' ? 6 : 2,
+                (i) => WidgetRelay(
+                      i: i,
+                    )),
+          );
+        }),
       )),
     );
   }
