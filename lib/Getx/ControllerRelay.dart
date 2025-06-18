@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
@@ -19,17 +18,24 @@ class Controllerrelay extends GetxController {
     final music = AudioPlayer();
     music.setAsset('assets/music/relay/${State[index].value}.mp3');
     music.play();
-    return '*LUXREL${index + 1}${state ? 'ON' : 'OFF'}';
+    if (Get.find<Controllerinfo>().Model.value == 'LX PRO') {
+      return 'LUXREL${index + 1}${state ? 'ON' : 'OFF'}';
+    } else {
+      return '2${index + 1}*${state ? 'ON' : 'OFF'}';
+    }
   }
 
   Future<String> Triger(int index) async {
-    return 'LUXREL${index + 1}*T';
+    if (Get.find<Controllerinfo>().Model.value == 'LX PRO') {
+      return 'LUXREL${index + 1}*T';
+    } else {
+      return '2${index + 1}*t000002';
+    }
   }
 
-  Future<String> ChangeZon(int index,int value) async {
+  Future<String> ChangeZon(int index, int value) async {
     Zon[index].value = value;
-    print('${listzon[Zon[index]
-                          .value]['label']}');
+    print('${listzon[Zon[index].value]['label']}');
     UpdateRelay();
     return 'LUXREL${index + 1}${Get.find<Controllerrelay>().listzon[value]['value']}';
   }
@@ -101,13 +107,15 @@ class Controllerrelay extends GetxController {
       final String letter = String.fromCharCode(65 + zone);
       listzon.add(
         {
-          'label': '${Get.find<Controllerzon>().Name[zone].value}  متصل به رله,بسته',
+          'label':
+              '${Get.find<Controllerzon>().Name[zone].value}  متصل به رله,بسته',
           'value': letter,
         }.obs,
       );
       listzon.add(
         {
-          'label': '${Get.find<Controllerzon>().Name[zone].value}  متصل به رله,باز',
+          'label':
+              '${Get.find<Controllerzon>().Name[zone].value}  متصل به رله,باز',
           'value': letter.toLowerCase(),
         }.obs,
       );
