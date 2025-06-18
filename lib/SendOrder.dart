@@ -12,7 +12,7 @@ void SendOrder(BuildContext context, Future<String> Function() function,
     String description = 'پیامک به دستگاه ارسال شود؟',
     bool pass = false,
     bool StateDev = false}) {
-  Get.find<Controllerother>().DelyOrder.value == 0
+   Get.find<Controllerother>().DelyOrder.value <= 0
       ? showDialog(
           context: context,
           barrierDismissible: false,
