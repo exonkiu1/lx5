@@ -61,7 +61,7 @@ class Controllerdatabase extends GetxController {
   ///
   TextEditingController tfName = TextEditingController(),
       tfPhone = TextEditingController();
-  RxString sim = '-1.0'.obs;
+  RxString sim = '-1'.obs;
   ///
   AddLx() async {
     Get.find<Controllersttadddevice>().PlayMusic('greeting');
