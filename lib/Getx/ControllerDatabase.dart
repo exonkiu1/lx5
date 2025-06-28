@@ -3,7 +3,6 @@ import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
-import 'package:lx/Stt/MainStt.dart';
 import '/DateBase/DataBase.dart';
 import '/DateBase/Model.dart';
 import '/Getx/ControllerContact.dart';

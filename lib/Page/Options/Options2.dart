@@ -26,7 +26,7 @@ class Options2 extends StatefulWidget {
 class _Options2State extends State<Options2> {
   @override
   void initState() {
-  //  Get.find<Controlleroptions>().StartShowing();
+    Get.find<Controlleroptions>().StartShowingItem();
     // TODO: implement initState
     super.initState();
   }
@@ -48,7 +48,8 @@ class _Options2State extends State<Options2> {
           child: Obx(() {
             return Wrap(
               children: List.generate(
-                PageModel[Get.find<Controllerinfo>().Model.value]!.length,
+                Get.find<Controlleroptions>().lenght.value,
+                //PageModel[Get.find<Controllerinfo>().Model.value]!.length,
                 (i) => InkWell(
                   onTap: () => Get.to(
                     PageModel[Get.find<Controllerinfo>().Model.value]!
