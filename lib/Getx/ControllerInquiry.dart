@@ -54,9 +54,14 @@ class Controllerinquiry extends GetxController {
     Get.find<Controllerrelay>().State[0].value == '1' ? true : false;
     CountContact.value = message[6];
     CommunicationsStatus.value = message[7] == '1' ? 'روشن' : 'خاموش';
-    for (var i = 0; i < 6; i++) {
-      Get.find<Controllerrelay>().State[i].value =
-          message[9][i] == '1' ? true : false;
+    int lenghtrelay =  Get.find<Controllerinfo>().Model.value ==
+                                    'LX PRO'?6:2;
+    for (var i = 0; i < lenghtrelay; i++) {
+      if (message[9][i] == '1') {
+        Get.find<Controllerrelay>().State[i].value = true;
+      } else {
+        Get.find<Controllerrelay>().State[i].value = false;
+      }
     }
     Get.find<Controllerdatabase>().UpdateLx();
   }

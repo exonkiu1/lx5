@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/binding.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import 'package:../WidgetUi/BackGroundView.dart';
+import 'package:../WidgetUi/decoration.dart';
 
 void main() {
   runApp(const MyApp());
