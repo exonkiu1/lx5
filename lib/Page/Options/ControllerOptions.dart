@@ -15,7 +15,7 @@ class Controlleroptions extends GetxController {
       }
     }
   }
-
+  
   DisposeOpacity() {
     OpacityOption = List.generate(30, (i) => 0.0.obs).obs;
   }

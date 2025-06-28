@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/binding.dart';
-import 'package:lx/Page/HomePage/HomePage.dart';
-import 'package:lx/Page/SplashScreen.dart/SplashScreen.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 

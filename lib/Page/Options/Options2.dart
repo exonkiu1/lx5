@@ -6,17 +6,14 @@ import 'package:lx/Page/Contact/ContactLx1000.dart';
 import 'package:lx/Page/Help/HelpLX1000.dart';
 import 'package:lx/Page/Help/HelpLXPRO.dart';
 import 'package:lx/Page/Options/ControllerOptions.dart';
-import 'package:lx/Page/Options/Options.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/Page/AddDevice/AddDevice.dart';
 import 'package:lx/Page/Contact/Contact.dart';
 import 'package:lx/Page/PasswordDevice/PasswordDevice.dart';
 import 'package:lx/Page/Remote/Remote.dart';
 import 'package:lx/Page/SettingDev/SettingDevice.dart';
 import 'package:lx/Page/SettingSim/SettingSim.dart';
 import 'package:lx/Page/Zon/Zon.dart';
-
 import 'SelectedDev.dart';
 
 class Options2 extends StatefulWidget {
@@ -58,39 +55,27 @@ class _Options2State extends State<Options2> {
                         .values
                         .elementAt(i)['page'],
                   ),
-                  child: Obx(() {
-                    return Opacity(
-                      opacity: Get.find<Controlleroptions>()
-                                  .OpacityOption[i]
-                                  .value >=
-                              1
-                          ? 1
-                          : Get.find<Controlleroptions>()
-                              .OpacityOption[i]
-                              .value,
-                      child: Container(
-                        width: Get.width * 0.3,
-                        margin: EdgeInsets.symmetric(vertical: 15),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              Obx(() {
-                                return Image.asset(
-                                  'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
-                                  width: Get.width * 0.2,
-                                );
-                              }),
-                              Obx(() {
-                                return Text(
-                                  '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
-                                );
-                              }),
-                            ],
-                          ),
+                  child:  Container(
+                      width: Get.width * 0.3,
+                      margin: EdgeInsets.symmetric(vertical: 15),
+                      child: Center(
+                        child: Column(
+                          children: [
+                            Obx(() {
+                              return Image.asset(
+                                'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
+                                width: Get.width * 0.2,
+                              );
+                            }),
+                            Obx(() {
+                              return Text(
+                                '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
+                              );
+                            }),
+                          ],
                         ),
                       ),
-                    );
-                  }),
+                    )
                 ),
               ),
             );
