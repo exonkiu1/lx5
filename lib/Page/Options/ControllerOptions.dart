@@ -8,12 +8,12 @@ class Controlleroptions extends GetxController {
   StartShowing() async {
     await Future.delayed(Duration(milliseconds: 200));
     for (var i = 0;
-        i < PageModel[Get.find<Controllerinfo>().Model.value]!.length;
+        i < PageModel['LX PRO']!.length;
         i++) {
       await Future.delayed(Duration(milliseconds: 70));
       for (var j = 0; j < 10; j++) {
         await Future.delayed(Duration(milliseconds: 10));
-        OpacityOption[i].value = OpacityOption[i].value + 0.1;
+        OpacityOption[i].value +=0.1;
       }
     }
   }
