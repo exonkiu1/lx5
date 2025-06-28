@@ -144,10 +144,14 @@ class WidgetRelayItemInquiry extends StatelessWidget {
   final int i;
   @override
   Widget build(BuildContext context) {
-    return WidgetItemInquiry(
-        title: '${Get.find<Controllerrelay>().Name[i].value}'.toPersianDigit(),
-        value:
-            '${Get.find<Controllerrelay>().State[i].value ? 'فعال' : 'غیرفعال'}');
+    return Obx(
+     () {
+        return WidgetItemInquiry(
+            title: '${Get.find<Controllerrelay>().Name[i].value}'.toPersianDigit(),
+            value:
+                '${Get.find<Controllerrelay>().State[i].value ? 'فعال' : 'غیرفعال'}');
+      }
+    );
   }
 }
 

@@ -64,6 +64,7 @@ class Controllerinquiry extends GetxController {
       }
     }
     Get.find<Controllerdatabase>().UpdateLx();
+    Get.find<Controllerrelay>().UpdateRelay();
   }
 }
 
