@@ -26,14 +26,14 @@ class Options2 extends StatefulWidget {
 class _Options2State extends State<Options2> {
   @override
   void initState() {
-    Get.find<Controlleroptions>().StartShowingItem();
+    Get.find<Controlleroptions>().StartShowing();
     // TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-  //  Get.find<Controlleroptions>().DisposeOpacity();
+    Get.find<Controlleroptions>().DisposeOpacity();
     // TODO: implement dispose
     super.dispose();
   }
@@ -48,35 +48,46 @@ class _Options2State extends State<Options2> {
           child: Obx(() {
             return Wrap(
               children: List.generate(
-                Get.find<Controlleroptions>().lenght.value,
-                //PageModel[Get.find<Controllerinfo>().Model.value]!.length,
-                (i) => InkWell(
-                  onTap: () => Get.to(
-                    PageModel[Get.find<Controllerinfo>().Model.value]!
-                        .values
-                        .elementAt(i)['page'],
-                  ),
-                  child:  Container(
-                      width: Get.width * 0.3,
-                      margin: EdgeInsets.symmetric(vertical: 15),
-                      child: Center(
-                        child: Column(
-                          children: [
-                            Obx(() {
-                              return Image.asset(
-                                'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
-                                width: Get.width * 0.2,
-                              );
-                            }),
-                            Obx(() {
-                              return Text(
-                                '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
-                              );
-                            }),
-                          ],
-                        ),
-                      ),
-                    )
+                //  Get.find<Controlleroptions>().lenght.value,
+                PageModel[Get.find<Controllerinfo>().Model.value]!.length,
+                (i) => Obx(
+                  () {
+                    return Opacity(
+                      opacity:
+                          Get.find<Controlleroptions>().OpacityOption[i].value >= 1
+                              ? 1
+                              : Get.find<Controlleroptions>()
+                                  .OpacityOption[i]
+                                  .value,
+                      child: InkWell(
+                          onTap: () => Get.to(
+                                PageModel[Get.find<Controllerinfo>().Model.value]!
+                                    .values
+                                    .elementAt(i)['page'],
+                              ),
+                          child: Container(
+                            width: Get.width * 0.3,
+                            margin: EdgeInsets.symmetric(vertical: 15),
+                            child: Center(
+                              child: Column(
+                                children: [
+                                  Obx(() {
+                                    return Image.asset(
+                                      'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
+                                      width: Get.width * 0.2,
+                                    );
+                                  }),
+                                  Obx(() {
+                                    return Text(
+                                      '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
+                                    );
+                                  }),
+                                ],
+                              ),
+                            ),
+                          )),
+                    );
+                  }
                 ),
               ),
             );
