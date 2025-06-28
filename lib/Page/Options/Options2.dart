@@ -26,14 +26,14 @@ class Options2 extends StatefulWidget {
 class _Options2State extends State<Options2> {
   @override
   void initState() {
-    Get.find<Controlleroptions>().StartShowing();
+  //  Get.find<Controlleroptions>().StartShowing();
     // TODO: implement initState
     super.initState();
   }
 
   @override
   void dispose() {
-    Get.find<Controlleroptions>().DisposeOpacity();
+  //  Get.find<Controlleroptions>().DisposeOpacity();
     // TODO: implement dispose
     super.dispose();
   }
