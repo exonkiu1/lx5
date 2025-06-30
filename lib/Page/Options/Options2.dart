@@ -53,7 +53,7 @@ class _Options2State extends State<Options2> {
                     opacity:
                         Get.find<Controlleroptions>().OpacityOption[i].value >=
                                 0.7
-                            ? 1
+                            ? 1.0
                             : Get.find<Controlleroptions>().OpacityOption[i].value,
                     child: InkWell(
                         onTap: () => Get.to(
