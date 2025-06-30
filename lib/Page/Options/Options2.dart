@@ -26,13 +26,14 @@ class Options2 extends StatefulWidget {
 class _Options2State extends State<Options2> {
   @override
   void initState() {
-    Get.find<Controlleroptions>().StartShowing();
+   // Get.find<Controlleroptions>().DisposeOpacity();
+   // Get.find<Controlleroptions>().StartShowing();
     super.initState();
   }
 
   @override
   void dispose() {
-    Get.find<Controlleroptions>().DisposeOpacity();
+  //  Get.find<Controlleroptions>().DisposeOpacity();
     super.dispose();
   }
 
@@ -46,7 +47,6 @@ class _Options2State extends State<Options2> {
           child: Obx(() {
             return Wrap(
               children: List.generate(
-                //  Get.find<Controlleroptions>().lenght.value,
                 PageModel[Get.find<Controllerinfo>().Model.value]!.length,
                 (i) =>  InkWell(
                       onTap: () => Get.to(
