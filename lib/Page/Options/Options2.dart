@@ -5,7 +5,6 @@ import 'package:lx/Page/AddDevice/AddDevice2.dart';
 import 'package:lx/Page/Contact/ContactLx1000.dart';
 import 'package:lx/Page/Help/HelpLX1000.dart';
 import 'package:lx/Page/Help/HelpLXPRO.dart';
-import 'package:lx/Page/Options/ControllerOptions.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/Page/Contact/Contact.dart';
@@ -26,14 +25,11 @@ class Options2 extends StatefulWidget {
 class _Options2State extends State<Options2> {
   @override
   void initState() {
-   // Get.find<Controlleroptions>().DisposeOpacity();
-   // Get.find<Controlleroptions>().StartShowing();
     super.initState();
   }
 
   @override
   void dispose() {
-  //  Get.find<Controlleroptions>().DisposeOpacity();
     super.dispose();
   }
 
@@ -47,8 +43,8 @@ class _Options2State extends State<Options2> {
           child: Obx(() {
             return Wrap(
               children: List.generate(
-                PageModel[Get.find<Controllerinfo>().Model.value]!.length,
-                (i) =>  InkWell(
+                  PageModel[Get.find<Controllerinfo>().Model.value]!.length,
+                  (i) => InkWell(
                       onTap: () => Get.to(
                             PageModel[Get.find<Controllerinfo>().Model.value]!
                                 .values
@@ -74,8 +70,7 @@ class _Options2State extends State<Options2> {
                             ],
                           ),
                         ),
-                      ))
-              ),
+                      ))),
             );
           }),
         ),
