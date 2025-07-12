@@ -5,7 +5,7 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:persian_datetime_picker/persian_datetime_picker.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
-import '../../Getx/ControllerInfo.dart';
+import '/Getx/ControllerInfo.dart';
 
 class Controllerreportsms extends GetxController {
   RxInt Lenght = 0.obs;

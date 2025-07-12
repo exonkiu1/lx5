@@ -1,13 +1,13 @@
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Page/Inquiry/Inquiry.dart';
-import 'package:lx/Page/Relay/Relay.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/Stt/MainStt.dart';
+import '/Getx/ControllerHomePage.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Page/Inquiry/Inquiry.dart';
+import '/Page/Relay/Relay.dart';
+import '/SendOrder.dart';
+import '/Stt/MainStt.dart';
 
-import '../Page/Options/Options2.dart';
+import '/Page/Options/Options2.dart';
 
 class Controllerstthomepage extends GetxController {
   ProcessText(BuildContext context) async {

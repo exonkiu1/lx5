@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerContact.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/decoration.dart';
-import 'package:lx/WidgetUi/decoration_textfield.dart';
+import '/Getx/ControllerContact.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/decoration.dart';
+import '/WidgetUi/decoration_textfield.dart';
 
 class WidgetContactOld extends StatelessWidget {
   const WidgetContactOld({super.key, required this.i});

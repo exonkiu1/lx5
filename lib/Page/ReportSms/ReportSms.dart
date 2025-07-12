@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 import 'package:get/get.dart';
-import 'package:lx/Page/ReportSms/ControllerReportSms.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/Page/ReportSms/ControllerReportSms.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
 
 class Reportsms extends StatefulWidget {
   const Reportsms({super.key});

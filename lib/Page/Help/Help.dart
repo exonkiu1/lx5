@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
 
 class Help extends StatelessWidget {
   const Help({super.key});

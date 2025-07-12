@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerZon.dart';
-import 'package:lx/Page/Zon/clippathboxzon.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Getx/ControllerOther.dart';
+import '/Getx/ControllerZon.dart';
+import '/Page/Zon/clippathboxzon.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 class Zon extends StatelessWidget {

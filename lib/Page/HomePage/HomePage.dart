@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Page/Inquiry/Inquiry.dart';
-import 'package:lx/Page/Options/Options2.dart';
-import 'package:lx/Page/Relay/Relay.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/Stt/MainStt.dart';
+import '/Getx/ControllerHomePage.dart';
+import '/Page/Inquiry/Inquiry.dart';
+import '/Page/Options/Options2.dart';
+import '/Page/Relay/Relay.dart';
+import '/SendOrder.dart';
+import '/Stt/MainStt.dart';
 
 class Homepage extends StatefulWidget {
   const Homepage({super.key});

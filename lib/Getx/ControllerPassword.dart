@@ -2,10 +2,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:lx/DateBase/Model.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/SendOrder.dart';
+import '/DateBase/Model.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerInfo.dart';
+import '/SendOrder.dart';
 
 class Controllerpassword extends GetxController {
   RxString PasswordDev = ''.obs;

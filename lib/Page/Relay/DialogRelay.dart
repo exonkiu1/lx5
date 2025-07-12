@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:lx/Getx/ControllerRelay.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/Getx/ControllerRelay.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
-import '../../Getx/ControllerInfo.dart';
+import '/Getx/ControllerInfo.dart';
 
 DialogRelay(BuildContext context, {int i = 0}) => showDialog(
       context: context,

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
-import 'package:lx/Stt/ControllerSttAddDevice.dart';
-import 'package:lx/Stt/ControllerSttContact.dart';
-import 'package:lx/Stt/ControllerSttHomePage.dart';
+import '/Stt/ControllerSttAddDevice.dart';
+import '/Stt/ControllerSttContact.dart';
+import '/Stt/ControllerSttHomePage.dart';
 import 'package:speech_to_text/speech_to_text.dart' as stt;
 
 Stt(BuildContext context) async {

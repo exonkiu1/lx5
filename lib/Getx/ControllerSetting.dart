@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:lx/DateBase/Model.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerOther.dart';
+import '/DateBase/Model.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerOther.dart';
 
 class Controllersetting extends GetxController {
   RxString DevLanguage = ''.obs,

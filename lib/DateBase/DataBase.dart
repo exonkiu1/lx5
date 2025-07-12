@@ -1,4 +1,4 @@
-import 'package:lx/DateBase/Model.dart';
+import '/DateBase/Model.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -25,7 +25,7 @@ class DatabaseLX {
       version: 2,
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE DatabaseLX(id TEXT,Phone TEXT,Name TEXT,StateDev TEXT,Pass TEXT,Charge TEXT,UrbanElectricity TEXT,Speaker TEXT,BatterPower TEXT,CountContact TEXT,CountRemote TEXT,AntennaStrength TEXT,CommunicationsStatus TEXT,zon1 TEXT,zon2 TEXT,zon3 TEXT,zon4 TEXT,DevLanguage TEXT,EstablishingContactDuringPowerOutage TEXT,SemiActiveStatusRemote TEXT,PeriodicBatteryReport TEXT,InventoryReport TEXT,AlarmTime TEXT,AlarmMode TEXT,Model TEXT,Oprator TEXT,Simcard TEXT)",
+          "CREATE TABLE DatabaseLX(id TEXT,Phone TEXT,Name TEXT,StateDev TEXT,Pass TEXT,Charge TEXT,UrbanElectricity TEXT,Speaker TEXT,BatterPower TEXT,CountContact TEXT,CountRemote TEXT,AntennaStrength TEXT,CommunicationsStatus TEXT,zon1 TEXT,zon2 TEXT,zon3 TEXT,zon4 TEXT,DevLanguage TEXT,EstablishingContactDuringPowerOutage TEXT,SemiActiveStatusRemote TEXT,PeriodicBatteryReport TEXT,InventoryReport TEXT,AlarmTime TEXT,AlarmMode TEXT,Model TEXT,Oprator TEXT,Simcard TEXT,NameClinet TEXT,PhoneClinet TEXT,City TEXT,Province TEXT,Address TEXT,DateWarrenty TEXT,NameTechnician TEXT,PhoneTechnician TEXT)",
         );
       },
       onUpgrade: (db, oldVersion, newVersion) =>
@@ -59,34 +59,43 @@ class DatabaseLX {
 
     return List.generate(maps.length, (i) {
       return DevLX(
-          id: maps[i]['id'],
-          Name: maps[i]['Name'],
-          Phone: maps[i]['Phone'],
-          AlarmMode: maps[i]['AlarmMode'],
-          AlarmTime: maps[i]['AlarmTime'],
-          AntennaStrength: maps[i]['AntennaStrength'],
-          BatterPower: maps[i]['BatterPower'],
-          Charge: maps[i]['Charge'],
-          CommunicationsStatus: maps[i]['CommunicationsStatus'],
-          CountContact: maps[i]['CountContact'],
-          CountRemote: maps[i]['CountRemote'],
-          DevLanguage: maps[i]['DevLanguage'],
-          EstablishingContactDuringPowerOutage: maps[i]
-              ['EstablishingContactDuringPowerOutage'],
-          InventoryReport: maps[i]['InventoryReport'],
-          Pass: maps[i]['Pass'],
-          PeriodicBatteryReport: maps[i]['PeriodicBatteryReport'],
-          SemiActiveStatusRemote: maps[i]['SemiActiveStatusRemote'],
-          Speaker: maps[i]['Speaker'],
-          StateDev: maps[i]['StateDev'],
-          UrbanElectricity: maps[i]['UrbanElectricity'],
-          zon1: maps[i]['zon1'],
-          zon2: maps[i]['zon2'],
-          zon3: maps[i]['zon3'],
-          zon4: maps[i]['zon4'],
-          Oprator: maps[i]['Oprator'],
-          Model: maps[i]['Model'],
-          Simcard: maps[i]['Simcard'] ?? '-1');
+        id: maps[i]['id'],
+        Name: maps[i]['Name'],
+        Phone: maps[i]['Phone'],
+        AlarmMode: maps[i]['AlarmMode'],
+        AlarmTime: maps[i]['AlarmTime'],
+        AntennaStrength: maps[i]['AntennaStrength'],
+        BatterPower: maps[i]['BatterPower'],
+        Charge: maps[i]['Charge'],
+        CommunicationsStatus: maps[i]['CommunicationsStatus'],
+        CountContact: maps[i]['CountContact'],
+        CountRemote: maps[i]['CountRemote'],
+        DevLanguage: maps[i]['DevLanguage'],
+        EstablishingContactDuringPowerOutage: maps[i]
+            ['EstablishingContactDuringPowerOutage'],
+        InventoryReport: maps[i]['InventoryReport'],
+        Pass: maps[i]['Pass'],
+        PeriodicBatteryReport: maps[i]['PeriodicBatteryReport'],
+        SemiActiveStatusRemote: maps[i]['SemiActiveStatusRemote'],
+        Speaker: maps[i]['Speaker'],
+        StateDev: maps[i]['StateDev'],
+        UrbanElectricity: maps[i]['UrbanElectricity'],
+        zon1: maps[i]['zon1'],
+        zon2: maps[i]['zon2'],
+        zon3: maps[i]['zon3'],
+        zon4: maps[i]['zon4'],
+        Oprator: maps[i]['Oprator'],
+        Model: maps[i]['Model'],
+        Simcard: maps[i]['Simcard'] ?? '-1',
+        Address: maps[i]['Address'],
+        City: maps[i]['City'],
+        DateWarrenty: maps[i]['DateWarrenty'],
+        NameClinet: maps[i]['NameClinet'],
+        NameTechnician: maps[i]['NameTechnician'],
+        PhoneClinet: maps[i]['PhoneClinet'],
+        PhoneTechnician: maps[i]['PhoneTechnician'],
+        Province: maps[i]['Province'],
+      );
     });
   }
 

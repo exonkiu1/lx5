@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerOther.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerOther.dart';
 
 class Controllersttadddevice extends GetxController {
   RxBool Playing = false.obs;

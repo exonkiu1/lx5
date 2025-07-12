@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerDatabase.dart';
 
-import '../../Getx/ControllerInfo.dart';
-import '../../WidgetUi/decoration.dart';
+import '/Getx/ControllerInfo.dart';
+import '/WidgetUi/decoration.dart';
 
 class SelectedDevLx extends StatelessWidget {
   const SelectedDevLx({

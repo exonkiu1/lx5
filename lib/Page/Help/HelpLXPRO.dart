@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:url_launcher/url_launcher.dart';
 

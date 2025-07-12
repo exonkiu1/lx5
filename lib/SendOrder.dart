@@ -1,10 +1,10 @@
 import 'package:telephony/telephony.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerPassword.dart';
+import '/Getx/ControllerHomePage.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Getx/ControllerOther.dart';
+import '/Getx/ControllerPassword.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 void SendOrder(BuildContext context, Future<String> Function() function,
@@ -147,7 +147,7 @@ DialogTextFieldSms(BuildContext context, Future<String> Function() function,
       });
 }
 
-////
+////PASSWORD123
 SendInquiry(BuildContext context, Function() function,
     {String title = 'هشدار',
     String description = 'درخواست استعلام به دستگاه ارسال شود؟',

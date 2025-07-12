@@ -1,9 +1,9 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Page/Inquiry/Inquiry.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Getx/ControllerOther.dart';
+import '/Page/Inquiry/Inquiry.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ControllerDatabase.dart';
 

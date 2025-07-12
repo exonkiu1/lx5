@@ -1,8 +1,8 @@
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:lx/DateBase/Model.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerOther.dart';
+import '/DateBase/Model.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerOther.dart';
 import 'package:flutter/material.dart';
 
 class Controllerhomepage extends GetxController {

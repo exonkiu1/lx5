@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerContact.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
-import 'package:lx/WidgetUi/decoration_textfield.dart';
+import '/Getx/ControllerContact.dart';
+import '/Getx/ControllerOther.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
+import '/WidgetUi/decoration_textfield.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 class Contacts extends StatelessWidget {

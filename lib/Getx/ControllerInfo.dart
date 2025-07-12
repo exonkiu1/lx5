@@ -2,9 +2,9 @@ import 'dart:async';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
-import 'package:lx/DateBase/Model.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerOther.dart';
+import '/DateBase/Model.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerOther.dart';
 
 class Controllerinfo extends GetxController {
   @override

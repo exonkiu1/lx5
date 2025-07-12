@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerZon.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Getx/ControllerOther.dart';
+import '/Getx/ControllerZon.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerrelay extends GetxController {

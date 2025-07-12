@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerRelay.dart';
-import 'package:lx/Page/Relay/DialogRelay.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/Getx/ControllerRelay.dart';
+import '/Page/Relay/DialogRelay.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-import '../../Getx/ControllerInfo.dart';
-import '../../SendOrder.dart';
+import '/Getx/ControllerInfo.dart';
+import '/SendOrder.dart';
 
 class Relay extends StatelessWidget {
   const Relay({super.key});

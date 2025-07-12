@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Page/AddDevice/AddDevice.dart';
-import 'package:lx/Page/Contact/Contact.dart';
-import 'package:lx/Page/PasswordDevice/PasswordDevice.dart';
-import 'package:lx/Page/Remote/Remote.dart';
-import 'package:lx/Page/SettingDev/SettingDevice.dart';
-import 'package:lx/Page/SettingSim/SettingSim.dart';
-import 'package:lx/Page/Zon/Zon.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Page/AddDevice/AddDevice.dart';
+import '/Page/Contact/Contact.dart';
+import '/Page/PasswordDevice/PasswordDevice.dart';
+import '/Page/Remote/Remote.dart';
+import '/Page/SettingDev/SettingDevice.dart';
+import '/Page/SettingSim/SettingSim.dart';
+import '/Page/Zon/Zon.dart';
+import '/WidgetUi/BackGroundView.dart';
 
 import 'SelectedDev.dart';
 

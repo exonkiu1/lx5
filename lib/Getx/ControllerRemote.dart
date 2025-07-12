@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerOther.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Getx/ControllerOther.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerremote extends GetxController {

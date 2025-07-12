@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerDatabase.dart';
 
-import '../../WidgetUi/decoration.dart';
+import '/WidgetUi/decoration.dart';
 
 class boxselectedsim extends StatelessWidget {
   const boxselectedsim({super.key});

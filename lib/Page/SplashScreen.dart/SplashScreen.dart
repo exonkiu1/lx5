@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:local_auth/local_auth.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Page/HomePage/HomePage.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Page/HomePage/HomePage.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});

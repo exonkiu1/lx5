@@ -1,22 +1,23 @@
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerContact.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerInquiry.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerPassword.dart';
-import 'package:lx/Getx/ControllerRelay.dart';
-import 'package:lx/Getx/ControllerRemote.dart';
-import 'package:lx/Getx/ControllerSetting.dart';
-import 'package:lx/Getx/ControllerStateAllDev.dart';
-import 'package:lx/Getx/ControllerZon.dart';
-import 'package:lx/Page/Options/ControllerOptions.dart';
-import 'package:lx/Page/ReportSms/ControllerReportSms.dart';
-import 'package:lx/Stt/ControllerSttAddDevice.dart';
-import 'package:lx/Stt/ControllerSttContact.dart';
-import 'package:lx/Stt/ControllerSttHomePage.dart';
-import 'package:lx/Stt/MainStt.dart';
+import 'package:lx/Getx/ControllerWarrenty.dart';
+import '/Getx/ControllerContact.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/Getx/ControllerHomePage.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Getx/ControllerInquiry.dart';
+import '/Getx/ControllerOther.dart';
+import '/Getx/ControllerPassword.dart';
+import '/Getx/ControllerRelay.dart';
+import '/Getx/ControllerRemote.dart';
+import '/Getx/ControllerSetting.dart';
+import '/Getx/ControllerStateAllDev.dart';
+import '/Getx/ControllerZon.dart';
+import '/Page/Options/ControllerOptions.dart';
+import '/Page/ReportSms/ControllerReportSms.dart';
+import '/Stt/ControllerSttAddDevice.dart';
+import '/Stt/ControllerSttContact.dart';
+import '/Stt/ControllerSttHomePage.dart';
+import '/Stt/MainStt.dart';
 
 class mybinding implements Bindings {
   @override
@@ -40,7 +41,7 @@ class mybinding implements Bindings {
     Get.put(Controllersttcontact(), permanent: true);
     await Future.delayed(Duration(seconds: 2));
     Get.put(Controlleroptions(), permanent: true);
-
+    Get.put(Controllerwarrenty(), permanent: true);
     // TODO: implement dependencies
   }
 }

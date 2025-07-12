@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Getx/ControllerInquiry.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerRelay.dart';
-import 'package:lx/Getx/ControllerZon.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/Getx/ControllerHomePage.dart';
+import '/Getx/ControllerInquiry.dart';
+import '/Getx/ControllerOther.dart';
+import '/Getx/ControllerRelay.dart';
+import '/Getx/ControllerZon.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
-import '../../Getx/ControllerInfo.dart';
+import '/Getx/ControllerInfo.dart';
 
 class Inquiry extends StatelessWidget {
   const Inquiry({super.key});

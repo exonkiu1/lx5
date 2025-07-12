@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Getx/ControllerRemote.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import '/Getx/ControllerOther.dart';
+import '/Getx/ControllerRemote.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
 
 class WidgetRemoteOld extends StatelessWidget {
   const WidgetRemoteOld({super.key, required this.i});

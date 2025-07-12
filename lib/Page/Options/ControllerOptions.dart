@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Page/Options/Options2.dart';
+import '/Getx/ControllerInfo.dart';
+import '/Page/Options/Options2.dart';
 
 class Controlleroptions extends GetxController {
   RxList<RxDouble> OpacityOption = List.generate(30, (i) => 0.0.obs).obs;

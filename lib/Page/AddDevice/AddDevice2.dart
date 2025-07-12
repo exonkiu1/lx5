@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerOther.dart';
-import 'package:lx/Stt/ControllerSttAddDevice.dart';
-import 'package:lx/WidgetUi/decoration.dart';
+import 'package:lx/Getx/ControllerWarrenty.dart';
+import '/Getx/ControllerOther.dart';
+import '/Stt/ControllerSttAddDevice.dart';
+import '/WidgetUi/decoration.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'widget.dart' as adddevice;
-import '../../Getx/ControllerDatabase.dart';
-import '../../SendOrder.dart';
-import '../../WidgetUi/Appbar.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/Appbar.dart';
 
 class Adddevice2 extends StatefulWidget {
   const Adddevice2({super.key});
@@ -136,10 +137,11 @@ class _Adddevice2State extends State<Adddevice2> {
                                 bool val =
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
-                                  DialogOrder(
+                                  SendInquiry(
                                     context,
                                     () =>
-                                        Get.find<Controllerdatabase>().AddLx(),
+                                        Get.find<Controllerwarrenty>().SendImeiStartWarenty(),
+                                        code: '6660',
                                     description: 'از ساخت دستگاه مطمعن هستید؟',
                                   );
                                 }

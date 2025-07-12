@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lx/Getx/ControllerDatabase.dart';
-import 'package:lx/SendOrder.dart';
-import 'package:lx/WidgetUi/Appbar.dart';
-import 'package:lx/WidgetUi/BackGroundView.dart';
-import 'package:lx/WidgetUi/decoration.dart';
-import 'package:lx/WidgetUi/decoration_textfield.dart';
+import '/Getx/ControllerDatabase.dart';
+import '/SendOrder.dart';
+import '/WidgetUi/Appbar.dart';
+import '/WidgetUi/BackGroundView.dart';
+import '/WidgetUi/decoration.dart';
+import '/WidgetUi/decoration_textfield.dart';
 
 class Adddevice extends StatelessWidget {
   const Adddevice({super.key});
