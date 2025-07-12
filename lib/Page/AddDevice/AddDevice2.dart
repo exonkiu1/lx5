@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -136,11 +137,13 @@ class _Adddevice2State extends State<Adddevice2> {
                                 bool val =
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
-                                  DialogOrder(
+                                  SendInquiry(
                                     context,
+
                                     () =>
-                                        Get.find<Controllerdatabase>().AddLx(),
+                                        Get.find<Controllerwarrenty>().SendImeiStartWarenty(),
                                     description: 'از ساخت دستگاه مطمعن هستید؟',
+                                    code: '6660'
                                   );
                                 }
                               },

@@ -10,6 +10,7 @@ import 'package:lx/Getx/ControllerRelay.dart';
 import 'package:lx/Getx/ControllerRemote.dart';
 import 'package:lx/Getx/ControllerSetting.dart';
 import 'package:lx/Getx/ControllerStateAllDev.dart';
+import 'package:lx/Getx/ControllerWarrenty.dart';
 import 'package:lx/Getx/ControllerZon.dart';
 import 'package:lx/Page/Options/ControllerOptions.dart';
 import 'package:lx/Page/ReportSms/ControllerReportSms.dart';
@@ -40,7 +41,7 @@ class mybinding implements Bindings {
     Get.put(Controllersttcontact(), permanent: true);
     await Future.delayed(Duration(seconds: 2));
     Get.put(Controlleroptions(), permanent: true);
-
+    Get.put(Controllerwarrenty(),permanent: true);
     // TODO: implement dependencies
   }
 }
