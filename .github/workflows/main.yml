@@ -2,9 +2,9 @@ name: Flutter Build APK
 
 on:
   push:
-    branches: [ LuxSecurity ]
+    branches: [ oldlux ]
   pull_request:
-    branches: [ LuxSecurity ]
+    branches: [ oldlux ]
 
 jobs:
   build:
