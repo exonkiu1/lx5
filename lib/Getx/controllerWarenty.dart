@@ -26,8 +26,8 @@ class Controllerwarrenty extends GetxController {
     String imei = Get.find<Controllerother>()
         .TextInuiry
         .value
-        .replaceAll('*', '')
-        .replaceAll('#', '');
+        .split('**')[1]
+        .substring(0, 15);
     final result = await supabase
         .from('lux')
         .select('warranty_start_date')
