@@ -39,8 +39,16 @@ class Controllerwarrenty extends GetxController {
       await supabase
           .from('lux')
           .update({'warranty_start_date': now}).eq('imei', '${imei}'); //
+      final context = Get.context;
+      ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
+          duration: Duration(seconds: 10), content: Text('گارانتی ثبت شد')));
       Get.off(Homepage());
     } else {
+      final context = Get.context;
+      ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
+          duration: Duration(seconds: 10),
+          content: Text('گارانتی از قبل ثبت شده بود')));
+
       Get.off(Homepage());
     }
     Get.find<Controllerdatabase>().AddLx();

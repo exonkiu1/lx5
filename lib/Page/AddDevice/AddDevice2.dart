@@ -151,21 +151,25 @@ class _Adddevice2State extends State<Adddevice2> {
                                           '${Get.find<Controllerdatabase>().tfPhone.text}');
                                 }
                               },
-                              child: Visibility(
-                                visible: Get.find<Controllerother>()
-                                        .TypeInquiry
-                                        .value !=
-                                    'imei',
-                                replacement: CircularProgressIndicator(),
-                                child: Container(
-                                  padding: EdgeInsets.symmetric(vertical: 2),
-                                  width: Get.width * 0.3,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color.fromARGB(54, 255, 255, 255),
-                                  ),
-                                  child: Center(child: Text('ثبت دستگاه')),
-                                ),
+                              child: Obx(
+                               (){
+                                  return Visibility(
+                                    visible: Get.find<Controllerother>()
+                                            .TypeInquiry
+                                            .value !=
+                                        'imei',
+                                    replacement: CircularProgressIndicator(),
+                                    child: Container(
+                                      padding: EdgeInsets.symmetric(vertical: 2),
+                                      width: Get.width * 0.3,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(20),
+                                        color: Color.fromARGB(54, 255, 255, 255),
+                                      ),
+                                      child: Center(child: Text('ثبت دستگاه')),
+                                    ),
+                                  );
+                                }
                               ),
                             ),
                           ),
