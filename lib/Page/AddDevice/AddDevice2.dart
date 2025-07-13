@@ -137,40 +137,48 @@ class _Adddevice2State extends State<Adddevice2> {
                                 bool val =
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
-                                  SendInquiry(
+                                  if (Get.find<Controllerother>().Model.value !=
+                                      'LX PRO') {
+                                    DialogOrder(
                                       context,
-                                      () => Get.find<Controllerwarrenty>()
-                                          .SendImeiStartWarenty(),
+                                      Get.find<Controllerdatabase>().AddLx(),
                                       description:
                                           'از ساخت دستگاه مطمعن هستید؟',
-                                      code: '6660',
-                                      // controller: '**',
-                                      type: 'imei',
-                                      bool_phone: true,
-                                      phone:
-                                          '${Get.find<Controllerdatabase>().tfPhone.text}');
+                                    );
+                                  } else {
+                                    SendInquiry(
+                                        context,
+                                        () => Get.find<Controllerwarrenty>()
+                                            .SendImeiStartWarenty(),
+                                        description:
+                                            'از ساخت دستگاه مطمعن هستید؟',
+                                        code: '6660',
+                                        // controller: '**',
+                                        type: 'imei',
+                                        bool_phone: true,
+                                        phone:
+                                            '${Get.find<Controllerdatabase>().tfPhone.text}');
+                                  }
                                 }
                               },
-                              child: Obx(
-                               (){
-                                  return Visibility(
-                                    visible: Get.find<Controllerother>()
-                                            .TypeInquiry
-                                            .value !=
-                                        'imei',
-                                    replacement: CircularProgressIndicator(),
-                                    child: Container(
-                                      padding: EdgeInsets.symmetric(vertical: 2),
-                                      width: Get.width * 0.3,
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: Color.fromARGB(54, 255, 255, 255),
-                                      ),
-                                      child: Center(child: Text('ثبت دستگاه')),
+                              child: Obx(() {
+                                return Visibility(
+                                  visible: Get.find<Controllerother>()
+                                          .TypeInquiry
+                                          .value !=
+                                      'imei',
+                                  replacement: CircularProgressIndicator(),
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(vertical: 2),
+                                    width: Get.width * 0.3,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Color.fromARGB(54, 255, 255, 255),
                                     ),
-                                  );
-                                }
-                              ),
+                                    child: Center(child: Text('ثبت دستگاه')),
+                                  ),
+                                );
+                              }),
                             ),
                           ),
                         ],
