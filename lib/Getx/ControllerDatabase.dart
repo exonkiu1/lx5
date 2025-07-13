@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import '/DateBase/DataBase.dart';
 import '/DateBase/Model.dart';
@@ -53,6 +54,7 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllerrelay>().GetRelay(id);
       Get.find<Controllersetting>().GetSetting(model);
       Get.find<Controllerinquiry>().GetInquiry(model);
+      Get.find<Controllerwarrenty>().GetWarenty(model);
     } else {
       Get.off(() => const Adddevice2());
     }
@@ -62,6 +64,7 @@ class Controllerdatabase extends GetxController {
   TextEditingController tfName = TextEditingController(),
       tfPhone = TextEditingController();
   RxString sim = '-1'.obs;
+
   ///
   AddLx() async {
     Get.find<Controllersttadddevice>().PlayMusic('greeting');
@@ -73,8 +76,9 @@ class Controllerdatabase extends GetxController {
         Name: tfName.text,
         Oprator: Get.find<Controllerinfo>().FindOprator(tfPhone.text),
         Simcard: sim.value,
-        Model: Get.find<Controllerother>().Model.value==''?'LX PRO':Get.find<Controllerother>().Model.value
-        );
+        Model: Get.find<Controllerother>().Model.value == ''
+            ? 'LX PRO'
+            : Get.find<Controllerother>().Model.value);
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
     await Get.find<Controllerrelay>().AddRelay('$id');
@@ -88,45 +92,55 @@ class Controllerdatabase extends GetxController {
   //
   UpdateLx() {
     DevLX model = DevLX(
-      //info
-      id: Get.find<Controllerinfo>().id.value,
-      Phone: Get.find<Controllerinfo>().Phone.value,
-      Name: Get.find<Controllerinfo>().Name.value,
-      StateDev: Get.find<Controllerhomepage>().StateDev.value,
-      Oprator: Get.find<Controllerinfo>().Oprator.value,
-      Charge: Get.find<Controllerinfo>().Charge.value.toString(),
-      Pass: Get.find<Controllerpassword>().PasswordDev.value,
-      Simcard: Get.find<Controllerinfo>().Simcard.value.toString(),
-      Model: Get.find<Controllerinfo>().Model.value,
-      //info
-      //Setting
-      DevLanguage: Get.find<Controllersetting>().DevLanguage.value,
-      EstablishingContactDuringPowerOutage: Get.find<Controllersetting>()
-          .EstablishingContactDuringPowerOutage
-          .value,
-      SemiActiveStatusRemote:
-          Get.find<Controllersetting>().SemiActiveStatusRemote.value,
-      PeriodicBatteryReport:
-          Get.find<Controllersetting>().PeriodicBatteryReport.value,
-      InventoryReport: Get.find<Controllersetting>().InventoryReport.value,
-      AlarmMode: Get.find<Controllersetting>().AlarmMode.value,
-      AlarmTime: Get.find<Controllersetting>().AlarmTime.value,
-      //Setting
-      //inquiry
-      UrbanElectricity: Get.find<Controllerinquiry>().UrbanElectricity.value,
-      AntennaStrength: Get.find<Controllerinquiry>().AntennaStrength.value,
-      BatterPower: Get.find<Controllerinquiry>().BatterPower.value,
-      CommunicationsStatus:
-          Get.find<Controllerinquiry>().CommunicationsStatus.value,
-      CountContact: Get.find<Controllerinquiry>().CountContact.value,
-      CountRemote: Get.find<Controllerinquiry>().CountRemote.value,
-      Speaker: Get.find<Controllerinquiry>().Speaker.value,
-      zon1: Get.find<Controllerinquiry>().zon1.value,
-      zon2: Get.find<Controllerinquiry>().zon2.value,
-      zon3: Get.find<Controllerinquiry>().zon3.value,
-      zon4: Get.find<Controllerinquiry>().zon4.value,
-      //inquiry
-    );
+        //info
+        id: Get.find<Controllerinfo>().id.value,
+        Phone: Get.find<Controllerinfo>().Phone.value,
+        Name: Get.find<Controllerinfo>().Name.value,
+        StateDev: Get.find<Controllerhomepage>().StateDev.value,
+        Oprator: Get.find<Controllerinfo>().Oprator.value,
+        Charge: Get.find<Controllerinfo>().Charge.value.toString(),
+        Pass: Get.find<Controllerpassword>().PasswordDev.value,
+        Simcard: Get.find<Controllerinfo>().Simcard.value.toString(),
+        Model: Get.find<Controllerinfo>().Model.value,
+        //info
+        //Setting
+        DevLanguage: Get.find<Controllersetting>().DevLanguage.value,
+        EstablishingContactDuringPowerOutage: Get.find<Controllersetting>()
+            .EstablishingContactDuringPowerOutage
+            .value,
+        SemiActiveStatusRemote:
+            Get.find<Controllersetting>().SemiActiveStatusRemote.value,
+        PeriodicBatteryReport:
+            Get.find<Controllersetting>().PeriodicBatteryReport.value,
+        InventoryReport: Get.find<Controllersetting>().InventoryReport.value,
+        AlarmMode: Get.find<Controllersetting>().AlarmMode.value,
+        AlarmTime: Get.find<Controllersetting>().AlarmTime.value,
+        //Setting
+        //inquiry
+        UrbanElectricity: Get.find<Controllerinquiry>().UrbanElectricity.value,
+        AntennaStrength: Get.find<Controllerinquiry>().AntennaStrength.value,
+        BatterPower: Get.find<Controllerinquiry>().BatterPower.value,
+        CommunicationsStatus:
+            Get.find<Controllerinquiry>().CommunicationsStatus.value,
+        CountContact: Get.find<Controllerinquiry>().CountContact.value,
+        CountRemote: Get.find<Controllerinquiry>().CountRemote.value,
+        Speaker: Get.find<Controllerinquiry>().Speaker.value,
+        zon1: Get.find<Controllerinquiry>().zon1.value,
+        zon2: Get.find<Controllerinquiry>().zon2.value,
+        zon3: Get.find<Controllerinquiry>().zon3.value,
+        zon4: Get.find<Controllerinquiry>().zon4.value,
+        //inquiry
+        //Warrenty
+        Address: Get.find<Controllerwarrenty>().Address.value,
+        City: Get.find<Controllerwarrenty>().City.value,
+        DateWarrenty: Get.find<Controllerwarrenty>().DateWarrenty.value,
+        NameClinet: Get.find<Controllerwarrenty>().NameClinet.value,
+        NameTechnician: Get.find<Controllerwarrenty>().NameTechnician.value,
+        PhoneClinet: Get.find<Controllerwarrenty>().PhoneClinet.value,
+        PhoneTechnician: Get.find<Controllerwarrenty>().PhoneTechnician.value,
+        Province: Get.find<Controllerwarrenty>().Province.value
+        //Warrenty
+        );
     DatabaseLX.instance.UpdateDev(model);
   }
 
@@ -138,13 +152,12 @@ class Controllerdatabase extends GetxController {
   ResetDevLx() async {
     String id = Get.find<Controllerinfo>().id.value;
     DevLX model = DevLX(
-      id: id,
-      Phone: Get.find<Controllerinfo>().Phone.value,
-      Name: Get.find<Controllerinfo>().Name.value,
-      StateDev: Get.find<Controllerhomepage>().StateDev.value,
-      Oprator: Get.find<Controllerinfo>().Oprator.value,
-      Model: Get.find<Controllerinfo>().Model.value.toString()
-    );
+        id: id,
+        Phone: Get.find<Controllerinfo>().Phone.value,
+        Name: Get.find<Controllerinfo>().Name.value,
+        StateDev: Get.find<Controllerhomepage>().StateDev.value,
+        Oprator: Get.find<Controllerinfo>().Oprator.value,
+        Model: Get.find<Controllerinfo>().Model.value.toString());
     DatabaseLX.instance.UpdateDev(model);
     Get.find<Controllercontact>().AddContact(id);
     Get.find<Controllerremote>().AddRemote(id);

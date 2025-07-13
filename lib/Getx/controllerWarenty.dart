@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:lx/DateBase/Model.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Page/HomePage/HomePage.dart';
+import 'package:lx/Page/Warrenty/Warrenty.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Controllerwarrenty extends GetxController {
@@ -15,11 +17,26 @@ class Controllerwarrenty extends GetxController {
   RxString NameTechnician = ''.obs;
   RxString PhoneTechnician = ''.obs;
   ///////////////////////////////////
+  RxString SmsImei = ''.obs;
+  ////
+  GetWarenty(DevLX model) {
+    Address.value = model.Address;
+    City.value = model.City;
+    DateWarrenty.value = model.DateWarrenty;
+    NameClinet.value = model.NameClinet;
+    NameTechnician.value = model.NameTechnician;
+    PhoneClinet.value = model.PhoneClinet;
+    PhoneTechnician.value = model.PhoneTechnician;
+    Province.value = model.Province;
+  }
+
   TextEditingController Tf_NameClinet = TextEditingController(),
       tf_PhoneClinet = TextEditingController(),
       tf_Address = TextEditingController(),
       Tf_NameTechnician = TextEditingController(),
       tf_PhoneTechnician = TextEditingController();
+  RxString drp_city = ''.obs;
+  RxString drp_province = ''.obs;
   SendImeiStartWarenty() async {
     final supabase = Supabase.instance.client;
 
@@ -28,6 +45,7 @@ class Controllerwarrenty extends GetxController {
         .value
         .split('**')[1]
         .substring(0, 15);
+    SmsImei.value = imei;
     final result = await supabase
         .from('lux')
         .select('warranty_start_date')
@@ -42,15 +60,50 @@ class Controllerwarrenty extends GetxController {
       final context = Get.context;
       ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
           duration: Duration(seconds: 10), content: Text('گارانتی ثبت شد')));
-      Get.off(Homepage());
+      Get.off(Warrenty());
     } else {
-      final context = Get.context;
+      /* final context = Get.context;
       ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
           duration: Duration(seconds: 10),
-          content: Text('گارانتی از قبل ثبت شده بود')));
-
-      Get.off(Homepage());
+          content: Text('گارانتی از قبل ثبت شده بود'))); */
+      bool val = await CheckRegisterDev(imei);
+      if (val) {
+        Get.off(Homepage());
+      } else {
+        Get.off(Warrenty());
+      }
     }
-    Get.find<Controllerdatabase>().AddLx();
+    //  Get.find<Controllerdatabase>().AddLx();
+  }
+
+  Future<bool> CheckRegisterDev(String imei) async {
+    bool val = false;
+    final supabase = Supabase.instance.client;
+    final resultnameclinet = await supabase
+        .from('lux')
+        .select('name_clinet')
+        .eq('imei', '${imei}')
+        .maybeSingle();
+    final dateStrnameclinet = resultnameclinet?['name_clinet'];
+    if (dateStrnameclinet != null) {
+      val = true;
+      await Get.find<Controllerdatabase>().AddLx();
+      GetInfoFromDataBase(imei);
+    }
+    return val;
+  }
+  GetInfoFromDataBase(String imei){
+
+  }
+  RegisterDev() async {
+    String imei = SmsImei.value;
+    final supabase = Supabase.instance.client;
+     await supabase
+        .from('lux')
+        .update({'name_clinet':Tf_NameClinet.text,'city':})
+        .eq('imei', '${imei}')
+        .maybeSingle();
+    
+
   }
 }

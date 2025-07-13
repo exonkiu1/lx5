@@ -30,6 +30,16 @@ class DevLX {
   String Model;
   String Oprator;
   String Simcard;
+  //
+  String NameClinet;
+  String PhoneClinet;
+  String City;
+  String Province;
+  String Address;
+  String DateWarrenty;
+  String NameTechnician;
+  String PhoneTechnician;
+  //
   DevLX(
       {required this.id,
       required this.Phone,
@@ -57,7 +67,15 @@ class DevLX {
       this.InventoryReport = '12',
       this.AlarmTime = '10',
       this.AlarmMode = 'ابتدا پیامک سپس تماس با تکرار',
-      this.Simcard = '-1'});
+      this.Simcard = '-1',
+      this.NameClinet = '',
+      this.PhoneClinet = '',
+      this.Address = '',
+      this.City = '',
+      this.Province = '',
+      this.DateWarrenty = '',
+      this.NameTechnician = '',
+      this.PhoneTechnician = ''});
 
   Map<String, dynamic> toMap() {
     return {
@@ -88,12 +106,20 @@ class DevLX {
       'AlarmMode': AlarmMode,
       'Model': Model,
       'Oprator': Oprator,
-      'Simcard': Simcard
+      'Simcard': Simcard,
+      'NameClinet': NameClinet,
+      'PhoneClinet': PhoneClinet,
+      'City': City,
+      'Province': Province,
+      'Address': Address,
+      'DateWarrenty': DateWarrenty,
+      'NameTechnician': NameTechnician,
+      'PhoneTechnician': PhoneTechnician
     };
   }
 
   @override
   String toString() {
-    return 'DevLX{id:$id,Phone:$Phone,Name:$Name,StateDev:$StateDev,Pass:$Pass,Charge:$Charge,UrbanElectricity:$UrbanElectricity,Speaker:$Speaker,BatterPower:$BatterPower,CountContact:$CountContact,CountRemote:$CountRemote,AntennaStrength:$AntennaStrength,CommunicationsStatus:$CommunicationsStatus,zon1:$zon1,zon2:$zon2,zon3:$zon3,zon4:$zon4,DevLanguage:$DevLanguage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,PeriodicBatteryReport:$PeriodicBatteryReport,InventoryReport:$InventoryReport,AlarmTime:$AlarmTime,AlarmMode:$AlarmMode,Model:$Model,Oprator:$Oprator,Simcard:$Simcard}';
+    return 'DevLX{id:$id,Phone:$Phone,Name:$Name,StateDev:$StateDev,Pass:$Pass,Charge:$Charge,UrbanElectricity:$UrbanElectricity,Speaker:$Speaker,BatterPower:$BatterPower,CountContact:$CountContact,CountRemote:$CountRemote,AntennaStrength:$AntennaStrength,CommunicationsStatus:$CommunicationsStatus,zon1:$zon1,zon2:$zon2,zon3:$zon3,zon4:$zon4,DevLanguage:$DevLanguage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,PeriodicBatteryReport:$PeriodicBatteryReport,InventoryReport:$InventoryReport,AlarmTime:$AlarmTime,AlarmMode:$AlarmMode,Model:$Model,Oprator:$Oprator,Simcard:$Simcard,NameClinet:$NameClinet,PhoneClinet:$PhoneClinet,City:$City,Province:$Province,Address:$Address,DateWarrenty:$DateWarrenty,NameTechnician:$NameTechnician,PhoneTechnician:$PhoneTechnician}';
   }
 }
