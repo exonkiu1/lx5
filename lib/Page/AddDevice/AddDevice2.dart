@@ -138,23 +138,34 @@ class _Adddevice2State extends State<Adddevice2> {
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
                                   SendInquiry(
-                                    context,
-
-                                    () =>
-                                        Get.find<Controllerwarrenty>().SendImeiStartWarenty(),
-                                    description: 'از ساخت دستگاه مطمعن هستید؟',
-                                    code: '6660'
-                                  );
+                                      context,
+                                      () => Get.find<Controllerwarrenty>()
+                                          .SendImeiStartWarenty(),
+                                      description:
+                                          'از ساخت دستگاه مطمعن هستید؟',
+                                      code: '6660',
+                                      // controller: '**',
+                                      type: 'imei',
+                                      bool_phone: true,
+                                      phone:
+                                          '${Get.find<Controllerdatabase>().tfPhone.text}');
                                 }
                               },
-                              child: Container(
-                                padding: EdgeInsets.symmetric(vertical: 2),
-                                width: Get.width * 0.3,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(20),
-                                  color: Color.fromARGB(54, 255, 255, 255),
+                              child: Visibility(
+                                visible: Get.find<Controllerother>()
+                                        .TypeInquiry
+                                        .value !=
+                                    'imei',
+                                replacement: CircularProgressIndicator(),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 2),
+                                  width: Get.width * 0.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color.fromARGB(54, 255, 255, 255),
+                                  ),
+                                  child: Center(child: Text('ثبت دستگاه')),
                                 ),
-                                child: Center(child: Text('ثبت دستگاه')),
                               ),
                             ),
                           ),

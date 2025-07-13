@@ -12,7 +12,7 @@ void SendOrder(BuildContext context, Future<String> Function() function,
     String description = 'پیامک به دستگاه ارسال شود؟',
     bool pass = false,
     bool StateDev = false}) {
-   Get.find<Controllerother>().DelyOrder.value <= 0
+  Get.find<Controllerother>().DelyOrder.value <= 0
       ? showDialog(
           context: context,
           barrierDismissible: false,
@@ -153,7 +153,9 @@ SendInquiry(BuildContext context, Function() function,
     String description = 'درخواست استعلام به دستگاه ارسال شود؟',
     String code = '',
     String controller = '',
-    String type = ''}) {
+    String type = '',
+    String phone = '',
+    bool bool_phone = false}) {
   showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -203,7 +205,8 @@ SendInquiry(BuildContext context, Function() function,
                         onTap: () async {
                           Navigator.of(context).pop();
                           Get.find<Controllerother>().TypeInquiry.value = type;
-                          SendSms(context, code);
+                          SendSms(context, code,
+                              bool_phone: bool_phone, phone: phone);
                           InquirySms(
                             function,
                             controller: controller,
@@ -242,16 +245,21 @@ SendInquiry(BuildContext context, Function() function,
 }
 
 ///
-Future<void> SendSms(BuildContext context, String code) async {
+Future<void> SendSms(BuildContext context, String code,
+    {String phone = '', bool bool_phone = false}) async {
   if (Get.find<Controllerinfo>().Simcard.value != -2) {
     final Telephony telephony = Telephony.instance;
-    telephony.sendSms(
-        to: '${Get.find<Controllerinfo>().Phone.value}',
-        message:
-            '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
-        subscriptionId: Get.find<Controllerinfo>().Simcard.value == '-1'
-            ? null
-            : int.parse(Get.find<Controllerinfo>().Simcard.value));
+    if (!bool_phone) {
+      telephony.sendSms(
+          to: '${Get.find<Controllerinfo>().Phone.value}',
+          message:
+              '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
+          subscriptionId: Get.find<Controllerinfo>().Simcard.value == '-1'
+              ? null
+              : int.parse(Get.find<Controllerinfo>().Simcard.value));
+    } else {
+      telephony.sendSms(to: phone, message: '*0000*${code}#');
+    }
   } else {
     String uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
