@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 
 class WidgetTextField extends StatelessWidget {
-  const WidgetTextField({
+   WidgetTextField({
     super.key,
     required this.hint,
     required this.tf,

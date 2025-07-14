@@ -92,18 +92,50 @@ class Controllerwarrenty extends GetxController {
     }
     return val;
   }
-  GetInfoFromDataBase(String imei){
 
-  }
+  GetInfoFromDataBase(String imei) {}
   RegisterDev() async {
     String imei = SmsImei.value;
     final supabase = Supabase.instance.client;
-     await supabase
+    await supabase
         .from('lux')
-        .update({'name_clinet':Tf_NameClinet.text,'city':})
+        .update({
+          'name_clinet': Tf_NameClinet.text,
+          'phone_client': tf_PhoneClinet.text,
+          'address_client': tf_Address.text,
+          'city': drp_city.value,
+          'Province': drp_province.value,
+          'name_technician': Tf_NameTechnician.text,
+          'phone_technician': tf_PhoneTechnician.text,
+        })
         .eq('imei', '${imei}')
         .maybeSingle();
-    
+  }
 
+  bool CheckCompliteInfoDev() {
+    bool val = false;
+    if (Tf_NameClinet.text.length > 4 &&
+        tf_PhoneClinet.text.length > 5 &&
+        tf_Address.text.length > 4 &&
+        Tf_NameTechnician.text.length > 4 &&
+        tf_PhoneTechnician.text.length > 4 &&
+        drp_city.value.length > 1 &&
+        drp_province.value.length > 1) {
+      val = true;
+    } else {
+      final context = Get.context;
+      ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
+          duration: Duration(seconds: 4),
+          content: Row(
+            children: [
+              Icon(
+                Icons.error,
+                color: Colors.red,
+              ),
+              Text('همه اطلاعات را تکمیل کنید'),
+            ],
+          )));
+    }
+    return val;
   }
 }

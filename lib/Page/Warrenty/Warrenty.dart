@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/controllerWarenty.dart';
+import 'package:lx/Page/Warrenty/ListCity.dart';
+import 'package:lx/WidgetUi/decoration.dart';
 import 'widget.dart' as widget;
 import '../../WidgetUi/Appbar.dart';
 import '../../WidgetUi/BackGroundView.dart';
@@ -31,7 +33,11 @@ class Warrenty extends StatelessWidget {
             ],
           ),
           widget.WidgetTextField(
-              hint: 'نشانی', tf: Get.find<Controllerwarrenty>().tf_Address),
+            hint: 'نشانی',
+            tf: Get.find<Controllerwarrenty>().tf_Address,
+            width: Get.width * 0.4,
+            customwidth: true,
+          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -45,7 +51,87 @@ class Warrenty extends StatelessWidget {
               ),
             ],
           ),
-          
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Container(
+                width: Get.width * 0.4,
+                decoration: decoration(),
+                child: Obx(() {
+                  return DropdownButton(
+                      value: Get.find<Controllerwarrenty>()
+                                  .drp_province
+                                  .value
+                                  .length >
+                              2
+                          ? Get.find<Controllerwarrenty>().drp_province.value
+                          : null,
+                      items: List.generate(ListCity.length,
+                              (i) => ListCity.keys.elementAt(i))
+                          .map<DropdownMenuItem<String>>(
+                              (String value) => DropdownMenuItem(
+                                    child: Text(value),
+                                    value: value,
+                                  ))
+                          .toList(),
+                      onChanged: (value) {
+                        Get.find<Controllerwarrenty>().drp_province.value =
+                            value!;
+                        Get.find<Controllerwarrenty>().drp_city.value =
+                            ListCity[Get.find<Controllerwarrenty>()
+                                .drp_province
+                                .value]![0];
+                      });
+                }),
+              ),
+              Container(
+                width: Get.width * 0.4,
+                decoration: decoration(),
+                child: Obx(() {
+                  return DropdownButton(
+                      value:
+                          Get.find<Controllerwarrenty>().drp_city.value.length >
+                                  2
+                              ? Get.find<Controllerwarrenty>().drp_city.value
+                              : null,
+                      items: List.generate(
+                              ListCity[Get.find<Controllerwarrenty>()
+                                      .drp_province
+                                      .value]!
+                                  .length,
+                              (i) => ListCity[Get.find<Controllerwarrenty>()
+                                  .drp_province
+                                  .value]![i])
+                          .map<DropdownMenuItem<String>>(
+                              (String value) => DropdownMenuItem(
+                                    child: Text(value),
+                                    value: value,
+                                  ))
+                          .toList(),
+                      onChanged: (value) => Get.find<Controllerwarrenty>()
+                          .drp_city
+                          .value = value!);
+                }),
+              )
+            ],
+          ),
+          InkWell(
+            onTap: () {
+              bool val = Get.find<Controllerwarrenty>().CheckCompliteInfoDev();
+              if (val) {
+                Get.find<Controllerwarrenty>().RegisterDev();
+              }
+            },
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 2),
+              width: Get.width * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color.fromARGB(54, 255, 255, 255),
+              ),
+              child: Center(child: Text('ثبت اطلاعات')),
+            ),
+          ),
         ],
       )),
     );
