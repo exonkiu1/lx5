@@ -6,6 +6,7 @@ import 'package:lx/Page/Contact/ContactLx1000.dart';
 import 'package:lx/Page/Help/HelpLX1000.dart';
 import 'package:lx/Page/Help/HelpLXPRO.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
+import 'package:lx/Page/Warrenty/warrantyPage.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/Page/Contact/Contact.dart';
 import 'package:lx/Page/PasswordDevice/PasswordDevice.dart';
@@ -89,6 +90,7 @@ Map<String, Map<String, dynamic>> PageOptionsLxPro = {
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
   'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
+  'اطلاعات گارانتی': {'image': 'reportsms', 'page': Warrantypage()},
 };
 Map<String, Map<String, dynamic>> PageOptionsLx1000 = {
   'افزودن دستگاه': {'image': 'add', 'page': Adddevice2()},
