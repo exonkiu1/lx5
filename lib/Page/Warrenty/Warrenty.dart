@@ -84,35 +84,37 @@ class Warrenty extends StatelessWidget {
                       });
                 }),
               ),
-              /* Container(
-                width: Get.width * 0.4,
-                decoration: decoration(),
-                child: Obx(() {
-                  return DropdownButton(
-                      value:
-                          Get.find<Controllerwarrenty>().drp_city.value.length >
-                                  2
-                              ? Get.find<Controllerwarrenty>().drp_city.value
-                              : null,
-                      items: List.generate(
-                              ListCity[Get.find<Controllerwarrenty>()
-                                      .drp_province
-                                      .value]!
-                                  .length,
-                              (i) => ListCity[Get.find<Controllerwarrenty>()
-                                  .drp_province
-                                  .value]![i])
-                          .map<DropdownMenuItem<String>>(
-                              (String value) => DropdownMenuItem(
-                                    child: Text(value),
-                                    value: value,
-                                  ))
-                          .toList(),
-                      onChanged: (value) => Get.find<Controllerwarrenty>()
-                          .drp_city
-                          .value = value!);
-                }),
-              ) */
+              Obx(
+                () {
+                  return Visibility(
+                    visible: Get.find<Controllerwarrenty>().drp_province.value.length>2,
+                    child: Container(
+                      width: Get.width * 0.4,
+                      decoration: decoration(),
+                      child: Obx(() {
+                        return DropdownButton(
+                            value:
+                                Get.find<Controllerwarrenty>().drp_city.value.length >
+                                        2
+                                    ? Get.find<Controllerwarrenty>().drp_city.value
+                                    : null,
+                            items: ListCity[Get.find<Controllerwarrenty>()
+                                            .drp_province
+                                            .value]!
+                                .map<DropdownMenuItem<String>>(
+                                    (String value) => DropdownMenuItem(
+                                          child: Text(value),
+                                          value: value,
+                                        ))
+                                .toList(),
+                            onChanged: (value) => Get.find<Controllerwarrenty>()
+                                .drp_city
+                                .value = value!);
+                      }),
+                    ),
+                  );
+                }
+              )
             ],
           ),
           InkWell(
@@ -124,6 +126,7 @@ class Warrenty extends StatelessWidget {
             },
             child: Container(
               padding: EdgeInsets.symmetric(vertical: 2),
+              margin: EdgeInsets.symmetric(vertical: 20),
               width: Get.width * 0.3,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
