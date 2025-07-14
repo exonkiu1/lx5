@@ -28,6 +28,7 @@ class DevLX {
   String AlarmTime;
   String AlarmMode;
   String Model;
+  String ModelPro;
   String Oprator;
   String Simcard;
   //
@@ -40,42 +41,44 @@ class DevLX {
   String NameTechnician;
   String PhoneTechnician;
   //
-  DevLX(
-      {required this.id,
-      required this.Phone,
-      required this.Name,
-      required this.Oprator,
-      this.Model = 'pro',
-      this.StateDev = 'on',
-      this.Pass = '0000',
-      this.Charge = '0',
-      this.UrbanElectricity = 'روشن',
-      this.Speaker = 'روشن',
-      this.BatterPower = '',
-      this.CountContact = '',
-      this.CountRemote = '',
-      this.AntennaStrength = '',
-      this.CommunicationsStatus = '',
-      this.zon1 = 'بسته',
-      this.zon2 = 'بسته',
-      this.zon3 = 'بسته',
-      this.zon4 = 'بسته',
-      this.DevLanguage = 'per',
-      this.EstablishingContactDuringPowerOutage = 'false',
-      this.SemiActiveStatusRemote = 'false',
-      this.PeriodicBatteryReport = '10',
-      this.InventoryReport = '12',
-      this.AlarmTime = '10',
-      this.AlarmMode = 'ابتدا پیامک سپس تماس با تکرار',
-      this.Simcard = '-1',
-      this.NameClinet = '',
-      this.PhoneClinet = '',
-      this.Address = '',
-      this.City = '',
-      this.Province = '',
-      this.DateWarrenty = '',
-      this.NameTechnician = '',
-      this.PhoneTechnician = ''});
+  DevLX({
+    required this.id,
+    required this.Phone,
+    required this.Name,
+    required this.Oprator,
+    this.Model = 'pro',
+    this.StateDev = 'on',
+    this.Pass = '0000',
+    this.Charge = '0',
+    this.UrbanElectricity = 'روشن',
+    this.Speaker = 'روشن',
+    this.BatterPower = '',
+    this.CountContact = '',
+    this.CountRemote = '',
+    this.AntennaStrength = '',
+    this.CommunicationsStatus = '',
+    this.zon1 = 'بسته',
+    this.zon2 = 'بسته',
+    this.zon3 = 'بسته',
+    this.zon4 = 'بسته',
+    this.DevLanguage = 'per',
+    this.EstablishingContactDuringPowerOutage = 'false',
+    this.SemiActiveStatusRemote = 'false',
+    this.PeriodicBatteryReport = '10',
+    this.InventoryReport = '12',
+    this.AlarmTime = '10',
+    this.AlarmMode = 'ابتدا پیامک سپس تماس با تکرار',
+    this.Simcard = '-1',
+    this.NameClinet = '',
+    this.PhoneClinet = '',
+    this.Address = '',
+    this.City = '',
+    this.Province = '',
+    this.DateWarrenty = '',
+    this.NameTechnician = '',
+    this.PhoneTechnician = '',
+    this.ModelPro = '',
+  });
 
   Map<String, dynamic> toMap() {
     return {
@@ -114,12 +117,13 @@ class DevLX {
       'Address': Address,
       'DateWarrenty': DateWarrenty,
       'NameTechnician': NameTechnician,
-      'PhoneTechnician': PhoneTechnician
+      'PhoneTechnician': PhoneTechnician,
+      'ModelPro': ModelPro
     };
   }
 
   @override
   String toString() {
-    return 'DevLX{id:$id,Phone:$Phone,Name:$Name,StateDev:$StateDev,Pass:$Pass,Charge:$Charge,UrbanElectricity:$UrbanElectricity,Speaker:$Speaker,BatterPower:$BatterPower,CountContact:$CountContact,CountRemote:$CountRemote,AntennaStrength:$AntennaStrength,CommunicationsStatus:$CommunicationsStatus,zon1:$zon1,zon2:$zon2,zon3:$zon3,zon4:$zon4,DevLanguage:$DevLanguage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,PeriodicBatteryReport:$PeriodicBatteryReport,InventoryReport:$InventoryReport,AlarmTime:$AlarmTime,AlarmMode:$AlarmMode,Model:$Model,Oprator:$Oprator,Simcard:$Simcard,NameClinet:$NameClinet,PhoneClinet:$PhoneClinet,City:$City,Province:$Province,Address:$Address,DateWarrenty:$DateWarrenty,NameTechnician:$NameTechnician,PhoneTechnician:$PhoneTechnician}';
+    return 'DevLX{id:$id,Phone:$Phone,Name:$Name,StateDev:$StateDev,Pass:$Pass,Charge:$Charge,UrbanElectricity:$UrbanElectricity,Speaker:$Speaker,BatterPower:$BatterPower,CountContact:$CountContact,CountRemote:$CountRemote,AntennaStrength:$AntennaStrength,CommunicationsStatus:$CommunicationsStatus,zon1:$zon1,zon2:$zon2,zon3:$zon3,zon4:$zon4,DevLanguage:$DevLanguage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,PeriodicBatteryReport:$PeriodicBatteryReport,InventoryReport:$InventoryReport,AlarmTime:$AlarmTime,AlarmMode:$AlarmMode,Model:$Model,Oprator:$Oprator,Simcard:$Simcard,NameClinet:$NameClinet,PhoneClinet:$PhoneClinet,City:$City,Province:$Province,Address:$Address,DateWarrenty:$DateWarrenty,NameTechnician:$NameTechnician,PhoneTechnician:$PhoneTechnician,ModelPro:$ModelPro}';
   }
 }

@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerRelay.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Page/Relay/DialogRelay.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
+import 'package:lx/model.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import '../../Getx/ControllerInfo.dart';
 import '../../SendOrder.dart';
@@ -21,7 +23,10 @@ class Relay extends StatelessWidget {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: List.generate(
-                Get.find<Controllerinfo>().Model.value == 'LX PRO' ? 6 : 2,
+                Get.find<Controllerinfo>().Model.value == 'LX PRO'
+                    ? MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
+                        !['relay']!
+                    : 2,
                 (i) => WidgetRelay(
                       i: i,
                     )),

@@ -138,7 +138,8 @@ class Controllerdatabase extends GetxController {
         NameTechnician: Get.find<Controllerwarrenty>().NameTechnician.value,
         PhoneClinet: Get.find<Controllerwarrenty>().PhoneClinet.value,
         PhoneTechnician: Get.find<Controllerwarrenty>().PhoneTechnician.value,
-        Province: Get.find<Controllerwarrenty>().Province.value
+        Province: Get.find<Controllerwarrenty>().Province.value,
+        ModelPro: Get.find<Controllerwarrenty>().ModelPro.value
         //Warrenty
         );
     DatabaseLX.instance.UpdateDev(model);
@@ -165,7 +166,8 @@ class Controllerdatabase extends GetxController {
         NameTechnician: Get.find<Controllerwarrenty>().NameTechnician.value,
         PhoneClinet: Get.find<Controllerwarrenty>().PhoneClinet.value,
         PhoneTechnician: Get.find<Controllerwarrenty>().PhoneTechnician.value,
-        Province: Get.find<Controllerwarrenty>().Province.value);
+        Province: Get.find<Controllerwarrenty>().Province.value,
+        ModelPro: Get.find<Controllerwarrenty>().ModelPro.value);
     DatabaseLX.instance.UpdateDev(model);
     Get.find<Controllercontact>().AddContact(id);
     Get.find<Controllerremote>().AddRemote(id);

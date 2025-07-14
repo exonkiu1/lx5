@@ -3,11 +3,13 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Getx/ControllerZon.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Page/Zon/clippathboxzon.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
+import 'package:lx/model.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 class Zon extends StatelessWidget {
@@ -17,7 +19,8 @@ class Zon extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: appBar(
-        title: 'زون ها' /* actions: [
+        title:
+            'زون ها' /* actions: [
         IconButton(
             onPressed: () => SendOrder(
                 context, () => Get.find<Controllerzon>().DeleteAllZonWirles(),
@@ -26,18 +29,18 @@ class Zon extends StatelessWidget {
               Icons.delete,
               color: Colors.white,
             ))
-      ] */,
+      ] */
+        ,
       ),
       extendBody: true,
       bottomNavigationBar: Obx(() {
         return Visibility(
           visible: Get.find<Controllerzon>().showhalfon.value,
           child: InkWell(
-            onTap:
-                () => SendOrder(
-                  context,
-                  () => Get.find<Controllerzon>().ChangeState(),
-                ),
+            onTap: () => SendOrder(
+              context,
+              () => Get.find<Controllerzon>().ChangeState(),
+            ),
             child: Container(
               width: Get.width * 0.3,
               margin: EdgeInsets.symmetric(
@@ -58,38 +61,32 @@ class Zon extends StatelessWidget {
               Obx(() {
                 return Visibility(
                   visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
-                  replacement:   Obx(() {
-                              return Visibility(
-                                visible:
-                                    Get.find<Controllerother>()
-                                        .TypeInquiry
-                                        .value !=
-                                    'ModeZon',
-                                replacement: SizedBox(
-                                  child: CircularProgressIndicator(),
-                                ),
-                                child: InkWell(
-                                  onTap:
-                                      () => SendInquiry(
-                                        context,
-                                        () =>
-                                            Get.find<Controllerzon>()
-                                                .InquiryMode(),
-                                        code: '92',
-                                        controller: '',
-                                        type: 'ModeZon',
-                                      ),
-                                  child: Container(
-                                    width: Get.width * 0.4,
-                                    decoration: decoration(),
-                                    padding: EdgeInsets.all(8),
-                                    child: Center(
-                                      child: Text('استعلام زون ها'),
-                                    ),
-                                  ),
-                                ),
-                              );
-                            }),
+                  replacement: Obx(() {
+                    return Visibility(
+                      visible: Get.find<Controllerother>().TypeInquiry.value !=
+                          'ModeZon',
+                      replacement: SizedBox(
+                        child: CircularProgressIndicator(),
+                      ),
+                      child: InkWell(
+                        onTap: () => SendInquiry(
+                          context,
+                          () => Get.find<Controllerzon>().InquiryMode(),
+                          code: '92',
+                          controller: '',
+                          type: 'ModeZon',
+                        ),
+                        child: Container(
+                          width: Get.width * 0.4,
+                          decoration: decoration(),
+                          padding: EdgeInsets.all(8),
+                          child: Center(
+                            child: Text('استعلام زون ها'),
+                          ),
+                        ),
+                      ),
+                    );
+                  }),
                   child: Container(
                     margin: EdgeInsets.symmetric(vertical: 10),
                     child: Column(
@@ -98,49 +95,42 @@ class Zon extends StatelessWidget {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             InkWell(
-                              onTap:
-                                  () => SendOrder(
-                                    context,
-                                    () =>
-                                        Get.find<Controllerzon>().ChangePart(),
-                                  ),
-                              child:  Container(
+                                onTap: () => SendOrder(
+                                      context,
+                                      () => Get.find<Controllerzon>()
+                                          .ChangePart(),
+                                    ),
+                                child: Container(
                                   width: Get.width * 0.4,
                                   decoration: decoration(
-                                    color:
-                                        Get.find<Controllerzon>()
-                                            .showpart
-                                            .value,
+                                    color: Get.find<Controllerzon>()
+                                        .showpart
+                                        .value,
                                   ),
                                   padding: EdgeInsets.all(8),
                                   child: Center(child: Text('ثبت  پارتیشن')),
-                                )
-                            ),
+                                )),
                             Obx(() {
                               return Visibility(
                                 visible:
                                     Get.find<Controllerinfo>().Model.value ==
-                                    'LX PRO',
-
+                                        'LX PRO',
                                 child: Obx(() {
                                   return Visibility(
-                                    visible:
-                                        Get.find<Controllerother>()
+                                    visible: Get.find<Controllerother>()
                                             .TypeInquiry
                                             .value !=
                                         'PartZon',
                                     replacement: CircularProgressIndicator(),
                                     child: InkWell(
-                                      onTap:
-                                          () => SendInquiry(
-                                            context,
-                                            () =>
-                                                Get.find<Controllerzon>()
-                                                    .InquiryPart(),
-                                            code: 'LUXSSE',
-                                            controller: '#',
-                                            type: 'PartZon',
-                                          ),
+                                      onTap: () => SendInquiry(
+                                        context,
+                                        () => Get.find<Controllerzon>()
+                                            .InquiryPart(),
+                                        code: 'LUXSSE',
+                                        controller: '#',
+                                        type: 'PartZon',
+                                      ),
                                       child: Container(
                                         width: Get.width * 0.4,
                                         decoration: decoration(),
@@ -162,8 +152,7 @@ class Zon extends StatelessWidget {
                           children: [
                             Obx(() {
                               return Visibility(
-                                visible:
-                                    Get.find<Controllerother>()
+                                visible: Get.find<Controllerother>()
                                         .TypeInquiry
                                         .value !=
                                     'ModeZon',
@@ -171,16 +160,14 @@ class Zon extends StatelessWidget {
                                   child: CircularProgressIndicator(),
                                 ),
                                 child: InkWell(
-                                  onTap:
-                                      () => SendInquiry(
-                                        context,
-                                        () =>
-                                            Get.find<Controllerzon>()
-                                                .InquiryMode(),
-                                        code: '92',
-                                        controller: '',
-                                        type: 'ModeZon',
-                                      ),
+                                  onTap: () => SendInquiry(
+                                    context,
+                                    () =>
+                                        Get.find<Controllerzon>().InquiryMode(),
+                                    code: '92',
+                                    controller: '',
+                                    type: 'ModeZon',
+                                  ),
                                   child: Container(
                                     width: Get.width * 0.4,
                                     decoration: decoration(),
@@ -196,27 +183,23 @@ class Zon extends StatelessWidget {
                               return Visibility(
                                 visible:
                                     Get.find<Controllerinfo>().Model.value ==
-                                    'LX PRO',
-
+                                        'LX PRO',
                                 child: Obx(() {
                                   return Visibility(
-                                    visible:
-                                        Get.find<Controllerother>()
+                                    visible: Get.find<Controllerother>()
                                             .TypeInquiry
                                             .value !=
                                         'HalfZon',
                                     replacement: CircularProgressIndicator(),
                                     child: InkWell(
-                                      onTap:
-                                          () => SendInquiry(
-                                            context,
-                                            () =>
-                                                Get.find<Controllerzon>()
-                                                    .InquiryState(),
-                                            code: 'LUXSSE',
-                                            controller: '#',
-                                            type: 'HalfZon',
-                                          ),
+                                      onTap: () => SendInquiry(
+                                        context,
+                                        () => Get.find<Controllerzon>()
+                                            .InquiryState(),
+                                        code: 'LUXSSE',
+                                        controller: '#',
+                                        type: 'HalfZon',
+                                      ),
                                       child: Container(
                                         width: Get.width * 0.4,
                                         decoration: decoration(),
@@ -237,19 +220,25 @@ class Zon extends StatelessWidget {
                   ),
                 );
               }),
-              Column(children: List.generate(18, (i) => WidgetZon(i: i))),
+              Obx(() {
+                return Column(
+                    children: List.generate(
+                        Get.find<Controllerinfo>().Model.value == 'LX PRO'
+                            ? MapModelPro[Get.find<Controllerwarrenty>()
+                                .ModelPro
+                                .value]!['zon']!
+                            : 18,
+                        (i) => WidgetZon(i: i)));
+              }),
               Obx(() {
                 return Visibility(
                   visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
-
                   child: Align(
                     child: InkWell(
-                      onTap:
-                          () => SendOrder(
-                            context,
-                            () =>
-                                Get.find<Controllerzon>().DeleteAllZonWirles(),
-                          ),
+                      onTap: () => SendOrder(
+                        context,
+                        () => Get.find<Controllerzon>().DeleteAllZonWirles(),
+                      ),
                       child: Obx(() {
                         return Container(
                           width: Get.width * 0.4,
@@ -306,29 +295,27 @@ class WidgetZon extends StatelessWidget {
                 ),
                 child: Transform.translate(
                   offset: Offset(0, 7),
-                  child: Obx(
-                   () {
-                      return Visibility(
-                                                visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
-                      
-                        child: Obx(() {
-                          return Checkbox(
-                            value: Get.find<Controllerzon>().State[i].value,
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20),
-                            ),
-                            side: BorderSide(color: Colors.white),
-                            checkColor: Colors.white,
-                            activeColor: Colors.black,
-                            onChanged: (value) {
-                              Get.find<Controllerzon>().State[i].value = value!;
-                              Get.find<Controllerzon>().showhalfon.value = true;
-                            },
-                          );
-                        }),
-                      );
-                    }
-                  ),
+                  child: Obx(() {
+                    return Visibility(
+                      visible:
+                          Get.find<Controllerinfo>().Model.value == 'LX PRO',
+                      child: Obx(() {
+                        return Checkbox(
+                          value: Get.find<Controllerzon>().State[i].value,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          side: BorderSide(color: Colors.white),
+                          checkColor: Colors.white,
+                          activeColor: Colors.black,
+                          onChanged: (value) {
+                            Get.find<Controllerzon>().State[i].value = value!;
+                            Get.find<Controllerzon>().showhalfon.value = true;
+                          },
+                        );
+                      }),
+                    );
+                  }),
                 ),
               ),
             ),
@@ -368,21 +355,16 @@ class WidgetZon extends StatelessWidget {
                               child: Center(child: Text('${i + 1}')),
                             ),
                           ),
-                          Obx(
-                           () {
-                              return Visibility(
-                                  visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
-                                child: Image.asset(
-                                  'assets/image/zon/zon ${i == 8
-                                      ? 'd'
-                                      : i < 9
-                                      ? 'w'
-                                      : 'wl'}.png',
-                                  height: 50,
-                                ),
-                              );
-                            }
-                          ),
+                          Obx(() {
+                            return Visibility(
+                              visible: Get.find<Controllerinfo>().Model.value ==
+                                  'LX PRO',
+                              child: Image.asset(
+                                'assets/image/zon/zon ${i == 8 ? 'd' : i < 9 ? 'w' : 'wl'}.png',
+                                height: 50,
+                              ),
+                            );
+                          }),
                           Container(
                             width: Get.width * 0.4,
                             decoration: const BoxDecoration(
@@ -402,13 +384,12 @@ class WidgetZon extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 InkWell(
-                                  onTap:
-                                      () => DialogTextFieldSms(
-                                        context,
-                                        () => Get.find<Controllerzon>()
-                                            .ChangeName(i),
-                                        description: 'نام زون',
-                                      ),
+                                  onTap: () => DialogTextFieldSms(
+                                    context,
+                                    () =>
+                                        Get.find<Controllerzon>().ChangeName(i),
+                                    description: 'نام زون',
+                                  ),
                                   child: Padding(
                                     padding: const EdgeInsets.only(left: 10),
                                     child: const Icon(
@@ -421,7 +402,9 @@ class WidgetZon extends StatelessWidget {
                                   alignment: Alignment.centerRight,
                                   child: Obx(() {
                                     return Text(
-                                      Get.find<Controllerzon>().Name[i].value
+                                      Get.find<Controllerzon>()
+                                          .Name[i]
+                                          .value
                                           .toPersianDigit(),
                                       style: TextStyle(color: Colors.black),
                                     );
@@ -455,68 +438,66 @@ class WidgetZon extends StatelessWidget {
                               iconEnabledColor: Colors.white,
                               dropdownColor: Colors.white,
                               underline: Container(),
-                              items:
-                                  List.generate(
-                                        ListModesZon.length,
-                                        (i) => ListModesZon.keys.elementAt(i),
-                                      )
-                                      .map<DropdownMenuItem<String>>(
-                                        (String value) => DropdownMenuItem(
-                                          value: value,
-                                          child: Align(
-                                            child: Text(
-                                              value,
-                                              textAlign: TextAlign.center,
-                                              textDirection: TextDirection.rtl,
-                                            ),
-                                          ),
+                              items: List.generate(
+                                ListModesZon.length,
+                                (i) => ListModesZon.keys.elementAt(i),
+                              )
+                                  .map<DropdownMenuItem<String>>(
+                                    (String value) => DropdownMenuItem(
+                                      value: value,
+                                      child: Align(
+                                        child: Text(
+                                          value,
+                                          textAlign: TextAlign.center,
+                                          textDirection: TextDirection.rtl,
                                         ),
-                                      )
-                                      .toList(),
-                              onChanged:
-                                  (value) => SendOrder(
-                                    context,
-                                    () => Get.find<Controllerzon>()
-                                        .ChangeModeZon(value!, i),
-                                  ),
+                                      ),
+                                    ),
+                                  )
+                                  .toList(),
+                              onChanged: (value) => SendOrder(
+                                context,
+                                () => Get.find<Controllerzon>()
+                                    .ChangeModeZon(value!, i),
+                              ),
                             );
                           }),
                         ),
                       ),
                       SizedBox(height: Get.height * 0.02),
-                      Obx(
-                     (){
-                          return Visibility(
-                                                    visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
-                          
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: List.generate(
-                                8,
-                                (c) => InkWell(
-                                  onTap: () {
-                                    Get.find<Controllerzon>().Part[i].value =
-                                        '${c + 1}';
-                                    Get.find<Controllerzon>().showpart.value = true;
-                                  },
-                                  child: Obx(() {
-                                    return Container(
-                                      width: 20,
-                                      height: 20,
-                                      decoration: decoration(
-                                        color:
-                                            Get.find<Controllerzon>().Part[i].value ==
-                                            '${c + 1}',
-                                      ),
-                                      child: Center(child: Text('${c + 1}')),
-                                    );
-                                  }),
-                                ),
+                      Obx(() {
+                        return Visibility(
+                          visible: Get.find<Controllerinfo>().Model.value ==
+                              'LX PRO',
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: List.generate(
+                              8,
+                              (c) => InkWell(
+                                onTap: () {
+                                  Get.find<Controllerzon>().Part[i].value =
+                                      '${c + 1}';
+                                  Get.find<Controllerzon>().showpart.value =
+                                      true;
+                                },
+                                child: Obx(() {
+                                  return Container(
+                                    width: 20,
+                                    height: 20,
+                                    decoration: decoration(
+                                      color: Get.find<Controllerzon>()
+                                              .Part[i]
+                                              .value ==
+                                          '${c + 1}',
+                                    ),
+                                    child: Center(child: Text('${c + 1}')),
+                                  );
+                                }),
                               ),
                             ),
-                          );
-                        }
-                      ),
+                          ),
+                        );
+                      }),
                       SizedBox(height: Get.height * 0.04),
                     ],
                   ),

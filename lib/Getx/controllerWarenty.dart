@@ -17,6 +17,7 @@ class Controllerwarrenty extends GetxController {
   RxString DateWarrenty = ''.obs;
   RxString NameTechnician = ''.obs;
   RxString PhoneTechnician = ''.obs;
+  RxString ModelPro = ''.obs;
   ///////////////////////////////////
   RxString SmsImei = ''.obs;
   ////
@@ -29,6 +30,7 @@ class Controllerwarrenty extends GetxController {
     PhoneClinet.value = model.PhoneClinet;
     PhoneTechnician.value = model.PhoneTechnician;
     Province.value = model.Province;
+    ModelPro.value = model.ModelPro;
   }
 
   TextEditingController Tf_NameClinet = TextEditingController(),
@@ -105,6 +107,7 @@ class Controllerwarrenty extends GetxController {
     Province.value = model?['Province'];
     NameTechnician.value = model?['name_technician'];
     PhoneTechnician.value = model?['phone_technician'];
+    ModelPro.value = model?['model'];
     DateWarrenty.value =
         '${DateTime.parse(model?['warranty_start_date']).toPersianDate()} ${DateTime.parse(model?['warranty_start_date']).hour}:${DateTime.parse(model?['warranty_start_date']).minute}';
     Get.find<Controllerdatabase>().UpdateLx();

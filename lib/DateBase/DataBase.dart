@@ -24,7 +24,7 @@ class DatabaseLX {
       version: 2,
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE DatabaseLX(id TEXT,Phone TEXT,Name TEXT,StateDev TEXT,Pass TEXT,Charge TEXT,UrbanElectricity TEXT,Speaker TEXT,BatterPower TEXT,CountContact TEXT,CountRemote TEXT,AntennaStrength TEXT,CommunicationsStatus TEXT,zon1 TEXT,zon2 TEXT,zon3 TEXT,zon4 TEXT,DevLanguage TEXT,EstablishingContactDuringPowerOutage TEXT,SemiActiveStatusRemote TEXT,PeriodicBatteryReport TEXT,InventoryReport TEXT,AlarmTime TEXT,AlarmMode TEXT,Model TEXT,Oprator TEXT,Simcard TEXT,NameClinet TEXT,PhoneClinet TEXT,City TEXT,Province TEXT,Address TEXT,DateWarrenty TEXT,NameTechnician TEXT,PhoneTechnician TEXT)",
+          "CREATE TABLE DatabaseLX(id TEXT,Phone TEXT,Name TEXT,StateDev TEXT,Pass TEXT,Charge TEXT,UrbanElectricity TEXT,Speaker TEXT,BatterPower TEXT,CountContact TEXT,CountRemote TEXT,AntennaStrength TEXT,CommunicationsStatus TEXT,zon1 TEXT,zon2 TEXT,zon3 TEXT,zon4 TEXT,DevLanguage TEXT,EstablishingContactDuringPowerOutage TEXT,SemiActiveStatusRemote TEXT,PeriodicBatteryReport TEXT,InventoryReport TEXT,AlarmTime TEXT,AlarmMode TEXT,Model TEXT,Oprator TEXT,Simcard TEXT,NameClinet TEXT,PhoneClinet TEXT,City TEXT,Province TEXT,Address TEXT,DateWarrenty TEXT,NameTechnician TEXT,PhoneTechnician TEXT,ModelPro TEXT)",
         );
       },
       onUpgrade: (db, oldVersion, newVersion) =>
@@ -94,6 +94,7 @@ class DatabaseLX {
         PhoneClinet: maps[i]['PhoneClinet'],
         PhoneTechnician: maps[i]['PhoneTechnician'],
         Province: maps[i]['Province'],
+        ModelPro: maps[i]['ModelPro']
       );
     });
   }
