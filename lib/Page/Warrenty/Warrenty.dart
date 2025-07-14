@@ -35,7 +35,7 @@ class Warrenty extends StatelessWidget {
           widget.WidgetTextField(
             hint: 'نشانی',
             tf: Get.find<Controllerwarrenty>().tf_Address,
-            width: Get.width * 0.4,
+            width: Get.width * 0.8,
             customwidth: true,
           ),
           Row(
@@ -84,7 +84,7 @@ class Warrenty extends StatelessWidget {
                       });
                 }),
               ),
-              Container(
+              /* Container(
                 width: Get.width * 0.4,
                 decoration: decoration(),
                 child: Obx(() {
@@ -112,7 +112,7 @@ class Warrenty extends StatelessWidget {
                           .drp_city
                           .value = value!);
                 }),
-              )
+              ) */
             ],
           ),
           InkWell(

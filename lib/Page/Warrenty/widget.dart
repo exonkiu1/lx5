@@ -23,6 +23,7 @@ class WidgetTextField extends StatelessWidget {
       width:!customwidth? Get.width * 0.44:width,
       margin: EdgeInsets.symmetric(vertical: 10),
       decoration: BoxDecoration(
+        border: Border.all(),
         borderRadius: BorderRadius.circular(20),
         color: Colors.black,
       ),
