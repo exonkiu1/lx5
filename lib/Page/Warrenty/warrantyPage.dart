@@ -79,14 +79,20 @@ class WidgetInfo extends StatelessWidget {
       width: Get.width * 0.8,
       decoration: decoration(),
       margin: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 5, horizontal: 15),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
+          
+          Text(
+            description,
+            textDirection: TextDirection.rtl,
+          ),
           Text(
             '${title}:',
             style: TextStyle(color: color2),
+            textDirection: TextDirection.rtl,
           ),
-          Text(description)
         ],
       ),
     );

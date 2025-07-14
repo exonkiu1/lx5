@@ -157,7 +157,15 @@ class Controllerdatabase extends GetxController {
         Name: Get.find<Controllerinfo>().Name.value,
         StateDev: Get.find<Controllerhomepage>().StateDev.value,
         Oprator: Get.find<Controllerinfo>().Oprator.value,
-        Model: Get.find<Controllerinfo>().Model.value.toString());
+        Model: Get.find<Controllerinfo>().Model.value.toString(),
+        Address: Get.find<Controllerwarrenty>().Address.value,
+        City: Get.find<Controllerwarrenty>().City.value,
+        DateWarrenty: Get.find<Controllerwarrenty>().DateWarrenty.value,
+        NameClinet: Get.find<Controllerwarrenty>().NameClinet.value,
+        NameTechnician: Get.find<Controllerwarrenty>().NameTechnician.value,
+        PhoneClinet: Get.find<Controllerwarrenty>().PhoneClinet.value,
+        PhoneTechnician: Get.find<Controllerwarrenty>().PhoneTechnician.value,
+        Province: Get.find<Controllerwarrenty>().Province.value);
     DatabaseLX.instance.UpdateDev(model);
     Get.find<Controllercontact>().AddContact(id);
     Get.find<Controllerremote>().AddRemote(id);
