@@ -5,6 +5,7 @@ import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Page/HomePage/HomePage.dart';
 import 'package:lx/Page/Warrenty/Warrenty.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
 class Controllerwarrenty extends GetxController {
@@ -93,7 +94,22 @@ class Controllerwarrenty extends GetxController {
     return val;
   }
 
-  GetInfoFromDataBase(String imei) {}
+  GetInfoFromDataBase(String imei) async {
+    final supabase = Supabase.instance.client;
+    final model =
+        await supabase.from('lux').select().eq('imei', '${imei}').maybeSingle();
+    NameClinet.value = model?['name_clinet'];
+    PhoneClinet.value = model?['phone_client'];
+    Address.value = model?['address_client'];
+    City.value = model?['city'];
+    Province.value = model?['Province'];
+    NameTechnician.value = model?['name_technician'];
+    PhoneTechnician.value = model?['phone_technician'];
+    DateWarrenty.value =
+        '${DateTime.parse(model?['warranty_start_date']).toPersianDate()} ${DateTime.parse(model?['warranty_start_date']).hour}:${DateTime.parse(model?['warranty_start_date']).minute}';
+    Get.find<Controllerdatabase>().UpdateLx();
+  }
+
   RegisterDev() async {
     String imei = SmsImei.value;
     final supabase = Supabase.instance.client;
@@ -110,6 +126,9 @@ class Controllerwarrenty extends GetxController {
         })
         .eq('imei', '${imei}')
         .maybeSingle();
+    await Get.find<Controllerdatabase>().AddLx();
+    GetInfoFromDataBase(imei);
+    Get.off(Homepage());
   }
 
   bool CheckCompliteInfoDev() {

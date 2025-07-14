@@ -66,12 +66,17 @@ class Warrenty extends StatelessWidget {
                               2
                           ? Get.find<Controllerwarrenty>().drp_province.value
                           : null,
+                      underline: Container(),
                       items: List.generate(ListCity.length,
                               (i) => ListCity.keys.elementAt(i))
                           .map<DropdownMenuItem<String>>(
                               (String value) => DropdownMenuItem(
-                                    child: Text(value),
-                                    value: value,
+                                    alignment: Alignment.centerRight,
+                                    child: Text(
+                                      value,
+                                      style: TextStyle(color: Colors.white),
+                                      textDirection: TextDirection.rtl,
+                                    ),
                                   ))
                           .toList(),
                       onChanged: (value) {
@@ -84,55 +89,65 @@ class Warrenty extends StatelessWidget {
                       });
                 }),
               ),
-              Obx(
-                () {
-                  return Visibility(
-                    visible: Get.find<Controllerwarrenty>().drp_province.value.length>2,
-                    child: Container(
-                      width: Get.width * 0.4,
-                      decoration: decoration(),
-                      child: Obx(() {
-                        return DropdownButton(
-                            value:
-                                Get.find<Controllerwarrenty>().drp_city.value.length >
-                                        2
-                                    ? Get.find<Controllerwarrenty>().drp_city.value
-                                    : null,
-                            items: ListCity[Get.find<Controllerwarrenty>()
-                                            .drp_province
-                                            .value]!
-                                .map<DropdownMenuItem<String>>(
-                                    (String value) => DropdownMenuItem(
-                                          child: Text(value),
-                                          value: value,
-                                        ))
-                                .toList(),
-                            onChanged: (value) => Get.find<Controllerwarrenty>()
-                                .drp_city
-                                .value = value!);
-                      }),
-                    ),
-                  );
-                }
-              )
+              Obx(() {
+                return Visibility(
+                  visible:
+                      Get.find<Controllerwarrenty>().drp_province.value.length >
+                          2,
+                  child: Container(
+                    width: Get.width * 0.4,
+                    decoration: decoration(),
+                    child: Obx(() {
+                      return DropdownButton(
+                          value: Get.find<Controllerwarrenty>()
+                                      .drp_city
+                                      .value
+                                      .length >
+                                  2
+                              ? Get.find<Controllerwarrenty>().drp_city.value
+                              : null,
+                          underline: Container(),
+                          items: ListCity[Get.find<Controllerwarrenty>()
+                                  .drp_province
+                                  .value]!
+                              .map<DropdownMenuItem<String>>(
+                                  (String value) => DropdownMenuItem(
+                                        alignment: Alignment.centerRight,
+                                        child: Text(
+                                          value,
+                                          style: TextStyle(color: Colors.white),
+                                          textDirection: TextDirection.rtl,
+                                        ),
+                                        value: value,
+                                      ))
+                              .toList(),
+                          onChanged: (value) => Get.find<Controllerwarrenty>()
+                              .drp_city
+                              .value = value!);
+                    }),
+                  ),
+                );
+              })
             ],
           ),
-          InkWell(
-            onTap: () {
-              bool val = Get.find<Controllerwarrenty>().CheckCompliteInfoDev();
-              if (val) {
-                Get.find<Controllerwarrenty>().RegisterDev();
-              }
-            },
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: 2),
-              margin: EdgeInsets.symmetric(vertical: 20),
-              width: Get.width * 0.3,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color.fromARGB(54, 255, 255, 255),
+          Visibility(
+            child: InkWell(
+              onTap: () {
+                bool val = Get.find<Controllerwarrenty>().CheckCompliteInfoDev();
+                if (val) {
+                  Get.find<Controllerwarrenty>().RegisterDev();
+                }
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(vertical: 2),
+                margin: EdgeInsets.symmetric(vertical: 20),
+                width: Get.width * 0.3,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Color.fromARGB(54, 255, 255, 255),
+                ),
+                child: Center(child: Text('ثبت اطلاعات')),
               ),
-              child: Center(child: Text('ثبت اطلاعات')),
             ),
           ),
         ],
