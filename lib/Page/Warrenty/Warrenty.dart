@@ -34,7 +34,7 @@ class Warrenty extends StatelessWidget {
           widget.WidgetTextField(
             hint: 'نشانی',
             tf: Get.find<Controllerwarrenty>().tf_Address,
-            width: Get.width * 0.8,
+            width: Get.width * 0.9,
             customwidth: true,
           ),
           Row(
@@ -66,6 +66,7 @@ class Warrenty extends StatelessWidget {
                           ? Get.find<Controllerwarrenty>().drp_province.value
                           : null,
                       underline: Container(),
+                      isDense: true,
                       items: List.generate(ListCity.length,
                               (i) => ListCity.keys.elementAt(i))
                           .map<DropdownMenuItem<String>>(
@@ -73,7 +74,7 @@ class Warrenty extends StatelessWidget {
                                     alignment: Alignment.centerRight,
                                     child: Text(
                                       value,
-                                      style: TextStyle(color: Colors.white),
+                                      style: TextStyle(color: color2),
                                       textDirection: TextDirection.rtl,
                                     ),
                                   ))
@@ -106,6 +107,7 @@ class Warrenty extends StatelessWidget {
                               ? Get.find<Controllerwarrenty>().drp_city.value
                               : null,
                           underline: Container(),
+                          isDense: true,
                           items: ListCity[Get.find<Controllerwarrenty>()
                                   .drp_province
                                   .value]!
@@ -132,7 +134,8 @@ class Warrenty extends StatelessWidget {
           Visibility(
             child: InkWell(
               onTap: () {
-                bool val = Get.find<Controllerwarrenty>().CheckCompliteInfoDev();
+                bool val =
+                    Get.find<Controllerwarrenty>().CheckCompliteInfoDev();
                 if (val) {
                   Get.find<Controllerwarrenty>().RegisterDev();
                 }
