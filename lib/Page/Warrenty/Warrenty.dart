@@ -50,77 +50,87 @@ class Warrenty extends StatelessWidget {
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Container(
-                width: Get.width * 0.45,
-                decoration: decoration(),
-                child: Obx(() {
-                  return DropdownButton(
-                      value: Get.find<Controllerwarrenty>().drp_province.value,
-                      underline: Container(),
-                      isDense: true,
-                      items: List.generate(ListCity.length,
-                              (i) => ListCity.keys.elementAt(i))
-                          .map<DropdownMenuItem<String>>(
-                              (String value) => DropdownMenuItem(
-                                    alignment: Alignment.centerRight,
-                                    child: Text(
-                                      value,
-                                      style: TextStyle(color: color2),
-                                      textDirection: TextDirection.rtl,
-                                    ),
-                                    value: value,
-                                  ))
-                          .toList(),
-                      onChanged: (value) {
-                        Get.find<Controllerwarrenty>().drp_province.value =
-                            value!;
-                        Get.find<Controllerwarrenty>().drp_city.value =
-                            ListCity[Get.find<Controllerwarrenty>()
-                                .drp_province
-                                .value]![0];
-                      });
-                }),
-              ),
-              Obx(() {
-                return Visibility(
-                  visible:
-                      Get.find<Controllerwarrenty>().drp_province.value.length >
-                              2
-                          ? true
-                          : true,
-                  child: Container(
-                    width: Get.width * 0.45,
-                    decoration: decoration(),
+          Directionality(
+            textDirection: TextDirection.rtl,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  width: Get.width * 0.45,
+                  decoration: decoration(),
+                  child: Center(
                     child: Obx(() {
                       return DropdownButton(
-                          value: Get.find<Controllerwarrenty>().drp_city.value,
+                          value: Get.find<Controllerwarrenty>().drp_province.value,
                           underline: Container(),
                           isDense: true,
-                          items: ListCity[Get.find<Controllerwarrenty>()
-                                  .drp_province
-                                  .value]!
+                          items: List.generate(ListCity.length,
+                                  (i) => ListCity.keys.elementAt(i))
                               .map<DropdownMenuItem<String>>(
                                   (String value) => DropdownMenuItem(
                                         alignment: Alignment.centerRight,
+                                        
                                         child: Text(
                                           value,
-                                          style: TextStyle(color: Colors.white),
+                                          style: TextStyle(color: color2),
                                           textDirection: TextDirection.rtl,
                                         ),
                                         value: value,
                                       ))
                               .toList(),
-                          onChanged: (value) => Get.find<Controllerwarrenty>()
-                              .drp_city
-                              .value = value!);
+                          onChanged: (value) {
+                            Get.find<Controllerwarrenty>().drp_province.value =
+                                value!;
+                            Get.find<Controllerwarrenty>().drp_city.value =
+                                ListCity[Get.find<Controllerwarrenty>()
+                                    .drp_province
+                                    .value]![0];
+                          });
                     }),
                   ),
-                );
-              })
-            ],
+                ),
+                Obx(() {
+                  return Visibility(
+                    visible:
+                        Get.find<Controllerwarrenty>().drp_province.value.length >
+                                2
+                            ? true
+                            : true,
+                    child: Container(
+                      width: Get.width * 0.45,
+                      decoration: decoration(),
+                      child: Center(
+                        child: Obx(() {
+                          return DropdownButton(
+                              value: Get.find<Controllerwarrenty>().drp_city.value,
+                              underline: Container(),
+                              isDense: true,
+                              items: ListCity[Get.find<Controllerwarrenty>()
+                                      .drp_province
+                                      .value]!
+                                  .map<DropdownMenuItem<String>>(
+                                      (String value) => DropdownMenuItem(
+                                            alignment: Alignment.centerRight,
+                        
+                                            child: Text(
+                                              value,
+                                              style: TextStyle(color: color2),
+                                              textDirection: TextDirection.rtl,
+                                              textAlign: TextAlign.right,
+                                            ),
+                                            value: value,
+                                          ))
+                                  .toList(),
+                              onChanged: (value) => Get.find<Controllerwarrenty>()
+                                  .drp_city
+                                  .value = value!);
+                        }),
+                      ),
+                    ),
+                  );
+                })
+              ],
+            ),
           ),
           Visibility(
             child: InkWell(
