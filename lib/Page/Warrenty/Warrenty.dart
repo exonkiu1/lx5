@@ -58,13 +58,7 @@ class Warrenty extends StatelessWidget {
                 decoration: decoration(),
                 child: Obx(() {
                   return DropdownButton(
-                      value: Get.find<Controllerwarrenty>()
-                                  .drp_province
-                                  .value
-                                  .length >
-                              2
-                          ? Get.find<Controllerwarrenty>().drp_province.value
-                          : null,
+                      value: Get.find<Controllerwarrenty>().drp_province.value,
                       underline: Container(),
                       isDense: true,
                       items: List.generate(ListCity.length,
@@ -93,19 +87,15 @@ class Warrenty extends StatelessWidget {
                 return Visibility(
                   visible:
                       Get.find<Controllerwarrenty>().drp_province.value.length >
-                          2,
+                              2
+                          ? true
+                          : true,
                   child: Container(
                     width: Get.width * 0.4,
                     decoration: decoration(),
                     child: Obx(() {
                       return DropdownButton(
-                          value: Get.find<Controllerwarrenty>()
-                                      .drp_city
-                                      .value
-                                      .length >
-                                  2
-                              ? Get.find<Controllerwarrenty>().drp_city.value
-                              : null,
+                          value: Get.find<Controllerwarrenty>().drp_city.value,
                           underline: Container(),
                           isDense: true,
                           items: ListCity[Get.find<Controllerwarrenty>()

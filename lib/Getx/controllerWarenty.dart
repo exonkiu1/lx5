@@ -38,8 +38,8 @@ class Controllerwarrenty extends GetxController {
       tf_Address = TextEditingController(),
       Tf_NameTechnician = TextEditingController(),
       tf_PhoneTechnician = TextEditingController();
-  RxString drp_city = ''.obs;
-  RxString drp_province = ''.obs;
+  RxString drp_city = "تبریز".obs;
+  RxString drp_province = "آذربایجان شرقی".obs;
   SendImeiStartWarenty() async {
     final supabase = Supabase.instance.client;
 
