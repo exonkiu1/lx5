@@ -136,11 +136,11 @@ class Controllerwarrenty extends GetxController {
 
   bool CheckCompliteInfoDev() {
     bool val = false;
-    if (Tf_NameClinet.text.length > 4 &&
-        tf_PhoneClinet.text.length > 5 &&
-        tf_Address.text.length > 4 &&
-        Tf_NameTechnician.text.length > 4 &&
-        tf_PhoneTechnician.text.length > 4 &&
+    if (Tf_NameClinet.text.length > 2 &&
+        tf_PhoneClinet.text.length > 2 &&
+        tf_Address.text.length > 2 &&
+        Tf_NameTechnician.text.length > 2 &&
+        tf_PhoneTechnician.text.length > 2 &&
         drp_city.value.length > 1 &&
         drp_province.value.length > 1) {
       val = true;
