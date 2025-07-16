@@ -54,7 +54,7 @@ class Warrenty extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                width: Get.width * 0.4,
+                width: Get.width * 0.45,
                 decoration: decoration(),
                 child: Obx(() {
                   return DropdownButton(
@@ -71,6 +71,7 @@ class Warrenty extends StatelessWidget {
                                       style: TextStyle(color: color2),
                                       textDirection: TextDirection.rtl,
                                     ),
+                                    value: value,
                                   ))
                           .toList(),
                       onChanged: (value) {
@@ -91,7 +92,7 @@ class Warrenty extends StatelessWidget {
                           ? true
                           : true,
                   child: Container(
-                    width: Get.width * 0.4,
+                    width: Get.width * 0.45,
                     decoration: decoration(),
                     child: Obx(() {
                       return DropdownButton(
