@@ -162,14 +162,16 @@ class WidgetSim extends StatelessWidget {
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(vertical: 5),
           decoration: decoration(
-              color: Get.find<Controllerinfo>().Simcard.value == sim),
+              color:
+                  Get.find<Controllerinfo>().Simcard.value == sim.toString()),
           child: Center(child: Obx(() {
             return Text(
               sim >= 0 ? 'sim ${sim + 1}' : name,
               style: TextStyle(
-                  color: Get.find<Controllerinfo>().Simcard.value == sim
-                      ? color2
-                      : null),
+                  color:
+                      Get.find<Controllerinfo>().Simcard.value == sim.toString()
+                          ? color2
+                          : null),
             );
           })),
         );

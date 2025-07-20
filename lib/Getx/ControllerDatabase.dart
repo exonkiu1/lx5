@@ -100,7 +100,7 @@ class Controllerdatabase extends GetxController {
       Oprator: Get.find<Controllerinfo>().Oprator.value,
       Charge: Get.find<Controllerinfo>().Charge.value.toString(),
       Pass: Get.find<Controllerpassword>().PasswordDev.value,
-      Simcard: Get.find<Controllerinfo>().Simcard.value.toString(),
+      Simcard: Get.find<Controllerinfo>().Simcard.value,
       //info
       //Setting
       DevLanguage: Get.find<Controllersetting>().DevLanguage.value,
