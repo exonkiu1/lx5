@@ -269,7 +269,7 @@ class WidgetZon extends StatelessWidget {
                       }),
                     ),
                     Visibility(
-                      visible: i>=7,
+                      visible: i<=7,
                       child: Center(
                         child: Obx(() {
                           return Checkbox(
