@@ -268,20 +268,23 @@ class WidgetZon extends StatelessWidget {
                         );
                       }),
                     ),
-                    Center(
-                      child: Obx(() {
-                        return Checkbox(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          side: BorderSide(color: color1),
-                          checkColor: color2,
-                          value: Get.find<Controllerzon>().State[i].value,
-                          onChanged: (value) {
-                            Get.find<Controllerzon>().State[i].value = value!;
-                            Get.find<Controllerzon>().showhalfon.value = true;
-                          },
-                        );
-                      }),
+                    Visibility(
+                      visible: i<=7,
+                      child: Center(
+                        child: Obx(() {
+                          return Checkbox(
+                            shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20)),
+                            side: BorderSide(color: color1),
+                            checkColor: color2,
+                            value: Get.find<Controllerzon>().State[i].value,
+                            onChanged: (value) {
+                              Get.find<Controllerzon>().State[i].value = value!;
+                              Get.find<Controllerzon>().showhalfon.value = true;
+                            },
+                          );
+                        }),
+                      ),
                     ),
                   ],
                 ),

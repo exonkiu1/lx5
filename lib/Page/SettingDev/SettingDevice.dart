@@ -29,8 +29,8 @@ class Settingdevice extends StatelessWidget {
               WidgetDeleteRemote(),
             WidgetAddSencor(),
             WidgetDeleteSencor(), */
-            WidgetPeriodicBatteryReport(),
-            WidgetInventoryReport(),
+            //    WidgetPeriodicBatteryReport(),
+            //  WidgetInventoryReport(),
             WidgetAlarmTime(),
             WidgetModeAlarm(),
             WidgetLine(),
@@ -560,14 +560,18 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
                                   .value ==
                               'false'),
                       child: Center(
-                        child: Obx(
-                         () {
-                            return Text('غیرفعال',style: TextStyle(color:Get.find<Controllersetting>()
-                                      .EstablishingContactDuringPowerOutage
-                                      .value ==
-                                  'false'?color2:null ),);
-                          }
-                        ),
+                        child: Obx(() {
+                          return Text(
+                            'غیرفعال',
+                            style: TextStyle(
+                                color: Get.find<Controllersetting>()
+                                            .EstablishingContactDuringPowerOutage
+                                            .value ==
+                                        'false'
+                                    ? color2
+                                    : null),
+                          );
+                        }),
                       ),
                     );
                   }),

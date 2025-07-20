@@ -40,7 +40,7 @@ class Controllerdatabase extends GetxController {
     if (Devs.length != 0) {
       if (splahscreen) {
         DateTime timenow = DateTime.now();
-        if (khordad_15.isAfter(timenow)) {
+        if (true) {
           Get.off(() => const Splashscreen());
         }
       }
@@ -56,7 +56,7 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllersetting>().GetSetting(model);
     } else {
       DateTime timenow = DateTime.now();
-      if (khordad_15.isAfter(timenow)) {
+      if (true) {
         await Future.delayed(Duration(milliseconds: 777),
             () => Get.off(() => const Adddevice2()));
       }
@@ -100,7 +100,7 @@ class Controllerdatabase extends GetxController {
       Oprator: Get.find<Controllerinfo>().Oprator.value,
       Charge: Get.find<Controllerinfo>().Charge.value.toString(),
       Pass: Get.find<Controllerpassword>().PasswordDev.value,
-      Simcard: Get.find<Controllerinfo>().Simcard.value.toString(),
+      Simcard: Get.find<Controllerinfo>().Simcard.value,
       //info
       //Setting
       DevLanguage: Get.find<Controllersetting>().DevLanguage.value,

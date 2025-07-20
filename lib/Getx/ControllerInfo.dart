@@ -19,14 +19,14 @@ class Controllerinfo extends GetxController {
   RxInt Charge = 0.obs;
   RxString Oprator = ''.obs;
   RxString id = ''.obs;
-  RxInt Simcard = 0.obs;
+  RxString Simcard = '-1'.obs;
   GetInfo(DevLX model) {
     id.value = model.id;
     Name.value = model.Name;
     Phone.value = model.Phone;
     Oprator.value = model.Oprator;
     Charge.value = int.parse(model.Charge);
-    Simcard.value = int.parse(model.Simcard);
+    Simcard.value = model.Simcard;
   }
 
   Future<String> ChangeName() async {
@@ -81,8 +81,9 @@ class Controllerinfo extends GetxController {
 
 Map<String, String> codeInquiryCharge = {
   'ha': '*140*11',
-  'ir': '*555*1*2',
-  'rl': '*200*2*2*1'
+  'ir': '*555*1*2*2',
+  'rl': '*140',
+  
 };
 List<String> ha = [
   '0910',
