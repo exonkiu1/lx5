@@ -25,37 +25,118 @@ class Settingsim extends StatelessWidget {
           WidgetCharge(),
           WidgetNameDev(),
           WidgetPhoneDev(),
-          Container(
-            width: Get.width * 0.9,
-            margin: EdgeInsets.symmetric(vertical: 10),
-            decoration: decoration(),
-            child: Column(
-              children: [
-                Text('انتخاب سیمکارت برای ارسال دستورات'),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    WidgetSim(
-                      sim: 0,
-                    ),
-                    WidgetSim(
-                      sim: 1,
-                    ),
-                  ],
-                ),
-                WidgetSim(
-                  sim: -1,
-                  name: 'سیم پیش فرض موبایل',
-                ),
-                WidgetSim(
-                  sim: -2,
-                  name: 'ارسال از طریق پیامرسان',
-                ),
-              ],
-            ),
-          )
+          WidgetSeletedSim(),
+          WidgetSelectedOprator()
         ],
       )),
+    );
+  }
+}
+
+class WidgetSelectedOprator extends StatelessWidget {
+  const WidgetSelectedOprator({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Get.width * 0.9,
+      margin: EdgeInsets.symmetric(vertical: 10),
+      decoration: decoration(),
+      child: Column(
+        children: [
+          Text('تغییر اپراتور سیمکارت دستگاه'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              WidgetOprator(
+                oprator: 'ایرانسل',
+                code: 'ir',
+              ),
+              WidgetOprator(
+                oprator: 'همراه اول',
+                code: 'ha',
+              ),
+              WidgetOprator(
+                oprator: 'رایتل',
+                code: 'rl',
+              ),
+            ],
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class WidgetOprator extends StatelessWidget {
+  const WidgetOprator({super.key, required this.oprator, required this.code});
+  final String oprator, code;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Get.find<Controllerinfo>().Oprator.value = code;
+        Get.find<Controllerdatabase>().UpdateLx();
+      },
+      child: Obx(() {
+        return Container(
+          width: Get.width * 0.3,
+          margin: EdgeInsets.symmetric(vertical: 5),
+          padding: EdgeInsets.symmetric(vertical: 5),
+          decoration: decoration(
+              color: Get.find<Controllerinfo>().Oprator.value == code),
+          child: Obx(() {
+            return Text(
+              oprator,
+              style: TextStyle(
+                  color: Get.find<Controllerinfo>().Oprator.value == code
+                      ? color2
+                      : null),
+            );
+          }),
+        );
+      }),
+    );
+  }
+}
+
+class WidgetSeletedSim extends StatelessWidget {
+  const WidgetSeletedSim({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: Get.width * 0.9,
+      margin: EdgeInsets.symmetric(vertical: 10),
+      decoration: decoration(),
+      child: Column(
+        children: [
+          Text('انتخاب سیمکارت برای ارسال دستورات'),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              WidgetSim(
+                sim: 0,
+              ),
+              WidgetSim(
+                sim: 1,
+              ),
+            ],
+          ),
+          WidgetSim(
+            sim: -1,
+            name: 'سیم پیش فرض موبایل',
+          ),
+          WidgetSim(
+            sim: -2,
+            name: 'ارسال از طریق پیامرسان',
+          ),
+        ],
+      ),
     );
   }
 }
@@ -79,18 +160,15 @@ class WidgetSim extends StatelessWidget {
           padding: EdgeInsets.symmetric(vertical: 5),
           decoration: decoration(
               color: Get.find<Controllerinfo>().Simcard.value == sim),
-          child: Center(
-              child: Obx(
-                () {
-                  return Text(
-                              sim >= 0 ? 'sim ${sim + 1}' : name,
-                              style: TextStyle(
-                    color: Get.find<Controllerinfo>().Simcard.value == sim
-                        ? color2
-                        : null),
-                            );
-                }
-              )),
+          child: Center(child: Obx(() {
+            return Text(
+              sim >= 0 ? 'sim ${sim + 1}' : name,
+              style: TextStyle(
+                  color: Get.find<Controllerinfo>().Simcard.value == sim
+                      ? color2
+                      : null),
+            );
+          })),
         );
       }),
     );
