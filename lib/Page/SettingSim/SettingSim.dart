@@ -82,20 +82,23 @@ class WidgetOprator extends StatelessWidget {
       },
       child: Obx(() {
         return Container(
-          width: Get.width * 0.3,
+          width: Get.width * 0.25,
           margin: EdgeInsets.symmetric(vertical: 5),
           padding: EdgeInsets.symmetric(vertical: 5),
           decoration: decoration(
               color: Get.find<Controllerinfo>().Oprator.value == code),
-          child: Obx(() {
-            return Text(
-              oprator,
-              style: TextStyle(
-                  color: Get.find<Controllerinfo>().Oprator.value == code
-                      ? color2
-                      : null),
-            );
-          }),
+          child: Center(
+            child: Obx(() {
+              return Text(
+                oprator,
+                style: TextStyle(
+                    color: Get.find<Controllerinfo>().Oprator.value == code
+                        ? color2
+                        : null,
+                    fontSize: 12),
+              );
+            }),
+          ),
         );
       }),
     );
@@ -149,7 +152,7 @@ class WidgetSim extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        Get.find<Controllerinfo>().Simcard.value = sim;
+        Get.find<Controllerinfo>().Simcard.value = sim.toString();
 
         Get.find<Controllerdatabase>().UpdateLx();
       },
