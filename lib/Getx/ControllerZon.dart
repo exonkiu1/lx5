@@ -93,8 +93,8 @@ class Controllerzon extends GetxController {
   }
 
   Future<String> ChangeState() async {
-    String value = '';
-    for (var i = 0; i < 18; i++) {
+    String value = '0';
+    for (var i = 0; i < 8; i++) {
       value = value + '${State[i].value ? '1' : '0'}';
     }
     showhalfon.value = false;
@@ -119,8 +119,8 @@ Map<String, String> ListModesZon = {
   '24th': '3',
   'گارد': '4',
   'جاسوسی': '6',
-  'ابی': '7',
-  '24th جاسوسی': '8',
+ // 'ابی': '7',
+ // '24th جاسوسی': '8',
 };
 Map<String, String> ListModesZonInquiry = {
   'N': 'نرمال کلوز',

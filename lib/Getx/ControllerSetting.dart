@@ -41,12 +41,6 @@ class Controllersetting extends GetxController {
     return '51*${value == 'true' ? '1' : '0'}';
   }
 
-  Future<String> ChangeModeAlarm(String value) async {
-    AlarmMode.value = value;
-    Get.find<Controllerdatabase>().UpdateLx();
-    return '51*${ModeAlarm[value]}';
-  }
-
   Future<String> ChangePeriodicBatteryReport() async {
     PeriodicBatteryReport.value = Get.find<Controllerother>().tf.text;
     Get.find<Controllerdatabase>().UpdateLx();
@@ -83,11 +77,17 @@ class Controllersetting extends GetxController {
   Future<String> ChangeAddSencor() async {
     return '66';
   }
+
+  Future<String> ChangeModeAlarm(String value) async {
+    AlarmMode.value = value;
+    Get.find<Controllerdatabase>().UpdateLx();
+    return '51*${ModeAlarm[value]}';
+  }
 }
 
 Map<String, String> ModeAlarm = {
   'ابتدا پیامک سپس تماس با تکرار': '6',
   'ابتدا تماس سپس پیامک با تکرار': '7',
-  'ابتدا پیامک سپس تماس': '0',
-  'ابتدا تماس سپس پیامک': '1',
+ /*  'ابتدا پیامک سپس تماس': '0',
+  'ابتدا تماس سپس پیامک': '1', */
 };
