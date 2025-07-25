@@ -137,8 +137,9 @@ class _Adddevice2State extends State<Adddevice2> {
                                 bool val =
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
-                                  if (Get.find<Controllerother>().Model.value !=
-                                      'LX PRO') {
+                                  if (true
+                                    /* Get.find<Controllerother>().Model.value !=
+                                      'LX PRO' */) {
                                     DialogOrder(
                                       context,
                                       Get.find<Controllerdatabase>().AddLx(),
