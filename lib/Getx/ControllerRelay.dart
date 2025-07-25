@@ -4,6 +4,7 @@ import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Getx/ControllerZon.dart';
+import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerrelay extends GetxController {
@@ -103,6 +104,13 @@ class Controllerrelay extends GetxController {
       (i) => int.parse(value[i].split(CodeSplite)[3]).obs,
     );
     listzon.value = [];
+    List<String> listvaluepart = ['u', 'v', 'w', 'x', 'y', 'x', 'z'];
+    for (var i = 0; i < listvaluepart.length; i++) {
+      listzon.add({
+        'label': 'متصل به رله بع عنوان سیرن برای پارت ${i + 1}'.toPersianDigit(),
+        'value': listvaluepart[i]
+      }.obs);
+    }
     for (int zone = 0; zone <= 7; zone++) {
       final String letter = String.fromCharCode(65 + zone);
       listzon.add(
