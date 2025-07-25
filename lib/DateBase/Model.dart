@@ -77,7 +77,7 @@ class DevLX {
     this.DateWarrenty = '',
     this.NameTechnician = '',
     this.PhoneTechnician = '',
-    this.ModelPro = '',
+    this.ModelPro = 'UX PRO MAX',
   });
 
   Map<String, dynamic> toMap() {
