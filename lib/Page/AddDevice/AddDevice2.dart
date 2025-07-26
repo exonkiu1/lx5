@@ -138,8 +138,9 @@ class _Adddevice2State extends State<Adddevice2> {
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
                                   if (true
-                                    /* Get.find<Controllerother>().Model.value !=
-                                      'LX PRO' */) {
+                                      /* Get.find<Controllerother>().Model.value !=
+                                      'LX PRO' */
+                                      ) {
                                     DialogOrder(
                                       context,
                                       Get.find<Controllerdatabase>().AddLx(),
@@ -197,9 +198,18 @@ class _Adddevice2State extends State<Adddevice2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                WidgetMOdel(model: 'LX PRO'),
+                WidgetMOdelpro(model: 'LX PRO MAX'),
                 WidgetMOdel(model: 'LX 1000'),
                 WidgetMOdel(model: 'UX 80'),
+              ],
+            ),
+            SizedBox(height: 7),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                WidgetMOdelpro(model: 'UX PRO MAX'),
+                WidgetMOdelpro(model: 'UX PRO'),
+                WidgetMOdelpro(model: 'LX PRO'),
               ],
             ),
           ],
@@ -221,6 +231,29 @@ class WidgetMOdel extends StatelessWidget {
           width: Get.width * 0.25,
           decoration: decoration(
             color: Get.find<Controllerother>().Model.value == model,
+          ),
+          child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
+        );
+      }),
+    );
+  }
+}
+
+class WidgetMOdelpro extends StatelessWidget {
+  const WidgetMOdelpro({super.key, required this.model});
+  final String model;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {
+        Get.find<Controllerother>().Model.value = 'LX PRO';
+        Get.find<Controllerother>().ModelPro.value = model;
+      },
+      child: Obx(() {
+        return Container(
+          width: Get.width * 0.25,
+          decoration: decoration(
+            color: Get.find<Controllerother>().ModelPro.value == model,
           ),
           child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
         );
