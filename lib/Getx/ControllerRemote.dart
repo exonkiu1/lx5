@@ -7,11 +7,13 @@ import 'package:shared_preferences/shared_preferences.dart';
 class Controllerremote extends GetxController {
   RxList<RxString> Name = <RxString>[].obs;
   RxList<RxString> Part = <RxString>[].obs;
+  RxList<RxString> Statelock = <RxString>[].obs;
   ////////////////
   RxBool showpart = false.obs;
   AddRemote(String id) async {
     var prefs = SharedPreferencesAsync();
-    List<String> value = List.generate(30, (i) => 'ریموت ${i}${CodeSplite}1');
+    List<String> value =
+        List.generate(30, (i) => 'ریموت ${i}${CodeSplite}1${CodeSplite}unlock');
     await prefs.setStringList('${id}remote', value);
   }
 
@@ -20,12 +22,16 @@ class Controllerremote extends GetxController {
     List<String> value = await prefs.getStringList('${id}remote') ?? [];
     Name.value = List.generate(30, (i) => value[i].split(CodeSplite)[0].obs);
     Part.value = List.generate(30, (i) => value[i].split(CodeSplite)[1].obs);
+    Statelock.value =
+        List.generate(30, (i) => value[i].split(CodeSplite)[1].obs);
   }
 
   UpdateRemote() async {
     var prefs = SharedPreferencesAsync();
     List<String> value = List.generate(
-        30, (i) => '${Name[i].value}${CodeSplite}${Part[i].value}');
+        30,
+        (i) =>
+            '${Name[i].value}${CodeSplite}${Part[i].value}${CodeSplite}${Statelock[i].value}');
     await prefs.setStringList(
         '${Get.find<Controllerinfo>().id.value}remote', value);
   }
@@ -50,6 +56,14 @@ class Controllerremote extends GetxController {
     return 'LUXSTS$val';
   }
 
+  Future<String> ChangeStateLock(
+      {String state_lock = '', int index = 1}) async {
+    Statelock[index].value = state_lock;
+    UpdateRemote();
+    return 'LUXW*${index + 1}*${keyvalueStatelock[state_lock]}';
+  }
+
+  Map<String, String> keyvalueStatelock = {'lock': 'L', 'unlock': 'U'};
   Future<String> DeleteRemote(int i) async {
     Part[i].value = '1';
     Name[i].value = 'ریموت ${i + 1}';

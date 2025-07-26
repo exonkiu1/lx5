@@ -152,9 +152,50 @@ class WidgetRemote extends StatelessWidget {
               ),
             ],
           ),
-          WidgetDeleteRemote(i: i),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              WidgetDeleteRemote(i: i),
+              WidgetStateLock(
+                i: i,
+                State: 'lock',
+                icon: Icons.lock,
+              ),
+              WidgetStateLock(
+                i: i,
+                State: 'unlock',
+                icon: Icons.lock_open,
+              )
+            ],
+          ),
         ],
       ),
+    );
+  }
+}
+
+class WidgetStateLock extends StatelessWidget {
+  const WidgetStateLock(
+      {super.key, required this.i, required this.State, required this.icon});
+
+  final int i;
+  final String State;
+  final IconData icon;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () => SendOrder(
+          context,
+          () => Get.find<Controllerremote>()
+              .ChangeStateLock(index: i, state_lock: '${State}')),
+      child: Obx(() {
+        return Icon(
+          icon,
+          color: Get.find<Controllerremote>().Statelock[i].value == '${State}'
+              ? color2
+              : color1,
+        );
+      }),
     );
   }
 }
