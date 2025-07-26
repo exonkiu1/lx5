@@ -23,7 +23,7 @@ class Controllerremote extends GetxController {
     Name.value = List.generate(30, (i) => value[i].split(CodeSplite)[0].obs);
     Part.value = List.generate(30, (i) => value[i].split(CodeSplite)[1].obs);
     Statelock.value =
-        List.generate(30, (i) => value[i].split(CodeSplite)[1].obs);
+        List.generate(30, (i) => value[i].split(CodeSplite)[2].obs);
   }
 
   UpdateRemote() async {
