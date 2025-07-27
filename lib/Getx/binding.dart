@@ -5,6 +5,7 @@ import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerInquiry.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/ControllerPassRemote.dart';
 import 'package:lx/Getx/ControllerPassword.dart';
 import 'package:lx/Getx/ControllerRelay.dart';
 import 'package:lx/Getx/ControllerRemote.dart';
@@ -40,6 +41,7 @@ class mybinding implements Bindings {
     Get.put(Controllersttadddevice(), permanent: true);
     Get.put(Controllersttcontact(), permanent: true);
     Get.put(Controllerwarrenty(),permanent: true);
+    Get.put(Controllerpassremote(),permanent: true);
     await Future.delayed(Duration(seconds: 2));
     Get.put(Controlleroptions(), permanent: true);
     // TODO: implement dependencies

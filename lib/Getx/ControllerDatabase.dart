@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/ControllerPassRemote.dart';
 import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import '/DateBase/DataBase.dart';
@@ -55,6 +56,7 @@ class Controllerdatabase extends GetxController {
       Get.find<Controllersetting>().GetSetting(model);
       Get.find<Controllerinquiry>().GetInquiry(model);
       Get.find<Controllerwarrenty>().GetWarenty(model);
+      Get.find<Controllerpassremote>().GetPasswordRemote(model);
     } else {
       Get.off(() => const Adddevice2());
     }
@@ -139,9 +141,10 @@ class Controllerdatabase extends GetxController {
         PhoneClinet: Get.find<Controllerwarrenty>().PhoneClinet.value,
         PhoneTechnician: Get.find<Controllerwarrenty>().PhoneTechnician.value,
         Province: Get.find<Controllerwarrenty>().Province.value,
-        ModelPro: Get.find<Controllerwarrenty>().ModelPro.value
+        ModelPro: Get.find<Controllerwarrenty>().ModelPro.value,
         //Warrenty
-        );
+        //password remotes
+        PasswordRemote: Get.find<Controllerpassremote>().PasswordRemote.value);
     DatabaseLX.instance.UpdateDev(model);
   }
 
