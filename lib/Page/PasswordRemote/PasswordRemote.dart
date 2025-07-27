@@ -18,13 +18,8 @@ class Passwordremote extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-            ThisPass(),
+          ThisPass(),
           editpass(),
-          ],),
-          
           RemotePass(),
         ],
       )),
@@ -39,77 +34,90 @@ class editpass extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: decoration(),
-      width: Get.width * 0.4,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Obx(() {
-            return Column(
-              children: List.generate(
-                  Get.find<Controllerpassremote>()
-                      .edit_PasswordRemote
-                      .value
-                      .length,
-                  (int i) => Obx(() {
-                        return Text(
-                          '1: ${MapPassRemote[Get.find<Controllerpassremote>().edit_PasswordRemote.value[i]]}'
-                              .toPersianDigit(),
-                          textDirection: TextDirection.rtl,
-                        );
-                      })),
-            );
-          }),
-          Obx(() {
-            return Visibility(
-                visible: Get.find<Controllerpassremote>()
-                        .edit_PasswordRemote
-                        .value
-                        .length >
-                    0,
-                child: InkWell(
-                    onTap: () {
+    return Obx(() {
+      return Visibility(
+        visible:
+            Get.find<Controllerpassremote>().edit_PasswordRemote.value.length !=
+                0,
+        child: Container(
+          decoration: decoration(),
+          width: Get.width * 0.8,
+          padding: EdgeInsets.symmetric(vertical: 10),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Obx(() {
+                return Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: List.generate(
                       Get.find<Controllerpassremote>()
-                              .edit_PasswordRemote
-                              .value =
+                          .edit_PasswordRemote
+                          .value
+                          .length,
+                      (int i) => Align(
+                            alignment: Alignment.centerRight,
+                            child: Obx(() {
+                              return Text(
+                                '${i + 1}: ${MapPassRemote[Get.find<Controllerpassremote>().edit_PasswordRemote.value[i]]}'
+                                    .toPersianDigit(),
+                                textDirection: TextDirection.rtl,
+                                textAlign: TextAlign.right,
+                              );
+                            }),
+                          )),
+                );
+              }),
+              Obx(() {
+                return Visibility(
+                    visible: Get.find<Controllerpassremote>()
+                            .edit_PasswordRemote
+                            .value
+                            .length >
+                        0,
+                    child: InkWell(
+                        onTap: () {
                           Get.find<Controllerpassremote>()
-                              .edit_PasswordRemote
-                              .value
-                              .substring(
-                                  0,
-                                  Get.find<Controllerpassremote>()
-                                          .edit_PasswordRemote
-                                          .value
-                                          .length -
-                                      1);
-                    },
-                    child: Icon(Icons.close)));
-          }),
-          Obx(() {
-            return Visibility(
-                visible: Get.find<Controllerpassremote>()
-                        .edit_PasswordRemote
-                        .value
-                        .length ==
-                    4,
-                child: InkWell(
-                  onTap: () => SendOrder(
-                      context,
-                      () => Get.find<Controllerpassremote>()
-                          .ChangePassWordRemote()),
-                  child: Container(
-                    width: Get.width * 0.3,
-                    decoration: decoration(),
-                    child: Center(
-                      child: Text('ثبت'),
-                    ),
-                  ),
-                ));
-          })
-        ],
-      ),
-    );
+                                  .edit_PasswordRemote
+                                  .value =
+                              Get.find<Controllerpassremote>()
+                                  .edit_PasswordRemote
+                                  .value
+                                  .substring(
+                                      0,
+                                      Get.find<Controllerpassremote>()
+                                              .edit_PasswordRemote
+                                              .value
+                                              .length -
+                                          1);
+                        },
+                        child: Icon(Icons.close, color: color1)));
+              }),
+              Obx(() {
+                return Visibility(
+                    visible: Get.find<Controllerpassremote>()
+                            .edit_PasswordRemote
+                            .value
+                            .length ==
+                        4,
+                    child: InkWell(
+                      onTap: () => SendOrder(
+                          context,
+                          () => Get.find<Controllerpassremote>()
+                              .ChangePassWordRemote()),
+                      child: Container(
+                        width: Get.width * 0.3,
+                        decoration: decoration(),
+                        child: Center(
+                          child: Text('ثبت'),
+                        ),
+                      ),
+                    ));
+              })
+            ],
+          ),
+        ),
+      );
+    });
   }
 }
 
@@ -122,11 +130,15 @@ class ThisPass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: decoration(),
-      width: Get.width * 0.4,
+      width: Get.width * 0.8,
+      padding: EdgeInsets.symmetric(vertical: 10),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Text('پسورد فعلی :'),
+          Text(
+            'پسورد فعلی :',
+            style: TextStyle(color: color2),
+          ),
           Obx(() {
             return Visibility(
               visible: Get.find<Controllerpassremote>()
@@ -136,15 +148,20 @@ class ThisPass extends StatelessWidget {
                   4,
               replacement: Text('هنوز کد گزاری روی ریموت انجام نشده'),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
                 children: List.generate(
                     4,
-                    (int i) => Obx(() {
-                          return Text(
-                            '1: ${MapPassRemote[Get.find<Controllerpassremote>().PasswordRemote.value[i]]}'
-                                .toPersianDigit(),
-                            textDirection: TextDirection.rtl,
-                          );
-                        })),
+                    (int i) => Align(
+                          alignment: Alignment.centerRight,
+                          child: Obx(() {
+                            return Text(
+                              '${i + 1}: ${MapPassRemote[Get.find<Controllerpassremote>().PasswordRemote.value[i]]}'
+                                  .toPersianDigit(),
+                              textDirection: TextDirection.rtl,
+                              textAlign: TextAlign.right,
+                            );
+                          }),
+                        )),
               ),
             );
           }),

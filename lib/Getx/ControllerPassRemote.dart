@@ -11,6 +11,7 @@ class Controllerpassremote extends GetxController {
 
   Future<String> ChangePassWordRemote() async {
     PasswordRemote.value = edit_PasswordRemote.value;
+    edit_PasswordRemote.value='';
     Get.find<Controllerdatabase>().UpdateLx();
     return 'AAAVA*${edit_PasswordRemote.value}';
   }
