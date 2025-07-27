@@ -11,11 +11,10 @@ class Controllerpassremote extends GetxController {
 
   Future<String> ChangePassWordRemote() async {
     PasswordRemote.value = edit_PasswordRemote.value;
-    edit_PasswordRemote.value='';
+    edit_PasswordRemote.value = '';
     Get.find<Controllerdatabase>().UpdateLx();
-    return 'AAAVA*${edit_PasswordRemote.value}';
+    return 'AAAVA*${PasswordRemote.value}';
   }
-
 }
 
 Map<String, String> MapPassRemote = {
@@ -24,9 +23,9 @@ Map<String, String> MapPassRemote = {
   '0': 'باز',
   '4': 'قفل'
 };
-Map<String,String>MapPassRemote2 = {
-  'on':'4',
-  'off':'0',
-  'relay':'2',
-  'silent':'3'
+Map<String, String> MapPassRemote2 = {
+  'on': '4',
+  'off': '0',
+  'relay': '2',
+  'silent': '3'
 };

@@ -42,7 +42,7 @@ class editpass extends StatelessWidget {
         child: Container(
           decoration: decoration(),
           width: Get.width * 0.8,
-          padding: EdgeInsets.symmetric(vertical: 10),
+          padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -58,7 +58,7 @@ class editpass extends StatelessWidget {
                             alignment: Alignment.centerRight,
                             child: Obx(() {
                               return Text(
-                                '${i + 1}: ${MapPassRemote[Get.find<Controllerpassremote>().edit_PasswordRemote.value[i]]}'
+                                '${i + 1}:  ${MapPassRemote[Get.find<Controllerpassremote>().edit_PasswordRemote.value[i]]}'
                                     .toPersianDigit(),
                                 textDirection: TextDirection.rtl,
                                 textAlign: TextAlign.right,
@@ -67,31 +67,37 @@ class editpass extends StatelessWidget {
                           )),
                 );
               }),
-              Obx(() {
-                return Visibility(
-                    visible: Get.find<Controllerpassremote>()
-                            .edit_PasswordRemote
-                            .value
-                            .length >
-                        0,
-                    child: InkWell(
-                        onTap: () {
-                          Get.find<Controllerpassremote>()
-                                  .edit_PasswordRemote
-                                  .value =
+              Align(
+                alignment: Alignment.centerLeft,
+                child: Obx(() {
+                  return Visibility(
+                      visible: Get.find<Controllerpassremote>()
+                              .edit_PasswordRemote
+                              .value
+                              .length >
+                          0,
+                      child: Align(
+                        alignment: Alignment.centerLeft,
+                        child: InkWell(
+                            onTap: () {
                               Get.find<Controllerpassremote>()
-                                  .edit_PasswordRemote
-                                  .value
-                                  .substring(
-                                      0,
-                                      Get.find<Controllerpassremote>()
-                                              .edit_PasswordRemote
-                                              .value
-                                              .length -
-                                          1);
-                        },
-                        child: Icon(Icons.close, color: color1)));
-              }),
+                                      .edit_PasswordRemote
+                                      .value =
+                                  Get.find<Controllerpassremote>()
+                                      .edit_PasswordRemote
+                                      .value
+                                      .substring(
+                                          0,
+                                          Get.find<Controllerpassremote>()
+                                                  .edit_PasswordRemote
+                                                  .value
+                                                  .length -
+                                              1);
+                            },
+                            child: Icon(Icons.close, color: color1)),
+                      ));
+                }),
+              ),
               Obx(() {
                 return Visibility(
                     visible: Get.find<Controllerpassremote>()
@@ -106,7 +112,8 @@ class editpass extends StatelessWidget {
                               .ChangePassWordRemote()),
                       child: Container(
                         width: Get.width * 0.3,
-                        decoration: decoration(),
+                        margin: EdgeInsets.symmetric(vertical: 5),
+                        decoration: decoration(color: true),
                         child: Center(
                           child: Text('ثبت'),
                         ),
@@ -131,7 +138,7 @@ class ThisPass extends StatelessWidget {
     return Container(
       decoration: decoration(),
       width: Get.width * 0.8,
-      padding: EdgeInsets.symmetric(vertical: 10),
+      padding: EdgeInsets.symmetric(vertical: 10, horizontal: 5),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
@@ -146,7 +153,7 @@ class ThisPass extends StatelessWidget {
                       .value
                       .length ==
                   4,
-              replacement: Text('هنوز کد گزاری روی ریموت انجام نشده'),
+              replacement: Text('هنوز کد گذاری روی ریموت انجام نشده'),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: List.generate(
