@@ -18,8 +18,13 @@ class Passwordremote extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ThisPass(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+            ThisPass(),
           editpass(),
+          ],),
+          
           RemotePass(),
         ],
       )),
@@ -36,8 +41,9 @@ class editpass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: decoration(),
-      width: Get.width * 0.8,
+      width: Get.width * 0.4,
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           Obx(() {
             return Column(
@@ -116,7 +122,7 @@ class ThisPass extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: decoration(),
-      width: Get.width * 0.8,
+      width: Get.width * 0.4,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
