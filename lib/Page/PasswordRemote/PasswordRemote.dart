@@ -18,7 +18,7 @@ class Passwordremote extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-        //  ThisPass(),
+          ThisPass(),
           editpass(),
           RemotePass(),
         ],
@@ -161,7 +161,7 @@ class RemotePass extends StatelessWidget {
         decoration: const BoxDecoration(
             // color: Colors.red,
             image: DecorationImage(
-          image: AssetImage('assets/image/homepage/passwordremote.png'),
+          image: AssetImage('assets/image/homepage/passremote.png'),
         )),
         child: Column(
           children: [
