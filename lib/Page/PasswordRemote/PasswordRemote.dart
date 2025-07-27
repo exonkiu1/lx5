@@ -18,8 +18,8 @@ class Passwordremote extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          ThisPass(),
-          editpass(),
+        //  ThisPass(),
+        //  editpass(),
           RemotePass(),
         ],
       )),
