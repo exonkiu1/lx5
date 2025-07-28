@@ -60,7 +60,7 @@ class Controllerremote extends GetxController {
       {String state_lock = '', int index = 1}) async {
     Statelock[index].value = state_lock;
     UpdateRemote();
-    return 'LUXW*${index + 1}*${keyvalueStatelock[state_lock]}';
+    return 'LUXVV*${index}*${keyvalueStatelock[state_lock]}';
   }
 
   Map<String, String> keyvalueStatelock = {'lock': 'L', 'unlock': 'U'};
