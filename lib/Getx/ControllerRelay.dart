@@ -104,7 +104,7 @@ class Controllerrelay extends GetxController {
       (i) => int.parse(value[i].split(CodeSplite)[3]).obs,
     );
     listzon.value = [];
-    List<String> listvaluepart = ['u', 'v', 'w', 'x', 'y', 'z'];
+    List<String> listvaluepart = ['u', 'v', 'w', 'x', 'y', 'z','U','V'];
     for (var i = 0; i < listvaluepart.length; i++) {
       listzon.add({
         'label': 'متصل به رله بعنوان سیرن برای پارت ${i + 1}'.toPersianDigit(),
