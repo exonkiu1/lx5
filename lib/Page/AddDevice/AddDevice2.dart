@@ -93,8 +93,6 @@ class _Adddevice2State extends State<Adddevice2> {
                                 phone: true,
                               ),
                               SizedBox(height: 10),
-                              WidgetSelectedDev(),
-                              SizedBox(height: 10),
                               InkWell(
                                 //
                                 onTap: () async {
@@ -129,6 +127,8 @@ class _Adddevice2State extends State<Adddevice2> {
                                   ),
                                 ),
                               ),
+                              SizedBox(height: 10),
+                              WidgetSelectedDev(),
                             ],
                           ),
                           Center(
@@ -206,9 +206,8 @@ class _Adddevice2State extends State<Adddevice2> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 WidgetMOdel(model: 'UX 80'),
-                  WidgetMOdelpro(model: 'UX PRO'),
+                WidgetMOdelpro(model: 'UX PRO'),
                 WidgetMOdelpro(model: 'UX PRO MAX'),
-              
               ],
             ),
           ],
