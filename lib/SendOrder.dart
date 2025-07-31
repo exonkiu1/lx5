@@ -1,3 +1,4 @@
+import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import 'package:telephony/telephony.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -207,6 +208,9 @@ SendInquiry(BuildContext context, Function() function,
                           Get.find<Controllerother>().TypeInquiry.value = type;
                           SendSms(context, code,
                               bool_phone: bool_phone, phone: phone);
+                          if(code == '6660'){
+                            Get.find<Controllersttadddevice>().PlayMusic('imei');
+                          }
                           InquirySms(
                             function,
                             controller: controller,

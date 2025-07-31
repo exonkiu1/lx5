@@ -137,11 +137,8 @@ class _Adddevice2State extends State<Adddevice2> {
                                 bool val =
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
-                                  if (
-                                    
-                                      Get.find<Controllerother>().Model.value !=
-                                      'LX PRO'
-                                      ) {
+                                  if (Get.find<Controllerother>().Model.value !=
+                                      'LX PRO') {
                                     DialogOrder(
                                       context,
                                       Get.find<Controllerdatabase>().AddLx(),
@@ -199,18 +196,19 @@ class _Adddevice2State extends State<Adddevice2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                WidgetMOdelpro(model: 'LX PRO MAX'),
                 WidgetMOdel(model: 'LX 1000'),
-                WidgetMOdel(model: 'UX 80'),
+                WidgetMOdelpro(model: 'LX PRO'),
+                WidgetMOdelpro(model: 'LX PRO MAX'),
               ],
             ),
             SizedBox(height: 7),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                WidgetMOdel(model: 'UX 80'),
+                  WidgetMOdelpro(model: 'UX PRO'),
                 WidgetMOdelpro(model: 'UX PRO MAX'),
-                WidgetMOdelpro(model: 'UX PRO'),
-                WidgetMOdelpro(model: 'LX PRO'),
+              
               ],
             ),
           ],

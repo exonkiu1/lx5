@@ -41,6 +41,7 @@ class Controllerwarrenty extends GetxController {
   RxString drp_city = "تبریز".obs;
   RxString drp_province = "آذربایجان شرقی".obs;
   SendImeiStartWarenty() async {
+    
     final supabase = Supabase.instance.client;
 
     String imei = Get.find<Controllerother>()
