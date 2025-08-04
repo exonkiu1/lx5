@@ -66,7 +66,7 @@ class Zon extends StatelessWidget {
                 return Text('+${Get.find<Controllerinfo>().Partion.value}+');
               }
             ), */
-              HelpPart(),
+
               Obx(() {
                 return Visibility(
                   visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
@@ -261,6 +261,7 @@ class Zon extends StatelessWidget {
                   ),
                 );
               }),
+              HelpPart(),
             ],
           ),
         ),
@@ -278,17 +279,29 @@ class HelpPart extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Visibility(
-          visible:
-              Get.find<Controllerinfo>().Partion.value.length == 0,
-          child: Column(
-            children: [
-              Text(
-                  'برای نمایش ابتدا باید پارتیشن خود مشخص باشد پس مراحل زیرا به ترتیب اجرا نمایید'),
-              Text('به صفحه مخاطبین بروید'),
-              Text('استعلام مخاطب را بزنید و منتظر جواب بمانید'),
-              Text('استعلام پارتیشن را بزنید و منتظر چواب بمانید'),
-              Text('به این صفحه برگردید و استعلام پارت را بزنید')
-            ],
+          visible: Get.find<Controllerinfo>().Partion.value.length == 0 &&
+              Get.find<Controllerinfo>().Model.value == 'LX PRO',
+          child: Container(
+            padding: EdgeInsets.all(8),
+            margin: EdgeInsets.all(8),
+            decoration: decoration(),
+            child: Directionality(
+              textDirection: TextDirection.rtl,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                      'برای نمایش ابتدا باید پارتیشن خود مشخص باشد پس مراحل زیرا به ترتیب اجرا نمایید'),
+                  SizedBox(
+                    height: 8,
+                  ),
+                  Text('به صفحه مخاطبین بروید'),
+                  Text('استعلام مخاطب را بزنید و منتظر جواب بمانید'),
+                  Text('استعلام پارتیشن را بزنید و منتظر جواب بمانید'),
+                  Text('به این صفحه برگردید و استعلام پارت را بزنید')
+                ],
+              ),
+            ),
           ));
     });
   }

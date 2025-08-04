@@ -22,7 +22,7 @@ class Remote extends StatelessWidget {
           child: SingleChildScrollView(
         child: Column(
           children: [
-             HelpPart(),
+           
            /*  Obx(
               () {
                 return Text('${Get.find<Controllerremote>().List_Remote.value}');
@@ -70,6 +70,7 @@ class Remote extends StatelessWidget {
                 }),
               ],
             ),
+              HelpPart(),
             Obx(
               () {
                 return Wrap(
