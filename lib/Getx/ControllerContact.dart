@@ -121,8 +121,6 @@ class Controllercontact extends GetxController {
       Part[i].value = message[i];
     }
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
-
-    // List_Contact.value = List.generate(lenghtContact, (i) => i);
     if (List_Contact.length > 0) {
       Get.find<Controllerinfo>().Partion.value = message[(List_Contact[0])];
       Get.find<Controllerdatabase>().UpdateLx();

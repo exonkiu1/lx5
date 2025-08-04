@@ -29,11 +29,7 @@ class Zon extends StatelessWidget {
             ),
           ),
         ),
-        Obx(
-          () {
-            return Text('part : ...${Get.find<Controllerinfo>().Partion.value}...');
-          }
-        )
+        
       ]),
       extendBody: true,
       bottomNavigationBar: Obx(() {
@@ -61,6 +57,16 @@ class Zon extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
+              Obx(
+              () {
+                return Text('${Get.find<Controllerzon>().List_Zon.value}');
+              }
+            ),
+            Obx(
+              () {
+                return Text('+${Get.find<Controllerinfo>().Partion.value}+');
+              }
+            ),
               Obx(() {
                 return Visibility(
                   visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',

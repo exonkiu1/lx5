@@ -20,6 +20,11 @@ class Remote extends StatelessWidget {
           child: SingleChildScrollView(
         child: Column(
           children: [
+            Obx(
+              () {
+                return Text('${Get.find<Controllerremote>().List_Remote.value}');
+              }
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [

@@ -6,7 +6,7 @@ HelpModeZon(BuildContext context) {
   Get.bottomSheet(
     Container(
       width: Get.width,
-      //height: Get.height * 0.4,
+      height: Get.height * 0.7,
       decoration:
           decoration(color: true, colorBG: const Color.fromARGB(150, 0, 0, 0)),
       child: Column(

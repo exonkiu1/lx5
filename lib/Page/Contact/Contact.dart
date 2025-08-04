@@ -118,7 +118,7 @@ class Contacts extends StatelessWidget {
             ),
             Obx(() {
               return Column(
-                  children: Get.find<Controllercontact>().MainContact.value
+                  children: !Get.find<Controllercontact>().MainContact.value
                       ? Get.find<Controllercontact>()
                           .List_Contact
                           .map((int value) => WidgetContact(i: value))
