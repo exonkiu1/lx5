@@ -7,7 +7,8 @@ HelpModeZon(BuildContext context) {
     Container(
       width: Get.width,
       //height: Get.height * 0.4,
-      decoration: decoration(color: true, colorBG: color2),
+      decoration:
+          decoration(color: true, colorBG: const Color.fromARGB(150, 0, 0, 0)),
       child: Column(
         children: [
           Padding(
@@ -43,7 +44,7 @@ class widgetModeZon extends StatelessWidget {
         children: [
           Text(
             level,
-            style: TextStyle(color: const Color.fromARGB(255, 150, 23, 14)),
+            style: TextStyle(color: const Color.fromARGB(255, 234, 8, 8)),
           ),
           SizedBox(width: 20),
           Expanded(child: Text(des, textDirection: TextDirection.rtl)),
@@ -54,11 +55,15 @@ class widgetModeZon extends StatelessWidget {
 }
 
 Map<String, String> MapHelpModeZon = {
-  'نرمال':
-      'حالت معمول که با تحریک فعال میشود و تمام آلارم های بلندگو و پیامک و تلفن فعال میشود',
+  'نرمال': 'نسبت به خروجی سنسور تنظیم شود',
   'دینگ دانگ':
-      'در صورت تحریک در زمان مسطح بودن فقط بلنگوی کوچک داخل پنل عمل میکند',
-  '24 th':
-      'بدون توجه به مسلح یا غیر مسلح بودن دستگاه فعال است و با تحریک زون آلارم ها عمل میکند',
-  'گارد': 'در حالت مسلح در صورت تحریک آژیر ها 2 ثانیه آژیر میکشد',
+      'با تحریک سنسور بازر برد دو بوق میکشد و هم زمان رله را یک عمل میکند',
+  '24 th': 'با تحریک زون در هر حالت فعال و غیرفعال دستگاه آلارم میکشد',
+  'گارد': 'در صورت تحریک فقط آلارم 2 ثانیه عمل میکند',
+  'جاسوسی': 'در صورت تحریک فقط پیام و تماس میگیرد',
+  'آبی': 'اگر سنسور چند ساعت تحریک نشود و دستگاه خودکار فعالم میشود',
+  '24th جاسوسی':
+      'با تحریک زون در هر حالت فعال و غیرفعال فقط پیام و تماس میگیرد',
+  'غیرفعالسازی زون':
+      ' در صورت خرابی سنسور یا سیم کشی زون از مدار خارج میشود ودر ضمن برای فعالسازی مجدد زون روی نرمال کلوز گذاشته شود',
 };

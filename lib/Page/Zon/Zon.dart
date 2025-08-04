@@ -24,13 +24,16 @@ class Zon extends StatelessWidget {
         InkWell(
           onTap: () => HelpModeZon(context),
           child: Container(
-            margin: EdgeInsets.symmetric(horizontal: 20),
-            decoration: decoration(color: true),
             child: Center(
               child: Icon(Icons.question_mark_sharp, color: color2),
             ),
           ),
         ),
+        Obx(
+          () {
+            return Text('part : ...${Get.find<Controllerinfo>().Partion.value}...');
+          }
+        )
       ]),
       extendBody: true,
       bottomNavigationBar: Obx(() {
