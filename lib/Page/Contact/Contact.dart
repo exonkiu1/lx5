@@ -118,10 +118,13 @@ class Contacts extends StatelessWidget {
             ),
             Obx(() {
               return Column(
-                  children: Get.find<Controllercontact>()
-                      .List_Contact
-                      .map((int value) => WidgetContact(i: value))
-                      .toList());
+                  children: Get.find<Controllercontact>().MainContact.value
+                      ? Get.find<Controllercontact>()
+                          .List_Contact
+                          .map((int value) => WidgetContact(i: value))
+                          .toList()
+                      : List.generate(
+                          lenghtContact, (i) => WidgetContact(i: i)));
             }),
           ],
         ),
@@ -281,7 +284,6 @@ class WidgetContact extends StatelessWidget {
                                     8,
                                     (j) => InkWell(
                                           onTap: () {
-                                            
                                             Get.find<Controllercontact>()
                                                 .Part[i]
                                                 .value = '${j + 1}';
