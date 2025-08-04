@@ -2,8 +2,15 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
-
 import 'package:shared_preferences/shared_preferences.dart';
+
+import '../model.dart';
+import 'controllerWarenty.dart';
+
+///
+///
+///
+///
 
 class Controllerzon extends GetxController {
   RxList<RxString> Name = <RxString>[].obs;
@@ -14,6 +21,7 @@ class Controllerzon extends GetxController {
   ///
   RxBool showhalfon = false.obs;
   RxBool showpart = false.obs;
+  RxList<int> List_Zon = <int>[].obs;
 
   ///
   Future<String> ChangeModeZon(String mode, int i) async {
@@ -22,6 +30,7 @@ class Controllerzon extends GetxController {
     return '42*${i + 1}*${ListModesZon[mode]}';
   }
 
+  ///
   Future<String> ChangeName(int i) async {
     Name[i].value = Get.find<Controllerother>().tf.text;
     UpdateZon();
@@ -40,11 +49,15 @@ class Controllerzon extends GetxController {
   GetZon(String id) async {
     var prefs = SharedPreferencesAsync();
     List<String> value = await prefs.getStringList('${id}zon') ?? [];
+
     Name.value = List.generate(19, (i) => value[i].split(CodeSplite)[0].obs);
     Mode.value = List.generate(19, (i) => value[i].split(CodeSplite)[1].obs);
     State.value = List.generate(19,
         (i) => value[i].split(CodeSplite)[2] == 'true' ? true.obs : false.obs);
     Part.value = List.generate(19, (i) => value[i].split(CodeSplite)[3].obs);
+    List<String> copy_ListZon = await prefs.getStringList('${id}ListZon') ?? [];
+    List_Zon.value =
+        List.generate(copy_ListZon.length, (i) => int.parse(copy_ListZon[i]));
   }
 
   UpdateZon() async {
@@ -54,6 +67,10 @@ class Controllerzon extends GetxController {
         (i) =>
             '${Name[i].value}${CodeSplite}${Mode[i].value}${CodeSplite}${State[i].value}${CodeSplite}${Part[i].value}');
     prefs.setStringList('${Get.find<Controllerinfo>().id.value}zon', value);
+    List<String> copy_ListZon =
+        List.generate(List_Zon.length, (i) => List_Zon[i].toString());
+    prefs.setStringList(
+        '${Get.find<Controllerinfo>().id.value}ListZon', copy_ListZon);
   }
 
   Future<String> ChangePart() async {
@@ -83,12 +100,28 @@ class Controllerzon extends GetxController {
   }
 
   InquiryPart() {
-    String message =
-        Get.find<Controllerother>().TextInuiry.value.substring(0, 18);
+    String message = Get.find<Controllerother>()
+        .TextInuiry
+        .value
+        .substring(0, 18)
+        .replaceAll(';', '');
     for (var i = 0; i < 18; i++) {
       print(message[i]);
       Part[i].value = message[i];
     }
+    List_Zon.value = [];
+    if (Get.find<Controllerinfo>().Partion.value == '1') {
+      List_Zon.value = List.generate(
+          MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]!['zon']!,
+          (i) => i);
+    } else {
+      for (var i = 0; i < message.length; i++) {
+        if (Get.find<Controllerinfo>().Partion.value == message[i]) {
+          List_Zon.add(i);
+        }
+      }
+    }
+
     UpdateZon();
   }
 
@@ -115,7 +148,7 @@ class Controllerzon extends GetxController {
 Map<String, String> ListModesZon = {
   'نرمال کلوز': '1',
   'نرمال اوپن': '5',
-  'دینگ دانگ': '2',
+  'دینگ دانگ': '0',
   '24th': '3',
   'گارد': '4',
   'جاسوسی': '6',

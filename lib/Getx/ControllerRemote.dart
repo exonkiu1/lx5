@@ -2,6 +2,7 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerremote extends GetxController {
@@ -10,6 +11,8 @@ class Controllerremote extends GetxController {
   RxList<RxString> Statelock = <RxString>[].obs;
   ////////////////
   RxBool showpart = false.obs;
+  RxList<int> List_Remote = <int>[].obs;
+
   AddRemote(String id) async {
     var prefs = SharedPreferencesAsync();
     List<String> value =
@@ -24,6 +27,10 @@ class Controllerremote extends GetxController {
     Part.value = List.generate(30, (i) => value[i].split(CodeSplite)[1].obs);
     Statelock.value =
         List.generate(30, (i) => value[i].split(CodeSplite)[2].obs);
+    List<String> copy_ListRemote =
+        await prefs.getStringList('${id}ListRemote') ?? [];
+    List_Remote.value = List.generate(
+        copy_ListRemote.length, (i) => int.parse(copy_ListRemote[i]));
   }
 
   UpdateRemote() async {
@@ -34,6 +41,10 @@ class Controllerremote extends GetxController {
             '${Name[i].value}${CodeSplite}${Part[i].value}${CodeSplite}${Statelock[i].value}');
     await prefs.setStringList(
         '${Get.find<Controllerinfo>().id.value}remote', value);
+    List<String> copy_ListRemote =
+        List.generate(List_Remote.length, (i) => List_Remote[i].toString());
+    prefs.setStringList(
+        '${Get.find<Controllerinfo>().id.value}ListRemote', copy_ListRemote);
   }
 
   Future<String> ChangeNameRemote(int i) async {
@@ -72,9 +83,23 @@ class Controllerremote extends GetxController {
   }
 
   Inquiry() {
-    String message = Get.find<Controllerother>().TextInuiry.value;
+    String message = Get.find<Controllerother>()
+        .TextInuiry
+        .value
+        .replaceAll(';', '')
+        .replaceAll('#', '');
     for (var i = 0; i < 30; i++) {
       Part[i].value = message[i];
+    }
+    List_Remote.value = [];
+    if (Get.find<Controllerinfo>().Partion.value == '1') {
+      List_Remote.value = List.generate(30, (i) => i);
+    } else {
+      for (var i = 0; i < message.length; i++) {
+        if (Get.find<Controllerinfo>().Partion.value == message[i]) {
+          List_Remote.add(i);
+        }
+      }
     }
     UpdateRemote();
   }

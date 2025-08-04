@@ -62,12 +62,15 @@ class Remote extends StatelessWidget {
                 }),
               ],
             ),
-            Wrap(
-              children: List.generate(
-                  30,
-                  (i) => WidgetRemote(
-                        i: i,
-                      )),
+            Obx(
+              () {
+                return Wrap(
+                  children:  Get.find<Controllerremote>()
+                                .List_Remote
+                                .map((int value) => WidgetRemote(i: value))
+                                .toList(),
+                );
+              }
             ),
           ],
         ),

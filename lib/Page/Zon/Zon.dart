@@ -12,26 +12,26 @@ import 'package:lx/WidgetUi/decoration.dart';
 import 'package:lx/model.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import 'HelpModeZon.dart';
+
 class Zon extends StatelessWidget {
   const Zon({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(
-        title:
-            'زون ها' /* actions: [
-        IconButton(
-            onPressed: () => SendOrder(
-                context, () => Get.find<Controllerzon>().DeleteAllZonWirles(),
-                description: 'از حذف زون های بیسیم مطمعن هستید؟'),
-            icon: Icon(
-              Icons.delete,
-              color: Colors.white,
-            ))
-      ] */
-        ,
-      ),
+      appBar: appBar(title: 'زون ها', actions: [
+        InkWell(
+          onTap: () => HelpModeZon(context),
+          child: Container(
+            margin: EdgeInsets.symmetric(horizontal: 20),
+            decoration: decoration(color: true),
+            child: Center(
+              child: Icon(Icons.question_mark_sharp, color: color2),
+            ),
+          ),
+        ),
+      ]),
       extendBody: true,
       bottomNavigationBar: Obx(() {
         return Visibility(
@@ -222,13 +222,12 @@ class Zon extends StatelessWidget {
               }),
               Obx(() {
                 return Column(
-                    children: List.generate(
-                        Get.find<Controllerinfo>().Model.value == 'LX PRO'
-                            ? MapModelPro[Get.find<Controllerwarrenty>()
-                                .ModelPro
-                                .value]!['zon']!
-                            : 18,
-                        (i) => WidgetZon(i: i)));
+                    children: Get.find<Controllerinfo>().Model.value == 'LX PRO'
+                        ? Get.find<Controllerzon>()
+                            .List_Zon
+                            .map((int value) => WidgetZon(i: value))
+                            .toList()
+                        : List.generate(18, (i) => WidgetZon(i: i)));
               }),
               Obx(() {
                 return Visibility(

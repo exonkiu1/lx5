@@ -144,7 +144,9 @@ class Controllerdatabase extends GetxController {
         ModelPro: Get.find<Controllerwarrenty>().ModelPro.value,
         //Warrenty
         //password remotes
-        PasswordRemote: Get.find<Controllerpassremote>().PasswordRemote.value);
+        PasswordRemote: Get.find<Controllerpassremote>().PasswordRemote.value,
+        Partion: Get.find<Controllerinfo>().Partion.value
+        );
     DatabaseLX.instance.UpdateDev(model);
   }
 
