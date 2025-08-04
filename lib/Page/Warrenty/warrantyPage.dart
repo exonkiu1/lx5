@@ -90,9 +90,11 @@ class WidgetInfo extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           
-          Text(
-            description,
-            textDirection: TextDirection.rtl,
+          Expanded(
+            child: Text(
+              description,
+              textDirection: TextDirection.rtl,
+            ),
           ),
           Text(
             '${title}:',

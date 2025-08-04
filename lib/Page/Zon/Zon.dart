@@ -29,7 +29,6 @@ class Zon extends StatelessWidget {
             ),
           ),
         ),
-        
       ]),
       extendBody: true,
       bottomNavigationBar: Obx(() {
@@ -57,7 +56,7 @@ class Zon extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              Obx(
+              /*   Obx(
               () {
                 return Text('${Get.find<Controllerzon>().List_Zon.value}');
               }
@@ -66,7 +65,8 @@ class Zon extends StatelessWidget {
               () {
                 return Text('+${Get.find<Controllerinfo>().Partion.value}+');
               }
-            ),
+            ), */
+              HelpPart(),
               Obx(() {
                 return Visibility(
                   visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
@@ -266,6 +266,31 @@ class Zon extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class HelpPart extends StatelessWidget {
+  const HelpPart({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      return Visibility(
+          visible:
+              Get.find<Controllerinfo>().Partion.value.length == 0,
+          child: Column(
+            children: [
+              Text(
+                  'برای نمایش ابتدا باید پارتیشن خود مشخص باشد پس مراحل زیرا به ترتیب اجرا نمایید'),
+              Text('به صفحه مخاطبین بروید'),
+              Text('استعلام مخاطب را بزنید و منتظر جواب بمانید'),
+              Text('استعلام پارتیشن را بزنید و منتظر چواب بمانید'),
+              Text('به این صفحه برگردید و استعلام پارت را بزنید')
+            ],
+          ));
+    });
   }
 }
 

@@ -6,25 +6,27 @@ HelpModeZon(BuildContext context) {
   Get.bottomSheet(
     Container(
       width: Get.width,
-      height: Get.height * 0.7,
+     
       decoration:
           decoration(color: true, colorBG: const Color.fromARGB(150, 0, 0, 0)),
-      child: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('راهنمای حالت های زون'),
-          ),
-          Column(
-            children: List.generate(
-              MapHelpModeZon.length,
-              (i) => widgetModeZon(
-                des: MapHelpModeZon.values.elementAt(i),
-                level: MapHelpModeZon.keys.elementAt(i),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text('راهنمای حالت های زون'),
+            ),
+            Column(
+              children: List.generate(
+                MapHelpModeZon.length,
+                (i) => widgetModeZon(
+                  des: MapHelpModeZon.values.elementAt(i),
+                  level: MapHelpModeZon.keys.elementAt(i),
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     ),
   );

@@ -9,6 +9,8 @@ import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../Zon/Zon.dart';
+
 class Remote extends StatelessWidget {
   const Remote({super.key});
 
@@ -20,11 +22,12 @@ class Remote extends StatelessWidget {
           child: SingleChildScrollView(
         child: Column(
           children: [
-            Obx(
+             HelpPart(),
+           /*  Obx(
               () {
                 return Text('${Get.find<Controllerremote>().List_Remote.value}');
               }
-            ),
+            ), */
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
