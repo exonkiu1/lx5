@@ -112,7 +112,7 @@ class Controllerzon extends GetxController {
     List_Zon.value = [];
     if (Get.find<Controllerinfo>().Partion.value == '1') {
       List_Zon.value = List.generate(
-          MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]!['zon']!,
+          18,
           (i) => i);
     } else {
       for (var i = 0; i < message.length; i++) {
@@ -152,7 +152,7 @@ Map<String, String> ListModesZon = {
   '24th': '3',
   'گارد': '4',
   'جاسوسی': '6',
-  'ابی': '7',
+  'ابی': 'g',
   '24th جاسوسی': '8',
   'غیرفعال زون':'9'
 };
