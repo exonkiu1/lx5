@@ -137,7 +137,7 @@ class Zon extends StatelessWidget {
                                         () => Get.find<Controllerzon>()
                                             .InquiryPart(),
                                         code: 'LUXSSE',
-                                        controller: '#',
+                                        controller: ';',
                                         type: 'PartZon',
                                       ),
                                       child: Container(
