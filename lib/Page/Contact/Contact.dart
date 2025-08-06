@@ -422,7 +422,7 @@ class WidgetLevel extends StatelessWidget {
       child: Obx(() {
         return Container(
           width: Get.width * 0.3,
-          padding: const EdgeInsets.symmetric(vertical: 3),
+          padding: const EdgeInsets.symmetric(vertical: 1),
           decoration: BoxDecoration(
               color:
                   Get.find<Controllercontact>().Level[i].value.contains(Value)
@@ -432,7 +432,7 @@ class WidgetLevel extends StatelessWidget {
           child: Center(
             child: Text(
               Name,
-              style: const TextStyle(fontSize: 12),
+              style: const TextStyle(fontSize: 11),
             ),
           ),
         );

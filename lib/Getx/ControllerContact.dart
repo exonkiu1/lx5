@@ -68,7 +68,7 @@ class Controllercontact extends GetxController {
   Future<String> DeleteContact(int i) async {
     TfName[i].text = '';
     TfPhone[i].text = '';
-    Level[i].value = 'LLLL';
+    Level[i].value = 'LLLLL';
     UpdateContact();
     return '${i + 1}*D';
   }
@@ -165,7 +165,7 @@ class Controllercontact extends GetxController {
   AddContact(String id) async {
     List<String> ValueContact = [];
     for (var i = 0; i < lenghtContact; i++) {
-      ValueContact.add('$CodeSplite${CodeSplite}LLLL${CodeSplite}1');
+      ValueContact.add('$CodeSplite${CodeSplite}LLLLL${CodeSplite}1');
     }
 
     final SharedPreferencesAsync prefs = SharedPreferencesAsync();
