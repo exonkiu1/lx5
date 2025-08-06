@@ -93,7 +93,6 @@ class _Adddevice2State extends State<Adddevice2> {
                                 phone: true,
                               ),
                               SizedBox(height: 10),
-                              
                               InkWell(
                                 //
                                 onTap: () async {
@@ -128,9 +127,8 @@ class _Adddevice2State extends State<Adddevice2> {
                                   ),
                                 ),
                               ),
-                                SizedBox(height: 10),
+                              SizedBox(height: 10),
                               WidgetSelectedDev(),
-                            
                             ],
                           ),
                           Center(
@@ -169,7 +167,22 @@ class _Adddevice2State extends State<Adddevice2> {
                                           .TypeInquiry
                                           .value !=
                                       'imei',
-                                  replacement: CircularProgressIndicator(),
+                                  replacement: Container(
+                                    width: 25,
+                                    height: 25,
+                                    decoration: decoration(color: true),
+                                    child: Center(
+                                      child: Obx(() {
+                                        return Text(
+                                          Get.find<Controllerother>()
+                                              .counter
+                                              .value
+                                              .toString(),
+                                          style: TextStyle(fontSize: 12),
+                                        );
+                                      }),
+                                    ),
+                                  ),
                                   child: Container(
                                     padding: EdgeInsets.symmetric(vertical: 2),
                                     width: Get.width * 0.3,
@@ -208,9 +221,8 @@ class _Adddevice2State extends State<Adddevice2> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 WidgetMOdel(model: 'UX 80'),
-                  WidgetMOdelpro(model: 'UX PRO'),
+                WidgetMOdelpro(model: 'UX PRO'),
                 WidgetMOdelpro(model: 'UX PRO MAX'),
-              
               ],
             ),
           ],

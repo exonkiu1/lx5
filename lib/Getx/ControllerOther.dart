@@ -16,6 +16,7 @@ class Controllerother extends GetxController {
   RxBool onceSnackbar = false.obs;
   RxString Model = ''.obs;
   RxString ModelPro = ''.obs;
+  RxInt counter = 30.obs;
   StartDelyOrder() async {
     DelyOrder.value = 10;
     for (var i = 0; i < 10; i++) {
@@ -47,6 +48,13 @@ class Controllerother extends GetxController {
           ],
         ),
       ));
+    }
+  }
+
+  playcounter() async {
+    counter.value = 30;
+    while (counter.value != 0) {
+      await Future.delayed(Duration(seconds: 1), () => counter.value -= 1);
     }
   }
 }

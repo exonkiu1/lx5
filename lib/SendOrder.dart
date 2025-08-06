@@ -209,6 +209,7 @@ SendInquiry(BuildContext context, Function() function,
                           SendSms(context, code,
                               bool_phone: bool_phone, phone: phone);
                           if(code == '6660'){
+                            Get.find<Controllerother>().playcounter();
                             Get.find<Controllersttadddevice>().PlayMusic('imei');
                           }
                           InquirySms(

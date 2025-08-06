@@ -12,6 +12,7 @@ import 'package:lx/WidgetUi/decoration.dart';
 import 'package:lx/model.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
+import '../../Getx/ControllerContact.dart';
 import 'HelpModeZon.dart';
 
 class Zon extends StatelessWidget {
@@ -137,7 +138,7 @@ class Zon extends StatelessWidget {
                                         () => Get.find<Controllerzon>()
                                             .InquiryPart(),
                                         code: 'LUXSSE',
-                                        controller: ';',
+                                        controller: '',
                                         type: 'PartZon',
                                       ),
                                       child: Container(
@@ -514,7 +515,8 @@ class WidgetZon extends StatelessWidget {
                       Obx(() {
                         return Visibility(
                           visible: Get.find<Controllerinfo>().Model.value ==
-                              'LX PRO',
+                                  'LX PRO' &&
+                              Get.find<Controllercontact>().MainContact.value,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: List.generate(

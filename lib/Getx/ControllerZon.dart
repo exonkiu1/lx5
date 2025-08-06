@@ -98,7 +98,7 @@ class Controllerzon extends GetxController {
       }
     }
   }
-
+  //112122111112121211#;1
   InquiryPart() {
     String message = Get.find<Controllerother>()
         .TextInuiry
