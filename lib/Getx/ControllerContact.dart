@@ -14,7 +14,7 @@ class Controllercontact extends GetxController {
       List.generate(lenghtContact, (i) => TextEditingController()).obs;
   RxList<TextEditingController> TfPhone =
       List.generate(lenghtContact, (i) => TextEditingController()).obs;
-  RxList<RxString> Level = List.generate(lenghtContact, (i) => 'LLLL'.obs).obs;
+  RxList<RxString> Level = List.generate(lenghtContact, (i) => 'LLLLL'.obs).obs;
   RxList<RxString> Part = List.generate(lenghtContact, (i) => '1'.obs).obs;
   // RxList<RxInt> Index = List.generate(lenghtContact, (i) => 1.obs).obs;
   ////

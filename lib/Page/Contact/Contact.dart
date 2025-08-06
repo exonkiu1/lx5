@@ -264,6 +264,26 @@ class WidgetContact extends StatelessWidget {
                           ),
                         ],
                       ),
+                      SizedBox(
+                        height: 5,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          WidgetLevel(
+                            Name: 'مدیر',
+                            Value: 'E',
+                            count: 4,
+                            i: i,
+                          ),
+                          WidgetLevel(
+                            Name: 'کاربر',
+                            Value: 'G',
+                            count: 4,
+                            i: i,
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                   Obx(() {
@@ -377,11 +397,19 @@ class WidgetLevel extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (Get.find<Controllercontact>().Level[i].value.contains(Value)) {
-          Get.find<Controllercontact>().Level[i].value =
+          if (count==4) {
+             Get.find<Controllercontact>().Level[i].value =
+              Get.find<Controllercontact>()
+                  .Level[i]
+                  .value
+                  .replaceRange(count, count + 1, 'S');
+          } else {
+            Get.find<Controllercontact>().Level[i].value =
               Get.find<Controllercontact>()
                   .Level[i]
                   .value
                   .replaceRange(count, count + 1, 'L');
+          }
         } else {
           Get.find<Controllercontact>().Level[i].value =
               Get.find<Controllercontact>()
