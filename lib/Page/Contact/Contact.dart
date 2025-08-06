@@ -119,13 +119,10 @@ class Contacts extends StatelessWidget {
             Obx(() {
               return Column(
                   children: !Get.find<Controllercontact>().MainContact.value
-                      ?
-                      List.generate(
-                          lenghtContact, (i) => WidgetContact(i: i))
-                       /* Get.find<Controllercontact>()
+                      ? Get.find<Controllercontact>()
                           .List_Contact
                           .map((int value) => WidgetContact(i: value))
-                          .toList() */
+                          .toList()
                       : List.generate(
                           lenghtContact, (i) => WidgetContact(i: i)));
             }),
@@ -400,18 +397,18 @@ class WidgetLevel extends StatelessWidget {
     return InkWell(
       onTap: () {
         if (Get.find<Controllercontact>().Level[i].value.contains(Value)) {
-          if (count==4) {
-             Get.find<Controllercontact>().Level[i].value =
-              Get.find<Controllercontact>()
-                  .Level[i]
-                  .value
-                  .replaceRange(count, count + 1, 'S');
+          if (count == 4) {
+            Get.find<Controllercontact>().Level[i].value =
+                Get.find<Controllercontact>()
+                    .Level[i]
+                    .value
+                    .replaceRange(count, count + 1, 'S');
           } else {
             Get.find<Controllercontact>().Level[i].value =
-              Get.find<Controllercontact>()
-                  .Level[i]
-                  .value
-                  .replaceRange(count, count + 1, 'L');
+                Get.find<Controllercontact>()
+                    .Level[i]
+                    .value
+                    .replaceRange(count, count + 1, 'L');
           }
         } else {
           Get.find<Controllercontact>().Level[i].value =
