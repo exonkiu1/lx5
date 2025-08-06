@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 
 class Controllerother extends GetxController {
@@ -56,5 +57,31 @@ class Controllerother extends GetxController {
     while (counter.value != 0) {
       await Future.delayed(Duration(seconds: 1), () => counter.value -= 1);
     }
+    if (TypeInquiry.value == 'imei') {
+      Get.bottomSheet(Container(
+        width: Get.width,
+        decoration: decoration(),
+        child: Wrap(
+          children: [Text(TextHelpWarrenty)],
+        ),
+      ));
+    }
   }
 }
+
+String TextHelpWarrenty = """"
+اخطار 1 :
+شارژ خطوط بررسی شود 
+
+اخطار 2 :
+اولین کاربر ( مدیر ) قبل شروع کار با نرم افزار حتما باید دستگاه را ریست کند و به خط دستگاه تماس بگیرید 
+
+اخطار 3:
+یکی از سیم کارت ها (دستگاه یا سیم کارت مخاطب )بدلیل ضعیف بودن شبکه دیر پیام می‌دهد یا گاهی پیام نمیدهد باید اپراتور رو تغییر دهید 
+نکته(همراه اول همیشه پیشنهاد میشود چون معمولا کمتر این اتفاق میوفتد )
+
+آموزش کامل نصب در سایت 
+www.Luxsecurity.ir
+
+"""
+    "";

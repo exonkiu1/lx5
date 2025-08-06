@@ -26,7 +26,7 @@ class Zon extends StatelessWidget {
           onTap: () => HelpModeZon(context),
           child: Container(
             child: Center(
-              child: Icon(Icons.question_mark_sharp, color: color2),
+              child: Text('راهنمایی'),
             ),
           ),
         ),

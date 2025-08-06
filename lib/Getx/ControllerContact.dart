@@ -14,7 +14,7 @@ class Controllercontact extends GetxController {
       List.generate(lenghtContact, (i) => TextEditingController()).obs;
   RxList<TextEditingController> TfPhone =
       List.generate(lenghtContact, (i) => TextEditingController()).obs;
-  RxList<RxString> Level = List.generate(lenghtContact, (i) => 'LLLLL'.obs).obs;
+  RxList<RxString> Level = List.generate(lenghtContact, (i) => 'LLLLS'.obs).obs;
   RxList<RxString> Part = List.generate(lenghtContact, (i) => '1'.obs).obs;
   // RxList<RxInt> Index = List.generate(lenghtContact, (i) => 1.obs).obs;
   ////
@@ -68,7 +68,7 @@ class Controllercontact extends GetxController {
   Future<String> DeleteContact(int i) async {
     TfName[i].text = '';
     TfPhone[i].text = '';
-    Level[i].value = 'LLLLL';
+    Level[i].value = 'LLLLS';
     UpdateContact();
     return '${i + 1}*D';
   }
@@ -108,8 +108,12 @@ class Controllercontact extends GetxController {
       j -= 1;
       if (!ListContact[i].contains('Q')) {
         TfPhone[j].text = ListContact[i].substring(0, 11);
-        Level[j].value = ListContact[i].substring(11, 15);
+        Level[j].value = ListContact[i].substring(11, 16);
         print('phone: ${TfPhone[j].text} level: ${Level[j].value}');
+      } else {
+        TfName[j].text = '';
+        TfPhone[j].text = '';
+        Level[j].value = 'LLLLS';
       }
       List_Contact.add(j);
     }

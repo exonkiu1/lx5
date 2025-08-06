@@ -25,7 +25,7 @@ class Controllersetting extends GetxController {
   Future<String> ChangeLangDev(String value) async {
     DevLanguage.value = value;
     Get.find<Controllerdatabase>().UpdateLx();
-    return '53*${value == 'per' ? '1' : '0'}';
+    return '53*${value == 'per' ? '0' : '1'}';
   }
 
   Future<String> ChangeEstablishingContactDuringPowerOutage(

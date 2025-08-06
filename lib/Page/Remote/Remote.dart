@@ -17,13 +17,26 @@ class Remote extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(title: 'ریموت ها'),
+      appBar: appBar(title: 'ریموت ها', actions: [
+        InkWell(
+          onTap: () => Get.bottomSheet(Container(
+            width: Get.width,
+            decoration: decoration(),
+            child: Wrap(
+              children: [
+                Text(
+                    'برای ست شدن ریموت اول یکبار شستی remot روی برد را فشار دهید بعد دکمه باز ریموت را بزنید در صورت ست شدن بازر دستگاه بوق میکشد و برای اطمینان نهایی یکبار دکمه باز ریموت را مجدد فشار دهید و از عملکرد ریموت مطمعن شوید')
+              ],
+            ),
+          )),
+          child: Text('راهنمایی'),
+        )
+      ]),
       body: Backgroundview(
           child: SingleChildScrollView(
         child: Column(
           children: [
-           
-           /*  Obx(
+            /*  Obx(
               () {
                 return Text('${Get.find<Controllerremote>().List_Remote.value}');
               }
@@ -70,17 +83,15 @@ class Remote extends StatelessWidget {
                 }),
               ],
             ),
-              HelpPart(),
-            Obx(
-              () {
-                return Wrap(
-                  children:  Get.find<Controllerremote>()
-                                .List_Remote
-                                .map((int value) => WidgetRemote(i: value))
-                                .toList(),
-                );
-              }
-            ),
+            HelpPart(),
+            Obx(() {
+              return Wrap(
+                children: Get.find<Controllerremote>()
+                    .List_Remote
+                    .map((int value) => WidgetRemote(i: value))
+                    .toList(),
+              );
+            }),
           ],
         ),
       )),
