@@ -46,9 +46,8 @@ class Controllerwarrenty extends GetxController {
 
     String imei = Get.find<Controllerother>()
         .TextInuiry
-        .value
-        .split('**')[1]
-        .substring(0, 15);
+        .split('##')[0]
+        .substring(2);
     SmsImei.value = imei;
     final result = await supabase
         .from('lux')
