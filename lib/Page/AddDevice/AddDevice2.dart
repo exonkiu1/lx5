@@ -138,9 +138,9 @@ class _Adddevice2State extends State<Adddevice2> {
                                     Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
                                   if (
-                                    true
-                                    /* Get.find<Controllerother>().Model.value !=
-                                      'LX PRO' */) {
+                                    
+                                    Get.find<Controllerother>().Model.value !=
+                                      'LX PRO') {
                                     DialogOrder(
                                       context,
                                       Get.find<Controllerdatabase>().AddLx(),
@@ -155,7 +155,7 @@ class _Adddevice2State extends State<Adddevice2> {
                                         description:
                                             'از ساخت دستگاه مطمعن هستید؟',
                                         code: '6660',
-                                        // controller: '**',
+                                         controller: '##',
                                         type: 'imei',
                                         bool_phone: true,
                                         phone:
