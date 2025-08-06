@@ -119,10 +119,13 @@ class Contacts extends StatelessWidget {
             Obx(() {
               return Column(
                   children: !Get.find<Controllercontact>().MainContact.value
-                      ? Get.find<Controllercontact>()
+                      ?
+                      List.generate(
+                          lenghtContact, (i) => WidgetContact(i: i))
+                       /* Get.find<Controllercontact>()
                           .List_Contact
                           .map((int value) => WidgetContact(i: value))
-                          .toList()
+                          .toList() */
                       : List.generate(
                           lenghtContact, (i) => WidgetContact(i: i)));
             }),

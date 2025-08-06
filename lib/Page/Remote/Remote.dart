@@ -25,11 +25,18 @@ class Remote extends StatelessWidget {
             child: Wrap(
               children: [
                 Text(
-                    'برای ست شدن ریموت اول یکبار شستی remot روی برد را فشار دهید بعد دکمه باز ریموت را بزنید در صورت ست شدن بازر دستگاه بوق میکشد و برای اطمینان نهایی یکبار دکمه باز ریموت را مجدد فشار دهید و از عملکرد ریموت مطمعن شوید')
+                  'برای ست شدن ریموت اول یکبار شستی remot روی برد را فشار دهید بعد دکمه باز ریموت را بزنید در صورت ست شدن بازر دستگاه بوق میکشد و برای اطمینان نهایی یکبار دکمه باز ریموت را مجدد فشار دهید و از عملکرد ریموت مطمعن شوید',
+                  textDirection: TextDirection.rtl,
+                  style: TextStyle(color: Colors.white),
+                )
               ],
             ),
           )),
-          child: Text('راهنمایی'),
+          child: Text(
+            'راهنمایی',
+            textDirection: TextDirection.rtl,
+            style: TextStyle(color: Colors.white),
+          ),
         )
       ]),
       body: Backgroundview(

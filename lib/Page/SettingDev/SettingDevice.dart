@@ -547,7 +547,7 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
                             Get.find<Controllersetting>()
                                 .EstablishingContactDuringPowerOutage
                                 .value ==
-                            'on',
+                            'true',
                       ),
                       child: Center(child: Text('فعال')),
                     );
@@ -626,7 +626,7 @@ class WidgetLangDev extends StatelessWidget {
                       () => SendOrder(
                         context,
                         () =>
-                            Get.find<Controllersetting>().ChangeLangDev('per'),
+                            Get.find<Controllersetting>().ChangeLangDev('eng'),
                       ),
                   child: Obx(() {
                     return Container(
