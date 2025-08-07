@@ -44,8 +44,12 @@ class Controllerwarrenty extends GetxController {
   SendImeiStartWarenty() async {
     final supabase = Supabase.instance.client;
 
-    String imei =
-        Get.find<Controllerother>().TextInuiry.split('##')[0].substring(2);
+    String imei = Get.find<Controllerother>()
+        .TextInuiry
+        .value
+        .replaceAll('*', '')
+        .replaceAll('#', '')
+        .replaceAll('A', '');
     SmsImei.value = imei;
     final result = await supabase
         .from('lux')
