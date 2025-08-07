@@ -114,7 +114,8 @@ class Controllerwarrenty extends GetxController {
   }
 
   RegisterDev() async {
-    String imei = SmsImei.value;
+   try {
+      String imei = SmsImei.value;
     final supabase = Supabase.instance.client;
     await supabase
         .from('lux')
@@ -131,6 +132,20 @@ class Controllerwarrenty extends GetxController {
         .maybeSingle();
     await Get.find<Controllerdatabase>().AddLx();
     GetInfoFromDataBase(imei);
+   } catch (e) {
+      final context = Get.context;
+      ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
+          duration: Duration(seconds: 60),
+          content: Row(
+            children: [
+              Icon(
+                Icons.error,
+                color: Colors.red,
+              ),
+              Text('خطا:${e}'),
+            ],
+          )));
+   }
     Get.off(Homepage());
   }
 
