@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
+import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -34,6 +35,8 @@ class Controllerother extends GetxController {
 
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         duration: Duration(seconds: DelyOrder.value),
+        dismissDirection: DismissDirection.none,
+        behavior: SnackBarBehavior.fixed,
         content: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -54,11 +57,14 @@ class Controllerother extends GetxController {
     }
   }
 
-  
   playcounter() async {
     counter.value = 30;
     while (counter.value != 0) {
       await Future.delayed(Duration(seconds: 1), () => counter.value -= 1);
+
+      if (counter.value == 25) {
+        showhelpfirstorder();
+      }
     }
     if (TypeInquiry.value == 'imei') {
       TypeInquiry.value = '';

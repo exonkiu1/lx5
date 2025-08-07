@@ -162,6 +162,6 @@ class Controllerhomepage extends GetxController {
 Map<String, String> MapStateDevCode = {
   'on': '11',
   'off': '10',
-  'silent': '13',
-  'halfon': '12',
+  'silent': '12',
+  'halfon': '13',
 };

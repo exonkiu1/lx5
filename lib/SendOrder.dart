@@ -1,4 +1,6 @@
+import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:telephony/telephony.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -208,9 +210,10 @@ SendInquiry(BuildContext context, Function() function,
                           Get.find<Controllerother>().TypeInquiry.value = type;
                           SendSms(context, code,
                               bool_phone: bool_phone, phone: phone);
-                          if(code == '6660'){
+                          if (code == '6660') {
                             Get.find<Controllerother>().playcounter();
-                            Get.find<Controllersttadddevice>().PlayMusic('imei');
+                            Get.find<Controllersttadddevice>()
+                                .PlayMusic('imei');
                           }
                           InquirySms(
                             function,
@@ -364,16 +367,46 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
   Get.find<Controllerpassword>().tf3.text = '';
 }
 
-
 showSnackBar(BuildContext context, {String title = ''}) {
-    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        duration: Duration(seconds: 2),
-        content: Row(
-          children: [
-            Text(
-              '${title}',
-              style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
+  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      duration: Duration(seconds: 2),
+      content: Row(
+        children: [
+          Text(
+            '${title}',
+            style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
+          ),
+        ],
+      )));
+}
+
+String HelpFirstOrder = """"
+دقت کنید چنانچه گزارش هر دستور برای شما ارسال نشد به معنی این میباشد در دستگاه تنظیمات اعمال نشده یا این موضوع میتواند از ضعف آنتن باشد حتما بررسی کنید و بعد از اطمینان دستور بعد را بفرستید (پشنهاد میشوداز اپراتور همراه اول استفاده کنید )
+
+"""
+    "";
+
+showhelpfirstorder() async {
+  var prefs = SharedPreferencesAsync();
+  String KeyValue = 'countorder${Get.find<Controllerinfo>().id.value}';
+  int count = await prefs.getInt(KeyValue) ?? 0;
+  await prefs.setInt(KeyValue, (count + 1));
+  if (count < 3) {
+    final context = Get.context;
+
+    showDialog(
+        context: context!,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            title: Text(
+              'توحه',
+              style: TextStyle(color: Colors.grey),
             ),
-          ],
-        )));
+            content: Text(
+              HelpFirstOrder,
+              style: TextStyle(color: Colors.blue),
+            ),
+          );
+        });
   }
+}
