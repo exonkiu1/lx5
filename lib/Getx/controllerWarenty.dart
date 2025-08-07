@@ -43,13 +43,23 @@ class Controllerwarrenty extends GetxController {
   RxString drp_province = "آذربایجان شرقی".obs;
   SendImeiStartWarenty() async {
     final supabase = Supabase.instance.client;
-
-    String imei = Get.find<Controllerother>()
+     String imei = '';
+    if (Get.find<Controllerother>()
+        .TextInuiry
+        .value.contains('A')) {
+        imei = Get.find<Controllerother>()
         .TextInuiry
         .value
-        .replaceAll('*', '')
-        .replaceAll('#', '')
-        .replaceAll('A', '');
+        .split('*A')[1]
+        .substring(0, 15);
+    } else {
+        imei = Get.find<Controllerother>()
+        .TextInuiry
+        .value
+        .split('**')[1]
+        .substring(0, 15);
+    }
+   
     SmsImei.value = imei;
     final result = await supabase
         .from('lux')
