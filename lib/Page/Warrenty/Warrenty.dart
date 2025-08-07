@@ -18,6 +18,7 @@ class Warrenty extends StatelessWidget {
           child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Text(Get.find<Controllerwarrenty>().SmsImei.value),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
@@ -61,7 +62,8 @@ class Warrenty extends StatelessWidget {
                   child: Center(
                     child: Obx(() {
                       return DropdownButton(
-                          value: Get.find<Controllerwarrenty>().drp_province.value,
+                          value:
+                              Get.find<Controllerwarrenty>().drp_province.value,
                           underline: Container(),
                           isDense: true,
                           items: List.generate(ListCity.length,
@@ -69,7 +71,6 @@ class Warrenty extends StatelessWidget {
                               .map<DropdownMenuItem<String>>(
                                   (String value) => DropdownMenuItem(
                                         alignment: Alignment.centerRight,
-                                        
                                         child: Text(
                                           value,
                                           style: TextStyle(color: color2),
@@ -91,18 +92,21 @@ class Warrenty extends StatelessWidget {
                 ),
                 Obx(() {
                   return Visibility(
-                    visible:
-                        Get.find<Controllerwarrenty>().drp_province.value.length >
-                                2
-                            ? true
-                            : true,
+                    visible: Get.find<Controllerwarrenty>()
+                                .drp_province
+                                .value
+                                .length >
+                            2
+                        ? true
+                        : true,
                     child: Container(
                       width: Get.width * 0.45,
                       decoration: decoration(),
                       child: Center(
                         child: Obx(() {
                           return DropdownButton(
-                              value: Get.find<Controllerwarrenty>().drp_city.value,
+                              value:
+                                  Get.find<Controllerwarrenty>().drp_city.value,
                               underline: Container(),
                               isDense: true,
                               items: ListCity[Get.find<Controllerwarrenty>()
@@ -111,7 +115,6 @@ class Warrenty extends StatelessWidget {
                                   .map<DropdownMenuItem<String>>(
                                       (String value) => DropdownMenuItem(
                                             alignment: Alignment.centerRight,
-                        
                                             child: Text(
                                               value,
                                               style: TextStyle(color: color2),
@@ -121,9 +124,10 @@ class Warrenty extends StatelessWidget {
                                             value: value,
                                           ))
                                   .toList(),
-                              onChanged: (value) => Get.find<Controllerwarrenty>()
-                                  .drp_city
-                                  .value = value!);
+                              onChanged: (value) =>
+                                  Get.find<Controllerwarrenty>()
+                                      .drp_city
+                                      .value = value!);
                         }),
                       ),
                     ),
