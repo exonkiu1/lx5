@@ -369,7 +369,9 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
 
 showSnackBar(BuildContext context, {String title = ''}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 1),
+      width: Get.width*0.3,
+      margin: EdgeInsets.symmetric(vertical: 20),
       content: Row(
         children: [
           Text(
@@ -380,11 +382,8 @@ showSnackBar(BuildContext context, {String title = ''}) {
       )));
 }
 
-String HelpFirstOrder = """"
-دقت کنید چنانچه گزارش هر دستور برای شما ارسال نشد به معنی این میباشد در دستگاه تنظیمات اعمال نشده یا این موضوع میتواند از ضعف آنتن باشد حتما بررسی کنید و بعد از اطمینان دستور بعد را بفرستید (پشنهاد میشوداز اپراتور همراه اول استفاده کنید )
-
-"""
-    "";
+String HelpFirstOrder = "دقت کنید چنانچه گزارش هر دستور برای شما ارسال نشد به معنی این میباشد در دستگاه تنظیمات اعمال نشده یا این موضوع میتواند از ضعف آنتن باشد حتما بررسی کنید و بعد از اطمینان دستور بعد را بفرستید (پیشمهاد میشوداز اپراتور همراه اول استفاده کنید )"
+    ;
 
 showhelpfirstorder() async {
   var prefs = SharedPreferencesAsync();
