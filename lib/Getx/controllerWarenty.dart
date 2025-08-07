@@ -5,6 +5,7 @@ import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Page/HomePage/HomePage.dart';
 import 'package:lx/Page/Warrenty/Warrenty.dart';
+import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
@@ -41,13 +42,10 @@ class Controllerwarrenty extends GetxController {
   RxString drp_city = "تبریز".obs;
   RxString drp_province = "آذربایجان شرقی".obs;
   SendImeiStartWarenty() async {
-    
     final supabase = Supabase.instance.client;
 
-    String imei = Get.find<Controllerother>()
-        .TextInuiry
-        .split('##')[0]
-        .substring(2);
+    String imei =
+        Get.find<Controllerother>().TextInuiry.split('##')[0].substring(2);
     SmsImei.value = imei;
     final result = await supabase
         .from('lux')
@@ -114,38 +112,30 @@ class Controllerwarrenty extends GetxController {
   }
 
   RegisterDev() async {
-   try {
+    try {
       String imei = SmsImei.value;
-    final supabase = Supabase.instance.client;
-    await supabase
-        .from('lux')
-        .update({
-          'name_clinet': Tf_NameClinet.text,
-          'phone_client': tf_PhoneClinet.text,
-          'address_client': tf_Address.text,
-          'city': drp_city.value,
-          'Province': drp_province.value,
-          'name_technician': Tf_NameTechnician.text,
-          'phone_technician': tf_PhoneTechnician.text,
-        })
-        .eq('imei', '${imei}')
-        .maybeSingle();
+      final supabase = Supabase.instance.client;
+      await supabase
+          .from('lux')
+          .update({
+            'name_clinet': Tf_NameClinet.text,
+            'phone_client': tf_PhoneClinet.text,
+            'address_client': tf_Address.text,
+            'city': drp_city.value,
+            'Province': drp_province.value,
+            'name_technician': Tf_NameTechnician.text,
+            'phone_technician': tf_PhoneTechnician.text,
+          })
+          .eq('imei', '${imei}')
+          .maybeSingle();
+      GetInfoFromDataBase(imei);
+    } catch (e) {
+      Get.bottomSheet(Container(
+        decoration: decoration(color: true),
+        child: Text('خطا:${e}'),
+      ));
+    }
     await Get.find<Controllerdatabase>().AddLx();
-    GetInfoFromDataBase(imei);
-   } catch (e) {
-      final context = Get.context;
-      ScaffoldMessenger.of(context!).showSnackBar(SnackBar(
-          duration: Duration(seconds: 60),
-          content: Row(
-            children: [
-              Icon(
-                Icons.error,
-                color: Colors.red,
-              ),
-              Text('خطا:${e}'),
-            ],
-          )));
-   }
     Get.off(Homepage());
   }
 
