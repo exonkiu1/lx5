@@ -58,9 +58,10 @@ class Controllerother extends GetxController {
       await Future.delayed(Duration(seconds: 1), () => counter.value -= 1);
     }
     if (TypeInquiry.value == 'imei') {
+      TypeInquiry.value = '';
       Get.bottomSheet(Container(
         width: Get.width,
-        decoration: decoration(),
+        decoration: decoration(color: true),
         child: Wrap(
           children: [Text(TextHelpWarrenty)],
         ),
