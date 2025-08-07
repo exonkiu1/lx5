@@ -249,14 +249,14 @@ class _HomepageState extends State<Homepage> {
                                   flex: 1,
                                   child: InkWell(
                                     onTap: () {
-                                      showSnackBar(context, title: 'نیمه فعال');
+                                      showSnackBar(context, title: 'سایلنت');
                                       Get.find<Controllerhomepage>()
                                           .flySpaceship(
                                         context,
                                         () => SendOrder(
                                           context,
                                           () => Get.find<Controllerhomepage>()
-                                              .ChangeStateDev('halfon'),
+                                              .ChangeStateDev('silent'),
                                           StateDev: true,
                                         ),
                                       );
@@ -270,14 +270,14 @@ class _HomepageState extends State<Homepage> {
                                   flex: 1,
                                   child: InkWell(
                                     onTap: () {
-                                      showSnackBar(context, title: 'سایلنت');
+                                      showSnackBar(context, title: 'نیمه فعال');
                                       Get.find<Controllerhomepage>()
                                           .flySpaceship(
                                         context,
                                         () => SendOrder(
                                           context,
                                           () => Get.find<Controllerhomepage>()
-                                              .ChangeStateDev('silent'),
+                                              .ChangeStateDev('halfon'),
                                           StateDev: true,
                                         ),
                                       );
