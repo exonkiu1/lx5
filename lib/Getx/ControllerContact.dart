@@ -97,6 +97,10 @@ class Controllercontact extends GetxController {
   }
 
   inquiuryContactLXPRO(List<String> ListContact) {
+    for (var i = 0; i < lenghtContact; i++) {
+      Level[i].value = 'LLLLS';
+      TfPhone[i].text = '';
+    }
     List_Contact.value = [];
     for (var i = 0; i < ListContact.length; i++) {
       int j = 0;
@@ -116,6 +120,11 @@ class Controllercontact extends GetxController {
         Level[j].value = 'LLLLS';
       }
       List_Contact.add(j);
+    }
+    for (var i = 0; i < lenghtContact; i++) {
+      if (TfPhone[i].text.length < 5) {
+        TfName[i].text = '';
+      }
     }
   }
 

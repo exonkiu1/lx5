@@ -89,7 +89,9 @@ class Controllerremote extends GetxController {
         .replaceAll(';', '')
         .replaceAll('#', '');
     for (var i = 0; i < 30; i++) {
-      Part[i].value = message[i];
+      if (int.tryParse(message[i]) != null) {
+        Part[i].value = message[i];
+      }
     }
     List_Remote.value = [];
     if (Get.find<Controllerinfo>().Partion.value == '1') {

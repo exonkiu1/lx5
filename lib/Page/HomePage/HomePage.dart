@@ -71,8 +71,7 @@ class _HomepageState extends State<Homepage> {
                                 height: Get.height * 0.37,
                                 child: Obx(() {
                                   return Transform.rotate(
-                                    angle:
-                                        Get.find<Controllerhomepage>()
+                                    angle: Get.find<Controllerhomepage>()
                                             .Degree
                                             .value *
                                         math.pi /
@@ -197,44 +196,44 @@ class _HomepageState extends State<Homepage> {
                                 Flexible(
                                   flex: 1,
                                   child: InkWell(
-                                    onTap:
-                                        () => Get.find<Controllerhomepage>()
-                                            .flySpaceship(
-                                              context,
-                                              () => SendOrder(
-                                                context,
-                                                () => Get.find<
-                                                      Controllerhomepage
-                                                    >()
-                                                    .ChangeStateDev('on'),
-                                                StateDev: true,
-                                              ),
-                                            ),
+                                    onTap: () {
+                                      showSnackBar(context, title: 'فعال');
+                                      Get.find<Controllerhomepage>()
+                                          .flySpaceship(
+                                        context,
+                                        () => SendOrder(
+                                          context,
+                                          () => Get.find<Controllerhomepage>()
+                                              .ChangeStateDev('on'),
+                                          StateDev: true,
+                                        ),
+                                      );
+                                      showSnackBar(context, title: 'فعال');
+                                    },
                                     child: Container(
-                                      //   color: Colors.green.withOpacity(0.3),
-                                    ),
+                                        //   color: Colors.green.withOpacity(0.3),
+                                        ),
                                   ),
                                 ),
-
                                 Flexible(
                                   flex: 1,
                                   child: InkWell(
-                                    onTap:
-                                        () => Get.find<Controllerhomepage>()
-                                            .flySpaceship(
-                                              context,
-                                              () => SendOrder(
-                                                context,
-                                                () => Get.find<
-                                                      Controllerhomepage
-                                                    >()
-                                                    .ChangeStateDev('off'),
-                                                StateDev: true,
-                                              ),
-                                            ),
+                                    onTap: () {
+                                      showSnackBar(context, title: 'غیرفعال');
+                                      Get.find<Controllerhomepage>()
+                                          .flySpaceship(
+                                        context,
+                                        () => SendOrder(
+                                          context,
+                                          () => Get.find<Controllerhomepage>()
+                                              .ChangeStateDev('off'),
+                                          StateDev: true,
+                                        ),
+                                      );
+                                    },
                                     child: Container(
-                                      //   color: Colors.black.withOpacity(0.3),
-                                    ),
+                                        //   color: Colors.black.withOpacity(0.3),
+                                        ),
                                   ),
                                 ),
                               ],
@@ -249,43 +248,43 @@ class _HomepageState extends State<Homepage> {
                                 Flexible(
                                   flex: 1,
                                   child: InkWell(
-                                    onTap:
-                                        () => Get.find<Controllerhomepage>()
-                                            .flySpaceship(
-                                              context,
-                                              () => SendOrder(
-                                                context,
-                                                () => Get.find<
-                                                      Controllerhomepage
-                                                    >()
-                                                    .ChangeStateDev('halfon'),
-                                                StateDev: true,
-                                              ),
-                                            ),
+                                    onTap: () {
+                                      showSnackBar(context, title: 'نیمه فعال');
+                                      Get.find<Controllerhomepage>()
+                                          .flySpaceship(
+                                        context,
+                                        () => SendOrder(
+                                          context,
+                                          () => Get.find<Controllerhomepage>()
+                                              .ChangeStateDev('halfon'),
+                                          StateDev: true,
+                                        ),
+                                      );
+                                    },
                                     child: Container(
-                                      //  color: Colors.green.withOpacity(0.3),
-                                    ),
+                                        //  color: Colors.green.withOpacity(0.3),
+                                        ),
                                   ),
                                 ),
                                 Flexible(
                                   flex: 1,
                                   child: InkWell(
-                                    onTap:
-                                        () => Get.find<Controllerhomepage>()
-                                            .flySpaceship(
-                                              context,
-                                              () => SendOrder(
-                                                context,
-                                                () => Get.find<
-                                                      Controllerhomepage
-                                                    >()
-                                                    .ChangeStateDev('silent'),
-                                                StateDev: true,
-                                              ),
-                                            ),
+                                    onTap: () {
+                                      showSnackBar(context, title: 'سایلنت');
+                                      Get.find<Controllerhomepage>()
+                                          .flySpaceship(
+                                        context,
+                                        () => SendOrder(
+                                          context,
+                                          () => Get.find<Controllerhomepage>()
+                                              .ChangeStateDev('silent'),
+                                          StateDev: true,
+                                        ),
+                                      );
+                                    },
                                     child: Container(
-                                      //  color: const Color.fromARGB(255, 175, 76, 76).withOpacity(0.3),
-                                    ),
+                                        //  color: const Color.fromARGB(255, 175, 76, 76).withOpacity(0.3),
+                                        ),
                                   ),
                                 ),
                               ],

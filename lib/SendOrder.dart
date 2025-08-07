@@ -363,3 +363,17 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
   Get.find<Controllerpassword>().tf2.text = '';
   Get.find<Controllerpassword>().tf3.text = '';
 }
+
+
+showSnackBar(BuildContext context, {String title = ''}) {
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+        duration: Duration(seconds: 2),
+        content: Row(
+          children: [
+            Text(
+              '${title}',
+              style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
+            ),
+          ],
+        )));
+  }

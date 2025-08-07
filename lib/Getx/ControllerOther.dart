@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:get/get_rx/get_rx.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class Controllerother extends GetxController {
   @override
@@ -30,6 +31,7 @@ class Controllerother extends GetxController {
   SnackBarDelay(BuildContext context) {
     if (!onceSnackbar.value) {
       onceSnackbar.value = true;
+
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
         duration: Duration(seconds: DelyOrder.value),
         content: Row(
@@ -52,6 +54,7 @@ class Controllerother extends GetxController {
     }
   }
 
+  
   playcounter() async {
     counter.value = 30;
     while (counter.value != 0) {
@@ -61,9 +64,26 @@ class Controllerother extends GetxController {
       TypeInquiry.value = '';
       Get.bottomSheet(Container(
         width: Get.width,
+        padding: EdgeInsets.all(8),
         decoration: decoration(color: true),
         child: Wrap(
-          children: [Text(TextHelpWarrenty)],
+          children: [
+            Text(
+              TextHelpWarrenty,
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.right,
+            ),
+            InkWell(
+              onTap: () async {
+                final Uri _url = Uri.parse('https://luxsecurity.ir/');
+                await launchUrl(_url);
+              },
+              child: Text(
+                'www.Luxsecurity.ir',
+                style: TextStyle(color: Colors.blueAccent),
+              ),
+            )
+          ],
         ),
       ));
     }
@@ -82,7 +102,7 @@ String TextHelpWarrenty = """"
 نکته(همراه اول همیشه پیشنهاد میشود چون معمولا کمتر این اتفاق میوفتد )
 
 آموزش کامل نصب در سایت 
-www.Luxsecurity.ir
+
 
 """
     "";

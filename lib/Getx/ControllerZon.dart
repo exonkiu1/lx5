@@ -98,6 +98,7 @@ class Controllerzon extends GetxController {
       }
     }
   }
+
   //112122111112121211#;1
   InquiryPart() {
     String message = Get.find<Controllerother>()
@@ -107,13 +108,13 @@ class Controllerzon extends GetxController {
         .replaceAll(';', '');
     for (var i = 0; i < 18; i++) {
       print(message[i]);
-      Part[i].value = message[i];
+      if (int.tryParse(message[i]) != null) {
+        Part[i].value = message[i];
+      }
     }
     List_Zon.value = [];
     if (Get.find<Controllerinfo>().Partion.value == '1') {
-      List_Zon.value = List.generate(
-          18,
-          (i) => i);
+      List_Zon.value = List.generate(18, (i) => i);
     } else {
       for (var i = 0; i < message.length; i++) {
         if (Get.find<Controllerinfo>().Partion.value == message[i]) {
@@ -121,7 +122,6 @@ class Controllerzon extends GetxController {
         }
       }
     }
-
     UpdateZon();
   }
 
@@ -154,5 +154,5 @@ Map<String, String> ListModesZon = {
   'جاسوسی': '6',
   'ابی': 'g',
   '24th جاسوسی': '8',
-  'غیرفعال زون':'9'
+  'غیرفعال زون': '9'
 };
