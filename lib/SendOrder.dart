@@ -369,18 +369,16 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
 
 showSnackBar(BuildContext context, {String title = ''}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-      duration: Duration(seconds: 1),
-      width: Get.width * 0.3,
-      margin: EdgeInsets.symmetric(vertical: 20, horizontal: 50),
-      content: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            '${title}',
-            style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
-          ),
-        ],
-      )));
+    duration: Duration(seconds: 1),
+    width: Get.width * 0.3,
+    margin: EdgeInsets.all(20),
+    behavior: SnackBarBehavior.floating,
+    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+    content: Text(
+      '${title}',
+      style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
+    ),
+  ));
 }
 
 String HelpFirstOrder =
@@ -399,7 +397,7 @@ showhelpfirstorder() async {
         builder: (BuildContext context) {
           return AlertDialog(
             title: Text(
-              'توحه',
+              'توجه',
               style: TextStyle(color: Colors.grey),
             ),
             content: Text(

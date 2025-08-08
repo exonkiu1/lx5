@@ -38,11 +38,11 @@ class Controllerinquiry extends GetxController {
     Get.find<Controllerhomepage>().StateDev.value =
         MapStateDev[message[0]]!.keys.elementAt(0);
     UrbanElectricity.value = message[1] == '1' ? 'روشن' : 'خاموش';
-    zon1.value = message[2][0] == '1' ? 'بسته' : 'باز';
-    zon2.value = message[2][1] == '1' ? 'بسته' : 'باز';
-    zon3.value = message[2][2] == '1' ? 'بسته' : 'باز';
-    zon4.value = message[2][3] == '1' ? 'بسته' : 'باز';
-    Speaker.value = message[3] == '1' ? 'روشن' : 'خاموش';
+     zon1.value = message[2][0] == '0' ? 'بسته' : 'باز';
+    zon2.value = message[2][1] == '0' ? 'بسته' : 'باز';
+    zon3.value = message[2][2] == '0' ? 'بسته' : 'باز';
+    zon4.value = message[2][3] == '0' ? 'بسته' : 'باز';
+    Speaker.value = message[3] == '0' ? 'روشن' : 'خاموش';
 
     AntennaStrength.value = '${(int.parse(message[5]) / 31) * 100}';
 
