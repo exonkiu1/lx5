@@ -103,11 +103,10 @@ class Controllerzon extends GetxController {
   InquiryPart() {
     String message = Get.find<Controllerother>()
         .TextInuiry
-        .value
-        .replaceAll(new RegExp(r'[^0-9]'), '');
+        .value;
 
     for (var i = 0; i < message.length; i++) {
-      print(message[i]);
+     // print(message[i]);
       if (int.tryParse(message[i]) != null) {
         Part[i].value = message[i];
       }

@@ -392,7 +392,7 @@ showhelpfirstorder() async {
   String KeyValue = 'countorder${Get.find<Controllerinfo>().id.value}';
   int count = await prefs.getInt(KeyValue) ?? 0;
   await prefs.setInt(KeyValue, (count + 1));
-  if (count < 3 && count!=0) {
+  if (count < 2) {
     final context = Get.context;
 
     showDialog(
