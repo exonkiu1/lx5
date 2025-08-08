@@ -75,7 +75,9 @@ class Controllerzon extends GetxController {
 
   Future<String> ChangePart() async {
     String val = '';
-    for (var i = 0; i < 18; i++) {
+    int leng = MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
+                        !['zon']!;
+    for (var i = 0; i < leng; i++) {
       if (Part[i].value != '8') {
         val = val + Part[i].value;
       } else {
@@ -104,8 +106,9 @@ class Controllerzon extends GetxController {
     String message = Get.find<Controllerother>()
         .TextInuiry
         .value;
-
-    for (var i = 0; i < message.length; i++) {
+    int leng = MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
+                        !['zon']!;
+    for (var i = 0; i < leng; i++) {
      // print(message[i]);
       if (int.tryParse(message[i]) != null) {
         Part[i].value = message[i];
@@ -113,7 +116,7 @@ class Controllerzon extends GetxController {
     }
     List_Zon.value = [];
     if (Get.find<Controllerinfo>().Partion.value == '1') {
-      List_Zon.value = List.generate(18, (i) => i);
+      List_Zon.value = List.generate(leng, (i) => i);
     } else {
       for (var i = 0; i < message.length; i++) {
         if (Get.find<Controllerinfo>().Partion.value == message[i]) {
@@ -126,7 +129,9 @@ class Controllerzon extends GetxController {
 
   Future<String> ChangeState() async {
     String value = '';
-    for (var i = 0; i < 18; i++) {
+    int leng = MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
+                        !['zon']!;
+    for (var i = 0; i < leng; i++) {
       value = value + '${State[i].value ? '1' : '0'}';
     }
     showhalfon.value = false;
