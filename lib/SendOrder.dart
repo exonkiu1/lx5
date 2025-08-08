@@ -378,6 +378,8 @@ showSnackBar(BuildContext context, {String title = ''}) {
     content: Text(
       '${title}',
       style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
+      textDirection: TextDirection.rtl,
+      textAlign: TextAlign.center,
     ),
   ));
 }
@@ -390,7 +392,7 @@ showhelpfirstorder() async {
   String KeyValue = 'countorder${Get.find<Controllerinfo>().id.value}';
   int count = await prefs.getInt(KeyValue) ?? 0;
   await prefs.setInt(KeyValue, (count + 1));
-  if (count < 3) {
+  if (count < 3 && count!=0) {
     final context = Get.context;
 
     showDialog(
@@ -404,6 +406,8 @@ showhelpfirstorder() async {
             content: Text(
               HelpFirstOrder,
               style: TextStyle(color: Colors.blue),
+              textDirection: TextDirection.rtl,
+              textAlign: TextAlign.center,
             ),
           );
         });

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerContact.dart';
+import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Page/Contact/Helpcontact.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
@@ -15,9 +17,25 @@ class Contacts extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: appBar(
-        title: 'مخاطبین',
-      ),
+      appBar: appBar(title: 'مخاطبین', actions: [
+        Obx(() {
+          return Visibility(
+            visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
+            child: InkWell(
+              onTap: () => HelpLevelContact(context),
+              child: Container(
+                child: Center(
+                  child: Text(
+                    'راهنمایی',
+                    textDirection: TextDirection.rtl,
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ),
+              ),
+            ),
+          );
+        }),
+      ]),
       bottomNavigationBar: Obx(() {
         return Visibility(
           visible: Get.find<Controllercontact>().ShowPart.value == 'part',

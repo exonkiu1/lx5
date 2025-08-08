@@ -410,7 +410,12 @@ class WidgetZon extends StatelessWidget {
                               visible: Get.find<Controllerinfo>().Model.value ==
                                   'LX PRO',
                               child: Image.asset(
-                                'assets/image/zon/zon ${i == 8 ? 'd' : i < 9 ? 'w' : 'wl'}.png',
+                                Get.find<Controllerwarrenty>()
+                                        .ModelPro
+                                        .value
+                                        .contains('MAX')
+                                    ? 'assets/image/zon/zon ${i == 8 ? 'd' : i < 9 ? 'w' : 'wl'}.png'
+                                    : 'assets/image/zon/zon ${i <= 3 ? 'w' : 'wl'}.png',
                                 height: 50,
                               ),
                             );

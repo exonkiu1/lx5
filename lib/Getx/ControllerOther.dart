@@ -21,10 +21,13 @@ class Controllerother extends GetxController {
   RxString ModelPro = ''.obs;
   RxInt counter = 30.obs;
   StartDelyOrder() async {
-    DelyOrder.value = 10;
-    for (var i = 0; i < 10; i++) {
+    DelyOrder.value = 15;
+    for (var i = 0; i < 15; i++) {
       await Future.delayed(Duration(seconds: 1));
       DelyOrder.value -= 1;
+      if (DelyOrder.value == 13) {
+        showhelpfirstorder();
+      }
     }
     onceSnackbar.value = false;
   }
@@ -62,9 +65,7 @@ class Controllerother extends GetxController {
     while (counter.value != 0) {
       await Future.delayed(Duration(seconds: 1), () => counter.value -= 1);
 
-      if (counter.value == 25) {
-        showhelpfirstorder();
-      }
+      
     }
     if (TypeInquiry.value == 'imei') {
       TypeInquiry.value = '';

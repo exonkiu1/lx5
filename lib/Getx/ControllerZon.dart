@@ -104,9 +104,9 @@ class Controllerzon extends GetxController {
     String message = Get.find<Controllerother>()
         .TextInuiry
         .value
-        .substring(0, 18)
-        .replaceAll(';', '');
-    for (var i = 0; i < 18; i++) {
+        .replaceAll(new RegExp(r'[^0-9]'), '');
+
+    for (var i = 0; i < message.length; i++) {
       print(message[i]);
       if (int.tryParse(message[i]) != null) {
         Part[i].value = message[i];
