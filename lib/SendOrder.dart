@@ -372,6 +372,7 @@ showSnackBar(BuildContext context, {String title = ''}) {
     duration: Duration(seconds: 1),
     width: Get.width * 0.3,
     margin: EdgeInsets.all(20),
+    backgroundColor: const Color.fromARGB(116, 255, 255, 255),
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     content: Text(
