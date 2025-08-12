@@ -121,6 +121,7 @@ Map<String, String> ListModesZon = {
   'جاسوسی': '6',
   'ابی': '7',
   '24th جاسوسی': '8',
+  'حذف زون':'9'
 };
 Map<String, String> ListModesZonInquiry = {
   'N': 'نرمال کلوز',
