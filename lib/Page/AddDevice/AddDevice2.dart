@@ -135,7 +135,7 @@ class _Adddevice2State extends State<Adddevice2> {
                             child: InkWell(
                               onTap: () async {
                                 bool val =
-                                    Get.find<Controllersttadddevice>().Agent();
+                                 await   Get.find<Controllersttadddevice>().Agent();
                                 if (val) {
                                   if (
                                     

@@ -1,3 +1,4 @@
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
@@ -7,9 +8,11 @@ import 'package:lx/Getx/ControllerOther.dart';
 class Controllersttadddevice extends GetxController {
   RxBool Playing = false.obs;
   ProcessText(BuildContext context) {}
- bool Agent() {
+ Future<bool> Agent() async{
     bool val = false;
-    if (!CheckEmptyTf(Get.find<Controllerdatabase>().tfName, 'name_dev')) {
+    bool valCheckInternet =await CheckInternet();
+    if (valCheckInternet) {
+      if (!CheckEmptyTf(Get.find<Controllerdatabase>().tfName, 'name_dev')) {
       if (!CheckEmptyTf(
         Get.find<Controllerdatabase>().tfPhone,
         'phone_dev',
@@ -19,6 +22,7 @@ class Controllersttadddevice extends GetxController {
         val = true;
         }
       }
+    } 
     }
     return val;
   }
@@ -50,4 +54,19 @@ class Controllersttadddevice extends GetxController {
       return true;
     }
   }
+  Future<bool> CheckInternet()async{
+    bool val = false;
+      var connectivityResult = await (Connectivity().checkConnectivity());
+
+   if (connectivityResult.contains(ConnectivityResult.mobile) ||
+      connectivityResult.contains(ConnectivityResult.wifi)) {
+   val = true;
+  }else{
+    PlayMusic('internet');
+    val = false;
+  }
+  return val;
+  }
+  
+  
 }
