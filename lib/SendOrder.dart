@@ -257,16 +257,27 @@ Future<void> SendSms(BuildContext context, String code,
     {String phone = '', bool bool_phone = false}) async {
   if (Get.find<Controllerinfo>().Simcard.value != -2) {
     final Telephony telephony = Telephony.instance;
+    final simCards = await telephony.getSimSlots();
+    int i = 0;
+    int j = 0;
+    for (var sim in simCards) {
+      if (i == int.parse(Get.find<Controllerinfo>().Simcard.value)) {
+        j = sim.index;
+      }
+    }
     if (!bool_phone) {
       telephony.sendSms(
           to: '${Get.find<Controllerinfo>().Phone.value}',
           message:
               '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
-          subscriptionId: Get.find<Controllerinfo>().Simcard.value == '-1'
-              ? null
-              : int.parse(Get.find<Controllerinfo>().Simcard.value));
+          subscriptionId:
+              Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
     } else {
-      telephony.sendSms(to: phone, message: '*0000*${code}#');
+      telephony.sendSms(
+          to: phone,
+          message: '*0000*${code}#',
+          subscriptionId:
+              Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
     }
   } else {
     String uri =
@@ -392,7 +403,7 @@ showhelpfirstorder() async {
   String KeyValue = 'countorder${Get.find<Controllerinfo>().id.value}';
   int count = await prefs.getInt(KeyValue) ?? 0;
   await prefs.setInt(KeyValue, (count + 1));
-  if (count < 2 && count!=0) {
+  if (count < 2 && count != 0) {
     final context = Get.context;
 
     showDialog(

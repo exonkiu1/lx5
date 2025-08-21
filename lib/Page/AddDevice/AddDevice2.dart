@@ -155,7 +155,7 @@ class _Adddevice2State extends State<Adddevice2> {
                                         description:
                                             'از ساخت دستگاه مطمعن هستید؟',
                                         code: '6660',
-                                         controller: '##',
+                                        controller: '##',
                                         type: 'imei',
                                         bool_phone: true,
                                         phone:
