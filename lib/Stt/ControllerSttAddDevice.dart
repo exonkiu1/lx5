@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/SendOrder.dart';
 
 class Controllersttadddevice extends GetxController {
   RxBool Playing = false.obs;
@@ -63,6 +64,8 @@ class Controllersttadddevice extends GetxController {
    val = true;
   }else{
     PlayMusic('internet');
+    final context = Get.context;
+    showSnackBar(context!,title: 'اینترنت خود را روشن نمایید',width: 0.5);
     val = false;
   }
   return val;
