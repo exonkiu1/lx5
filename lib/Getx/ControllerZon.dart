@@ -2,6 +2,8 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/ControllerSyncing.dart';
+import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../model.dart';
@@ -44,6 +46,12 @@ class Controllerzon extends GetxController {
         (i) =>
             'زون ${i + 1}${CodeSplite}${ListModesZon.keys.elementAt(0)}${CodeSplite}true${CodeSplite}1');
     prefs.setStringList('${id}zon', value);
+    if (Get.find<Controllersttadddevice>().SingleUser.value) {
+      int leng = 18;
+      List_Zon.value = List.generate(leng, (i) => i);
+       prefs.setStringList(
+        '${id}ListZon', List.generate(leng, (i) => '$i'));
+    }
   }
 
   GetZon(String id) async {
@@ -75,8 +83,8 @@ class Controllerzon extends GetxController {
 
   Future<String> ChangePart() async {
     String val = '';
-    int leng = MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
-                        !['zon']!;
+    int leng =
+        MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]!['zon']!;
     for (var i = 0; i < leng; i++) {
       if (Part[i].value != '8') {
         val = val + Part[i].value;
@@ -103,13 +111,11 @@ class Controllerzon extends GetxController {
 
   //112122111112121211#;1
   InquiryPart() {
-    String message = Get.find<Controllerother>()
-        .TextInuiry
-        .value;
-    int leng = MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
-                        !['zon']!;
+    String message = Get.find<Controllerother>().TextInuiry.value;
+    int leng =
+        MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]!['zon']!;
     for (var i = 0; i < leng; i++) {
-     // print(message[i]);
+      // print(message[i]);
       if (int.tryParse(message[i]) != null) {
         Part[i].value = message[i];
       }
@@ -125,12 +131,13 @@ class Controllerzon extends GetxController {
       }
     }
     UpdateZon();
+    Get.find<Controllersyncing>().Syncing();
   }
 
   Future<String> ChangeState() async {
     String value = '';
-    int leng = MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]
-                        !['zon']!;
+    int leng =
+        MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]!['zon']!;
     for (var i = 0; i < leng; i++) {
       value = value + '${State[i].value ? '1' : '0'}';
     }

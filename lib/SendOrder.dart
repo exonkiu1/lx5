@@ -317,6 +317,18 @@ void InquirySms(
   );
 }
 
+DirectInquiry(
+  Function() function, {
+  String code = '',
+  String controller = '',
+  String type = '',
+}) async{
+  final context = Get.context;
+  SendSms(context!, code);
+  await Future.delayed(Duration(seconds: 2));
+  InquirySms(function);
+}
+
 void DialogOrder(
   BuildContext context,
   Function() function, {
@@ -378,7 +390,7 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
   Get.find<Controllerpassword>().tf3.text = '';
 }
 
-showSnackBar(BuildContext context, {String title = '',double width=0.3}) {
+showSnackBar(BuildContext context, {String title = '', double width = 0.3}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     duration: Duration(seconds: 1),
     width: Get.width * width,

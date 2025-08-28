@@ -7,6 +7,7 @@ import 'package:lx/Page/Help/HelpLX1000.dart';
 import 'package:lx/Page/Help/HelpLXPRO.dart';
 import 'package:lx/Page/PasswordRemote/PasswordRemote.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
+import 'package:lx/Page/Syncing/Syncing.dart';
 import 'package:lx/Page/Warrenty/warrantyPage.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/Page/Contact/Contact.dart';
@@ -86,12 +87,13 @@ Map<String, Map<String, dynamic>> PageOptionsLxPro = {
   'مخاطبین': {'image': 'contact', 'page': Contacts()},
   'زون ها': {'image': 'eye', 'page': Zon()},
   'ریموت ها': {'image': 'remote', 'page': Remote()},
-  'کدگزاری ریموت':{'image': 'passwordremote', 'page': Passwordremote()},
+  'کدگزاری ریموت': {'image': 'passwordremote', 'page': Passwordremote()},
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
   'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
+  'همگام سازی': {'image': 'sync', 'page': Syncing()},
   'اطلاعات گارانتی': {'image': 'reportsms', 'page': Warrantypage()},
 };
 Map<String, Map<String, dynamic>> PageOptionsLx1000 = {

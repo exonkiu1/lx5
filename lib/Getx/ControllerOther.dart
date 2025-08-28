@@ -20,6 +20,7 @@ class Controllerother extends GetxController {
   RxString Model = ''.obs;
   RxString ModelPro = ''.obs;
   RxInt counter = 30.obs;
+  
   StartDelyOrder() async {
     DelyOrder.value = 15;
     for (var i = 0; i < 15; i++) {

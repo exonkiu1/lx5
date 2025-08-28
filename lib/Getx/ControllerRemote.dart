@@ -2,7 +2,9 @@ import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/ControllerSyncing.dart';
 import 'package:lx/Getx/controllerWarenty.dart';
+import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Controllerremote extends GetxController {
@@ -18,6 +20,11 @@ class Controllerremote extends GetxController {
     List<String> value =
         List.generate(30, (i) => 'ریموت ${i}${CodeSplite}1${CodeSplite}unlock');
     await prefs.setStringList('${id}remote', value);
+    if (Get.find<Controllersttadddevice>().SingleUser.value) {
+      List_Remote.value = List.generate(30, (i) => i);
+       prefs.setStringList(
+        '${id}ListRemote', List.generate(30, (i) => '$i'));
+    }
   }
 
   GetRemote(String id) async {
@@ -104,5 +111,6 @@ class Controllerremote extends GetxController {
       }
     }
     UpdateRemote();
+    Get.find<Controllersyncing>().Syncing();
   }
 }

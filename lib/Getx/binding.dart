@@ -11,6 +11,7 @@ import 'package:lx/Getx/ControllerRelay.dart';
 import 'package:lx/Getx/ControllerRemote.dart';
 import 'package:lx/Getx/ControllerSetting.dart';
 import 'package:lx/Getx/ControllerStateAllDev.dart';
+import 'package:lx/Getx/ControllerSyncing.dart';
 import '../Getx/controllerWarenty.dart';
 import 'package:lx/Getx/ControllerZon.dart';
 import 'package:lx/Page/Options/ControllerOptions.dart';
@@ -39,6 +40,7 @@ class mybinding implements Bindings {
     Get.put(Controllerstt(), permanent: true);
     Get.put(Controllerstthomepage(), permanent: true);
     Get.put(Controllersttadddevice(), permanent: true);
+    Get.put(Controllersyncing(),permanent: true);
     Get.put(Controllersttcontact(), permanent: true);
     Get.put(Controllerwarrenty(),permanent: true);
     Get.put(Controllerpassremote(),permanent: true);

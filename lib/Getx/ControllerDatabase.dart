@@ -80,7 +80,9 @@ class Controllerdatabase extends GetxController {
         Simcard: sim.value,
         Model: Get.find<Controllerother>().Model.value == ''
             ? 'LX PRO'
-            : Get.find<Controllerother>().Model.value);
+            : Get.find<Controllerother>().Model.value,
+        Partion:
+            Get.find<Controllersttadddevice>().SingleUser.value ? '1' : '');
     await DatabaseLX.instance.AddDev(model);
     await Get.find<Controllercontact>().AddContact('$id');
     await Get.find<Controllerrelay>().AddRelay('$id');
@@ -145,8 +147,7 @@ class Controllerdatabase extends GetxController {
         //Warrenty
         //password remotes
         PasswordRemote: Get.find<Controllerpassremote>().PasswordRemote.value,
-        Partion: Get.find<Controllerinfo>().Partion.value
-        );
+        Partion: Get.find<Controllerinfo>().Partion.value);
     DatabaseLX.instance.UpdateDev(model);
   }
 

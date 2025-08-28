@@ -3,7 +3,9 @@ import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Getx/ControllerSyncing.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
+import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'ControllerDatabase.dart';
 
@@ -87,6 +89,7 @@ class Controllercontact extends GetxController {
       InquiryContactLX1000(ListContact);
     }
     UpdateContact();
+    Get.find<Controllersyncing>().Syncing();
   }
 
   InquiryContactLX1000(List<String> ListContact) {
@@ -143,6 +146,7 @@ class Controllercontact extends GetxController {
       MainContact.value = true;
     }
     UpdateContact();
+    Get.find<Controllersyncing>().Syncing();
   }
 
   GetContact(String id) async {
@@ -185,6 +189,10 @@ class Controllercontact extends GetxController {
     await prefs.setBool('MainContact', false);
     await prefs.setStringList('${id}ListContact', []);
     await prefs.setStringList('${id}contact', ValueContact);
+    if (Get.find<Controllersttadddevice>().SingleUser.value) {
+      prefs.setBool('MainContact', true);
+      MainContact.value = true;
+    }
   }
 
   SelectContact(int i) async {

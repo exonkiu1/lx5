@@ -5,6 +5,7 @@ import 'package:get/get_rx/src/rx_types/rx_types.dart';
 import 'package:lx/DateBase/Model.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerOther.dart';
+import 'package:lx/Page/Syncing/Syncing.dart';
 
 class Controllerinfo extends GetxController {
   @override
@@ -26,11 +27,14 @@ class Controllerinfo extends GetxController {
     Name.value = model.Name;
     Phone.value = model.Phone;
     Oprator.value = model.Oprator;
-    Model.value  = model.Model;
+    Model.value = model.Model;
     print('model: ${Model.value}');
     Charge.value = int.parse(model.Charge);
     Simcard.value = model.Simcard;
     Partion.value = model.Partion;
+    if (Partion.value.length < 1) {
+      Get.off(Syncing());
+    }
   }
 
   Future<String> ChangeName() async {

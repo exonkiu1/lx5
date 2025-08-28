@@ -135,11 +135,10 @@ class _Adddevice2State extends State<Adddevice2> {
                             child: InkWell(
                               onTap: () async {
                                 bool val =
-                                 await   Get.find<Controllersttadddevice>().Agent();
+                                    await Get.find<Controllersttadddevice>()
+                                        .Agent();
                                 if (val) {
-                                  if (
-                                    
-                                    Get.find<Controllerother>().Model.value !=
+                                  if (Get.find<Controllerother>().Model.value !=
                                       'LX PRO') {
                                     DialogOrder(
                                       context,
@@ -227,6 +226,32 @@ class _Adddevice2State extends State<Adddevice2> {
                 WidgetMOdelpro(model: 'UX PRO MAX'),
               ],
             ),
+            SizedBox(
+              height: 20,
+            ),
+            Obx(() {
+              return Visibility(
+                  visible: Get.find<Controllerother>().Model.value == 'LX PRO',
+                  child: Row(
+                    children: [
+                      Text(
+                        'تک کاربره',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      Obx(() {
+                        return Checkbox(
+                            value: Get.find<Controllersttadddevice>()
+                                .SingleUser
+                                .value,
+                            onChanged: (value) {
+                              Get.find<Controllersttadddevice>()
+                                  .SingleUser
+                                  .value = value!;
+                            });
+                      })
+                    ],
+                  ));
+            })
           ],
         ),
       ),
