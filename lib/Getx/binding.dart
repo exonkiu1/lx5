@@ -40,10 +40,11 @@ class mybinding implements Bindings {
     Get.put(Controllerstt(), permanent: true);
     Get.put(Controllerstthomepage(), permanent: true);
     Get.put(Controllersttadddevice(), permanent: true);
-    Get.put(Controllersyncing(),permanent: true);
     Get.put(Controllersttcontact(), permanent: true);
     Get.put(Controllerwarrenty(),permanent: true);
     Get.put(Controllerpassremote(),permanent: true);
+    Get.put(Controllersyncing(),permanent: true);
+
     await Future.delayed(Duration(seconds: 2));
     Get.put(Controlleroptions(), permanent: true);
     // TODO: implement dependencies

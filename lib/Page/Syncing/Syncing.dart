@@ -26,17 +26,20 @@ class _SyncingState extends State<Syncing> {
                 steps: List.generate(
                     Execution_order_list.length,
                     (int i) => Step(
-                        isActive:
+                        /*  isActive:
                             Get.find<Controllersyncing>().index.value >= i,
+                        */
                         title:
                             Text('${Execution_order_list.keys.elementAt(i)}'),
-                        content: Obx(() {
+                        content: Container()
+                        /*  Obx(() {
                           return Visibility(
                               visible:
                                   Get.find<Controllersyncing>().index.value ==
                                       i,
                               child: CircularProgressIndicator());
-                        }))));
+                        }) */
+                        )));
           }),
           SizedBox(
             height: 20,
