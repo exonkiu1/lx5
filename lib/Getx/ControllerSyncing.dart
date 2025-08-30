@@ -19,8 +19,8 @@ class Controllersyncing extends GetxController {
               Execution_order_list.values.elementAt(index.value)['controller']);
       index.value += 1;
     } else {
-      bool_StartSyncing.value = false;
-      Get.off(Homepage());
+     /*  bool_StartSyncing.value = false;
+      Get.off(Homepage()); */
     }
   }
 
