@@ -233,6 +233,7 @@ class _Adddevice2State extends State<Adddevice2> {
               return Visibility(
                   visible: Get.find<Controllerother>().Model.value == 'LX PRO',
                   child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         'تک کاربره',

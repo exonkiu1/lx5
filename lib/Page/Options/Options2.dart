@@ -93,7 +93,7 @@ Map<String, Map<String, dynamic>> PageOptionsLxPro = {
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
   'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
-  'همگام سازی': {'image': 'sync', 'page': Syncing()},
+//  'همگام سازی': {'image': 'sync', 'page': Syncing()},
   'اطلاعات گارانتی': {'image': 'reportsms', 'page': Warrantypage()},
 };
 Map<String, Map<String, dynamic>> PageOptionsLx1000 = {
