@@ -18,42 +18,44 @@ class _SyncingState extends State<Syncing> {
     return Scaffold(
       appBar: appBar(title: 'همگام سازی'),
       body: Backgroundview(
-          child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Stepper(
-              currentStep: 0,
-              //Get.find<Controllersyncing>().index.value,
-              controlsBuilder: (context, details) {
-                return Container();
-              },
-              steps: List.generate(
-                  4,
-                  // Execution_order_list.length,
-                  (i) => Step(
-                      /*  isActive:
-                            Get.find<Controllersyncing>().index.value >= i,
-                        */
-                      title: Text('hi ${i + 1}'),
-                      content: Container()
-                      /*  Obx(() {
-                          return Visibility(
-                              visible:
-                                  Get.find<Controllersyncing>().index.value ==
-                                      i,
-                              child: CircularProgressIndicator());
-                        }) */
-                      ))),
-          SizedBox(
-            height: 20,
-          ),
-          ElevatedButton(
-              onPressed: () => DialogOrder(
-                  context, () => Get.find<Controllersyncing>().StartSyncing(),
-                  description:
-                      'آیا میخواهید همگام سازی نرم افزار با دستگاه شروع کنید؟'),
-              child: Text('همگام سازی'))
-        ],
+          child: Directionality(
+        textDirection: TextDirection.rtl,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Obx(() {
+              return Stepper(
+                  currentStep: Get.find<Controllersyncing>().index.value,
+                  controlsBuilder: (context, details) {
+                    return Container();
+                  },
+                  steps: List.generate(
+                      4,
+                      // Execution_order_list.length,
+                      (i) => Step(
+                          isActive:
+                              Get.find<Controllersyncing>().index.value >= i,
+                          title:
+                              Text('${Execution_order_list.keys.elementAt(i)}'),
+                          content: Obx(() {
+                            return Visibility(
+                                visible:
+                                    Get.find<Controllersyncing>().index.value ==
+                                        i,
+                                child: CircularProgressIndicator());
+                          }))));
+            }),
+            SizedBox(
+              height: 20,
+            ),
+            ElevatedButton(
+                onPressed: () => DialogOrder(
+                    context, () => Get.find<Controllersyncing>().StartSyncing(),
+                    description:
+                        'آیا میخواهید همگام سازی نرم افزار با دستگاه شروع کنید؟'),
+                child: Text('همگام سازی'))
+          ],
+        ),
       )),
     );
   }
