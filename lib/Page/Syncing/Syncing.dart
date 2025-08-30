@@ -35,13 +35,17 @@ class _SyncingState extends State<Syncing> {
                       (i) => Step(
                           isActive:
                               Get.find<Controllersyncing>().index.value >= i,
-                          title: Text('hi ${i+1}'),
-                           //   Text('${Execution_order_list.keys.elementAt(i)}'),
+                          title:
+                              //Text('hi ${i + 1}'),
+                              Text('${Execution_order_list.keys.elementAt(i)}'),
                           content: Obx(() {
                             return Visibility(
                                 visible:
                                     Get.find<Controllersyncing>().index.value ==
-                                        i,
+                                            i &&
+                                        Get.find<Controllersyncing>()
+                                            .bool_StartSyncing
+                                            .value,
                                 child: CircularProgressIndicator());
                           }))));
             }),
