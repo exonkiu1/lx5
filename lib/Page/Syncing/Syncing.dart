@@ -19,16 +19,18 @@ class _SyncingState extends State<Syncing> {
       appBar: appBar(title: 'همگام سازی'),
       body: Backgroundview(
           child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Stepper(
               currentStep: 0,
               //Get.find<Controllersyncing>().index.value,
-               controlsBuilder: (context, details) {
-                    return Container();
-                  },
+              controlsBuilder: (context, details) {
+                return Container();
+              },
               steps: List.generate(
-                  Execution_order_list.length,
-                  (int i) => Step(
+                  4,
+                  // Execution_order_list.length,
+                  (i) => Step(
                       /*  isActive:
                             Get.find<Controllersyncing>().index.value >= i,
                         */
@@ -42,7 +44,6 @@ class _SyncingState extends State<Syncing> {
                               child: CircularProgressIndicator());
                         }) */
                       ))),
-
           SizedBox(
             height: 20,
           ),
