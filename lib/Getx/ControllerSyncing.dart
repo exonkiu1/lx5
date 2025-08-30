@@ -4,25 +4,33 @@ import 'package:lx/Getx/ControllerContact.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Getx/ControllerRemote.dart';
 import 'package:lx/Getx/ControllerZon.dart';
+import 'package:lx/Page/HomePage/HomePage.dart';
 import 'package:lx/SendOrder.dart';
 
 class Controllersyncing extends GetxController {
   RxInt index = 0.obs;
+  RxBool bool_StartSyncing = false.obs;
   Syncing() {
     if (Get.find<Controllerother>().TypeInquiry.value.length < 2 &&
-        index.value < Execution_order_list.length) {
+        index.value < Execution_order_list.length &&
+        bool_StartSyncing.value) {
       DirectInquiry(
           () => Execution_order_list.values.elementAt(index.value)['function'],
           code: Execution_order_list.values.elementAt(index.value)['code'],
           controller:
               Execution_order_list.values.elementAt(index.value)['controller']);
       index.value += 1;
+    }else{
+      bool_StartSyncing.value = false;
+      Get.off(Homepage());
     }
   }
-  StartSyncing(){
+
+  StartSyncing() {
     AudioPlayer player = AudioPlayer();
     player.setAsset('assets/music/syncing/syncing.mp3');
     index.value = 0;
+    bool_StartSyncing.value = true;
     Syncing();
   }
 }
