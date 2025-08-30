@@ -20,27 +20,24 @@ class _SyncingState extends State<Syncing> {
       body: Backgroundview(
           child: Column(
         children: [
-          Obx(() {
-            return Stepper(
-                currentStep: Get.find<Controllersyncing>().index.value,
-                steps: List.generate(
-                    Execution_order_list.length,
-                    (int i) => Step(
-                        /*  isActive:
+          Stepper(
+              currentStep: Get.find<Controllersyncing>().index.value,
+              steps: List.generate(
+                  Execution_order_list.length,
+                  (int i) => Step(
+                      /*  isActive:
                             Get.find<Controllersyncing>().index.value >= i,
                         */
-                        title:
-                            Text('hi ${i+1}'),
-                        content: Container()
-                        /*  Obx(() {
+                      title: Text('hi ${i + 1}'),
+                      content: Container()
+                      /*  Obx(() {
                           return Visibility(
                               visible:
                                   Get.find<Controllersyncing>().index.value ==
                                       i,
                               child: CircularProgressIndicator());
                         }) */
-                        )));
-          }),
+                      ))),
           SizedBox(
             height: 20,
           ),
