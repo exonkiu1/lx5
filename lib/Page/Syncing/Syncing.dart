@@ -30,7 +30,7 @@ class _SyncingState extends State<Syncing> {
                             Get.find<Controllersyncing>().index.value >= i,
                         */
                         title:
-                            Text('${Execution_order_list.keys.elementAt(i)}'),
+                            Text('hi ${i+1}'),
                         content: Container()
                         /*  Obx(() {
                           return Visibility(
