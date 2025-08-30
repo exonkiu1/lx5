@@ -21,7 +21,11 @@ class _SyncingState extends State<Syncing> {
           child: Column(
         children: [
           Stepper(
-              currentStep: Get.find<Controllersyncing>().index.value,
+              currentStep: 0,
+              //Get.find<Controllersyncing>().index.value,
+               controlsBuilder: (context, details) {
+                    return Container();
+                  },
               steps: List.generate(
                   Execution_order_list.length,
                   (int i) => Step(
@@ -38,6 +42,7 @@ class _SyncingState extends State<Syncing> {
                               child: CircularProgressIndicator());
                         }) */
                       ))),
+
           SizedBox(
             height: 20,
           ),
