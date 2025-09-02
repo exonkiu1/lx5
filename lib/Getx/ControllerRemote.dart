@@ -86,7 +86,7 @@ class Controllerremote extends GetxController {
     Part[i].value = '1';
     Name[i].value = 'ریموت ${i + 1}';
     UpdateRemote();
-    return '50*${i + 1}';
+    return '50*${i }';
   }
 
   Inquiry() {
