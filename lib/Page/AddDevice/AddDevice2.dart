@@ -294,7 +294,7 @@ class WidgetMOdelpro extends StatelessWidget {
         return Container(
           width: Get.width * 0.25,
           decoration: decoration(
-            color: Get.find<Controllerother>().ModelPro.value == model,
+            color: Get.find<Controllerother>().ModelPro.value == model && Get.find<Controllerother>().Model.value == 'LX PRO',
           ),
           child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
         );
