@@ -25,7 +25,7 @@ class Controllerpassremote extends GetxController {
       Get.find<Controllerremote>().PasswordRemote[Index.value].value =
           PasswordRemote.value;
       Get.find<Controllerremote>().UpdateRemote();
-      return 'AAAVA*${Index.value + 1}*${PasswordRemote.value}';
+      return 'AAAVA*${Index.value >= 10 ? Index.value : '0${Index.value}'}*${PasswordRemote.value}';
     } else {
       Get.find<Controllerdatabase>().UpdateLx();
       return 'AAAVA*${PasswordRemote.value}';
