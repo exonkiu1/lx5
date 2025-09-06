@@ -185,7 +185,7 @@ class ThisPass extends StatelessWidget {
                       items: List.generate(30, (i) => i)
                           .map<DropdownMenuItem<int>>(
                               (value) => DropdownMenuItem(
-                                    child: Text('ریموت ${value}'),
+                                    child: Text('ریموت ${value}',style: TextStyle(color: color1),),
                                     value: value,
                                   ))
                           .toList(),

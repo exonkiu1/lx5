@@ -22,8 +22,10 @@ class Controllerpassremote extends GetxController {
     PasswordRemote.value = edit_PasswordRemote.value;
     edit_PasswordRemote.value = '';
     if (Get.find<Controllerwarrenty>().ModelPro.value.contains('MAX')) {
+      Get.find<Controllerremote>().PasswordRemote[Index.value].value =
+          PasswordRemote.value;
       Get.find<Controllerremote>().UpdateRemote();
-      return 'AAAVA*${Index.value}*${PasswordRemote.value}';
+      return 'AAAVA*${Index.value + 1}*${PasswordRemote.value}';
     } else {
       Get.find<Controllerdatabase>().UpdateLx();
       return 'AAAVA*${PasswordRemote.value}';
