@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Page/AddDevice/AddDevice2.dart';
 import 'package:lx/Page/Contact/ContactLx1000.dart';
 import 'package:lx/Page/Help/HelpLX1000.dart';
 import 'package:lx/Page/Help/HelpLXPRO.dart';
 import 'package:lx/Page/PasswordRemote/PasswordRemote.dart';
 import 'package:lx/Page/ReportSms/ReportSms.dart';
-import 'package:lx/Page/Syncing/Syncing.dart';
 import 'package:lx/Page/Warrenty/warrantyPage.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/Page/Contact/Contact.dart';
@@ -45,40 +45,94 @@ class _Options2State extends State<Options2> {
         child: Center(
           child: Obx(() {
             return Wrap(
-              children: List.generate(
-                  PageModel[Get.find<Controllerinfo>().Model.value]!.length,
-                  (i) => InkWell(
-                      onTap: () => Get.to(
-                            PageModel[Get.find<Controllerinfo>().Model.value]!
-                                .values
-                                .elementAt(i)['page'],
-                          ),
-                      child: Container(
-                        width: Get.width * 0.3,
-                        margin: EdgeInsets.symmetric(vertical: 15),
-                        child: Center(
-                          child: Column(
-                            children: [
-                              Obx(() {
-                                return Image.asset(
-                                  'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
-                                  width: Get.width * 0.2,
-                                );
-                              }),
-                              Obx(() {
-                                return Text(
-                                  '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
-                                );
-                              }),
-                            ],
-                          ),
-                        ),
-                      ))),
-            );
+                children: List.generate(
+                    PageModel[Get.find<Controllerinfo>().Model.value]!.length,
+                    (i) => WidgetItems(
+                          i: i,
+                        ))
+                  /* ..addIf(
+                      !Get.find<Controllerwarrenty>()
+                          .ModelPro
+                          .value
+                          .contains('MAX'),
+                      SingleWidgetItem(
+                          image: 'passwordremote',
+                          name: 'کدگزاری ریموت',
+                          page: Passwordremote())) */);
           }),
         ),
       ),
     );
+  }
+}
+
+class SingleWidgetItem extends StatelessWidget {
+  const SingleWidgetItem(
+      {super.key, required this.image, required this.name, required this.page});
+  final String name, image;
+  final Widget page;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+        onTap: () => Get.to(
+              page,
+            ),
+        child: Container(
+          width: Get.width * 0.3,
+          margin: EdgeInsets.symmetric(vertical: 15),
+          child: Center(
+            child: Column(
+              children: [
+                Obx(() {
+                  return Image.asset(
+                    'assets/image/options2/${image}.png',
+                    width: Get.width * 0.2,
+                  );
+                }),
+                Obx(() {
+                  return Text(
+                    '${name}',
+                  );
+                }),
+              ],
+            ),
+          ),
+        ));
+  }
+}
+
+class WidgetItems extends StatelessWidget {
+  const WidgetItems({super.key, this.i = 0});
+  final int i;
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+        onTap: () => Get.to(
+              PageModel[Get.find<Controllerinfo>().Model.value]!
+                  .values
+                  .elementAt(i)['page'],
+            ),
+        child: Container(
+          width: Get.width * 0.3,
+          margin: EdgeInsets.symmetric(vertical: 15),
+          child: Center(
+            child: Column(
+              children: [
+                Obx(() {
+                  return Image.asset(
+                    'assets/image/options2/${PageModel[Get.find<Controllerinfo>().Model.value]!.values.elementAt(i)['image']}.png',
+                    width: Get.width * 0.2,
+                  );
+                }),
+                Obx(() {
+                  return Text(
+                    '${PageModel[Get.find<Controllerinfo>().Model.value]!.keys.elementAt(i)}',
+                  );
+                }),
+              ],
+            ),
+          ),
+        ));
   }
 }
 

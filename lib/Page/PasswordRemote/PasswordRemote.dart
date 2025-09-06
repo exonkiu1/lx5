@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lx/Getx/ControllerPassRemote.dart';
+import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/Appbar.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
@@ -172,6 +173,26 @@ class ThisPass extends StatelessWidget {
               ),
             );
           }),
+          Obx(() {
+            return Visibility(
+                visible: Get.find<Controllerwarrenty>()
+                    .ModelPro
+                    .value
+                    .contains('MAX'),
+                child: Obx(() {
+                  return DropdownButton(
+                      value: Get.find<Controllerpassremote>().Index.value,
+                      items: List.generate(30, (i) => i)
+                          .map<DropdownMenuItem<int>>(
+                              (value) => DropdownMenuItem(
+                                    child: Text('ریموت ${value}'),
+                                    value: value,
+                                  ))
+                          .toList(),
+                      onChanged: (value) => Get.find<Controllerpassremote>()
+                          .ChangeRemote(value!));
+                }));
+          })
         ],
       ),
     );

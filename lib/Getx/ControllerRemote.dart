@@ -11,19 +11,19 @@ class Controllerremote extends GetxController {
   RxList<RxString> Name = <RxString>[].obs;
   RxList<RxString> Part = <RxString>[].obs;
   RxList<RxString> Statelock = <RxString>[].obs;
+  RxList<RxString> PasswordRemote = <RxString>[].obs;
   ////////////////
   RxBool showpart = false.obs;
   RxList<int> List_Remote = <int>[].obs;
 
   AddRemote(String id) async {
     var prefs = SharedPreferencesAsync();
-    List<String> value =
-        List.generate(30, (i) => 'ریموت ${i}${CodeSplite}1${CodeSplite}unlock');
+    List<String> value = List.generate(
+        30, (i) => 'ریموت ${i}${CodeSplite}1${CodeSplite}unlock${CodeSplite}');
     await prefs.setStringList('${id}remote', value);
     if (Get.find<Controllersttadddevice>().SingleUser.value) {
       List_Remote.value = List.generate(30, (i) => i);
-       prefs.setStringList(
-        '${id}ListRemote', List.generate(30, (i) => '$i'));
+      prefs.setStringList('${id}ListRemote', List.generate(30, (i) => '$i'));
     }
   }
 
@@ -34,6 +34,8 @@ class Controllerremote extends GetxController {
     Part.value = List.generate(30, (i) => value[i].split(CodeSplite)[1].obs);
     Statelock.value =
         List.generate(30, (i) => value[i].split(CodeSplite)[2].obs);
+    PasswordRemote.value =
+        List.generate(30, (i) => value[i].split(CodeSplite)[3].obs);
     List<String> copy_ListRemote =
         await prefs.getStringList('${id}ListRemote') ?? [];
     List_Remote.value = List.generate(
@@ -45,7 +47,7 @@ class Controllerremote extends GetxController {
     List<String> value = List.generate(
         30,
         (i) =>
-            '${Name[i].value}${CodeSplite}${Part[i].value}${CodeSplite}${Statelock[i].value}');
+            '${Name[i].value}${CodeSplite}${Part[i].value}${CodeSplite}${Statelock[i].value}${CodeSplite}${PasswordRemote[i].value}');
     await prefs.setStringList(
         '${Get.find<Controllerinfo>().id.value}remote', value);
     List<String> copy_ListRemote =
@@ -86,7 +88,7 @@ class Controllerremote extends GetxController {
     Part[i].value = '1';
     Name[i].value = 'ریموت ${i + 1}';
     UpdateRemote();
-    return '50*${i }';
+    return '50*${i}';
   }
 
   Inquiry() {
