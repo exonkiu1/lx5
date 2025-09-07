@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Page/AddDevice/AddDevice2.dart';
 import 'package:lx/Page/Contact/ContactLx1000.dart';
 import 'package:lx/Page/Help/HelpLX1000.dart';

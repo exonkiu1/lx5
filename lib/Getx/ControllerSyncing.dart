@@ -19,14 +19,15 @@ class Controllersyncing extends GetxController {
               Execution_order_list.values.elementAt(index.value)['controller']);
       index.value += 1;
     } else {
-      /*  bool_StartSyncing.value = false;
-      Get.off(Homepage()); */
+      bool_StartSyncing.value = false;
+      Get.off(Homepage());
     }
   }
 
   StartSyncing() {
     AudioPlayer player = AudioPlayer();
     player.setAsset('assets/music/syncing/syncing.mp3');
+    player.play();
     index.value = 0;
     bool_StartSyncing.value = true;
     Syncing();
