@@ -12,20 +12,20 @@ class Controllersyncing extends GetxController {
   RxBool bool_StartSyncing = false.obs;
   RxBool bool_firstSyncing = false.obs;
   RxInt counter = 0.obs;
-  RxInt copy_index=0.obs;
+  RxInt copy_index = 0.obs;
   Syncing() {
     if (index.value < 4 && bool_StartSyncing.value) {
-     // copy_index.value = index.value;
+      // copy_index.value = index.value;
       DirectInquiry(
           Execution_order_list.values.elementAt(index.value)['function'],
           code: Execution_order_list.values.elementAt(index.value)['code'],
           controller:
               Execution_order_list.values.elementAt(index.value)['controller']);
       index.value += 1;
-      
     } else {
       bool_StartSyncing.value = false;
       if (bool_firstSyncing.value) {
+        bool_firstSyncing.value = false;
         Get.off(Homepage());
       }
     }
