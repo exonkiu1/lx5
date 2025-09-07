@@ -13,13 +13,13 @@ class Controllersyncing extends GetxController {
   Syncing() {
     if (index.value < 4 && bool_StartSyncing.value) {
       DirectInquiry(
-          () => Execution_order_list.values.elementAt(index.value)['function'],
+          Execution_order_list.values.elementAt(index.value)['function'],
           code: Execution_order_list.values.elementAt(index.value)['code'],
           controller:
               Execution_order_list.values.elementAt(index.value)['controller']);
       index.value += 1;
     } else {
-     /*  bool_StartSyncing.value = false;
+      /*  bool_StartSyncing.value = false;
       Get.off(Homepage()); */
     }
   }
