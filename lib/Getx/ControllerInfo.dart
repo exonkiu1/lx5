@@ -32,7 +32,7 @@ class Controllerinfo extends GetxController {
     Charge.value = int.parse(model.Charge);
     Simcard.value = model.Simcard;
     Partion.value = model.Partion;
-    if (Partion.value.length < 1) {
+    if (int.tryParse(Partion.value)==null) {
       Get.off(Syncing());
     }
   }

@@ -46,7 +46,8 @@ class _SyncingState extends State<Syncing> {
                           content: Obx(() {
                             return Visibility(
                                 visible:
-                                    Get.find<Controllersyncing>().index.value ==
+                                    (Get.find<Controllersyncing>().index.value -
+                                                1) ==
                                             i &&
                                         Get.find<Controllersyncing>()
                                             .bool_StartSyncing
