@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
+import 'package:lx/Getx/ControllerInfo.dart';
+import 'package:lx/Getx/ControllerSyncing.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/Page/Options/Options2.dart';
 import 'package:lx/Page/Relay/Relay.dart';
+import 'package:lx/Page/Syncing/Syncing.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/Stt/MainStt.dart';
 
@@ -16,7 +19,15 @@ class Homepage extends StatefulWidget {
 }
 
 class _HomepageState extends State<Homepage> {
- 
+  @override
+  void initState() {
+    if (int.tryParse(Get.find<Controllerinfo>().Partion.value) == null) {
+      Get.find<Controllersyncing>().bool_firstSyncing.value = true;
+      Get.off(Syncing());
+    }
+    // TODO: implement initState
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

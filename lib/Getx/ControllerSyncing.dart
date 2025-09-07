@@ -10,19 +10,34 @@ import 'package:lx/SendOrder.dart';
 class Controllersyncing extends GetxController {
   RxInt index = 0.obs;
   RxBool bool_StartSyncing = false.obs;
+  RxBool bool_firstSyncing = false.obs;
+  RxInt counter = 0.obs;
+  RxInt copy_index=0.obs;
   Syncing() {
     if (index.value < 4 && bool_StartSyncing.value) {
+     // copy_index.value = index.value;
       DirectInquiry(
           Execution_order_list.values.elementAt(index.value)['function'],
           code: Execution_order_list.values.elementAt(index.value)['code'],
           controller:
               Execution_order_list.values.elementAt(index.value)['controller']);
       index.value += 1;
+      
     } else {
       bool_StartSyncing.value = false;
-      Get.off(Homepage());
+      if (bool_firstSyncing.value) {
+        Get.off(Homepage());
+      }
     }
   }
+
+  /* timerInquiry()async{
+    for (var i = 0; i < 60; i++) {
+      if (copy_index) {
+        
+      }
+    }
+  } */
 
   StartSyncing() {
     AudioPlayer player = AudioPlayer();
