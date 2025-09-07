@@ -26,7 +26,7 @@ class _SyncingState extends State<Syncing> {
             Obx(() {
               return Stepper(
                   currentStep: Get.find<Controllersyncing>().index.value == 0
-                      ? 0
+                      ? Get.find<Controllersyncing>().index.value
                       : (Get.find<Controllersyncing>().index.value - 1),
                   controlsBuilder: (context, details) {
                     return Container();
@@ -36,7 +36,7 @@ class _SyncingState extends State<Syncing> {
                       // Execution_order_list.length,
                       (i) => Step(
                           isActive:
-                              Get.find<Controllersyncing>().index.value >= i &&
+                              Get.find<Controllersyncing>().index.value > i &&
                                   Get.find<Controllersyncing>()
                                       .bool_StartSyncing
                                       .value,
