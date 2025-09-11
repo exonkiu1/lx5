@@ -36,7 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.6
   get: ^4.6.6
-  sqflite: ^2.3.3+1
+#  sqflite: ^2.3.3+1
   shared_preferences: ^2.2.3
   local_auth: ^2.2.0
   flutter_launcher_icons: ^0.13.1
@@ -47,7 +47,7 @@ dependencies:
   permission_handler: ^11.3.1
   persian_number_utility: ^1.1.4
   speech_to_text: ^6.6.2
-  flutter_native_contact_picker: ^0.0.6
+  #flutter_native_contact_picker: ^0.0.6
   flutter_map: ^7.0.1
   latlong2: ^0.9.1
   flutter_map_cancellable_tile_provider: ^3.0.0

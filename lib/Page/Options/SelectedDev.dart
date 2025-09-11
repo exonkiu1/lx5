@@ -44,8 +44,10 @@ class SelectedDevLx extends StatelessWidget {
                                     Icons.check,
                                     color: color1,
                                   )),
-                              Text(Get.find<Controllerdatabase>().Devs[i].Name),
-                              Text(Get.find<Controllerdatabase>().Devs[i].Phone)
+                              Text(GetDevSplite('Name',
+                                  autoselected: false, index: i)),
+                              Text(GetDevSplite('Phone',
+                                  autoselected: false, index: i))
                             ],
                           ),
                         ),

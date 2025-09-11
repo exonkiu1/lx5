@@ -4,11 +4,14 @@ import 'package:get/get_rx/get_rx.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class Controllerother extends GetxController {
   @override
-  void onInit() {
+  void onInit()async {
+    final SharedPreferencesAsync prefs = SharedPreferencesAsync();
+    Android.value =await prefs.getBool('Android')??false;
     // TODO: implement onInit
     super.onInit();
   }
@@ -20,7 +23,7 @@ class Controllerother extends GetxController {
   RxString Model = ''.obs;
   RxString ModelPro = ''.obs;
   RxInt counter = 30.obs;
-  
+  RxBool Android = false.obs;
   StartDelyOrder() async {
     DelyOrder.value = 15;
     for (var i = 0; i < 15; i++) {

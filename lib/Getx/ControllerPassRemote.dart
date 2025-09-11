@@ -8,8 +8,8 @@ class Controllerpassremote extends GetxController {
   RxString PasswordRemote = ''.obs;
   RxString edit_PasswordRemote = ''.obs;
   RxInt Index = 0.obs;
-  GetPasswordRemote(DevLX model) {
-    PasswordRemote.value = model.PasswordRemote;
+  GetPasswordRemote() {
+    PasswordRemote.value = GetDevSplite('PasswordRemote');
   }
 
   ChangeRemote(int index) {

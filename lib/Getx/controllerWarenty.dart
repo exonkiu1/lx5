@@ -22,16 +22,16 @@ class Controllerwarrenty extends GetxController {
   ///////////////////////////////////
   RxString SmsImei = ''.obs;
   ////
-  GetWarenty(DevLX model) {
-    Address.value = model.Address;
-    City.value = model.City;
-    DateWarrenty.value = model.DateWarrenty;
-    NameClinet.value = model.NameClinet;
-    NameTechnician.value = model.NameTechnician;
-    PhoneClinet.value = model.PhoneClinet;
-    PhoneTechnician.value = model.PhoneTechnician;
-    Province.value = model.Province;
-    ModelPro.value = model.ModelPro;
+  GetWarenty() {
+    Address.value = GetDevSplite('Address');
+    City.value = GetDevSplite('City');
+    DateWarrenty.value = GetDevSplite('DateWarrenty');
+    NameClinet.value = GetDevSplite('NameClinet');
+    NameTechnician.value = GetDevSplite('NameTechnician');
+    PhoneClinet.value = GetDevSplite('PhoneClinet');
+    PhoneTechnician.value = GetDevSplite('PhoneTechnician');
+    Province.value = GetDevSplite('Province');
+    ModelPro.value = GetDevSplite('ModelPro');
   }
 
   TextEditingController Tf_NameClinet = TextEditingController(),
@@ -43,23 +43,21 @@ class Controllerwarrenty extends GetxController {
   RxString drp_province = "آذربایجان شرقی".obs;
   SendImeiStartWarenty() async {
     final supabase = Supabase.instance.client;
-     String imei = '';
-    if (Get.find<Controllerother>()
-        .TextInuiry
-        .value.contains('A')) {
-        imei = Get.find<Controllerother>()
-        .TextInuiry
-        .value
-        .split('*A')[1]
-        .substring(0, 15);
+    String imei = '';
+    if (Get.find<Controllerother>().TextInuiry.value.contains('A')) {
+      imei = Get.find<Controllerother>()
+          .TextInuiry
+          .value
+          .split('*A')[1]
+          .substring(0, 15);
     } else {
-        imei = Get.find<Controllerother>()
-        .TextInuiry
-        .value
-        .split('**')[1]
-        .substring(0, 15);
+      imei = Get.find<Controllerother>()
+          .TextInuiry
+          .value
+          .split('**')[1]
+          .substring(0, 15);
     }
-   
+
     SmsImei.value = imei;
     final result = await supabase
         .from('lux')

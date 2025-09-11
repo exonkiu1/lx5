@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerOther.dart';
 import 'package:lx/Getx/controllerWarenty.dart';
@@ -93,42 +92,6 @@ class _Adddevice2State extends State<Adddevice2> {
                                 phone: true,
                               ),
                               SizedBox(height: 10),
-                              InkWell(
-                                //
-                                onTap: () async {
-                                  final FlutterContactPicker _contactPicker =
-                                      new FlutterContactPicker();
-                                  Contact? contact1 =
-                                      await _contactPicker.selectContact();
-                                  if (contact1 != null) {
-                                    Get.find<Controllerdatabase>().tfName.text =
-                                        contact1.fullName.toString();
-                                    Get.find<Controllerdatabase>()
-                                            .tfPhone
-                                            .text =
-                                        contact1.phoneNumbers![0]
-                                            .replaceAll(' ', '')
-                                            .replaceAll('+98', '0');
-                                  }
-                                },
-                                child: Container(
-                                  width: Get.width * 0.44,
-                                  padding: EdgeInsets.symmetric(vertical: 5),
-                                  decoration: decoration(
-                                    color: true,
-                                    colorBG: Color.fromARGB(54, 255, 255, 255),
-                                    border: false,
-                                  ),
-                                  child: Center(
-                                    child: Text(
-                                      'انتخاب از مخاطبین',
-                                      style: TextStyle(fontSize: 10),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              SizedBox(height: 10),
-                              WidgetSelectedDev(),
                             ],
                           ),
                           Center(
@@ -147,18 +110,12 @@ class _Adddevice2State extends State<Adddevice2> {
                                           'از ساخت دستگاه مطمعن هستید؟',
                                     );
                                   } else {
-                                    SendInquiry(
-                                        context,
-                                        () => Get.find<Controllerwarrenty>()
-                                            .SendImeiStartWarenty(),
-                                        description:
-                                            'از ساخت دستگاه مطمعن هستید؟',
-                                        code: '6660',
-                                        controller: '##',
-                                        type: 'imei',
-                                        bool_phone: true,
-                                        phone:
-                                            '${Get.find<Controllerdatabase>().tfPhone.text}');
+                                    DialogOrder(
+                                      context,
+                                      Get.find<Controllerdatabase>().AddLx(),
+                                      description:
+                                          'از ساخت دستگاه مطمعن هستید؟',
+                                    );
                                   }
                                 }
                               },
@@ -294,34 +251,12 @@ class WidgetMOdelpro extends StatelessWidget {
         return Container(
           width: Get.width * 0.25,
           decoration: decoration(
-            color: Get.find<Controllerother>().ModelPro.value == model && Get.find<Controllerother>().Model.value == 'LX PRO',
+            color: Get.find<Controllerother>().ModelPro.value == model &&
+                Get.find<Controllerother>().Model.value == 'LX PRO',
           ),
           child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
         );
       }),
-    );
-  }
-}
-
-class WidgetSelectedDev extends StatelessWidget {
-  const WidgetSelectedDev({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return InkWell(
-      onTap: () =>
-          Get.bottomSheet(Container(child: adddevice.boxselectedsim())),
-      child: Container(
-        padding: EdgeInsets.symmetric(vertical: 5),
-        width: Get.width * 0.44,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          color: Color.fromARGB(54, 255, 255, 255),
-        ),
-        child: Center(
-          child: Text('انتخاب سیمکارت دستگاه', style: TextStyle(fontSize: 10)),
-        ),
-      ),
     );
   }
 }

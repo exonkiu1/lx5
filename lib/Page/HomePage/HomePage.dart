@@ -21,10 +21,10 @@ class Homepage extends StatefulWidget {
 class _HomepageState extends State<Homepage> {
   @override
   void initState() {
-    if (int.tryParse(Get.find<Controllerinfo>().Partion.value) == null) {
+    /* if (int.tryParse(Get.find<Controllerinfo>().Partion.value) == null) {
       Get.find<Controllersyncing>().bool_firstSyncing.value = true;
       Get.off(Syncing());
-    }
+    } */
     // TODO: implement initState
     super.initState();
   }

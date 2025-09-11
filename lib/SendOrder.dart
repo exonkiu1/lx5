@@ -151,148 +151,67 @@ DialogTextFieldSms(BuildContext context, Future<String> Function() function,
 }
 
 ////
-SendInquiry(BuildContext context, Function() function,
-    {String title = 'هشدار',
-    String description = 'درخواست استعلام به دستگاه ارسال شود؟',
-    String code = '',
-    String controller = '',
-    String type = '',
-    String phone = '',
-    bool bool_phone = false}) {
+
+SendInquiry(
+  BuildContext context,
+  Function() function, {
+  String title = 'هشدار',
+  String description =
+      'یکی از مراحل استعلام را انتخاب نمایید(ابتدا باید پیامک به دستگاه ارسال شود)',
+  String code = '',
+  String controller = '',
+  String type = '',
+}) {
   showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          backgroundColor: const Color.fromARGB(0, 255, 255, 255),
-          /*    title: Text(title),
-          content: Text(description), */
-          actions: <Widget>[
-            Container(
-              //width: Get.width * 0.7,
-              height: Get.height * 0.4,
-              decoration: BoxDecoration(
-                  color: const Color.fromARGB(0, 255, 255, 255),
-                  image: DecorationImage(
-                      image: AssetImage('assets/image/dialog.png'),
-                      fit: BoxFit.fitHeight)),
-              child: Column(
-                children: [
-                  Flexible(
-                      flex: 2,
-                      child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pop();
-                        },
-                        child: Container(
-                            // color: Color.fromARGB(0, 244, 67, 54),
-                            ),
-                      )),
-                  Flexible(
-                      flex: 1,
-                      child: Container(
-                        //  color: const Color.fromARGB(86, 33, 149, 243),
-                        child: SizedBox(
-                          width: Get.width * 0.4,
-                          child: Center(
-                              child: Text(
-                            description,
-                            style: TextStyle(fontSize: 12),
-                            textDirection: TextDirection.rtl,
-                            textAlign: TextAlign.center,
-                          )),
-                        ),
-                      )),
-                  Flexible(
-                      flex: 2,
-                      child: InkWell(
-                        onTap: () async {
-                          Navigator.of(context).pop();
-                          Get.find<Controllerother>().TypeInquiry.value = type;
-                          SendSms(context, code,
-                              bool_phone: bool_phone, phone: phone);
-                          if (code == '6660') {
-                            Get.find<Controllerother>().playcounter();
-                            Get.find<Controllersttadddevice>()
-                                .PlayMusic('imei');
-                          }
-                          InquirySms(
-                            function,
-                            controller: controller,
-                          );
-                          print('code : $code');
-                        },
-                        child: Container(
-                            // color: const Color.fromARGB(63, 255, 153, 0),
-                            ),
-                      )),
-                ],
-              ),
-            )
-            /*   TextButton(
-              onPressed: () async {
-                Navigator.of(context).pop();
-              },
-              child: Text('لغو'),
-            ),
-            TextButton(
-              onPressed: () async {
-                Navigator.of(context).pop();
-                Get.find<Controllerother>().TypeInquiry.value = type;
-                SendSms(context, code);
-                InquirySms(
-                  function,
-                  controller: controller,
-                );
-                print('code : $code');
-              },
-              child: Text('تایید'),
-            ), */
-          ],
-        );
-      });
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        backgroundColor: Color.fromARGB(255, 255, 255, 255),
+        title: Text(title),
+        content: Text(description),
+        actions: <Widget>[
+          TextButton(
+            onPressed: () async {
+              Navigator.of(context).pop();
+              DialogTextFieldSms(context, () => function());
+            },
+            child: Text('دخیره پیامک دستگاه'),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.of(context).pop();
+              // Get.find<Controllerother>().TypeInquiry.value = type;
+              SendSms(context, code);
+              InquirySms(function, controller: controller);
+              print('code : $code');
+            },
+            child: Text('ارسال پیامک'),
+          ),
+        ],
+      );
+    },
+  );
 }
 
 ///
 Future<void> SendSms(BuildContext context, String code,
     {String phone = '', bool bool_phone = false}) async {
-  if (Get.find<Controllerinfo>().Simcard.value != -2) {
-    final Telephony telephony = Telephony.instance;
-    final simCards = await telephony.getSimSlots();
-    int i = 0;
-    int j = 0;
-    for (var sim in simCards) {
-      if (i == int.parse(Get.find<Controllerinfo>().Simcard.value)) {
-        j = sim.index;
-      }
-    }
-    if (!bool_phone) {
-      telephony.sendSms(
-          to: '${Get.find<Controllerinfo>().Phone.value}',
-          message:
-              '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
-          subscriptionId:
-              Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
-    } else {
-      telephony.sendSms(
-          to: phone,
-          message: '*0000*${code}#',
-          subscriptionId:
-              Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
-    }
-  } else {
-    String uri =
+  String uri = '';
+  if (Get.find<Controllerother>().Android.value) {
+    uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
-    final Uri smsuri = Uri(
-        scheme: 'sms',
-        path: Get.find<Controllerinfo>().Phone.value,
-        queryParameters: {
-          'body':
-              '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#'
-        });
-    if (await canLaunch(smsuri.toString())) {
-      await launch(smsuri.toString());
-      var context = Get.context;
-    }
+  } else {
+    String phoneD = Get.find<Controllerinfo>().Phone.value;
+    uri =
+        '${phoneD[0]}${phoneD[1]}${phoneD[2]}${phoneD[3]}-${phoneD[4]}${phoneD[5]}${phoneD[6]}-${phoneD[7]}${phoneD[8]}${phoneD[9]}';
+  }
+  String body = '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#';
+  String uri2 = 'sms:${uri}?body=$body';
+  print(uri);
+
+  if (await canLaunch(uri2)) {
+    await launch(uri2);
+    var context = Get.context;
   }
 
   Get.find<Controllerother>().StartDelyOrder();
@@ -322,7 +241,7 @@ DirectInquiry(
   String code = '',
   String controller = '',
   String type = '',
-}) async{
+}) async {
   final context = Get.context;
   SendSms(context!, code);
   await Future.delayed(Duration(seconds: 2));
@@ -361,30 +280,36 @@ void DialogOrder(
 }
 
 Future<void> SendSmsPass(BuildContext context, String code) async {
-  if (Get.find<Controllerinfo>().Simcard.value != -2) {
-    final Telephony telephony = Telephony.instance;
-    telephony.sendSms(
-        to: '${Get.find<Controllerinfo>().Phone}',
-        message:
-            '*${Get.find<Controllerpassword>().tf1.text}*40*${Get.find<Controllerpassword>().tf3.text}#',
-        subscriptionId: Get.find<Controllerinfo>().Simcard.value == '-1'
-            ? null
-            : int.parse(Get.find<Controllerinfo>().Simcard.value));
-  } else {
-    String uri =
+  String uri = '';
+  if (Get.find<Controllerother>().Android.value) {
+    uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
-    final Uri smsuri = Uri(
-        scheme: 'sms',
-        path: Get.find<Controllerinfo>().Phone.value,
-        queryParameters: {
-          'body':
-              '*${Get.find<Controllerpassword>().tf1.text}*40*${Get.find<Controllerpassword>().tf3.text}#'
-        });
-    if (await canLaunch(smsuri.toString())) {
-      await launch(smsuri.toString());
-      var context = Get.context;
-    }
+  } else {
+    String phoneD = Get.find<Controllerinfo>().Phone.value;
+    uri =
+        '${phoneD[0]}${phoneD[1]}${phoneD[2]}${phoneD[3]}-${phoneD[4]}${phoneD[5]}${phoneD[6]}-${phoneD[7]}${phoneD[8]}${phoneD[9]}';
   }
+  String body =
+      '*${Get.find<Controllerpassword>().tf1.text}*40*${Get.find<Controllerpassword>().tf3.text}#';
+  String uri2 = 'sms:${uri}?body=$body';
+  print(uri);
+
+  if (await canLaunch(uri2)) {
+    await launch(uri2);
+    var context = Get.context;
+  }
+  /*  final Uri smsuri = Uri(
+      scheme: 'sms',
+      path: Get.find<Controllerinfo>().Phone.value,
+      queryParameters: {
+        'body':
+            '*${Get.find<Controllerpassword>().tf1.text}*40*${Get.find<Controllerpassword>().tf3.text}#'
+      });
+  if (await canLaunch(smsuri.toString())) {
+    await launch(smsuri.toString());
+    var context = Get.context;
+  } */
+
   Get.find<Controllerpassword>().tf1.text = '';
   Get.find<Controllerpassword>().tf2.text = '';
   Get.find<Controllerpassword>().tf3.text = '';

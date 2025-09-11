@@ -18,18 +18,18 @@ class Controllerinquiry extends GetxController {
       zon2 = ''.obs,
       zon3 = ''.obs,
       zon4 = ''.obs;
-  GetInquiry(DevLX model) {
-    UrbanElectricity.value = model.UrbanElectricity;
-    Speaker.value = model.Speaker;
-    BatterPower.value = model.BatterPower;
-    CountContact.value = model.CountContact;
-    CountRemote.value = model.CountContact;
-    AntennaStrength.value = model.AntennaStrength;
-    CommunicationsStatus.value = model.CommunicationsStatus;
-    zon1.value = model.zon1;
-    zon2.value = model.zon2;
-    zon3.value = model.zon3;
-    zon4.value = model.zon4;
+  GetInquiry() {
+    UrbanElectricity.value = GetDevSplite('UrbanElectricity');
+    Speaker.value = GetDevSplite('Speaker');
+    BatterPower.value = GetDevSplite('BatterPower');
+    CountContact.value = GetDevSplite('CountContact');
+    CountRemote.value = GetDevSplite('CountContact');
+    AntennaStrength.value = GetDevSplite('AntennaStrength');
+    CommunicationsStatus.value = GetDevSplite('CommunicationsStatus');
+    zon1.value = GetDevSplite('zon1');
+    zon2.value = GetDevSplite('zon2');
+    zon3.value = GetDevSplite('zon2');
+    zon4.value = GetDevSplite('zon4');
   }
 
   inquiry() {
@@ -38,7 +38,7 @@ class Controllerinquiry extends GetxController {
     Get.find<Controllerhomepage>().StateDev.value =
         MapStateDev[message[0]]!.keys.elementAt(0);
     UrbanElectricity.value = message[1] == '1' ? 'روشن' : 'خاموش';
-     zon1.value = message[2][0] == '0' ? 'بسته' : 'باز';
+    zon1.value = message[2][0] == '0' ? 'بسته' : 'باز';
     zon2.value = message[2][1] == '0' ? 'بسته' : 'باز';
     zon3.value = message[2][2] == '0' ? 'بسته' : 'باز';
     zon4.value = message[2][3] == '0' ? 'بسته' : 'باز';
@@ -54,8 +54,8 @@ class Controllerinquiry extends GetxController {
     Get.find<Controllerrelay>().State[0].value == '1' ? true : false;
     CountContact.value = message[6];
     CommunicationsStatus.value = message[7] == '1' ? 'روشن' : 'خاموش';
-    int lenghtrelay =  Get.find<Controllerinfo>().Model.value ==
-                                    'LX PRO'?6:2;
+    int lenghtrelay =
+        Get.find<Controllerinfo>().Model.value == 'LX PRO' ? 6 : 2;
     for (var i = 0; i < lenghtrelay; i++) {
       if (message[9][i] == '1') {
         Get.find<Controllerrelay>().State[i].value = true;

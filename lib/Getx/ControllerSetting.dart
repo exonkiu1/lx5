@@ -11,15 +11,15 @@ class Controllersetting extends GetxController {
       InventoryReport = ''.obs,
       AlarmTime = ''.obs,
       AlarmMode = ''.obs;
-  GetSetting(DevLX model) {
-    DevLanguage.value = model.DevLanguage;
+  GetSetting() {
+    DevLanguage.value = GetDevSplite('DevLanguage');
     EstablishingContactDuringPowerOutage.value =
-        model.EstablishingContactDuringPowerOutage;
-    SemiActiveStatusRemote.value = model.SemiActiveStatusRemote;
-    PeriodicBatteryReport.value = model.PeriodicBatteryReport;
-    InventoryReport.value = model.InventoryReport;
-    AlarmTime.value = model.AlarmTime;
-    AlarmMode.value = model.AlarmMode;
+        GetDevSplite('EstablishingContactDuringPowerOutage');
+    SemiActiveStatusRemote.value = GetDevSplite('EstablishingContactDuringPowerOutage');
+    PeriodicBatteryReport.value = GetDevSplite('PeriodicBatteryReport');
+    InventoryReport.value = GetDevSplite('InventoryReport');
+    AlarmTime.value = GetDevSplite('AlarmTime');
+    AlarmMode.value = GetDevSplite('AlarmMode');
   }
 
   Future<String> ChangeLangDev(String value) async {

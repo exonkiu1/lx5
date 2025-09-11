@@ -15,8 +15,8 @@ class Controllerhomepage extends GetxController {
 
   RxString StateDev = ''.obs;
   RxString Remote = 'false'.obs;
-  GetHomepage(DevLX model) {
-    StateDev.value = model.StateDev;
+  GetHomepage() {
+    StateDev.value = GetDevSplite('StateDev');
     print(StateDev.value);
   }
 

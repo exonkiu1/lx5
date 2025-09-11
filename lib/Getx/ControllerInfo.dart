@@ -22,17 +22,16 @@ class Controllerinfo extends GetxController {
   RxString Simcard = '-1'.obs;
   RxString Model = 'LX PRO'.obs;
   RxString Partion = ''.obs;
-  GetInfo(DevLX model) {
-    id.value = model.id;
-    Name.value = model.Name;
-    Phone.value = model.Phone;
-    Oprator.value = model.Oprator;
-    Model.value = model.Model;
+  GetInfo() {
+    id.value = GetDevSplite('id');
+    Name.value = GetDevSplite('Name');
+    Phone.value = GetDevSplite('Phone');
+    Oprator.value = GetDevSplite('Oprator');
+    Model.value = GetDevSplite('Model');
     print('model: ${Model.value}');
-    Charge.value = int.parse(model.Charge);
-    Simcard.value = model.Simcard;
-    Partion.value = model.Partion;
-    
+    Charge.value = int.parse(GetDevSplite('Charge'));
+    //Simcard.value = model.Simcard;
+    Partion.value = GetDevSplite('Partion');
   }
 
   Future<String> ChangeName() async {

@@ -12,8 +12,8 @@ class Controllerpassword extends GetxController {
   TextEditingController tf1 = TextEditingController(),
       tf2 = TextEditingController(),
       tf3 = TextEditingController();
-  GetPass(DevLX model) {
-    PasswordDev.value = model.Pass;
+  GetPass() {
+    PasswordDev.value = GetDevSplite('Pass');
   }
 
   bool controllpass() {
