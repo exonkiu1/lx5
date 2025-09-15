@@ -47,7 +47,7 @@ class MyApp extends StatelessWidget {
         dialogBackgroundColor: colorW, */
         hintColor: Colors.white,
         primaryTextTheme: const TextTheme(
-        bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A'),
+        bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 13),
         ),
       
         textTheme: const TextTheme(
