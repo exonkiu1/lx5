@@ -23,6 +23,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
+      builder: (context, child) => MediaQuery(
+            data: MediaQuery.of(context).copyWith(textScaleFactor: 1.0),
+            child: child!),
       home:
           // Homepage(),
           const Scaffold(
@@ -43,17 +46,18 @@ class MyApp extends StatelessWidget {
           titleTextStyle: TextStyle(color: color2, fontSize: 25),
           contentTextStyle: TextStyle(color: Colors.black, fontSize: 18),
         ),
+        
         /* colorScheme: Theme.of(context).colorScheme.copyWith(primary: colorY),
         dialogBackgroundColor: colorW, */
         hintColor: Colors.white,
         primaryTextTheme: const TextTheme(
-        bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 13),
+        bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A'),
         ),
       
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 12),
-          bodySmall: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 12),
-          bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 13),
+          bodyMedium: TextStyle(color: Colors.white, fontFamily: 'A'),
+          bodySmall: TextStyle(color: Colors.white, fontFamily: 'A'),
+          bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A'),
         ),
       ),
     );
