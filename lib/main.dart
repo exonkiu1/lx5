@@ -51,9 +51,9 @@ class MyApp extends StatelessWidget {
         ),
       
         textTheme: const TextTheme(
-          bodyMedium: TextStyle(color: Colors.white, fontFamily: 'A'),
-          bodySmall: TextStyle(color: Colors.white, fontFamily: 'A'),
-          bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A'),
+          bodyMedium: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 12),
+          bodySmall: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 12),
+          bodyLarge: TextStyle(color: Colors.white, fontFamily: 'A',fontSize: 13),
         ),
       ),
     );
