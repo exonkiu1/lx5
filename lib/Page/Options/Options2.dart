@@ -145,7 +145,7 @@ Map<String, Map<String, dynamic>> PageOptionsLxPro = {
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
-  'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
+//  'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
   'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
   'همگام سازی': {'image': 'sync', 'page': Syncing()},
   'اطلاعات گارانتی': {'image': 'reportsms', 'page': Warrantypage()},

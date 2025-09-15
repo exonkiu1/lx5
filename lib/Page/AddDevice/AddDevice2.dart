@@ -5,6 +5,7 @@ import 'package:lx/Getx/controllerWarenty.dart';
 import 'package:lx/Stt/ControllerSttAddDevice.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'widget.dart' as adddevice;
 import '../../Getx/ControllerDatabase.dart';
 import '../../SendOrder.dart';
@@ -92,68 +93,44 @@ class _Adddevice2State extends State<Adddevice2> {
                                 phone: true,
                               ),
                               SizedBox(height: 10),
-                            ],
-                          ),
-                          Center(
-                            child: InkWell(
-                              onTap: () async {
-                                bool val =
-                                    await Get.find<Controllersttadddevice>()
-                                        .Agent();
-                                if (val) {
-                                  if (Get.find<Controllerother>().Model.value !=
-                                      'LX PRO') {
-                                    DialogOrder(
-                                      context,
-                                      Get.find<Controllerdatabase>().AddLx(),
-                                      description:
-                                          'از ساخت دستگاه مطمعن هستید؟',
-                                    );
-                                  } else {
-                                    DialogOrder(
-                                      context,
-                                      Get.find<Controllerdatabase>().AddLx(),
-                                      description:
-                                          'از ساخت دستگاه مطمعن هستید؟',
-                                    );
-                                  }
-                                }
-                              },
-                              child: Obx(() {
+                              Obx(() {
                                 return Visibility(
-                                  visible: Get.find<Controllerother>()
-                                          .TypeInquiry
-                                          .value !=
-                                      'imei',
-                                  replacement: Container(
-                                    width: 25,
-                                    height: 25,
-                                    decoration: decoration(color: true),
-                                    child: Center(
-                                      child: Obx(() {
-                                        return Text(
-                                          Get.find<Controllerother>()
-                                              .counter
-                                              .value
-                                              .toString(),
-                                          style: TextStyle(fontSize: 12),
-                                        );
-                                      }),
-                                    ),
-                                  ),
-                                  child: Container(
-                                    padding: EdgeInsets.symmetric(vertical: 2),
-                                    width: Get.width * 0.3,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                      color: Color.fromARGB(54, 255, 255, 255),
-                                    ),
-                                    child: Center(child: Text('ثبت دستگاه')),
+                                  visible:
+                                      Get.find<Controllerother>().Model.value ==
+                                          'LX PRO',
+                                  child: WidgetTextField(
+                                    hint: 'imei',
+                                    tf: Get.find<Controllerwarrenty>().tf_imei,
+                                    phone: true,
                                   ),
                                 );
-                              }),
-                            ),
+                              })
+                            ],
                           ),
+                          ButtonRegisterDev(),
+                          Obx(() {
+                            return Visibility(
+                              visible:
+                                  Get.find<Controllerother>().Model.value ==
+                                      'LX PRO',
+                              child: InkWell(
+                                onTap: () => SendSms(context, '6660'),
+                                child: Container(
+                                  padding: EdgeInsets.symmetric(vertical: 2),
+                                  width: Get.width * 0.3,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color.fromARGB(54, 255, 255, 255),
+                                  ),
+                                  child: Center(
+                                      child: Text(
+                                    'دریافت imei',
+                                    textDirection: TextDirection.rtl,
+                                  )),
+                                ),
+                              ),
+                            );
+                          }),
                         ],
                       ),
                     ),
@@ -186,32 +163,122 @@ class _Adddevice2State extends State<Adddevice2> {
             SizedBox(
               height: 20,
             ),
-            Obx(() {
-              return Visibility(
-                  visible: Get.find<Controllerother>().Model.value == 'LX PRO',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Obx(() {
+                  return Visibility(
+                      visible:
+                          Get.find<Controllerother>().Model.value == 'LX PRO',
+                      child: SizedBox(
+                        width: Get.width * 0.3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              'تک کاربره',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                            Obx(() {
+                              return Checkbox(
+                                  value: Get.find<Controllersttadddevice>()
+                                      .SingleUser
+                                      .value,
+                                  onChanged: (value) {
+                                    Get.find<Controllersttadddevice>()
+                                        .SingleUser
+                                        .value = value!;
+                                  });
+                            })
+                          ],
+                        ),
+                      ));
+                }),
+                SizedBox(
+                  width: Get.width * 0.3,
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'تک کاربره',
+                        'اندروید',
                         style: TextStyle(color: Colors.white),
                       ),
                       Obx(() {
                         return Checkbox(
-                            value: Get.find<Controllersttadddevice>()
-                                .SingleUser
-                                .value,
+                            value: Get.find<Controllerother>().Android.value,
                             onChanged: (value) {
-                              Get.find<Controllersttadddevice>()
-                                  .SingleUser
-                                  .value = value!;
+                              final SharedPreferencesAsync prefs =
+                                  SharedPreferencesAsync();
+                              prefs.setBool('Android', value!);
+                              Get.find<Controllerother>().Android.value = value;
                             });
                       })
                     ],
-                  ));
-            })
+                  ),
+                )
+              ],
+            )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ButtonRegisterDev extends StatelessWidget {
+  const ButtonRegisterDev({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: InkWell(
+        onTap: () async {
+          bool val = await Get.find<Controllersttadddevice>().Agent();
+          if (val) {
+            if (Get.find<Controllerother>().Model.value != 'LX PRO') {
+              DialogOrder(
+                context,
+                Get.find<Controllerdatabase>().AddLx(),
+                description: 'از ساخت دستگاه مطمعن هستید؟',
+              );
+            } else {
+              DialogOrder(
+                context,
+                Get.find<Controllerwarrenty>().SendImeiStartWarenty(),
+                description: 'از ساخت دستگاه مطمعن هستید؟',
+              );
+            }
+          }
+        },
+        child: Obx(() {
+          return Visibility(
+            visible: Get.find<Controllerother>().TypeInquiry.value != 'imei',
+            replacement: Container(
+              width: 25,
+              height: 25,
+              decoration: decoration(color: true),
+              child: Center(
+                child: Obx(() {
+                  return Text(
+                    Get.find<Controllerother>().counter.value.toString(),
+                    style: TextStyle(fontSize: 12),
+                  );
+                }),
+              ),
+            ),
+            child: Container(
+              padding: EdgeInsets.symmetric(vertical: 2),
+              width: Get.width * 0.3,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Color.fromARGB(54, 255, 255, 255),
+              ),
+              child: Center(child: Text('ثبت دستگاه')),
+            ),
+          );
+        }),
       ),
     );
   }
@@ -267,17 +334,19 @@ class WidgetTextField extends StatelessWidget {
     required this.hint,
     required this.tf,
     this.phone = false,
+    this.color = Colors.black
   });
   final String hint;
   final TextEditingController tf;
   final bool phone;
+  final Color color;
   @override
   Widget build(BuildContext context) {
     return Container(
       width: Get.width * 0.44,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
-        color: Colors.black,
+        color: color,
       ),
       child: TextField(
         controller: tf,

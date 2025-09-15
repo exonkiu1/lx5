@@ -5,6 +5,13 @@ import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
+/* 
+**861826074910403##
+**869531071999738##
+ */
+/* 
+*09922993653ABCDE1*QQQQQQQQQQQQQQQQ2*QQQQQQQQQQQQQQQQ3*QQQQQQQQQQQQQQQQ4*QQQQQQQQQQQQQQQQ5*QQQQQQQQQQQQQQQQ6*QQQQQQQQQQQQQQQQ7*QQQQQQQQQQQQQQQQ8*QQQQQQQQQQQQQQQQ9*QQQQQQQQQQQQQQQQ10#
+ */
 void main() async{
    WidgetsFlutterBinding.ensureInitialized();
 
@@ -35,11 +42,13 @@ class MyApp extends StatelessWidget {
             ),
           ),
         )),
+
       ),
       initialBinding: mybinding(),
       theme: ThemeData(
         scaffoldBackgroundColor: Color.fromARGB(255, 199, 169, 169),
-        dialogTheme: DialogTheme(
+        dialogTheme:
+         DialogThemeData(
           titleTextStyle: TextStyle(color: color2, fontSize: 25),
           contentTextStyle: TextStyle(color: Colors.black, fontSize: 18),
         ),

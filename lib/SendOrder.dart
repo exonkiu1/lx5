@@ -136,11 +136,13 @@ DialogTextFieldSms(BuildContext context, Future<String> Function() function,
             TextButton(
               onPressed: () async {
                 Navigator.of(context).pop();
+                Get.find<Controllerother>().TextInuiry.value =
+                    Get.find<Controllerother>().tf.text;
+                Get.find<Controllerother>().tf.text='';
                 String code = await function();
                 if (sms) {
                   SendSms(context, code);
                 }
-
                 print('code : $code');
               },
               child: Text('تایید'),
@@ -182,7 +184,7 @@ SendInquiry(
               Navigator.of(context).pop();
               // Get.find<Controllerother>().TypeInquiry.value = type;
               SendSms(context, code);
-              InquirySms(function, controller: controller);
+              // InquirySms(function, controller: controller);
               print('code : $code');
             },
             child: Text('ارسال پیامک'),

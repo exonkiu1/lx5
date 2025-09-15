@@ -31,11 +31,11 @@ class Controllersttadddevice extends GetxController {
 
   PlayMusic(String name) async {
     if (!Playing.value) {
-      AudioPlayer player = AudioPlayer();
+     /*  AudioPlayer player = AudioPlayer();
       await player.setAsset('assets/music/adddevice/$name.mp3');
       Playing.value = true;
       await player.play();
-      Playing.value = false;
+      Playing.value = false; */
     }
   }
 

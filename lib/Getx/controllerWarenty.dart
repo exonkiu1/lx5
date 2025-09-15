@@ -41,21 +41,14 @@ class Controllerwarrenty extends GetxController {
       tf_PhoneTechnician = TextEditingController();
   RxString drp_city = "تبریز".obs;
   RxString drp_province = "آذربایجان شرقی".obs;
+  TextEditingController tf_imei = TextEditingController();
   SendImeiStartWarenty() async {
     final supabase = Supabase.instance.client;
     String imei = '';
-    if (Get.find<Controllerother>().TextInuiry.value.contains('A')) {
-      imei = Get.find<Controllerother>()
-          .TextInuiry
-          .value
-          .split('*A')[1]
-          .substring(0, 15);
+    if (tf_imei.text.contains('A')) {
+      imei = tf_imei.text.split('*A')[1].substring(0, 15);
     } else {
-      imei = Get.find<Controllerother>()
-          .TextInuiry
-          .value
-          .split('**')[1]
-          .substring(0, 15);
+      imei = tf_imei.text.split('**')[1].substring(0, 15);
     }
 
     SmsImei.value = imei;
@@ -90,6 +83,7 @@ class Controllerwarrenty extends GetxController {
   }
 
   Future<bool> CheckRegisterDev(String imei) async {
+    print('check register dev');
     bool val = false;
     final supabase = Supabase.instance.client;
     final resultnameclinet = await supabase
@@ -97,7 +91,9 @@ class Controllerwarrenty extends GetxController {
         .select('name_clinet')
         .eq('imei', '${imei}')
         .maybeSingle();
+
     final dateStrnameclinet = resultnameclinet?['name_clinet'];
+    print('name-clinet:##${dateStrnameclinet}');
     if (dateStrnameclinet != null) {
       val = true;
       await Get.find<Controllerdatabase>().AddLx();
