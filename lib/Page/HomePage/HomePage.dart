@@ -44,10 +44,56 @@ class Homepage extends StatelessWidget {
           ),
           Column(
             children: [
-              Image.asset(
-                'assets/image/homepage/remote.jpg',
-                height: Get.width * 0.7,
+              Container(
+              width: 300,
+              height: 300,
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/image/homepage/remote.jpg'))),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      width: 300,
+                      height: 100,
+                      color: const Color.fromARGB(92, 244, 67, 54),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 50,
+                                height: 50,
+                                color: const Color.fromARGB(132, 33, 149, 243),
+                              ),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                color: const Color.fromARGB(171, 255, 235, 59),
+                              )
+                            ],
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Container(
+                                width: 50,
+                                height: 50,
+                                color: const Color.fromARGB(171, 255, 235, 59),
+                              ),
+                              Container(
+                                width: 50,
+                                height: 50,
+                                color: const Color.fromARGB(153, 33, 149, 243),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ))
+                ],
               ),
+            ),
               
             ],
           ),
