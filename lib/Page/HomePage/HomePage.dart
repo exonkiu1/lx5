@@ -33,7 +33,7 @@ class Homepage extends StatelessWidget {
               ),
               SizedBox(height: 40),
               Text(
-                'RANGER+',
+                'SignalAlarm',
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
@@ -45,161 +45,10 @@ class Homepage extends StatelessWidget {
           Column(
             children: [
               Image.asset(
-                'assets/image/homepage/castel.png',
+                'assets/image/homepage/remote.jpg',
                 height: Get.width * 0.7,
               ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () => Get.to(Inquiry()),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/image/homepage/inquiry.png',
-                              height: Get.width * 0.1,
-                            ),
-                            Image.asset(
-                              'assets/image/homepage/t inquiry.png',
-                              height: Get.width * 0.1,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      InkWell(
-                        onTap: () => SendOrder(
-                          context,
-                          () => Get.find<Controllerrelay>().Triger(0),
-                        ),
-                        child: Column(
-                          children: [
-                            Align(
-                              child: Image.asset(
-                                'assets/image/homepage/triger.png',
-                                height: Get.width * 0.1,
-                              ),
-                            ),
-                            Image.asset(
-                              'assets/image/homepage/t triger.png',
-                              height: Get.width * 0.1,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Transform.translate(
-                    offset: Offset(0, -20),
-                    child: Stack(
-                      children: [
-                        Image.asset(
-                          'assets/image/homepage/rimot.png',
-                          height: Get.width * 0.5,
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Column(
-                            children: [
-                              SizedBox(
-                                height: Get.width * 0.1,
-                                width: Get.width * 0.3,
-                                child: Row(
-                                  children: [
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        child: InkWell(
-                                          onTap: () {
-                                            SendOrder(
-                                              context,
-                                              () =>
-                                                  Get.find<Controllerhomepage>()
-                                                      .ChangeStateDev('silent'),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        child: InkWell(
-                                          onTap: () {
-                                            SendOrder(
-                                              context,
-                                              () =>
-                                                  Get.find<Controllerhomepage>()
-                                                      .ChangeStateDev('off'),
-                                            );
-                                          },
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              InkWell(
-                                onTap: () => SendOrder(
-                                  context,
-                                  () => Get.find<Controllerhomepage>()
-                                      .ChangeStateDev('on'),
-                                ),
-                                child: Container(
-                                  width: Get.width * 0.2,
-                                  height: Get.width * 0.2,
-                                  // color: const Color.fromARGB(78, 33, 149, 243),
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Column(
-                    children: [
-                      InkWell(
-                        onTap: () => SendOrder(
-                          context,
-                          () => Get.find<Controllerhomepage>()
-                              .ChangeStateDev('halfon'),
-                        ),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/image/homepage/halfon.png',
-                              height: Get.width * 0.1,
-                            ),
-                            Image.asset(
-                              'assets/image/homepage/t halfon.png',
-                              height: Get.width * 0.1,
-                            ),
-                          ],
-                        ),
-                      ),
-                      SizedBox(height: 20),
-                      InkWell(
-                        onTap: () => Get.to(Help()),
-                        child: Column(
-                          children: [
-                            Image.asset(
-                              'assets/image/homepage/help.png',
-                              height: Get.width * 0.1,
-                            ),
-                            Image.asset(
-                              'assets/image/homepage/t help.png',
-                              height: Get.width * 0.1,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
-              ),
+              
             ],
           ),
         ],

@@ -19,7 +19,7 @@ class Adddevice2 extends StatefulWidget {
 class _Adddevice2State extends State<Adddevice2> {
   @override
   void initState() {
-    play_welcome();
+  //  play_welcome();
     CheckPermisionSms();
     // TODO: implement initState
     super.initState();
@@ -56,7 +56,7 @@ class _Adddevice2State extends State<Adddevice2> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.asset(
-                    'assets/image/homepage/castel.png',
+                    'assets/image/homepage/castel.jpg',
                     height: Get.width * 0.4,
                   ),
                   Text('افزودن دستگاه', style: TextStyle(fontSize: 20)),

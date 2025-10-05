@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           body: Backgroundview(
               child: Center(
             child: Text(
-              'RANGER+',
+              'SignalAlarm',
               style: TextStyle(
                 fontSize: 77,
               ),
@@ -53,8 +53,8 @@ class _MyAppState extends State<MyApp> {
           scaffoldBackgroundColor:
               Get.put(Controllerhomepage(), permanent: true).theme.value ==
                       'dark'
-                  ? Color.fromARGB(196, 36, 38, 44)
-                  : Color.fromARGB(255, 255, 250, 242),
+                  ? Colors.white
+                  : Colors.white,
           dialogTheme: DialogTheme(
             titleTextStyle: TextStyle(color: color2, fontSize: 25),
             contentTextStyle: TextStyle(color: Colors.black, fontSize: 18),
