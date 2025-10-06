@@ -20,7 +20,7 @@ class Homepage extends StatelessWidget {
         children: [
           Column(
             children: [
-              SizedBox(height: 23),
+              SizedBox(height: 30),
               Align(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
