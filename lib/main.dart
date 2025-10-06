@@ -5,7 +5,7 @@ import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/binding.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
-String NameDev = 'SignalAlarm';
+String NameDev = 'Fubu';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
