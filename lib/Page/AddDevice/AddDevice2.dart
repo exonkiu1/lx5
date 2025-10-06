@@ -55,10 +55,10 @@ class _Adddevice2State extends State<Adddevice2> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.asset(
+                  /* Image.asset(
                     'assets/image/homepage/castel.jpg',
                     height: Get.width * 0.4,
-                  ),
+                  ), */
                   Text('افزودن دستگاه', style: TextStyle(fontSize: 20)),
                   Container(
                     margin: EdgeInsets.symmetric(horizontal: 10),

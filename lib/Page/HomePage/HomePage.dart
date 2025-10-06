@@ -16,7 +16,7 @@ class Homepage extends StatelessWidget {
       key: _globalKey,
       endDrawer: DrawerWidget(),
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           Column(
             children: [
@@ -37,6 +37,7 @@ class Homepage extends StatelessWidget {
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,
+                  fontFamily: 'Name',
                   color: Color.fromARGB(255, 45, 64, 66),
                 ),
               ),
@@ -45,8 +46,8 @@ class Homepage extends StatelessWidget {
           Column(
             children: [
               Container(
-              width: 300,
-              height: 300,
+              width: 400,
+              height: 400,
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('assets/image/homepage/remote.jpg'))),
@@ -54,7 +55,7 @@ class Homepage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
-                      width: 300,
+                      width: 400,
                       height: 100,
                     //  color: const Color.fromARGB(92, 244, 67, 54),
                       child: Column(
