@@ -20,6 +20,7 @@ class Homepage extends StatelessWidget {
         children: [
           Column(
             children: [
+              SizedBox(height: 23),
               Align(
                 alignment: Alignment.bottomRight,
                 child: ElevatedButton(
@@ -33,7 +34,7 @@ class Homepage extends StatelessWidget {
               ),
               SizedBox(height: 40),
               Text(
-                'SignalAlarm',
+                NameDev,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
                   fontSize: 40,

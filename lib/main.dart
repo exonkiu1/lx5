@@ -5,7 +5,7 @@ import 'package:lx/Getx/ControllerHomePage.dart';
 import 'package:lx/Getx/binding.dart';
 import 'package:lx/WidgetUi/BackGroundView.dart';
 import 'package:lx/WidgetUi/decoration.dart';
-
+Strint NameDev = 'SignalAlarm';
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setPreferredOrientations([
@@ -41,7 +41,7 @@ class _MyAppState extends State<MyApp> {
           body: Backgroundview(
               child: Center(
             child: Text(
-              'SignalAlarm',
+              NameDev,
               style: TextStyle(
                 fontSize: 77,
               ),
