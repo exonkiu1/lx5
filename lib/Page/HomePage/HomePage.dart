@@ -62,30 +62,62 @@ class Homepage extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                color: const Color.fromARGB(132, 33, 149, 243),
+                              InkWell(
+                                onTap: ()=> SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('on'),
+                                            ),
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                //  color: const Color.fromARGB(132, 33, 149, 243),
+                                ),
                               ),
-                              Container(
-                                width: 50,
-                                height: 50,
-                                color: const Color.fromARGB(171, 255, 235, 59),
+                              InkWell(
+                             onTap:    ()=> SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('on'),
+                                            ),
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                 // color: const Color.fromARGB(171, 255, 235, 59),
+                                ),
                               )
                             ],
                           ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Container(
-                                width: 50,
-                                height: 50,
-                                color: const Color.fromARGB(171, 255, 235, 59),
+                              InkWell(
+                                onTap: ()=> SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('silent'),
+                                            ),
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                 // color: const Color.fromARGB(171, 255, 235, 59),
+                                ),
                               ),
-                              Container(
-                                width: 50,
-                                height: 50,
-                                color: const Color.fromARGB(153, 33, 149, 243),
+                              InkWell(
+                                onTap: ()=> SendOrder(
+                                              context,
+                                              () =>
+                                                  Get.find<Controllerhomepage>()
+                                                      .ChangeStateDev('halfon'),
+                                            ),
+                                child: Container(
+                                  width: 50,
+                                  height: 50,
+                                  color: const Color.fromARGB(153, 33, 149, 243),
+                                ),
                               ),
                             ],
                           ),

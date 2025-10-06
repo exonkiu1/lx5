@@ -94,6 +94,6 @@ Map<String, Map<String, dynamic>> PageOptions2 = {
   'امنیت ورود به دستگاه': {'image': 'password_app', 'page': Passwordapp()},
 
   'گزارش گیری': {'image': 'history', 'page': Reportsms()},
-  'راهنمایی': {'image': 'help', 'page': Help()},
-  'درباره ما': {'image': 'about_me', 'page': Aboutme()},
+//  'راهنمایی': {'image': 'help', 'page': Help()},
+//  'درباره ما': {'image': 'about_me', 'page': Aboutme()},
 };
