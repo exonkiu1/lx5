@@ -29,7 +29,7 @@ class DrawerWidget extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                InkWell(
+                /* InkWell(
                   onTap: () => Get.put(
                     Controllerhomepage(),
                     permanent: true,
@@ -45,7 +45,7 @@ class DrawerWidget extends StatelessWidget {
                           : Icons.dark_mode,
                     );
                   }),
-                ),
+                ), */
                 Image.asset('assets/image/logo.png', height: 60),
                 Container(width: 20),
               ],

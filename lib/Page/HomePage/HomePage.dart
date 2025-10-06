@@ -56,7 +56,7 @@ class Homepage extends StatelessWidget {
                   Container(
                       width: 300,
                       height: 100,
-                      color: const Color.fromARGB(92, 244, 67, 54),
+                    //  color: const Color.fromARGB(92, 244, 67, 54),
                       child: Column(
                         children: [
                           Row(
@@ -116,7 +116,7 @@ class Homepage extends StatelessWidget {
                                 child: Container(
                                   width: 50,
                                   height: 50,
-                                  color: const Color.fromARGB(153, 33, 149, 243),
+                                //  color: const Color.fromARGB(153, 33, 149, 243),
                                 ),
                               ),
                             ],
