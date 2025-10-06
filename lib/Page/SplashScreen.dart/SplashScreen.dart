@@ -21,20 +21,13 @@ class _SplashscreenState extends State<Splashscreen> {
     super.initState();
   }
 
- 
-
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
+    return Scaffold(
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              NameDev,
-              style: TextStyle(fontSize: 40),
-            ),
-          ],
+          children: [const Text(NameDev, style: TextStyle(fontSize: 40))],
         ),
       ),
     );
