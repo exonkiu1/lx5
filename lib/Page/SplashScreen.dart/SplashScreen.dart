@@ -27,7 +27,7 @@ class _SplashscreenState extends State<Splashscreen> {
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [ Text('SignalAlarm', style: TextStyle(fontSize: 40))],
+          children: [ Text('${NameDev}', style: TextStyle(fontSize: 40))],
         ),
       ),
     );
