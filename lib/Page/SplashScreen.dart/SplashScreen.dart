@@ -4,6 +4,7 @@ import 'package:local_auth/local_auth.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Page/HomePage/HomePage.dart';
 import 'package:lx/Page/PasswordApp/function.dart';
+import '../../main.dart';
 
 class Splashscreen extends StatefulWidget {
   const Splashscreen({super.key});

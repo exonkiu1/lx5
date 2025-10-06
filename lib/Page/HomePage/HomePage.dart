@@ -6,7 +6,7 @@ import 'package:lx/Page/Help/Help.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/SendOrder.dart';
 import 'DrawerWidget.dart';
-
+import '../../main.dart';
 class Homepage extends StatelessWidget {
   GlobalKey<ScaffoldState> _globalKey = GlobalKey();
 
