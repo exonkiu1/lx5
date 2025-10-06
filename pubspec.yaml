@@ -122,7 +122,7 @@ flutter:
         - asset: assets/IRANSans.ttf
     - family: Name
       fonts:
-        - asset: assets/name2.ttf
+        - asset: assets/name2.otf
   #         style: italic
   #   - family: Trajan Pro
   #     fonts:
