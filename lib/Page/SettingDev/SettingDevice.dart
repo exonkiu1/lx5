@@ -52,11 +52,11 @@ class WidgetMelodyAlarm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Visibility(
-        visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+        visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
         child: Row(
           children: [
             Container(
-              width: Get.width * 0.9,
+              width: Get.width * 0.4,
               decoration: decoration(),
               margin: EdgeInsets.symmetric(vertical: 10),
               child: Obx(() {
