@@ -26,7 +26,7 @@ class Controllersetting extends GetxController {
   Future<String> ChangeMelodySpeaker(int value) async {
     MelodySpeaker.value = value.toString();
     Get.find<Controllerdatabase>().UpdateLx();
-    return '221*0__${value}bb';
+    return '221*0__${value}bb#';
   }
   Future<String> ChangeLangDev(String value) async {
     DevLanguage.value = value;

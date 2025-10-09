@@ -275,7 +275,7 @@ Future<void> SendSms(BuildContext context, String code,
     } else {
       telephony.sendSms(
           to: phone,
-          message: '*0000*${code}#',
+          message: '*0000*${code}${code.endsWith('#') ? '' : '#'}',
           subscriptionId:
               Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
     }
