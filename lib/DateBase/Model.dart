@@ -31,6 +31,7 @@ class DevLX {
   String ModelPro;
   String Oprator;
   String Simcard;
+  String MelodySpeaker;
   //
   String NameClinet;
   String PhoneClinet;
@@ -44,6 +45,8 @@ class DevLX {
   String PasswordRemote;
   //
   String Partion;
+  //
+
   DevLX({
     required this.id,
     required this.Phone,
@@ -71,6 +74,7 @@ class DevLX {
     this.InventoryReport = '12',
     this.AlarmTime = '10',
     this.AlarmMode = 'ابتدا پیامک سپس تماس با تکرار',
+    this.MelodySpeaker = '0',
     this.Simcard = '-1',
     this.NameClinet = '',
     this.PhoneClinet = '',
@@ -131,6 +135,6 @@ class DevLX {
 
   @override
   String toString() {
-    return 'DevLX{id:$id,Phone:$Phone,Name:$Name,StateDev:$StateDev,Pass:$Pass,Charge:$Charge,UrbanElectricity:$UrbanElectricity,Speaker:$Speaker,BatterPower:$BatterPower,CountContact:$CountContact,CountRemote:$CountRemote,AntennaStrength:$AntennaStrength,CommunicationsStatus:$CommunicationsStatus,zon1:$zon1,zon2:$zon2,zon3:$zon3,zon4:$zon4,DevLanguage:$DevLanguage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,PeriodicBatteryReport:$PeriodicBatteryReport,InventoryReport:$InventoryReport,AlarmTime:$AlarmTime,AlarmMode:$AlarmMode,Model:$Model,Oprator:$Oprator,Simcard:$Simcard,NameClinet:$NameClinet,PhoneClinet:$PhoneClinet,City:$City,Province:$Province,Address:$Address,DateWarrenty:$DateWarrenty,NameTechnician:$NameTechnician,PhoneTechnician:$PhoneTechnician,ModelPro:$ModelPro,PasswordRemote:$PasswordRemote,Partion:$Partion}';
+    return 'DevLX{id:$id,Phone:$Phone,Name:$Name,StateDev:$StateDev,Pass:$Pass,Charge:$Charge,UrbanElectricity:$UrbanElectricity,Speaker:$Speaker,BatterPower:$BatterPower,CountContact:$CountContact,CountRemote:$CountRemote,AntennaStrength:$AntennaStrength,CommunicationsStatus:$CommunicationsStatus,zon1:$zon1,zon2:$zon2,zon3:$zon3,zon4:$zon4,DevLanguage:$DevLanguage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,EstablishingContactDuringPowerOutage:$EstablishingContactDuringPowerOutage,PeriodicBatteryReport:$PeriodicBatteryReport,InventoryReport:$InventoryReport,AlarmTime:$AlarmTime,AlarmMode:$AlarmMode,Model:$Model,Oprator:$Oprator,Simcard:$Simcard,NameClinet:$NameClinet,PhoneClinet:$PhoneClinet,City:$City,Province:$Province,Address:$Address,DateWarrenty:$DateWarrenty,NameTechnician:$NameTechnician,PhoneTechnician:$PhoneTechnician,ModelPro:$ModelPro,PasswordRemote:$PasswordRemote,Partion:$Partion,MelodySpeaker:$MelodySpeaker}';
   }
 }

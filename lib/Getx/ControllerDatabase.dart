@@ -119,6 +119,7 @@ class Controllerdatabase extends GetxController {
         InventoryReport: Get.find<Controllersetting>().InventoryReport.value,
         AlarmMode: Get.find<Controllersetting>().AlarmMode.value,
         AlarmTime: Get.find<Controllersetting>().AlarmTime.value,
+        MelodySpeaker: Get.find<Controllersetting>().MelodySpeaker.value,
         //Setting
         //inquiry
         UrbanElectricity: Get.find<Controllerinquiry>().UrbanElectricity.value,

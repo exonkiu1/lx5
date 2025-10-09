@@ -24,7 +24,7 @@ class DatabaseLX {
       version: 2,
       onCreate: (db, version) {
         return db.execute(
-          "CREATE TABLE DatabaseLX(id TEXT,Phone TEXT,Name TEXT,StateDev TEXT,Pass TEXT,Charge TEXT,UrbanElectricity TEXT,Speaker TEXT,BatterPower TEXT,CountContact TEXT,CountRemote TEXT,AntennaStrength TEXT,CommunicationsStatus TEXT,zon1 TEXT,zon2 TEXT,zon3 TEXT,zon4 TEXT,DevLanguage TEXT,EstablishingContactDuringPowerOutage TEXT,SemiActiveStatusRemote TEXT,PeriodicBatteryReport TEXT,InventoryReport TEXT,AlarmTime TEXT,AlarmMode TEXT,Model TEXT,Oprator TEXT,Simcard TEXT,NameClinet TEXT,PhoneClinet TEXT,City TEXT,Province TEXT,Address TEXT,DateWarrenty TEXT,NameTechnician TEXT,PhoneTechnician TEXT,ModelPro TEXT,PasswordRemote TEXT,Partion TEXT)",
+          "CREATE TABLE DatabaseLX(id TEXT,Phone TEXT,Name TEXT,StateDev TEXT,Pass TEXT,Charge TEXT,UrbanElectricity TEXT,Speaker TEXT,BatterPower TEXT,CountContact TEXT,CountRemote TEXT,AntennaStrength TEXT,CommunicationsStatus TEXT,zon1 TEXT,zon2 TEXT,zon3 TEXT,zon4 TEXT,DevLanguage TEXT,EstablishingContactDuringPowerOutage TEXT,SemiActiveStatusRemote TEXT,PeriodicBatteryReport TEXT,InventoryReport TEXT,AlarmTime TEXT,AlarmMode TEXT,Model TEXT,Oprator TEXT,Simcard TEXT,NameClinet TEXT,PhoneClinet TEXT,City TEXT,Province TEXT,Address TEXT,DateWarrenty TEXT,NameTechnician TEXT,PhoneTechnician TEXT,ModelPro TEXT,PasswordRemote TEXT,Partion TEXT,MelodySpeaker TEXT)",
         );
       },
       onUpgrade: (db, oldVersion, newVersion) =>
@@ -96,7 +96,9 @@ class DatabaseLX {
           Province: maps[i]['Province'],
           ModelPro: maps[i]['ModelPro'],
           PasswordRemote: maps[i]['PasswordRemote'],
-          Partion: maps[i]['Partion']);
+          Partion: maps[i]['Partion'],
+          MelodySpeaker: maps[i]['MelodySpeaker']
+          );
     });
   }
 

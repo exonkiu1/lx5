@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:lx/Getx/ControllerDatabase.dart';
 import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/Getx/ControllerSetting.dart';
@@ -29,9 +30,10 @@ class Settingdevice extends StatelessWidget {
               WidgetAddSencor(),
               WidgetDeleteSencor(),
               WidgetPeriodicBatteryReport(),
-               WidgetInventoryReport(),
+              WidgetInventoryReport(),
               WidgetAlarmTime(),
               WidgetModeAlarm(),
+              WidgetMelodyAlarm(),
               WidgetLine(),
               WidgetDeleteDev(),
               WidgetReset(),
@@ -39,6 +41,51 @@ class Settingdevice extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+}
+
+class WidgetMelodyAlarm extends StatelessWidget {
+  const WidgetMelodyAlarm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(
+      () {
+        return Visibility(
+          visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+          child: Container(
+            width: Get.width * 0.9,
+            decoration: decoration(),
+            margin: EdgeInsets.symmetric(vertical: 10),
+            child: Column(
+              children: [
+                Obx(() {
+                  return DropdownButton(
+                      value: int.parse(
+                          Get.find<Controllersetting>().MelodySpeaker.value),
+                      items: List.generate(7, (i) => i)
+                          .map<DropdownMenuItem<int>>((value) => DropdownMenuItem(
+                                child: Text(
+                                    '${value.toString().toPersianDigit()} ملودی'),
+                                value: value,
+                              ))
+                          .toList(),
+                      onChanged: (value) => SendOrder(
+                          context,
+                          () => Get.find<Controllersetting>()
+                              .ChangeMelodySpeaker(value!),
+                          description: """
+      1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
+    
+    2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
+    """));
+                })
+              ],
+            ),
+          ),
+        );
+      }
     );
   }
 }
@@ -55,12 +102,11 @@ class WidgetReset extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap:
-                () => DialogOrder(
-                  context,
-                  () => Get.find<Controllerdatabase>().ResetDevLx(),
-                  description: 'از بازگرداندن تنظیمات نرم افزار مطمعن هستید؟',
-                ),
+            onTap: () => DialogOrder(
+              context,
+              () => Get.find<Controllerdatabase>().ResetDevLx(),
+              description: 'از بازگرداندن تنظیمات نرم افزار مطمعن هستید؟',
+            ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
@@ -80,12 +126,11 @@ class WidgetDeleteDev extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap:
-          () => DialogOrder(
-            context,
-            () => Get.find<Controllerdatabase>().DeleteDevLx(),
-            description: 'از حذف دستگاه مطمعن هستید؟',
-          ),
+      onTap: () => DialogOrder(
+        context,
+        () => Get.find<Controllerdatabase>().DeleteDevLx(),
+        description: 'از حذف دستگاه مطمعن هستید؟',
+      ),
       child: Container(
         width: Get.width * 0.9,
         margin: EdgeInsets.symmetric(vertical: 10),
@@ -137,27 +182,24 @@ class WidgetModeAlarm extends StatelessWidget {
               return DropdownButton(
                 value: Get.find<Controllersetting>().AlarmMode.value,
                 dropdownColor: Colors.black,
-                items:
-                    List.generate(
-                          ModeAlarm.length,
-                          (i) => ModeAlarm.keys.elementAt(i),
-                        )
-                        .map<DropdownMenuItem<String>>(
-                          (String value) => DropdownMenuItem(
-                            child: Text(
-                              '${value}',
-                              style: TextStyle(color: Colors.white),
-                            ),
-                            value: value,
-                          ),
-                        )
-                        .toList(),
-                onChanged:
-                    (value) => SendOrder(
-                      context,
-                      () =>
-                          Get.find<Controllersetting>().ChangeModeAlarm(value!),
-                    ),
+                items: List.generate(
+                  ModeAlarm.length,
+                  (i) => ModeAlarm.keys.elementAt(i),
+                )
+                    .map<DropdownMenuItem<String>>(
+                      (String value) => DropdownMenuItem(
+                        child: Text(
+                          '${value}',
+                          style: TextStyle(color: Colors.white),
+                        ),
+                        value: value,
+                      ),
+                    )
+                    .toList(),
+                onChanged: (value) => SendOrder(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeModeAlarm(value!),
+                ),
               );
             }),
           ),
@@ -180,15 +222,14 @@ class WidgetAlarmTime extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap:
-                () => DialogTextFieldSms(
-                  context,
-                  () => Get.find<Controllersetting>().ChangeAlarmTime(),
-                  sms: true,
-                  description: 'زمان آژیر',
-                  maxlenght: 2,
-                  KeyboardInt: true,
-                ),
+            onTap: () => DialogTextFieldSms(
+              context,
+              () => Get.find<Controllersetting>().ChangeAlarmTime(),
+              sms: true,
+              description: 'زمان آژیر',
+              maxlenght: 2,
+              KeyboardInt: true,
+            ),
             child: Container(
               width: Get.width * 0.5,
               decoration: decoration(),
@@ -219,52 +260,48 @@ class WidgetInventoryReport extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        return Visibility(
-                  visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
-        
-          child: Container(
-            width: Get.width * 0.9,
-            margin: EdgeInsets.symmetric(vertical: 10),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                InkWell(
-                  onTap:
-                      () => DialogTextFieldSms(
-                        context,
-                        () => Get.find<Controllersetting>().ChangeInventoryReport(),
-                        sms: true,
-                        description: 'گزارش دوره ای موجودی',
-                        maxlenght: 2,
-                        KeyboardInt: true,
-                      ),
-                  child: Container(
-                    width: Get.width * 0.5,
-                    decoration: decoration(),
-                    child: Center(
-                      child: Column(
-                        children: [
-                          Text('ویرایش'),
-                          Obx(() {
-                            return Text(
-                              'مقدار فعلی : ${Get.find<Controllersetting>().InventoryReport.value}پیامک'
-                                  .toPersianDigit(),
-                            );
-                          }),
-                        ],
-                      ),
+    return Obx(() {
+      return Visibility(
+        visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+        child: Container(
+          width: Get.width * 0.9,
+          margin: EdgeInsets.symmetric(vertical: 10),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              InkWell(
+                onTap: () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeInventoryReport(),
+                  sms: true,
+                  description: 'گزارش دوره ای موجودی',
+                  maxlenght: 2,
+                  KeyboardInt: true,
+                ),
+                child: Container(
+                  width: Get.width * 0.5,
+                  decoration: decoration(),
+                  child: Center(
+                    child: Column(
+                      children: [
+                        Text('ویرایش'),
+                        Obx(() {
+                          return Text(
+                            'مقدار فعلی : ${Get.find<Controllersetting>().InventoryReport.value}پیامک'
+                                .toPersianDigit(),
+                          );
+                        }),
+                      ],
                     ),
                   ),
                 ),
-                Text('گزارش دوره ای موجودی'),
-              ],
-            ),
+              ),
+              Text('گزارش دوره ای موجودی'),
+            ],
           ),
-        );
-      }
-    );
+        ),
+      );
+    });
   }
 }
 
@@ -276,7 +313,6 @@ class WidgetPeriodicBatteryReport extends StatelessWidget {
     return Obx(() {
       return Visibility(
         visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
-
         child: Container(
           width: Get.width * 0.9,
           margin: EdgeInsets.symmetric(vertical: 10),
@@ -284,17 +320,15 @@ class WidgetPeriodicBatteryReport extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap:
-                    () => DialogTextFieldSms(
-                      context,
-                      () =>
-                          Get.find<Controllersetting>()
-                              .ChangePeriodicBatteryReport(),
-                      sms: true,
-                      description: 'گزارش دوره ای باتری',
-                      maxlenght: 2,
-                      KeyboardInt: true,
-                    ),
+                onTap: () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>()
+                      .ChangePeriodicBatteryReport(),
+                  sms: true,
+                  description: 'گزارش دوره ای باتری',
+                  maxlenght: 2,
+                  KeyboardInt: true,
+                ),
                 child: Container(
                   width: Get.width * 0.5,
                   decoration: decoration(),
@@ -334,11 +368,10 @@ class WidgetDeleteSencor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap:
-                () => SendOrder(
-                  context,
-                  () => Get.find<Controllersetting>().ChangeDeleteSencor(),
-                ),
+            onTap: () => SendOrder(
+              context,
+              () => Get.find<Controllersetting>().ChangeDeleteSencor(),
+            ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
@@ -364,11 +397,10 @@ class WidgetAddSencor extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap:
-                () => SendOrder(
-                  context,
-                  () => Get.find<Controllersetting>().ChangeAddSencor(),
-                ),
+            onTap: () => SendOrder(
+              context,
+              () => Get.find<Controllersetting>().ChangeAddSencor(),
+            ),
             child: Container(
               width: Get.width * 0.25,
               decoration: decoration(),
@@ -397,12 +429,11 @@ class WidgetDeleteRemote extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               InkWell(
-                onTap:
-                    () => DialogTextFieldSms(
-                      context,
-                      () => Get.find<Controllersetting>().ChangeDeleteRemote(),
-                      sms: true,
-                    ),
+                onTap: () => DialogTextFieldSms(
+                  context,
+                  () => Get.find<Controllersetting>().ChangeDeleteRemote(),
+                  sms: true,
+                ),
                 child: Container(
                   width: Get.width * 0.25,
                   decoration: decoration(),
@@ -429,11 +460,10 @@ class WidgetAddRemote extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           InkWell(
-            onTap:
-                () => SendOrder(
-                  context,
-                  () => Get.find<Controllersetting>().ChangeAddRemote(),
-                ),
+            onTap: () => SendOrder(
+              context,
+              () => Get.find<Controllersetting>().ChangeAddRemote(),
+            ),
             child: Container(
               margin: EdgeInsets.symmetric(vertical: 10),
               width: Get.width * 0.25,
@@ -465,18 +495,16 @@ class WidgetSemiActiveStatusRemote extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap:
-                      () => SendOrder(
-                        context,
-                        () => Get.find<Controllersetting>()
-                            .ChangeSemiActiveStatusRemote('true'),
-                      ),
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllersetting>()
+                        .ChangeSemiActiveStatusRemote('true'),
+                  ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                        color:
-                            Get.find<Controllersetting>()
+                        color: Get.find<Controllersetting>()
                                 .SemiActiveStatusRemote
                                 .value ==
                             'true',
@@ -486,18 +514,16 @@ class WidgetSemiActiveStatusRemote extends StatelessWidget {
                   }),
                 ),
                 InkWell(
-                  onTap:
-                      () => SendOrder(
-                        context,
-                        () => Get.find<Controllersetting>()
-                            .ChangeSemiActiveStatusRemote('false'),
-                      ),
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllersetting>()
+                        .ChangeSemiActiveStatusRemote('false'),
+                  ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                        color:
-                            Get.find<Controllersetting>()
+                        color: Get.find<Controllersetting>()
                                 .SemiActiveStatusRemote
                                 .value ==
                             'false',
@@ -533,18 +559,16 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap:
-                      () => SendOrder(
-                        context,
-                        () => Get.find<Controllersetting>()
-                            .ChangeEstablishingContactDuringPowerOutage('true'),
-                      ),
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllersetting>()
+                        .ChangeEstablishingContactDuringPowerOutage('true'),
+                  ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                        color:
-                            Get.find<Controllersetting>()
+                        color: Get.find<Controllersetting>()
                                 .EstablishingContactDuringPowerOutage
                                 .value ==
                             'true',
@@ -554,20 +578,18 @@ class WidgetEstablishingContactDuringPowerOutage extends StatelessWidget {
                   }),
                 ),
                 InkWell(
-                  onTap:
-                      () => SendOrder(
-                        context,
-                        () => Get.find<Controllersetting>()
-                            .ChangeEstablishingContactDuringPowerOutage(
-                              'false',
-                            ),
-                      ),
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllersetting>()
+                        .ChangeEstablishingContactDuringPowerOutage(
+                      'false',
+                    ),
+                  ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
-                        color:
-                            Get.find<Controllersetting>()
+                        color: Get.find<Controllersetting>()
                                 .EstablishingContactDuringPowerOutage
                                 .value ==
                             'false',
@@ -603,38 +625,34 @@ class WidgetLangDev extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 InkWell(
-                  onTap:
-                      () => SendOrder(
-                        context,
-                        () =>
-                            Get.find<Controllersetting>().ChangeLangDev('per'),
-                      ),
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllersetting>().ChangeLangDev('per'),
+                  ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
                         color:
                             Get.find<Controllersetting>().DevLanguage.value ==
-                            'per',
+                                'per',
                       ),
                       child: Center(child: Text('فارسی')),
                     );
                   }),
                 ),
                 InkWell(
-                  onTap:
-                      () => SendOrder(
-                        context,
-                        () =>
-                            Get.find<Controllersetting>().ChangeLangDev('eng'),
-                      ),
+                  onTap: () => SendOrder(
+                    context,
+                    () => Get.find<Controllersetting>().ChangeLangDev('eng'),
+                  ),
                   child: Obx(() {
                     return Container(
                       width: Get.width * 0.25,
                       decoration: decoration(
                         color:
                             Get.find<Controllersetting>().DevLanguage.value ==
-                            'eng',
+                                'eng',
                       ),
                       child: Center(child: Text('انگلیسی')),
                     );

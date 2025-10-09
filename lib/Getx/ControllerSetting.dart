@@ -10,7 +10,8 @@ class Controllersetting extends GetxController {
       PeriodicBatteryReport = ''.obs,
       InventoryReport = ''.obs,
       AlarmTime = ''.obs,
-      AlarmMode = ''.obs;
+      AlarmMode = ''.obs,MelodySpeaker=''.obs;
+      
   GetSetting(DevLX model) {
     DevLanguage.value = model.DevLanguage;
     EstablishingContactDuringPowerOutage.value =
@@ -20,8 +21,13 @@ class Controllersetting extends GetxController {
     InventoryReport.value = model.InventoryReport;
     AlarmTime.value = model.AlarmTime;
     AlarmMode.value = model.AlarmMode;
+    MelodySpeaker.value=model.MelodySpeaker;
   }
-
+  Future<String> ChangeMelodySpeaker(int value) async {
+    MelodySpeaker.value = value.toString();
+    Get.find<Controllerdatabase>().UpdateLx();
+    return '221*0__${value}bb';
+  }
   Future<String> ChangeLangDev(String value) async {
     DevLanguage.value = value;
     Get.find<Controllerdatabase>().UpdateLx();
