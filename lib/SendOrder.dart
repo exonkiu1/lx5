@@ -322,7 +322,7 @@ DirectInquiry(
   String code = '',
   String controller = '',
   String type = '',
-}) async{
+}) async {
   final context = Get.context;
   SendSms(context!, code);
   await Future.delayed(Duration(seconds: 2));
@@ -390,12 +390,16 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
   Get.find<Controllerpassword>().tf3.text = '';
 }
 
-showSnackBar(BuildContext context, {String title = '', double width = 0.3,int time = 1}) {
+showSnackBar(BuildContext context,
+    {String title = '',
+    double width = 0.3,
+    int time = 1,
+    Color color = const Color.fromARGB(116, 255, 255, 255)}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     duration: Duration(seconds: time),
     width: Get.width * width,
     margin: EdgeInsets.all(20),
-    backgroundColor: const Color.fromARGB(116, 255, 255, 255),
+    backgroundColor: color,
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     content: Text(

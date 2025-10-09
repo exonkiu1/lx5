@@ -30,10 +30,10 @@ class Settingdevice extends StatelessWidget {
               WidgetAddSencor(),
               WidgetDeleteSencor(),
               WidgetPeriodicBatteryReport(),
+              WidgetMelodyAlarm(),
               WidgetInventoryReport(),
               WidgetAlarmTime(),
               WidgetModeAlarm(),
-              WidgetMelodyAlarm(),
               WidgetLine(),
               WidgetDeleteDev(),
               WidgetReset(),
@@ -52,44 +52,58 @@ class WidgetMelodyAlarm extends StatelessWidget {
   Widget build(BuildContext context) {
     return Obx(() {
       return Visibility(
-        visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
-        child: Row(
-          children: [
-            Container(
-              width: Get.width * 0.4,
-              decoration: decoration(),
-              margin: EdgeInsets.symmetric(vertical: 10),
-              child: Obx(() {
-                return DropdownButton(
-                    value: int.parse(
-                        Get.find<Controllersetting>().MelodySpeaker.value),
-                    items: List.generate(7, (i) => i)
-                        .map<DropdownMenuItem<int>>((value) => DropdownMenuItem(
-                              child: Text(
-                                '${(value + 1).toString().toPersianDigit()} ملودی',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              value: value,
-                            ))
-                        .toList(),
-                    onChanged: (value) {
-                      showSnackBar(context,
-                          title: """
-      1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
-    
-    2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
-    """,time: 6,
-                          width: Get.width * 0.8);
-                      SendOrder(
-                        context,
-                        () => Get.find<Controllersetting>()
-                            .ChangeMelodySpeaker(value!),
-                      );
-                    });
-              }),
-            ),
-            Text('ملودی اسپیکر')
-          ],
+        visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+        child: Container(
+          width: Get.width * 0.9,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: Get.width * 0.5,
+                decoration: decoration(),
+                margin: EdgeInsets.symmetric(vertical: 10),
+                child: Center(
+                  child: Obx(() {
+                    return DropdownButton(
+                        value: int.parse(
+                            Get.find<Controllersetting>().MelodySpeaker.value),
+                        dropdownColor: color2,
+                        underline: Container(),
+                        
+                        items: List.generate(7, (i) => i)
+                            .map<DropdownMenuItem<int>>(
+                                (value) => DropdownMenuItem(
+                                      child: Center(
+                                        child: Text(
+                                          '${(value + 1).toString().toPersianDigit()} ملودی',
+                                          style: TextStyle(color: color1),
+                                        ),
+                                      ),
+                                      value: value,
+                                    ))
+                            .toList(),
+                        onChanged: (value) {
+                          showSnackBar(context,
+                              title: """
+                              1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
+                            
+                            2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
+                            """,
+                              color: const Color.fromARGB(176, 0, 0, 0),
+                              time: 6,
+                              width: Get.width * 0.8);
+                          SendOrder(
+                            context,
+                            () => Get.find<Controllersetting>()
+                                .ChangeMelodySpeaker(value!),
+                          );
+                        });
+                  }),
+                ),
+              ),
+              Text('ملودی اسپیکر')
+            ],
+          ),
         ),
       );
     });
