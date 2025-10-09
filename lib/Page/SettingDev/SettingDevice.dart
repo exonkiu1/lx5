@@ -53,7 +53,7 @@ class WidgetMelodyAlarm extends StatelessWidget {
     return Obx(
       () {
         return Visibility(
-          visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+          visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
           child: Container(
             width: Get.width * 0.9,
             decoration: decoration(),
@@ -67,7 +67,7 @@ class WidgetMelodyAlarm extends StatelessWidget {
                       items: List.generate(7, (i) => i)
                           .map<DropdownMenuItem<int>>((value) => DropdownMenuItem(
                                 child: Text(
-                                    '${value.toString().toPersianDigit()} ملودی'),
+                                    '${(value+1).toString().toPersianDigit()} ملودی'),
                                 value: value,
                               ))
                           .toList(),
