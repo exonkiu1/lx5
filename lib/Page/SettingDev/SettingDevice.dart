@@ -50,43 +50,49 @@ class WidgetMelodyAlarm extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () {
-        return Visibility(
-          visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
-          child: Container(
-            width: Get.width * 0.9,
-            decoration: decoration(),
-            margin: EdgeInsets.symmetric(vertical: 10),
-            child: Column(
-              children: [
-                Obx(() {
-                  return DropdownButton(
-                      value: int.parse(
-                          Get.find<Controllersetting>().MelodySpeaker.value),
-                      items: List.generate(7, (i) => i)
-                          .map<DropdownMenuItem<int>>((value) => DropdownMenuItem(
-                                child: Text(
-                                    '${(value+1).toString().toPersianDigit()} ملودی'),
-                                value: value,
-                              ))
-                          .toList(),
-                      onChanged: (value) => SendOrder(
-                          context,
-                          () => Get.find<Controllersetting>()
-                              .ChangeMelodySpeaker(value!),
-                          description: """
+    return Obx(() {
+      return Visibility(
+        visible: Get.find<Controllerinfo>().Model.value != 'LX PRO',
+        child: Row(
+          children: [
+            Container(
+              width: Get.width * 0.9,
+              decoration: decoration(),
+              margin: EdgeInsets.symmetric(vertical: 10),
+              child: Obx(() {
+                return DropdownButton(
+                    value: int.parse(
+                        Get.find<Controllersetting>().MelodySpeaker.value),
+                    items: List.generate(7, (i) => i)
+                        .map<DropdownMenuItem<int>>((value) => DropdownMenuItem(
+                              child: Text(
+                                '${(value + 1).toString().toPersianDigit()} ملودی',
+                                style: TextStyle(color: Colors.white),
+                              ),
+                              value: value,
+                            ))
+                        .toList(),
+                    onChanged: (value) {
+                      showSnackBar(context,
+                          title: """
       1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
     
     2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
-    """));
-                })
-              ],
+    """,time: 6,
+                          width: Get.width * 0.8);
+                      SendOrder(
+                        context,
+                        () => Get.find<Controllersetting>()
+                            .ChangeMelodySpeaker(value!),
+                      );
+                    });
+              }),
             ),
-          ),
-        );
-      }
-    );
+            Text('ملودی اسپیکر')
+          ],
+        ),
+      );
+    });
   }
 }
 

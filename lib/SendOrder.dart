@@ -390,9 +390,9 @@ Future<void> SendSmsPass(BuildContext context, String code) async {
   Get.find<Controllerpassword>().tf3.text = '';
 }
 
-showSnackBar(BuildContext context, {String title = '', double width = 0.3}) {
+showSnackBar(BuildContext context, {String title = '', double width = 0.3,int time = 1}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-    duration: Duration(seconds: 1),
+    duration: Duration(seconds: time),
     width: Get.width * width,
     margin: EdgeInsets.all(20),
     backgroundColor: const Color.fromARGB(116, 255, 255, 255),
