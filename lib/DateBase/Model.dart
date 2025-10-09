@@ -116,6 +116,7 @@ class DevLX {
       'InventoryReport': InventoryReport,
       'AlarmTime': AlarmTime,
       'AlarmMode': AlarmMode,
+      'MelodySpeaker': MelodySpeaker,
       'Model': Model,
       'Oprator': Oprator,
       'Simcard': Simcard,

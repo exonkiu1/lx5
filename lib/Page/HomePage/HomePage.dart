@@ -2,12 +2,9 @@ import 'package:flutter/material.dart';
 import 'dart:math' as math;
 import 'package:get/get.dart';
 import 'package:lx/Getx/ControllerHomePage.dart';
-import 'package:lx/Getx/ControllerInfo.dart';
-import 'package:lx/Getx/ControllerSyncing.dart';
 import 'package:lx/Page/Inquiry/Inquiry.dart';
 import 'package:lx/Page/Options/Options2.dart';
 import 'package:lx/Page/Relay/Relay.dart';
-import 'package:lx/Page/Syncing/Syncing.dart';
 import 'package:lx/SendOrder.dart';
 import 'package:lx/Stt/MainStt.dart';
 
