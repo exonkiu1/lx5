@@ -134,9 +134,9 @@ class _Adddevice2State extends State<Adddevice2> {
                           Center(
                             child: InkWell(
                               onTap: () async {
-                                bool val =
-                                    await Get.find<Controllersttadddevice>()
-                                        .Agent();
+                                bool val = true;
+                                    /* await Get.find<Controllersttadddevice>()
+                                        .Agent(); */
                                 if (val) {
                                   if (Get.find<Controllerother>().Model.value !=
                                       'LX PRO') {
