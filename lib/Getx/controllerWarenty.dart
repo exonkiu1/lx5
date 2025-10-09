@@ -8,7 +8,8 @@ import 'package:lx/Page/Warrenty/Warrenty.dart';
 import 'package:lx/WidgetUi/decoration.dart';
 import 'package:persian_number_utility/persian_number_utility.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-
+//git config --global user.email "ehsankiumarsi7@gmail.com"
+//git config --global user.name "exonkiumarsi"
 class Controllerwarrenty extends GetxController {
   RxString NameClinet = ''.obs;
   RxString PhoneClinet = ''.obs;
