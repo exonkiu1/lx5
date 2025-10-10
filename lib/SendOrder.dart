@@ -269,13 +269,13 @@ Future<void> SendSms(BuildContext context, String code,
       telephony.sendSms(
           to: '${Get.find<Controllerinfo>().Phone.value}',
           message:
-              '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#',
+              '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}${code.endsWith('#') ? '' : '#'}',
           subscriptionId:
               Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
     } else {
       telephony.sendSms(
           to: phone,
-          message: '*0000*${code}${code.endsWith('#') ? '' : '#'}',
+          message: '*0000*${code}#',
           subscriptionId:
               Get.find<Controllerinfo>().Simcard.value == '-1' ? null : j);
     }

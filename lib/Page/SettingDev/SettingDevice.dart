@@ -69,8 +69,8 @@ class WidgetMelodyAlarm extends StatelessWidget {
                             Get.find<Controllersetting>().MelodySpeaker.value),
                         dropdownColor: color2,
                         underline: Container(),
-                        
-                        items: List.generate(7, (i) => i)
+                        isDense: true,
+                        items: List.generate(8, (i) => i)
                             .map<DropdownMenuItem<int>>(
                                 (value) => DropdownMenuItem(
                                       child: Center(
@@ -85,9 +85,8 @@ class WidgetMelodyAlarm extends StatelessWidget {
                         onChanged: (value) {
                           showSnackBar(context,
                               title: """
-                              1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
-                            
-                            2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
+1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
+2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
                             """,
                               color: const Color.fromARGB(176, 0, 0, 0),
                               time: 6,
