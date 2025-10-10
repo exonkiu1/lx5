@@ -85,10 +85,11 @@ class WidgetMelodyAlarm extends StatelessWidget {
                         onChanged: (value) {
                           showSnackBar(context,
                               title: """
-1.دقت کنید بعد انتخاب ملودی ، بلندگو ۳ ثانیه ملودی رو پخش می‌کنه.
+1.دقت کنید بعد انتخاب ملودی ، بلندگو 5 ثانیه ملودی رو پخش می‌کنه.
 2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
                             """,
-                              color: const Color.fromARGB(176, 0, 0, 0),
+                              color: const Color.fromARGB(174, 0, 0, 0),
+                              color_text: Colors.white,
                               time: 6,
                               width: Get.width * 0.8);
                           SendOrder(

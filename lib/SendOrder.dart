@@ -394,7 +394,8 @@ showSnackBar(BuildContext context,
     {String title = '',
     double width = 0.3,
     int time = 1,
-    Color color = const Color.fromARGB(116, 255, 255, 255)}) {
+    Color color = const Color.fromARGB(116, 255, 255, 255),
+    Color color_text = const Color.fromARGB(255, 155, 9, 9)}) {
   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
     duration: Duration(seconds: time),
     width: Get.width * width,
@@ -404,7 +405,7 @@ showSnackBar(BuildContext context,
     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
     content: Text(
       '${title}',
-      style: TextStyle(color: const Color.fromARGB(255, 155, 9, 9)),
+      style: TextStyle(color: color_text),
       textDirection: TextDirection.rtl,
       textAlign: TextAlign.center,
     ),
