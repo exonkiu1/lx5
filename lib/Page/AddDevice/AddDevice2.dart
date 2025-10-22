@@ -134,8 +134,8 @@ class _Adddevice2State extends State<Adddevice2> {
                           Center(
                             child: InkWell(
                               onTap: () async {
-                                bool val = 
-                                //true;
+                                bool val =
+                                    //true;
                                     await Get.find<Controllersttadddevice>()
                                         .Agent();
                                 if (val) {
@@ -143,8 +143,8 @@ class _Adddevice2State extends State<Adddevice2> {
                                       'LX PRO') {
                                     DialogOrder(
                                       context,
-                                      () => 
-                                      Get.find<Controllerdatabase>().AddLx(),
+                                      () => Get.find<Controllerdatabase>()
+                                          .AddLx(),
                                       description:
                                           'از ساخت دستگاه مطمعن هستید؟',
                                     );
@@ -205,16 +205,21 @@ class _Adddevice2State extends State<Adddevice2> {
                     Container(
                       width: Get.width * 0.3,
                       height: Get.height,
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(300),
+                          color: Colors.black,
+                          image: DecorationImage(
+                              image: AssetImage('assets/image/logo.png'))),
                       // color: Colors.pink,
                     ),
                   ],
                 ),
               ),
             ),
-            Row(
+           /*  Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                WidgetMOdel(model: 'LX 1000'),
+             //   WidgetMOdel(model: 'LX 1000'),
                 WidgetMOdelpro(model: 'LX PRO'),
                 WidgetMOdelpro(model: 'LX PRO MAX'),
               ],
@@ -223,11 +228,11 @@ class _Adddevice2State extends State<Adddevice2> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-                WidgetMOdel(model: 'UX 80'),
-                WidgetMOdelpro(model: 'UX PRO'),
-                WidgetMOdelpro(model: 'UX PRO MAX'),
+              //  WidgetMOdel(model: 'UX 80'),
+              //  WidgetMOdelpro(model: 'UX PRO'),
+              //  WidgetMOdelpro(model: 'UX PRO MAX'),
               ],
-            ),
+            ), */
             SizedBox(
               height: 20,
             ),
@@ -296,7 +301,8 @@ class WidgetMOdelpro extends StatelessWidget {
         return Container(
           width: Get.width * 0.25,
           decoration: decoration(
-            color: Get.find<Controllerother>().ModelPro.value == model && Get.find<Controllerother>().Model.value == 'LX PRO',
+            color: Get.find<Controllerother>().ModelPro.value == model &&
+                Get.find<Controllerother>().Model.value == 'LX PRO',
           ),
           child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
         );

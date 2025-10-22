@@ -17,8 +17,8 @@ class Controllerother extends GetxController {
   RxString TypeInquiry = ''.obs, TextInuiry = ''.obs;
   RxInt DelyOrder = 0.obs;
   RxBool onceSnackbar = false.obs;
-  RxString Model = ''.obs;
-  RxString ModelPro = ''.obs;
+  RxString Model = 'LX PRO'.obs;
+  RxString ModelPro = 'LX PRO MAX'.obs;
   RxInt counter = 30.obs;
   
   StartDelyOrder() async {
@@ -81,7 +81,7 @@ class Controllerother extends GetxController {
               textDirection: TextDirection.rtl,
               textAlign: TextAlign.right,
             ),
-            InkWell(
+           /*  InkWell(
               onTap: () async {
                 final Uri _url = Uri.parse('https://luxsecurity.ir/');
                 await launchUrl(_url);
@@ -90,7 +90,7 @@ class Controllerother extends GetxController {
                 'www.Luxsecurity.ir',
                 style: TextStyle(color: Colors.blueAccent),
               ),
-            )
+            ) */
           ],
         ),
       ));
@@ -109,7 +109,7 @@ String TextHelpWarrenty = """"
 یکی از سیم کارت ها (دستگاه یا سیم کارت مخاطب )بدلیل ضعیف بودن شبکه دیر پیام می‌دهد یا گاهی پیام نمیدهد باید اپراتور رو تغییر دهید 
 نکته(همراه اول همیشه پیشنهاد میشود چون معمولا کمتر این اتفاق میوفتد )
 
-آموزش کامل نصب در سایت 
+
 
 
 """
