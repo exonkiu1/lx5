@@ -29,6 +29,7 @@ class Settingdevice extends StatelessWidget {
               WidgetAddSencor(),
               WidgetDeleteSencor(),
               WidgetPeriodicBatteryReport(),
+              WidgetMelodyAlarm(),
                WidgetInventoryReport(),
               WidgetAlarmTime(),
               WidgetModeAlarm(),
@@ -74,6 +75,70 @@ class WidgetReset extends StatelessWidget {
   }
 }
 
+class WidgetMelodyAlarm extends StatelessWidget {
+  const WidgetMelodyAlarm({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Obx(() {
+      return Visibility(
+        visible: Get.find<Controllerinfo>().Model.value == 'LX PRO',
+        child: Container(
+          width: Get.width * 0.9,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Container(
+                width: Get.width * 0.5,
+                decoration: decoration(),
+                margin: EdgeInsets.symmetric(vertical: 10),
+                child: Center(
+                  child: Obx(() {
+                    return DropdownButton(
+                        value: int.parse(
+                            Get.find<Controllersetting>().MelodySpeaker.value),
+                        dropdownColor: color2,
+                        underline: Container(),
+                        isDense: true,
+                        items: List.generate(9, (i) => i)
+                            .map<DropdownMenuItem<int>>(
+                                (value) => DropdownMenuItem(
+                                      child: Center(
+                                        child: Text(
+                                          '${(value + 1).toString().toPersianDigit()} ملودی',
+                                          style: TextStyle(color: color1),
+                                        ),
+                                      ),
+                                      value: value,
+                                    ))
+                            .toList(),
+                        onChanged: (value) {
+                          /* showSnackBar(context,
+                              title: """
+1.دقت کنید بعد انتخاب ملودی ، بلندگو 5 ثانیه ملودی رو پخش می‌کنه.
+2.ملودی فقط در قسمت آلارم کشیدن اعمال میشه
+                            """,
+                              color: const Color.fromARGB(174, 0, 0, 0),
+                              color_text: Colors.white,
+                              time: 6,
+                              width: Get.width * 0.8); */
+                          SendOrder(
+                            context,
+                            () => Get.find<Controllersetting>()
+                                .ChangeMelodySpeaker(value!),
+                          );
+                        });
+                  }),
+                ),
+              ),
+              Text('ملودی اسپیکر')
+            ],
+          ),
+        ),
+      );
+    });
+  }
+}
 class WidgetDeleteDev extends StatelessWidget {
   const WidgetDeleteDev({super.key});
 

@@ -99,6 +99,7 @@ class Controllerdatabase extends GetxController {
         Partion:
             ${Get.find<Controllersttadddevice>().SingleUser.value ? '1' : ''}
         DevLanguage:per,
+        MelodySpeaker:0,
         EstablishingContactDuringPowerOutage:false,
         SemiActiveStatusRemote:false,
         PeriodicBatteryReport:10,

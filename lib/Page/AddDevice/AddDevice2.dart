@@ -22,9 +22,9 @@ class _Adddevice2State extends State<Adddevice2> {
   @override
   void initState() {
     if (Get.find<Controllerdatabase>().Lenght.value == 0) {
-      Get.find<Controllersttadddevice>().PlayMusic('welcome');
+    //  Get.find<Controllersttadddevice>().PlayMusic('welcome');
     }
-    CheckPermisionSms();
+ //   CheckPermisionSms();
     // TODO: implement initState
     super.initState();
   }
@@ -134,9 +134,21 @@ class _Adddevice2State extends State<Adddevice2> {
                         ],
                       ),
                     ),
-                    Container(
+                      Container(
                       width: Get.width * 0.3,
                       height: Get.height,
+                      child: Center(
+                        child: Container(
+                          width: Get.width * 0.3,
+                          height: Get.width * 0.3,
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(300),
+                              color: Colors.black,
+                              image: DecorationImage(
+                                  image: AssetImage('assets/image/logo.png'))),
+                        ),
+                      ),
+
                       // color: Colors.pink,
                     ),
                   ],
