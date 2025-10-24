@@ -243,7 +243,7 @@ class _Adddevice2State extends State<Adddevice2> {
             SizedBox(
               height: 20,
             ),
-            Obx(() {
+           /*  Obx(() {
               return Visibility(
                   visible: Get.find<Controllerother>().Model.value == 'LX PRO',
                   child: Row(
@@ -266,7 +266,7 @@ class _Adddevice2State extends State<Adddevice2> {
                       })
                     ],
                   ));
-            })
+            }) */
           ],
         ),
       ),

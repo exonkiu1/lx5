@@ -8,7 +8,7 @@ import 'package:lx/SendOrder.dart';
 
 class Controllersttadddevice extends GetxController {
   RxBool Playing = false.obs;
-  RxBool SingleUser = false.obs;
+  RxBool SingleUser = true.obs;
   ProcessText(BuildContext context) {}
  Future<bool> Agent() async{
     bool val = false;
