@@ -143,7 +143,7 @@ class _Adddevice2State extends State<Adddevice2> {
                           height: Get.width * 0.3,
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(300),
-                              color: Colors.black,
+                              color: Colors.white,
                               image: DecorationImage(
                                   image: AssetImage('assets/image/logo.png'))),
                         ),
