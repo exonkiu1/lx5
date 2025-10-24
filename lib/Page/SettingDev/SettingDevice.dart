@@ -70,7 +70,7 @@ class WidgetMelodyAlarm extends StatelessWidget {
                         dropdownColor: color2,
                         underline: Container(),
                         isDense: true,
-                        items: List.generate(8, (i) => i)
+                        items: List.generate(9, (i) => i)
                             .map<DropdownMenuItem<int>>(
                                 (value) => DropdownMenuItem(
                                       child: Center(
