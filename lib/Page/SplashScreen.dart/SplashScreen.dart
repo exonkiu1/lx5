@@ -33,7 +33,7 @@ class _SplashscreenState extends State<Splashscreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              'LUX',
+              'VanGurrd',
               style: TextStyle(fontSize: 40),
             ),
           ],
