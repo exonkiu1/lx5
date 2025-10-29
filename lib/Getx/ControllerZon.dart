@@ -139,7 +139,7 @@ class Controllerzon extends GetxController {
     int leng =
         MapModelPro[Get.find<Controllerwarrenty>().ModelPro.value]!['zon']!;
     for (var i = 0; i < leng; i++) {
-      value = value + '${State[i].value ? '1' : '0'}';
+      value = value + '${State[i].value ? 'E' : '0'}';
     }
     showhalfon.value = false;
     await UpdateZon();

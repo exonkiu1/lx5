@@ -146,8 +146,8 @@ Map<String, Map<String, dynamic>> PageOptionsLxPro = {
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
   'گزارش گیری': {'image': 'reportsms', 'page': Reportsms()},
-  'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
-  'همگام سازی': {'image': 'sync', 'page': Syncing()},
+ // 'راهنمایی': {'image': 'help', 'page': HelpLXPRO()},
+ // 'همگام سازی': {'image': 'sync', 'page': Syncing()},
   'اطلاعات گارانتی': {'image': 'reportsms', 'page': Warrantypage()},
 };
 Map<String, Map<String, dynamic>> PageOptionsLx1000 = {
@@ -157,7 +157,7 @@ Map<String, Map<String, dynamic>> PageOptionsLx1000 = {
   'تنظیمات دستگاه': {'image': 'setting', 'page': Settingdevice()},
   'تنظیم سیمکارت': {'image': 'simcard', 'page': Settingsim()},
   'پسورد دستگاه': {'image': 'pass', 'page': Passworddevice()},
-  'راهنمایی': {'image': 'help', 'page': HelpLX1000()},
+ // 'راهنمایی': {'image': 'help', 'page': HelpLX1000()},
 };
 
 Map<String, Map<String, Map<String, dynamic>>> PageModel = {

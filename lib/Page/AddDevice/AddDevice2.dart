@@ -203,12 +203,13 @@ class _Adddevice2State extends State<Adddevice2> {
                       ),
                     ),
                     Container(
-                      width: Get.width * 0.3,
+                      width: Get.width * 0.42,
                       height: Get.height,
                       child: Center(
                         child: Container(
-                          width: Get.width * 0.3,
-                          height: Get.width * 0.3,
+                          width: Get.width * 0.42,
+                          height: Get.width * 0.42,
+                          margin: EdgeInsets.only(right: 5),
                           decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(300),
                               color: Colors.black,
@@ -223,23 +224,23 @@ class _Adddevice2State extends State<Adddevice2> {
                 ),
               ),
             ),
-            /*  Row(
+             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-             //   WidgetMOdel(model: 'LX 1000'),
-                WidgetMOdelpro(model: 'LX PRO'),
-                WidgetMOdelpro(model: 'LX PRO MAX'),
+                WidgetMOdel(model: 'LX 1000',name: 'v1000',),
+                WidgetMOdelpro(model: 'LX PRO',name: 'v2000',),
+                WidgetMOdelpro(model: 'LX PRO MAX',name: 'v2000 pro',),
               ],
             ),
             SizedBox(height: 7),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
-              //  WidgetMOdel(model: 'UX 80'),
-              //  WidgetMOdelpro(model: 'UX PRO'),
-              //  WidgetMOdelpro(model: 'UX PRO MAX'),
+                WidgetMOdel(model: 'UX 80'),
+                WidgetMOdelpro(model: 'UX PRO'),
+                WidgetMOdelpro(model: 'UX PRO MAX'),
               ],
-            ), */
+            ),
             SizedBox(
               height: 20,
             ),
@@ -275,8 +276,9 @@ class _Adddevice2State extends State<Adddevice2> {
 }
 
 class WidgetMOdel extends StatelessWidget {
-  const WidgetMOdel({super.key, required this.model});
+  const WidgetMOdel({super.key, required this.model,this.name = ''});
   final String model;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -287,7 +289,7 @@ class WidgetMOdel extends StatelessWidget {
           decoration: decoration(
             color: Get.find<Controllerother>().Model.value == model,
           ),
-          child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
+          child: Center(child: Text(name, style: TextStyle(fontSize: 13))),
         );
       }),
     );
@@ -295,8 +297,9 @@ class WidgetMOdel extends StatelessWidget {
 }
 
 class WidgetMOdelpro extends StatelessWidget {
-  const WidgetMOdelpro({super.key, required this.model});
+  const WidgetMOdelpro({super.key, required this.model,this.name=''});
   final String model;
+  final String name;
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -311,7 +314,7 @@ class WidgetMOdelpro extends StatelessWidget {
             color: Get.find<Controllerother>().ModelPro.value == model &&
                 Get.find<Controllerother>().Model.value == 'LX PRO',
           ),
-          child: Center(child: Text(model, style: TextStyle(fontSize: 13))),
+          child: Center(child: Text(name, style: TextStyle(fontSize: 13))),
         );
       }),
     );
