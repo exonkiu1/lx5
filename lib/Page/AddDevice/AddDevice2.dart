@@ -233,14 +233,14 @@ class _Adddevice2State extends State<Adddevice2> {
               ],
             ),
             SizedBox(height: 7),
-            Row(
+           /*  Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 WidgetMOdel(model: 'UX 80'),
                 WidgetMOdelpro(model: 'UX PRO'),
                 WidgetMOdelpro(model: 'UX PRO MAX'),
               ],
-            ),
+            ), */
             SizedBox(
               height: 20,
             ),
