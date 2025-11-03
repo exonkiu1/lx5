@@ -8,7 +8,7 @@ import 'package:lx/Getx/ControllerInfo.dart';
 import 'package:lx/SendOrder.dart';
 
 class Controllerpassword extends GetxController {
-  RxString PasswordDev = ''.obs;
+  RxString PasswordDev = '0000'.obs;
   TextEditingController tf1 = TextEditingController(),
       tf2 = TextEditingController(),
       tf3 = TextEditingController();

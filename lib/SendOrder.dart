@@ -138,7 +138,7 @@ DialogTextFieldSms(BuildContext context, Future<String> Function() function,
                 Navigator.of(context).pop();
                 Get.find<Controllerother>().TextInuiry.value =
                     Get.find<Controllerother>().tf.text;
-                Get.find<Controllerother>().tf.text='';
+                Get.find<Controllerother>().tf.text = '';
                 String code = await function();
                 if (sms) {
                   SendSms(context, code);
@@ -198,7 +198,7 @@ SendInquiry(
 ///
 Future<void> SendSms(BuildContext context, String code,
     {String phone = '', bool bool_phone = false}) async {
-  String uri = '';
+  /*  String uri = '';
   if (Get.find<Controllerother>().Android.value) {
     uri =
         'sms:${Get.find<Controllerinfo>().Phone.value}?body=*${Get.find<Controllerpassword>().PasswordDev.value}*${code}';
@@ -214,8 +214,24 @@ Future<void> SendSms(BuildContext context, String code,
   if (await canLaunch(uri2)) {
     await launch(uri2);
     var context = Get.context;
-  }
+  } */
+  String phoneNumber =
+      '${bool_phone ? phone : Get.find<Controllerinfo>().Phone.value}';
+  String message =
+      '*${Get.find<Controllerpassword>().PasswordDev.value}*${code}#';
+  final Uri smsUri = Uri(
+    scheme: 'sms',
+    path: '${phoneNumber}',
+    queryParameters: <String, String>{
+      'body': message,
+    },
+  );
 
+  if (await canLaunchUrl(smsUri)) {
+    await launchUrl(smsUri);
+  } else {
+    throw 'Could not launch $smsUri';
+  }
   Get.find<Controllerother>().StartDelyOrder();
 }
 

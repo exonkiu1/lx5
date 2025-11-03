@@ -64,12 +64,12 @@ class Warrantypage extends StatelessWidget {
               description: Get.find<Controllerwarrenty>().DateWarrenty.value,
             );
           }),
-          Obx(() {
+         /*  Obx(() {
             return WidgetInfo(
               title: 'مدل دستگاه',
               description: Get.find<Controllerwarrenty>().ModelPro.value,
             );
-          }),
+          }), */
         ],
       )),
     );

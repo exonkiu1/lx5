@@ -36,7 +36,7 @@ class MyApp extends StatelessWidget {
         body: Backgroundview(
             child: Center(
           child: Text(
-            'LUX',
+            'vangurrd',
             style: TextStyle(
               fontSize: 40,
             ),
