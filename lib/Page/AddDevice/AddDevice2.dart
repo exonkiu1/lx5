@@ -203,9 +203,9 @@ class _Adddevice2State extends State<Adddevice2> {
                       ),
                     ),
                     Container(
-                      width: Get.width * 0.42,
-                      height: Get.height,
-                      child: Center(
+                      width: Get.width * 0.2,
+                      height: Get.width * 0.2,
+                     /*  child: Center(
                         child: Container(
                           width: Get.width * 0.42,
                           height: Get.width * 0.42,
@@ -217,7 +217,7 @@ class _Adddevice2State extends State<Adddevice2> {
                                   image: AssetImage('assets/image/logo.png'))),
                         ),
                       ),
-
+ */
                       // color: Colors.pink,
                     ),
                   ],
