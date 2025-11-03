@@ -203,8 +203,8 @@ class _Adddevice2State extends State<Adddevice2> {
                       ),
                     ),
                     Container(
-                      width: Get.width * 0.2,
-                      height: Get.width * 0.2,
+                      width: Get.width * 0.3,
+                      height: Get.height,
                      /*  child: Center(
                         child: Container(
                           width: Get.width * 0.42,
