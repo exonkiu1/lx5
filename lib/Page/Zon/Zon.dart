@@ -527,7 +527,7 @@ class WidgetZon extends StatelessWidget {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: List.generate(
-                              8,
+                              Get.find<Controllerwarrenty>().ModelPro.contains('MAX') ? 8:4,
                               (c) => InkWell(
                                 onTap: () {
                                   Get.find<Controllerzon>().Part[i].value =

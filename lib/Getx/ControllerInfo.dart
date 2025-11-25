@@ -75,9 +75,9 @@ class Controllerinfo extends GetxController {
 }
 
 Map<String, String> codeInquiryCharge = {
-  'ha': '*140*11#',
-  'ir': '*141*1#',
-  'rl': '*200*2*2*1#'
+  'ha': '*140*11',
+  'ir': '*141*1',
+  'rl': '*200*2*2*1'
 };
 List<String> ha = [
   '0910',
