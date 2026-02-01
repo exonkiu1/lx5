@@ -149,7 +149,14 @@ class _Adddevice2State extends State<Adddevice2> {
                                           'از ساخت دستگاه مطمعن هستید؟',
                                     );
                                   } else {
-                                    SendInquiry(
+                                     DialogOrder(
+                                      context,
+                                      () => Get.find<Controllerdatabase>()
+                                          .AddLx(),
+                                      description:
+                                          'از ساخت دستگاه مطمعن هستید؟',
+                                    );
+                                   /*  SendInquiry(
                                         context,
                                         () => Get.find<Controllerwarrenty>()
                                             .SendImeiStartWarenty(),
@@ -160,7 +167,7 @@ class _Adddevice2State extends State<Adddevice2> {
                                         type: 'imei',
                                         bool_phone: true,
                                         phone:
-                                            '${Get.find<Controllerdatabase>().tfPhone.text}');
+                                            '${Get.find<Controllerdatabase>().tfPhone.text}'); */
                                   }
                                 }
                               },
